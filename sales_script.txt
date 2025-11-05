@@ -1,0 +1,591 @@
+# REVENUE ADVISORY SALES SCRIPT
+## Enhanced Two-Call Close | $50K–$75K Engagements | Risk-Mitigated Model
+
+**Use Case:** High-level B2B sales to Founders, CEOs, CROs, or Senior Executives
+
+## OVERVIEW
+This is B2B advisory sales, not transactional B2C. You're speaking with executives, board members, or high-level operators who likely need internal buy-in — from finance, legal, or leadership — before any deal is finalized.
+
+**Key Principle:** The close doesn't happen on the call. It happens in the follow-up emails — after you've left a strong impression, clarified key mechanics, and anchored the value.
+
+**Your Role:** Lead, clarify, and reassure. Don't be hard-closed. Don't push. You're not a closer — you're a commercial advisor running due diligence to determine whether an engagement makes sense to prescribe.
+
+**Enhanced Framework:** This updated script incorporates advanced positioning as a peer conducting due diligence, sophisticated economy-specific messaging, and deeper emotional intelligence techniques. The goal isn't to convince them to say yes — it's to determine whether the engagement even makes sense on our end.
+
+**Objection Handling:** If the objection is about money, conviction, or trust, handle it with clarity and calm. If it's about logistics or internal processes ("need to talk to my team", "need to think"), leave a clean runway for them to get approvals and loop back in. Then guide the rest of the deal to close via email — where 90% of your wins will happen.
+
+## UNDERSTANDING THE TWO ECONOMIES
+Before you ever step into a call, you need to identify which economy you're speaking with — because the tone, phrasing, and depth of your language will change depending on who's on the other side.
+
+**The Old Economy:** Mature, established businesses (industrials, energy, banks, PE groups, M&A, manufacturing, logistics, professional services, construction, insurance, legacy verticals). They value credibility, brand integrity, and stability. Dial back excitement and sophistication — translate what you do into their world.
+
+**The New Economy:** Modern operators (startups, scale-ups, SaaS, agencies, staffing firms, AI, marketing companies). They're sophisticated and understand GTM. Use Mechanism Framing™ — be direct about what you do but emphasize the infrastructure and talent layer that makes it work.
+
+**Key Enhancement:** When speaking with the New Economy, emphasize your vendor relationships, access to top-tier campaign and data talent, collective years in sales/marketing/commercial execution, and ability to contractually anchor to a 45-day milestone that de-risks the engagement.
+
+## EMOTIONAL DISCOVERY - THE REAL "WHY"
+**Enhanced Framework:** Before diving into structured discovery questions, uncover the emotional drivers and true pain. This creates the foundation for positioning yourself as a peer advisor who truly understands their situation, not just a vendor with solutions.
+
+**Integration Note:** Use these techniques throughout the call, especially during the opening frame and question flow. They help you "undress the prospect" — getting below surface-level responses to identify genuine motivation and urgency.
+
+### PAIN AMPLIFICATION QUESTIONS
+- "What's keeping you up at night when it comes to your sales performance?"
+- "If this sales cycle problem continues for another 6 months, what's the worst that could happen?"
+- "What's the real cost of not fixing this? What are you losing out on?"
+- "How is this affecting your team's morale and your own stress levels?"
+
+### URGENCY & STAKES QUESTIONS
+- "What's driving the need to solve this now versus later?"
+- "What happens if you don't hit your revenue targets this quarter?"
+- "How is this impacting your relationship with the board/investors?"
+- "What's at stake for you personally if this doesn't get resolved?"
+
+### EMOTIONAL TRIGGERS TO LOOK FOR
+- **Fear:** "We're falling behind competitors"
+- **Frustration:** "Nothing we've tried has worked"
+- **Pressure:** "The board is asking tough questions"
+- **Excitement:** "We have a huge opportunity if we can scale"
+- **Desperation:** "We need to figure this out fast"
+
+### DEEPER PROBING TECHNIQUES
+**"Undressing" the Prospect - Getting Below the Surface:**
+
+#### THE "WHY" LADDER (Keep asking "Why?" until you hit emotion)
+- "Why is that important to you?"
+- "Why does that matter?"
+- "What's really driving that?"
+- "What's underneath that concern?"
+
+#### PAIN AMPLIFICATION TECHNIQUES
+- "Help me understand the real impact..."
+- "What's the worst-case scenario if this continues?"
+- "How is this affecting your team's confidence?"
+- "What's the personal cost to you?"
+
+#### URGENCY CREATION QUESTIONS
+- "What's the cost of waiting another quarter?"
+- "What opportunities are you missing while this drags on?"
+- "How is this affecting your competitive position?"
+- "What's at stake for your career/reputation?"
+
+#### EMOTIONAL VALIDATION
+- "That sounds incredibly frustrating..."
+- "I can hear the urgency in your voice..."
+- "It sounds like this is really keeping you up at night..."
+- "I can sense this is really important to you..."
+
+## CARPET FRAMEWORK
+**Enhanced Financial Modeling System:** The 6 Variables That Build The Financial Model
+
+**Integration Enhancement:** CARPET serves as your systematic checklist for extracting financial modeling variables during the discovery process. Use these variables to build realistic, defensible 45-day milestones that anchor your engagement proposals.
+
+- **C (CYCLE):** Sales cycle length, decision timeline
+- **A (ACV):** Average contract value, deal size, budget range  
+- **R (REP):** Best rep performance, meetings per month, conversion rates
+- **P (PIPELINE vs REVENUE):** Current pipeline status, revenue goals
+- **E (ENVIRONMENT):** Technical requirements, compliance, infrastructure
+- **T (TIMELINE & DECISION-MAKERS):** Decision process, approval chain, timeline
+
+**Goal:** Extract all 6 CARPET variables during discovery to build a complete financial model and scope the engagement accurately. This framework complements the enhanced question flow by ensuring you capture the quantitative foundation needed for risk-mitigated proposals.
+
+### CARPET QUESTIONS QUICK REFERENCE
+
+**C - CYCLE Questions:**
+- "How long does it typically take from first contact to closed won?"
+- "What's your typical sales cycle from initial interest to signed contract?"
+- "How many days does it usually take from first meeting to decision?"
+
+**A - ACV Questions:**
+- "What's the average contract value or LTV of a new account?"
+- "What's the typical deal size you're working with?"
+- "What's the range of deals you typically close?"
+
+**R - REP Questions:**
+- "Who's your best performing rep? What makes them so successful?"
+- "How many meetings does your top performer book per month?"
+- "How many meaningful conversations typically result in one closed deal?"
+
+**P - PIPELINE Questions:**
+- "What's your current pipeline looking like? How much revenue are you tracking?"
+- "Are you more focused on building pipeline or closing revenue right now?"
+- "How much pipeline does one rep generate per month?"
+
+**E - ENVIRONMENT Questions:**
+- "Are there any compliance or volume restrictions we should be aware of?"
+- "What platforms or systems do you currently use to manage commercial conversations?"
+- "Would proprietary infrastructure for execution be supported internally?"
+
+**T - TIMELINE Questions:**
+- "Who else would be involved in a decision like this?"
+- "What's your typical decision timeline? How long does it usually take?"
+- "Who would need to sign off on a solution like this?"
+
+### ACTIVE LISTENING STATEMENTS
+
+**Acknowledgment & Understanding:**
+- "I can see that's really impacting your team's productivity."
+- "That makes a lot of sense - it sounds like you're dealing with some real bottlenecks there."
+- "I understand the challenge you're facing with [specific issue they mentioned]."
+- "That's exactly the kind of situation we help companies navigate."
+
+**Building Rapport:**
+- "It sounds like you've been thinking about this for a while."
+- "I can tell this is important to you and your team."
+- "That's a smart approach - many companies in your position face similar challenges."
+- "You're absolutely right to be thinking about this now."
+
+**Transitioning to Discovery:**
+- "Help me understand a bit more about your current situation..."
+- "That's really helpful context. I'm curious about..."
+- "Based on what you've shared, I'd love to understand..."
+- "That gives me a good picture. A few questions to help me understand your setup better..."
+# CALL ONE: DUE DILIGENCE & QUALIFICATION
+
+## I. OPENING FRAME — SETTING CONTEXT FOR THE CONVERSATION
+**Enhanced Purpose:** Establish yourself as a peer conducting due diligence, not a vendor trying to win business. This immediately elevates the frame and positions you as a strategic extension of their team.
+
+**Advisor Mindset:** Deliver this like an advisor leading a professional diligence session, not a salesperson opening a discovery call. Slow down, stay calm, and let silence do the work.
+
+**Script:**
+
+"Hey [FirstName], great to meet you.
+
+I'm looking forward to spending the next 30 minutes with you here, and happy to get right into it if that's all right with you?"
+
+(Pause for confirmation)
+
+"Just to get us started - one thing we've always done, regardless of the engagement type, is take the time to really understand how a client's business functions.
+
+Specifically, how your business is generating interest in the market, what markets you're generating that demand in, and how that demand is then processed into conversion events.
+
+A common goal we can share for today would be to treat this session as due diligence - gives us the opportunity to determine whether a structured engagement makes sense on our end, and equally, to give you a clear picture of how we operate and what our process typically looks like.
+
+I get genuinely excited when we start talking through our processes - we have a really unique way of engaging. Everything we do is built around anchors and risk mitigation, so I'll be happy to dive into that and see how it could potentially align with the business goals.
+
+But before I do, it'd be great to just hear directly from the source - a bit more about the business, how you're currently generating demand, and which markets that demand is coming from."
+
+**Advisor Notes:**
+- Keep this slow and natural - like you're walking through a familiar process, not performing a script
+- The tone is executive curiosity. You're not interrogating; you're investigating
+- The phrase "treat this as due diligence" is key - it repositions the call immediately
+- Your goal in this opening isn't to demonstrate expertise; it's to set the posture and invite them to open the floor first
+- This intro should feel like you're already part of their world - not trying to get in
+
+## II. THE FORK IN THE ROAD — TWO PATHS THE CALL CAN TAKE
+**Enhanced Navigation:** Once you've opened the call and invited the prospect to speak, the conversation can go one of two ways. Use the navigation below to jump to the relevant scenario.
+
+**If the Prospect Deflects:**
+Scenario: The prospect doesn't answer your opening prompt. Instead, they ask: "Yeah, sure - but could you maybe start by telling me a bit more about what you do?"
+
+**Advisor Response:** This is where most operators lose control. They start pitching instead of posturing. Your goal here is to briefly answer, then pivot back into due diligence mode.
+
+**Golden Rule:** You can acknowledge their question, but you must always end with one of your own. Never spend more than 45–60 seconds explaining your firm before returning to discovery. Your job isn't to sound impressive - it's to execute proper due diligence through their cooperation.
+
+**Navigation:** The answer to "What Do You Do?" depends on which economy you're speaking with:
+
+### Path 1: Sophisticated (Tech, SaaS, Data, AI) - New Economy Response
+**Context:** They're fluent in GTM, pipeline, and outbound language. They've probably been pitched by a dozen operators. If you go tactical, you'll sound like one of them.
+
+**Script (Frame Recovery):**
+
+"Of course - totally fair question. We operate as a revenue advisory firm. Our firm was built by, and works closely with, a collective of founders who've spent decades working across technology, marketing, and sales - at both the SMB and enterprise level.
+
+That's what shaped how we operate.
+
+A big part of our model is the vendor and talent network we've developed over the years. Every engagement we take on integrates that bench - meaning we can bring in specialists who have real, vertical experience inside a client's industry. Whether that's finance, SaaS, healthcare, or manufacturing tech."
+
+(Short pause - tone shifts slightly warmer and directive.)
+
+"Once we get a good understanding of which channels would best serve you for generating demand, and how that demand is processed through your sales cycle to conversion. We can run our due diligence process that builds out an engagement model to reverse engineer a realistic outcome and present a solution that's as low risk as possible.
+
+Some of our clients are best served with a mixture of email, LinkedIn, and phone calls, while others see better results through paid ecosystems or partner channels.
+
+These are all motions we're deeply familiar with - but where we see the biggest levers are in the messaging. That's where 80% of the performance comes from regardless of the channels.
+
+The channel is just a distribution mechanism - the real driver is the message that moves the market toward you. So our focus is on creating enterprise-grade conversations at scale, while retaining the integrity and pedigree of the brand our clients have either built - or are building.
+
+On a daily basis, both for ourselves and for a range of clients, we're triggering conversations with enterprise and mid-market logos across multiple industries - all anchored by strong messaging and managed by elite operators.
+
+That comes from spending years building relationships with some of the best tech, marketing, and sales talent."
+
+(Soft pivot - tone stays calm and invitational. Reclaim your frame.)
+
+"How are you currently generating demand right now?
+
+And what does that process look like from the top of the funnel through to a converted client?"
+
+### Path 2: Not Sophisticated (Industrial, Services, Legacy) - Old Economy Response
+**Context:** They're typically not fluent in GTM mechanics. They value stability, brand integrity, and credibility. Here, you speak to modernization - not "tactics."
+
+**Script (Frame Recovery):**
+
+"Of course - happy to give you a quick overview. We operate as a revenue advisory firm that helps established companies modernize how they generate demand - without disrupting or replacing what's worked for a long time.
+
+Most of our work centers around what we'd call old economy industries - finance, manufacturing, logistics, insurance, and other legacy sectors that have deep expertise and a strong reputation in the market.
+
+Our role isn't to reinvent the wheel - it's to introduce the same level of leverage and consistency that modern industries use, while protecting the integrity, pedigree, and credibility that your brand has built over years of doing good work.
+
+A big part of how we do that comes down to the relationships we've built with top vendors and campaign specialists - and our ability to manage and deploy talent that fits your industry.
+
+Every engagement we take on pulls from that network or internal and external talent - allowing us to assemble the right mix of infrastructure, messaging, and conversation starting tools that feels native to your entity and authentic to your markets decision makers.
+
+What that means practically is that we focus on helping our clients start more sophisticated commercial conversations at scale - with the right decision-makers, across the right markets, and through the channels that make sense for their business.
+
+It's a way to bring enterprise-level reach to companies that already have enterprise-level credibility."
+
+(Short pause - tone softens, then redirect to regain discovery flow.)
+
+"So just to give me a better sense of context - how are you currently generating demand today, and where is most of that business coming from right now?"
+
+## III. FULL QUESTION FLOW — ENHANCED DISCOVERY PROCESS
+**Enhanced Structure:** When the prospect cooperates with your opening, continue with this comprehensive due diligence flow. This replaces the previous discovery section with a more sophisticated top/middle/bottom of funnel approach that integrates CARPET variables while maintaining the emotional intelligence techniques.
+
+**Intro Framing (Before You Ask Anything)**
+Remember, ask 1 question at a time and then be quiet - silence is a powerful tool, use it as often as possible.
+
+### A. TOP OF FUNNEL - DEMAND GENERATION & MARKET FOCUS
+**Enhanced Purpose:** Map how demand is created and which markets are being targeted. This surfaces executive-level priorities while building the foundation for realistic milestone modeling.
+
+**Advisor Guidance:** Don't overthink the order — what matters most is getting reps in. After a few hundred calls, you'll develop a sixth sense for where the conversation is heading. Your job isn't just to run down a list — it's to find the primary channel and dig into it, surface internal benchmarks, and identify where the biggest opportunities lie.
+
+**Integration Note:** Weave in emotional discovery techniques here — use the "Why" ladder to uncover true motivations behind their market focus.
+
+**Script:**
+"Perfect. Let's go through some questions so I can understand how demand flows through the business - from first touch all the way through to a conversion."
+
+"Let's start at the top - how you're currently generating interest and where that demand is coming from."
+
+**Key Questions:**
+1. **How are you currently generating interest in the market?**
+2. **Which channels are responsible for most of that demand - email, LinkedIn, phone, paid, partnerships, or inbound/referrals?**
+3. **Which channels are most consistent in producing qualified conversations?**
+4. **What percentage of your opportunities are proactive versus inbound or referral-driven?**
+5. **How many industries or markets are you currently generating demand in?**
+6. **Which of those markets or segments are performing best right now?**
+7. **Can we double-click on the channel that's producing the strongest results?**
+8. **How do those deals typically come about - what does that process look like from initial contact through to conversion?**
+9. **Which markets, segments, or titles are you prioritizing this quarter?**
+10. **Where have you seen the fastest movement or strongest buyer response in the last 12–24 months?**
+11. **Any markets or verticals you feel are underserved that could represent upside with the right approach?**
+12. **How are you currently positioning the offer to those markets - what messaging tends to resonate most?**
+13. **Have you introduced any new strategies, tools, or outreach frameworks in the past 6–12 months?**
+14. **Have you worked with any external vendors or consultants during that time - and what was your experience like?**
+15. **How do you define a qualified opportunity internally?**
+
+**CARPET Integration:** Extract C (Cycle) and P (Pipeline) variables during this section.
+
+### B. MIDDLE OF FUNNEL - SALES PROCESS & CONVERSION MECHANICS
+**Enhanced Purpose:** Once you've mapped how demand is generated, move straight into understanding what happens when that demand enters the business. This is where most real due diligence happens and where you identify the "installation point" for your engagement.
+
+**Advisor Guidance:** You're essentially tracing the handoff: interest → meeting → qualified opportunity confirmed → sales process → conversion. Most of the time you can get information by constantly asking "What happens next?" or "And then what happens?" This simple chain keeps them talking and surfaces operational details.
+
+**Integration Note:** Use emotional validation techniques here to acknowledge pain points in their current process. This builds rapport and demonstrates you're truly invested in understanding their challenges.
+
+**Script:**
+"Now, once that initial interest is created - can you walk me through what happens next?"
+
+**Key Questions:**
+1. **What does your process look like from first contact through to a converted client?**
+2. **When someone expresses interest, who's typically the next touchpoint internally?**
+3. **How is that interest tracked or handed off - is it automatic (through a CRM or form) or manual (email, spreadsheet, calendar)?**
+4. **What assets or materials are typically used to nurture those conversations - case studies, decks, sequences, demos, calls?**
+5. **How long does it typically take from first meeting to closed-won?**
+6. **How many meaningful conversations (not leads) typically result in one closed deal?**
+7. **Where do most deals tend to stall - early engagement, proposal stage, or late stage?**
+8. **Are there any nurturing sequences, follow-up systems, or reactivation efforts for stalled or dormant deals?**
+9. **Do you notice any seasonality or timing patterns in the middle of the funnel - when deals accelerate or slow?**
+10. **How do win rates vary by company size, industry, segment, or title? Where are they strongest?**
+11. **On average, how much pipeline does one rep or team member generate per month - in meetings or dollar value?**
+12. **How many opportunities in total does your team produce monthly?**
+13. **Have there been any recent changes to how your team runs the commercial process - new tools, playbooks, or team structure?**
+14. **From your perspective, is the team operating at full potential - or are there capacity, skill, or process constraints you're aware of?**
+15. **If we were to introduce additional qualified volume at the top, do you feel the team has the bandwidth to process that demand effectively?**
+
+**CARPET Integration:** Extract R (Rep) and A (ACV) variables during this section.
+
+**Soft Process Commitment Question:**
+"This is really helpful - and just so we're calibrated correctly, when we take what we're covering here and start building out a scope for review, does that decision typically sit with you directly, or will you have it reviewed internally first so we can make sure you've got everything you'd need?"
+
+### C. BOTTOM OF FUNNEL - REVENUE MECHANICS & CONVERSION PERFORMANCE
+**Enhanced Purpose:** At the bottom of the funnel, your focus is simple: you're trying to uncover how effectively the business converts opportunities into revenue and who owns that conversion. This gives you the quantitative foundation to model a 45-day milestone that's realistic and defensible.
+
+**Advisor Guidance:** You're collecting the hard metrics that let you legally and commercially anchor the engagement: conversion ratios, retention timelines, deal values, and lifetime value. You're also looking for ownership clarity — who controls conversion? Knowing that determines how your engagement will integrate operationally.
+
+**Integration Note:** If they drift into irrelevant details, steer them back by saying: "I'm mostly just trying to get a sense for how those qualified opportunities turn into actual accounts or revenue and what the metrics are along that journey."
+
+**Script:**
+"Let's carry on and finish at what happens further down the funnel - how demand turns into actual revenue, and who's responsible for that conversion."
+
+**Key Questions:**
+1. **Who's primarily responsible for closing new business or converting qualified opportunities into clients?**
+2. **How does that handoff typically occur - is it managed by the same rep who sourced the opportunity, or does it transfer to another team or function?**
+3. **From the qualified opportunities generated at the top, what percentage usually convert into new accounts?**
+4. **On average, how many new accounts or deals close per month or quarter?**
+5. **What's the typical average contract value (ACV) or annual value of a new account?**
+6. **What's the lifetime value (LTV) of a client on average?**
+7. **How long do you typically retain a client or account before renewal or churn?**
+8. **Are there any recurring or expansion opportunities that increase revenue post-sale?**
+9. **When deals close, what usually determines success - price, speed, relationship, or process?**
+10. **Do you notice any patterns in conversion by industry, deal size, or seasonality?**
+11. **If we introduced additional qualified volume at the top, do you feel the conversion infrastructure - meaning people, process, and bandwidth - could handle that scale comfortably?**
+12. **From your perspective, is there a clear ceiling or constraint that keeps conversion rates from improving further?**
+
+**CARPET Integration:** Extract all remaining variables (E - Environment, T - Timeline & Decision-makers) during this section.
+
+## IV. INTEGRATION EXPLANATION - CONFIRM, ANCHOR, AND SET NEXT STEPS
+**Enhanced Transition:** At this point, you should have completed the due diligence process and identified a repeatable conversion path. This section acknowledges that process, points to it (literally if you can), and frames how your firm installs qualified demand into that system. This is how you transition from "diagnosis" to "design."
+
+**Internal Confirmation:** Only you will know if the client has clearly described a repeatable process that can convert qualified interest into revenue. If they have, that's your installation point.
+
+**Script (Advisor Delivery):**
+
+"Perfect - I really appreciate you taking the time to walk me through how the business moves from the top of the funnel all the way down to conversion.
+
+What that allows us to do now is model a structure that mitigates as much risk as possible."
+
+(Pause, lean slightly forward, gesture with your hands as if pointing at their process)
+
+"So this process here — the one you just described that takes demand, massages it through the middle, and converts it at the bottom — that's exactly what we'll be pouring qualified interest into.
+
+We'll dictate which channels make the most sense for your business and then build a proposal that outlines exactly how we'll install those channels above the processes that you described, which will then take the demand and cycle it to conversion. From there, we'll model a conservative, realistic scope based on the conversion ratios you've already shared — and of course, we'll aim to outperform that in performance.
+
+Any questions so far?"
+
+**Enhanced Best Case/Worst Case Logic:**
+"Any questions so far?
+
+(If needed - calibrate based on data shared)
+
+"For example, if your internal close rate is around [X%], we'd typically expect demand generated from our channels to convert in a similar range - maybe a 10–20% variance depending on deal cycle and ticket size. The goal is predictability, not over-promise.
+
+Once that's confirmed, we'll assemble the right pod of internal and external talent — campaign ops, data, messaging — and put together the infrastructure needed to execute cleanly.
+
+From there, we'll outline a 90-day engagement anchored to a 45-day milestone, which we contractually obligate ourselves to. Even in a worst-case scenario, you're still ROI-positive. That language will be blatantly clear in the scope so leadership can see that the engagement is fully de-risked.
+
+(Tone softens)
+
+"If that feels like something you and leadership feel could evolve into a scalable channel — quarterly, semi-annually, or annually — we're happy to walk that path with you, align on risk tolerance, and define what tangible success looks like together.
+
+(brief pause, direct but calm)
+
+Any questions so far?"
+
+## V. TRANSITION: CLOSE THE LOOP AND SECURE CALL TWO
+**Enhanced Next Steps:** By this point, you should have completed due diligence, explained how you install demand into their process, and stabilized the frame. Before moving to next steps, close all open loops using the objection handling frameworks. Every discovery must end with a defined next step on the calendar.
+
+**Script (Advisor Delivery):**
+
+At this point, what we'll do is take all of the data you've given us and build out an internal engagement model — that's where we reverse-engineer the numbers and map out what a 90-day structure could realistically result in.
+
+From there, we'll wrap that model into a formal scope of work that lays out:
+
+The channels we'd deploy
+The milestone structure and success metrics
+The built-in risk-mitigation language that protects you
+Once that's ready, we'll send it over for review and then reconvene to walk through it together.
+
+(Pause, then lightly transition to the push for call 2)
+
+"In terms of scheduling that review - does [suggest specific day/time within 3–5 business days] work on your end?"
+
+(Pause, work with them to get it booked - this can happen in 1,000's of ways so be as helpful as possible and make it effortless for them to book call 2 right now)
+
+(If they hesitate or seem unsure)
+
+"Totally fine — we don't need to confirm anything today; it just helps me lock in time on our end so the team can prioritize building your model this week.
+
+Would you prefer to receive the scope first before scheduling a review?"
+
+(If they strongly prefer to schedule later, cater to the request)
+
+"Works fine either way, I appreciate your time and we're looking forward to building out a scope for review - I'll have that sent over for processing and then shipped to you in the next day or two"
+
+**Soft Process Commitment Question:**
+"Perfect - before I let you go, we always like to make sure the scope we put together aligns with what actually matters most on your side.
+
+Everyone has different biases when it comes to greenlighting something like this.
+
+Just so we're catering it toward what's most important to you — what do you think typically pushes something like this across the line internally? Is it the ROI potential, the de-risking language, the milestone structure, or something else entirely?"
+
+**Advisor Notes:**
+- Your tone should stay professional and composed, not excited
+- This is not a "closing moment"; it's simply the next step in the due diligence process
+- You are always assuming that Call Two is part of the same diligence workflow
+- The client should feel like you're managing a structured process, not trying to get a deal
+- The goal is to leave the call with Call Two booked and confirmed live on the spot
+
+VI. PRICING OBJECTION HANDLING (CALL ONE)
+When to use: Only if they specifically bring up budget or pricing — otherwise hold until Call Two.
+Internal Note: The objective here isn't to sell pricing, but to maintain posture, transparency, and authority while keeping the conversation strategically focused.
+The goal is:
+
+Defuse the tension of the question (by normalizing it)
+Provide clarity (so they know there's structure and protection)
+Reclaim frame (so you guide the rest of the call by pivoting out of this and back into diligence)
+
+Advisor Direction: If at any point - especially early in the call - they ask about pricing, don't flinch. You're not being challenged; they're simply testing your confidence and structure. Deliver the script below calmly, like you've said it a thousand times.
+Script:
+"Fair question, I can't tell what the number is but I can provide an investment spectrum.
+Our typical engagements fall between $25,000 and $75,000 over a 90-day window with half of that upfront and the other half is tied to contingency.
+We always prefer to walk through our full diligence process before talking numbers like everyone else, because it really does allow us to present a structured solution with a real figure.
+A common scope would be our 90-day window with a 45-day milestone, we contractually obligate ourselves to a tangible number that you can point at on both day 45 and 90.
+So, for example, a scope that sets 25 qualified opportunities by Day 45.
+If for any reason we don't hit that milestone within that window, that second tranche of the fee doesn't unlock - and we continue servicing the engagement until we do.
+In some cases, that milestone has been hit as early as 22 days; in others, it's taken closer to 55 or 60. But either way, we're fully accountable until it's realized.
+The purpose of structuring it this way is to make the worst-case scenario ROI-positive for the client, while keeping our own performance completely tied to measurable results.
+As our conversation unfolds today, we'll focus on the right benchmarks - what qualifies as an opportunity in your world, what markets those opportunities sit in, and who the decision-makers are that we'd need to reach in order to open those doors.
+Once we've mapped that out, we can model a scope that aligns to those definitions so you have something precise to review."
+Pivot - Immediately ask them a discovery question based on where you are in the conversation.
+Example pivots:
+
+"But before we go deeper into structure, it'll help to get a better picture of how you're currently generating demand - that'll tell me whether we're anchoring on pipeline or revenue."
+"So that gives you the framework - now, let's get back to understanding your current process. You mentioned earlier that [reference something they said] - can you walk me through what happens next in that process?"
+
+Advisor Notes:
+
+Deliver this with complete neutrality - no defensiveness, no hesitation
+Keep tone measured, factual, and steady - this is just how the firm operates
+The phrase "worst-case scenario ROI-positive" is a power anchor - it signals confidence without hype
+Avoid over-explaining timelines or outcomes; focus on structure, accountability, and risk mitigation
+Critical: Never sit in a pricing question or any question/objection. The moment you finish any explanation, immediately move the conversation back into discovery
+Over time you will find your own way of conveying the handle and once you have a bank of successful engagements to point at, you can overcome any objection much easier
+
+
+Original Script (Alternative Version - Use if more detail needed):
+"Our typical engagements fall between $25,000 and $75,000 over a 90-day window — but that really depends on everything you've shared with us today.
+The way we structure it is in two parts:
+
+An upfront, non-refundable advisory fee
+A second tranche that only becomes due if we hit the agreed milestone within the first 45 days
+
+So for example, if we haven't delivered that milestone, you're not on the hook for the second half, and we'll continue working at no cost until we get you there.
+Worst case, you win. Best case, we both do — and the relationship continues past the initial 90 days like it does with most of our clients."
+Additional Context (if needed):
+"Now — whether we anchor the proposal around Pipeline or Revenue will depend on how you answered earlier around sales cycle length, conversion ratios, and market timing.
+Our team will review this transcript carefully, but I'll summarize here:
+If your typical sales cycle is longer than 90 days, we'll most likely recommend anchoring on Pipeline creation, because there isn't a long enough window to show a closed-won outcome inside the engagement.
+If your sales cycle is within a 90-day window, then we can confidently anchor on Revenue, and you'll see closed-wons as the outcome inside the engagement period.
+Either way, we always aim to outperform your current results — typically aiming for a 1.5x improvement over your best-performing channel or team member.
+So even if you're currently using paid ads or a non-email strategy, we'll still use that as a baseline.
+For example: if it costs you $1,500 to acquire a qualified call, our goal would be to deliver similar or better calls at ~$1,000 or less, net of everything.
+Does [propose a day/time within 3–5 business days] work on your end?"
+
+
+# CALL TWO: PROPOSAL REVIEW & PATH TO CLOSE
+
+## VI. OPEN THE CALL — RESTATE THE DUE DILIGENCE STRUCTURE
+
+**Enhanced Opening:** Use this to reinforce the advisory positioning and remind them of the due diligence process they've participated in.
+
+**Script:**
+"Appreciate you reviewing the proposal. As a quick recap — this is the engagement model we built based on the due diligence we conducted together. It's structured as a 90-day engagement, anchored by a 45-day milestone that defines success.
+
+The purpose is to de-risk the decision and provide leadership with both a short-term win and a longer-term path to commercial predictability.
+
+I'll walk you through each section now."
+
+## II. WALK THROUGH THE PROPOSAL
+
+**Sections to Review Verbally:**
+- Engagement Objective (Pipeline or Revenue)
+- 45-Day Milestone (Baseline + North Star)
+- Engagement Scope (Channels, Execution, Infrastructure)
+- Success Metrics (Benchmarks vs. Target Output)
+- Risk-Mitigation Clause
+  - "If the milestone is not achieved, we continue executing at no cost until it is."
+- Fee Structure
+  - Upfront advisory fee
+  - Contingent performance tranche
+
+## III. REITERATE BEST CASE / WORST CASE LOGIC
+
+**Script:**
+"To be clear — this is designed so that even in a conservative scenario, your team walks away with a commercial asset (pipeline, conversations, institutional interest, etc.).
+
+Worst case, you invest the first tranche and we continue until the milestone is hit.
+
+Best case, we exceed the milestone and open a path to expansion, licensing, or full integration."
+
+## IV. CONFIRM BUY-IN & DISCUSS INTERNAL DECISION FLOW
+
+**Script:**
+"Based on where we've landed — does this structure feel aligned to the outcomes you're targeting this quarter?
+
+Is there anyone else internally who would need to sign off before we proceed?"
+
+## V. NEXT STEPS
+
+**Script:**
+"If there are no objections to the model itself, I'll revise any edits, finalize the engagement letter, and send it over by [Day].
+
+What's the ideal timeline on your end to get this executed and mobilized?"
+# OBJECTION HANDLING — CALL TWO
+
+## "What if the milestone isn't hit?"
+
+**Response:**
+"Our engagement letter states we will continue execution — at no additional cost — until the milestone is realized.
+
+That clause exists to eliminate downside risk.
+
+Fair enough?"
+
+## "This is more than we've paid before."
+
+**Response:**
+"Understandable. And that's exactly why we structure it the way we do:
+
+The 45-day milestone exists to protect your investment, that clause exists to eliminate downside risk.
+
+Regardless of whether it's $10K or $100K — when we set a 1.5x performance benchmark, we're saying:
+
+If we don't hit that target, you don't owe us the second tranche — and we keep working until you do.
+
+It's a bulletproof proposal. The whole model is designed so that you cannot lose.
+
+Either we hit the benchmark in the first 45 days — and everyone wins. Or we keep delivering until that return is realized.
+
+And just to be clear — 1.5x is the safeguard, not the ceiling. Our North Star is always 2x or more.
+
+Fair enough?"
+
+## "We want to try a smaller pilot."
+
+**Response:**
+"Totally get that. 45 days is already the shortest window we can work within to deliver the first meaningful wave of results.
+
+Anything shorter, and it's not a fair shot for either of us. We'd be rushing just to check boxes - instead of doing it right.
+
+And to be candid, we're not here for a short sprint - we're looking to become a long-term partner.
+
+The 45-day milestone exists to protect your investment, that clause exists to eliminate downside risk.
+
+And if we don't hit that outcome in the first 45 days?
+
+You don't owe us the second tranche — and we keep working until you do.
+
+The structure exists to protect your investment and prove the ROI early.
+
+Fair enough?"
+
+# ENHANCED SALES PROCESS NOTES
+
+| Element | Expectation |
+|---------|-------------|
+| Sales Cycle | 2 calls (45–60 minutes each) |
+| Pricing | $50K–$75K engagement range |
+| Structure | 90-day term, 45-day milestone |
+| Proposal | Milestone, risk clause, outcome logic |
+| Outcome | Clear win condition + executive optics |
+| Close Trigger | Verbal buy-in + execution of engagement letter |
+
+## ENHANCEMENT SUMMARY
+This updated script represents an evolution from transactional sales tactics to sophisticated advisory positioning. Key improvements include:
+
+- **Due Diligence Framing:** Position yourself as a peer conducting due diligence rather than a vendor trying to win business
+- **Two Economies Awareness:** Tailor messaging based on whether you're speaking with old economy (stability-focused) or new economy (sophisticated) prospects
+- **Enhanced Question Flow:** Structured top/middle/bottom of funnel discovery that integrates CARPET variables while maintaining emotional intelligence
+- **Integration Explanation:** Sophisticated transition from diagnosis to design, visually anchoring the engagement to their existing process
+- **Preserved Value:** Maintained CARPET framework, emotional discovery techniques, and detailed objection handling while elevating the overall approach
+
+The result is a more consultative, defensible sales process that feels like strategic partnership rather than a sales pitch.
