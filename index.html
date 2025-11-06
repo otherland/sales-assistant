@@ -1023,7 +1023,7 @@
                 html += `
                     <div class="info-box">
                         <div class="info-box-title">📋 Full Script</div>
-                        <div class="script-block">${formatScript(linkifyReferences(handlerData.full_script))}</div>
+                        <div class="script-block">${linkifyReferences(formatScript(handlerData.full_script))}</div>
                     </div>
                 `;
             }
@@ -3828,8 +3828,6 @@
                             const escapedItemId = ref.itemId.replace(/'/g, "\\'");
                             const titleText = ref.text.replace(/"/g, '&quot;');
 
-                            console.log(`Processing reference: ${match}`, { handler, escapedItemId, isReference: ref.isReference });
-
                             // Validate that handler and itemId exist
                             if (!handler || !escapedItemId) {
                                 console.warn(`Invalid reference configuration for: ${match}`, { handler, escapedItemId, ref });
@@ -3843,9 +3841,7 @@
                             }
 
                             const onclickValue = `${handler}('${escapedItemId}'); return false;`;
-                            const result = `<a href="#" onclick="${onclickValue}" style="color: var(--primary-color); text-decoration: underline; cursor: pointer; font-weight: 600;" title="Click to view ${titleText}">${match}</a>`;
-                            console.log(`Generated link: ${result}`);
-                            return result;
+                            return `<a href="#" onclick="${onclickValue}" style="color: var(--primary-color); text-decoration: underline; cursor: pointer; font-weight: 600;" title="Click to view ${titleText}">${match}</a>`;
                         } catch (error) {
                             console.error(`Error creating link for reference: ${match}`, error, { ref });
                             return match; // Return original text on error
