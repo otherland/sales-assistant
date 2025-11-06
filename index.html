@@ -187,6 +187,11 @@
         💡
     </button>
 
+    <!-- RESUME BUTTON -->
+    <button class="resume-fab" id="resume-fab" title="Resume Discovery" onclick="resumeDiscovery()">
+        ▶️
+    </button>
+
     <script src="sales_script.js"></script>
 
     <!-- Question toggle functionality -->
@@ -222,6 +227,98 @@
 
             // Show confirmation
             alert('All question progress has been reset.');
+        }
+
+        function resumeDiscovery() {
+            // Get all possible questions from the data structure
+            const allPossibleQuestions = [];
+
+            // Check discovery sections
+            const discoverySections = ['discovery_top_funnel', 'discovery_middle_funnel', 'discovery_bottom_funnel'];
+
+            discoverySections.forEach(sectionId => {
+                if (salesData.sequential_flow && salesData.sequential_flow.call_one) {
+                    const section = salesData.sequential_flow.call_one.find(s => s.id === sectionId);
+                    if (section && section.question_groups) {
+                        section.question_groups.forEach((group, groupIndex) => {
+                            group.questions.forEach((question, questionIndex) => {
+                                const questionId = `${sectionId}_${group.title.replace(/\s+/g, '_')}_${questionIndex}`;
+                                allPossibleQuestions.push({
+                                    id: questionId,
+                                    section: sectionId,
+                                    groupTitle: group.title,
+                                    questionIndex: questionIndex,
+                                    text: question
+                                });
+                            });
+                        });
+                    }
+                }
+            });
+
+            console.log('Total possible questions:', allPossibleQuestions.length);
+
+            // Find the first unchecked question
+            let firstUncheckedQuestion = null;
+
+            for (const question of allPossibleQuestions) {
+                const storedValue = localStorage.getItem(`question_${question.id}`);
+                console.log(`Question: ${question.id}, Stored value: "${storedValue}"`);
+
+                if (storedValue !== 'true') {
+                    firstUncheckedQuestion = question;
+                    break;
+                }
+            }
+
+            if (!firstUncheckedQuestion) {
+                alert('All questions have been asked! 🎉');
+                return;
+            }
+
+            console.log('First unchecked question:', firstUncheckedQuestion);
+
+            // Navigate to the section if not already there
+            const currentContentId = window.location.hash.replace('#', '') || 'welcome';
+            if (currentContentId !== firstUncheckedQuestion.section) {
+                loadContent(firstUncheckedQuestion.section, true);
+                // Wait a bit for content to load, then scroll
+                setTimeout(() => {
+                    scrollToQuestion(firstUncheckedQuestion.id);
+                }, 100);
+            } else {
+                scrollToQuestion(firstUncheckedQuestion.id);
+            }
+        }
+
+        function scrollToQuestion(questionId) {
+            const questionElement = document.querySelector(`[data-question-id="${questionId}"]`);
+            if (questionElement) {
+                // Find and expand the parent question group if it's collapsed
+                const questionGroup = questionElement.closest('.question-group');
+                if (questionGroup && questionGroup.classList.contains('collapsed')) {
+                    questionGroup.classList.remove('collapsed');
+                    // Update the toggle indicator
+                    const toggleElement = questionGroup.querySelector('.question-group-toggle');
+                    if (toggleElement) {
+                        toggleElement.textContent = '▼';
+                    }
+                }
+
+                // Scroll to the question
+                questionElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+
+                // Add a temporary highlight effect
+                questionElement.style.backgroundColor = 'rgba(76, 175, 80, 0.3)';
+                setTimeout(() => {
+                    questionElement.style.backgroundColor = '';
+                }, 2000);
+            } else {
+                console.log('Question element not found:', questionId);
+            }
         }
     </script>
 
@@ -1516,11 +1613,14 @@
                             <div class="question-group-list">
                     `;
                     group.questions.forEach((q, idx) => {
-                        const questionId = `${obj.id}_${group.title.replace(/\s+/g, '_')}_${idx}`;
-                        const isChecked = localStorage.getItem(`question_${questionId}`) === 'true';
-                        html += `<div class="script-block question-item ${isChecked ? 'asked' : ''}" onclick="toggleQuestion('${questionId}', this)">
-                            ${idx + 1}. ${q}
-                        </div>`;
+                        const questionId = obj.id + '_' + group.title.replace(/\s+/g, '_') + '_' + idx;
+                        const isAsked = localStorage.getItem('question_' + questionId) === 'true';
+                        const onclickAttr = 'onclick="toggleQuestion(\'' + questionId + '\', this)"';
+                        const dataAttr = 'data-question-id="' + questionId + '"';
+                        const classAttr = 'script-block question-item' + (isAsked ? ' asked' : '');
+                        html += '<div class="' + classAttr + '" ' + onclickAttr + ' ' + dataAttr + '>';
+                        html += (idx + 1) + '. ' + q;
+                        html += '</div>';
                     });
                     html += `</div></div>`;
                 });
@@ -1819,7 +1919,14 @@
                             <div class="question-group-list">
                     `;
                     group.questions.forEach((q, idx) => {
-                        html += `<div class="script-block question-item">${questionNumber}. ${q}</div>`;
+                        const questionId = item.id + '_' + group.title.replace(/\s+/g, '_') + '_' + idx;
+                        const isAsked = localStorage.getItem('question_' + questionId) === 'true';
+                        const onclickAttr = 'onclick="toggleQuestion(\'' + questionId + '\', this)"';
+                        const dataAttr = 'data-question-id="' + questionId + '"';
+                        const classAttr = 'script-block question-item' + (isAsked ? ' asked' : '');
+                        html += '<div class="' + classAttr + '" ' + onclickAttr + ' ' + dataAttr + '>';
+                        html += questionNumber + '. ' + q;
+                        html += '</div>';
                         questionNumber++;
                     });
                     html += `</div></div>`;
@@ -3658,8 +3765,9 @@
             // Map of reference patterns to their item IDs and display names
             const referenceMap = [
                 // Sequential flow items
-                { pattern: /\b(engagement model|Engagement Model|the engagement model)\b/gi, 
-                  itemId: 'discovery_framework', 
+                { pattern: /\b(engagement model|Engagement Model|the engagement model)\b/gi,
+                  itemId: 'discovery_framework',
+                  isReference: true,
                   text: 'Engagement Model' },
                 { pattern: /\b(The 'Tic'|the 'Tic'|Tic admission|process repeatability)\b/gi, 
                   itemId: 'discovery_bottom_funnel', 
@@ -3667,21 +3775,22 @@
                 { pattern: /\b(The 'Tac'|the 'Tac'|Tac|A\/B\/C framework|A\/B\/C standard)\b/gi, 
                   itemId: 'defining_qualified_opportunities', 
                   text: "The 'Tac' — Defining Qualified Opportunities" },
-                { pattern: /\b(The 'Toe'|the 'Toe'|Toe|power transfer)\b/gi, 
-                  itemId: 'the_toe_power_transfer', 
+                { pattern: /\b(The 'Toe'|the 'Toe'|Toe|power transfer)\b/gi,
+                  itemId: 'qoa_deployment_guide',
                   text: "The 'Toe' — Power Transfer" },
                 { pattern: /\b(Tic-Tac-Toe|Tic-Tac-Toe™)\b/gi, 
                   itemId: 'defining_qualified_opportunities', 
                   text: 'Tic-Tac-Toe™ Sequence' },
-                { pattern: /\b(QOA|QOA™|Qualified Opportunity Anchor)\b/gi, 
-                  itemId: 'the_toe_power_transfer', 
+                { pattern: /\b(QOA|QOA™|Qualified Opportunity Anchor)\b/gi,
+                  itemId: 'qoa_deployment_guide',
                   text: 'QOA™' },
                 { pattern: /\b(CARPET|CARPET Framework)\b/gi, 
                   itemId: 'carpet_framework', 
                   isReference: true, 
                   text: 'CARPET Framework' },
-                { pattern: /\b(discovery framework|Discovery Framework)\b/gi, 
-                  itemId: 'discovery_framework', 
+                { pattern: /\b(discovery framework|Discovery Framework)\b/gi,
+                  itemId: 'discovery_framework',
+                  isReference: true,
                   text: 'Discovery Framework' },
                 { pattern: /\b(bottom of funnel|Bottom of Funnel)\b/gi, 
                   itemId: 'discovery_bottom_funnel', 
@@ -3714,9 +3823,33 @@
             if (!linkedText.includes('<a href="#" onclick="')) {
                 referenceMap.forEach(ref => {
                     linkedText = linkedText.replace(ref.pattern, (match) => {
-                        const handler = ref.isReference ? 'loadReferenceContent' : 'loadContent';
-                        const escapedItemId = ref.itemId.replace(/'/g, "\\'");
-                        return `<a href="#" onclick="${handler}('${escapedItemId}'); return false;" style="color: var(--primary-color); text-decoration: underline; cursor: pointer; font-weight: 600;" title="Click to view ${ref.text.replace(/"/g, '&quot;')}">${match}</a>`;
+                        try {
+                            const handler = ref.isReference ? 'loadReferenceContent' : 'loadContent';
+                            const escapedItemId = ref.itemId.replace(/'/g, "\\'");
+                            const titleText = ref.text.replace(/"/g, '&quot;');
+
+                            console.log(`Processing reference: ${match}`, { handler, escapedItemId, isReference: ref.isReference });
+
+                            // Validate that handler and itemId exist
+                            if (!handler || !escapedItemId) {
+                                console.warn(`Invalid reference configuration for: ${match}`, { handler, escapedItemId, ref });
+                                return match; // Return original text if config is invalid
+                            }
+
+                            // Additional validation
+                            if (typeof window[handler] !== 'function') {
+                                console.warn(`Handler function ${handler} not found for reference: ${match}`);
+                                return match;
+                            }
+
+                            const onclickValue = `${handler}('${escapedItemId}'); return false;`;
+                            const result = `<a href="#" onclick="${onclickValue}" style="color: var(--primary-color); text-decoration: underline; cursor: pointer; font-weight: 600;" title="Click to view ${titleText}">${match}</a>`;
+                            console.log(`Generated link: ${result}`);
+                            return result;
+                        } catch (error) {
+                            console.error(`Error creating link for reference: ${match}`, error, { ref });
+                            return match; // Return original text on error
+                        }
                     });
                 });
             }
