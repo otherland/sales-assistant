@@ -14,7 +14,7 @@ let salesData = {
         "phase": 1,
         "purpose": "Establish yourself as a peer conducting due diligence, not a vendor trying to win business",
         "advisor_mindset": "Deliver this like an advisor leading a professional diligence session, not a salesperson opening a discovery call. Slow down, stay calm, and let silence do the work.",
-        "script": "Hey [FirstName], <i>great to meet you</i>.<br><br>I'm looking forward to spending the next <u>30 minutes</u> with you here, and happy to get right into it if that's all right with you?<br><br>(Pause for confirmation)<br><br>Just to get us started - one thing we've <b>always done</b>, regardless of the engagement type, is take the time to <i>really understand</i> how a client's business functions.<br><br>Specifically, how your business is <b>generating interest</b> in the market, what markets you're generating that demand in, and how that demand is then processed into <b>conversion events</b>.<br><br>A <i>common goal we can share</i> for today would be to <u>treat this session as due diligence</u> - gives us the opportunity to determine whether a structured engagement makes sense on our end, and equally, to give you a clear picture of how we operate and what our process typically looks like.<br><br>I get genuinely excited when we start talking through our processes - we have a <b>really unique way of engaging</b>. Everything we do is built around <b>anchors and risk mitigation</b>, so I'll be happy to dive into that and see how it could potentially align with the business goals.<br><br>But before I do, it'd be great to just hear <i>directly from the source</i> - a bit more about the business, how you're currently generating demand, and which markets that demand is coming from.",
+        "script": "Hey [FirstName], <i>great to meet you</i>.<br><br>I'm looking forward to spending the next <u>30 minutes</u> with you here, and happy to get right into it if that's all right with you?<br><br>(Pause for confirmation)<br><br>One thing we've <b>always done</b> - regardless of the engagement type - is treat these sessions as <u>due diligence</u>. It gives us the opportunity to determine whether a structured engagement makes sense on our end, while giving you a clear picture of how we operate.<br><br>(Short pause)<br><br>Specifically, we take the time to <i>really understand</i> how a client's business functions - how they're <b>generating interest</b> in the market, what markets that demand comes from, and how it gets processed into <b>conversion events</b>.<br><br>Everything we do is built around <b>anchors and risk mitigation</b>, so I'll be happy to dive into that and see how it could align with your business goals.<br><br>But before I do, it'd be great to just hear <i>directly from the source</i> - a bit more about the business, how you're currently generating demand, and which markets that demand is coming from.",
         "advisor_notes": [
           "Keep this slow and natural - like you're walking through a familiar process, not performing a script",
           "The tone is executive curiosity. You're not interrogating; you're investigating",
@@ -24,7 +24,7 @@ let salesData = {
       },
       {
         "id": "fork_deflection",
-        "title": "The Fork in The Road",
+        "title": "What do you do?",
         "category": "sequential",
         "phase": 2,
         "purpose": "Navigate when prospect asks 'What do you do?' without losing control",
@@ -35,13 +35,13 @@ let salesData = {
             "id": "new_economy",
             "economy": "New Economy (Tech, SaaS, Data, AI)",
             "context": "They're fluent in GTM, pipeline, and outbound language. They've probably been pitched by a dozen operators. If you go tactical, you'll sound like one of them.",
-            "script": "Of course - <i>totally fair question</i>. We operate as a <b>revenue advisory firm</b>. Our firm was built by, and works closely with, a collective of founders who've spent <b>decades</b> working across technology, marketing, and sales - at both the SMB and enterprise level.<br><br>That's what shaped how we operate.<br><br>A big part of our model is the <b>vendor and talent network</b> we've developed over the years. Every engagement we take on integrates that bench - meaning we can bring in specialists who have <b>real, vertical experience</b> inside a client's industry. Whether that's finance, SaaS, healthcare, or manufacturing tech.<br><br>(Short pause - tone shifts slightly warmer and directive.)<br><br>Once we get a good understanding of which channels would best serve you for generating demand, and how that demand is processed through your sales cycle to conversion. We can run our <u>due diligence process</u> that builds out an engagement model to <b>reverse engineer a realistic outcome</b> and present a solution that's as <b>low risk as possible</b>.<br><br>Some of our clients are best served with a mixture of email, LinkedIn, and phone calls, while others see better results through paid ecosystems or partner channels.<br><br>These are all motions we're <i>deeply familiar with</i> - but where we see the <u>biggest levers are in the messaging</u>. That's where <b>80% of the performance</b> comes from regardless of the channels.<br><br>The channel is just a distribution mechanism - the <b>real driver is the message</b> that moves the market toward you. So our focus is on creating <b>enterprise-grade conversations at scale</b>, while retaining the <i>integrity and pedigree</i> of the brand our clients have either built - or are building.<br><br>On a daily basis, both for ourselves and for a range of clients, we're triggering conversations with <b>enterprise and mid-market logos</b> across multiple industries - all anchored by <b>strong messaging</b> and managed by <i>elite operators</i>.<br><br>That comes from spending years building relationships with some of the <b>best tech, marketing, and sales talent</b>.<br><br>(Soft pivot - tone stays calm and invitational. Reclaim your frame.)<br><br>How are you currently generating demand right now?<br><br>And what does that process look like from the top of the funnel through to a converted client?"
+            "script": "Of course - <i>totally fair question</i>. We operate as a <b>revenue advisory firm</b> built by founders with <b>decades of experience</b> across technology, marketing, and sales at both SMB and enterprise levels.<br><br>A big part of our model is the <b>vendor and talent network</b> we've developed over the years. Every engagement integrates specialists with <b>real vertical experience</b> in our clients' industries.<br><br>(Short pause)<br><br>Once we understand which channels serve you best and how demand flows through your sales cycle, we run our <u>due diligence process</u> to build an engagement model that <b>reverse engineers a realistic outcome</b> with as <b>low risk as possible</b>.<br><br>(Soft pivot - reclaim frame)<br><br>How are you currently generating demand right now?<br><br>And what does that process look like from the top of the funnel through to a converted client?"
           },
           {
             "id": "old_economy",
             "economy": "Old Economy (Industrial, Services, Legacy)",
             "context": "They're typically not fluent in GTM mechanics. They value stability, brand integrity, and credibility. Here, you speak to modernization - not 'tactics.'",
-            "script": "Of course - <i>happy to give you a quick overview</i>. We operate as a <b>revenue advisory firm</b> that helps established companies <b>modernize</b> how they generate demand - <u>without disrupting or replacing what's worked for a long time</u>.<br><br>Most of our work centers around what we'd call <b>old economy industries</b> - finance, manufacturing, logistics, insurance, and other legacy sectors that have <i>deep expertise</i> and a <i>strong reputation</i> in the market.<br><br>Our role isn't to reinvent the wheel - it's to introduce the same level of <b>leverage and consistency</b> that modern industries use, while <u>protecting the integrity, pedigree, and credibility</u> that your brand has built over years of doing good work.<br><br>A big part of how we do that comes down to the relationships we've built with <b>top vendors and campaign specialists</b> - and our ability to <i>manage and deploy talent</i> that fits your industry.<br><br>Every engagement we take on pulls from that network or internal and external talent - allowing us to assemble the right mix of <b>infrastructure, messaging, and conversation starting tools</b> that feels <i>native to your entity</i> and <i>authentic to your markets decision makers</i>.<br><br>What that means practically is that we focus on helping our clients start more <b>sophisticated commercial conversations at scale</b> - with the <i>right decision-makers</i>, across the <i>right markets</i>, and through the channels that make sense for their business.<br><br>It's a way to bring <b>enterprise-level reach</b> to companies that already have <u>enterprise-level credibility</u>.<br><br>(Short pause - tone softens, then redirect to regain discovery flow.)<br><br>So just to give me a better sense of context - how are you currently generating demand today, and where is most of that business coming from right now?"
+            "script": "Of course - <i>happy to give you a quick overview</i>. <br><br>We operate as a <b>revenue advisory firm</b> that helps established companies <b>modernize</b> how they generate demand - <u>without disrupting what's worked for so long</u>.<br><br>Most of our work centers on <b>legacy sectors</b> - finance, manufacturing, logistics, insurance - companies with <i>deep expertise</i> and <i>strong reputations</i> in the market.<br><br>Our role is to introduce modern <b>leverage and consistency</b> while <u>protecting the integrity and credibility</u> your brand has built over years.<br><br>We do this through relationships with <b>top vendors and specialists</b>, assembling the right mix of infrastructure and messaging that feels <i>native to your markets</i>.<br><br>(Short pause - redirect to regain discovery flow)<br><br>So just to give me a better sense of context - how are you currently generating demand today, and where is most of that business coming from right now?"
           }
         ]
       },
@@ -65,7 +65,7 @@ let salesData = {
         "question_groups": [
           {
             "emoji": "🎯",
-            "title": "Channel Performance",
+            "title": "Where Demand Comes From",
             "questions": [
               "How are you currently generating interest in the market and which channels are responsible for most of that demand?",
               "Which channels are most consistent in producing qualified conversations, and what percentage of your opportunities are proactive versus inbound or referral-driven?"
@@ -73,7 +73,7 @@ let salesData = {
           },
           {
             "emoji": "📊",
-            "title": "Market Analysis",
+            "title": "What Markets You Target",
             "questions": [
               "How many industries or markets are you currently generating demand in and which are performing best right now?",
               "Which markets, segments, or titles are you prioritizing this quarter, and where have you seen the fastest movement in the last 12–24 months?"
@@ -81,7 +81,7 @@ let salesData = {
           },
           {
             "emoji": "🔍",
-            "title": "Opportunity Deep Dive",
+            "title": "How Strong Leads Develop",
             "questions": [
               "Can we double-click on the channel that's producing the strongest results?",
               "Walk me through how those strongest opportunities typically develop - from that first meaningful contact through to becoming a qualified lead?",
@@ -90,7 +90,7 @@ let salesData = {
           },
           {
             "emoji": "💬",
-            "title": "Messaging & Positioning",
+            "title": "What Messaging Works",
             "questions": [
               "How are you currently positioning the offer to those markets - what messaging tends to resonate most?",
               "Any markets or verticals you feel are underserved that could represent upside with the right approach?"
@@ -98,7 +98,7 @@ let salesData = {
           },
           {
             "emoji": "🆕",
-            "title": "Recent Changes",
+            "title": "What's Changed Recently",
             "questions": [
               "Have you introduced any new strategies, tools, or outreach frameworks in the past 6–12 months?",
               "Have you worked with any external vendors or consultants during that time - and what was your experience like?"
@@ -119,14 +119,14 @@ let salesData = {
         "question_groups": [
           {
             "emoji": "🔄",
-            "title": "Process Flow",
+            "title": "How Leads Get Handled",
             "questions": [
               "When initial interest comes in, who on your team typically handles that first meaningful follow-up or qualification conversation, and how is that interest tracked or handed off?"
             ]
           },
           {
             "emoji": "📋",
-            "title": "Lead Management",
+            "title": "How You Nurture Leads",
             "questions": [
               "What assets, nurturing sequences, and follow-up systems do you use for qualified conversations and stalled deals?",
               "Have there been any recent changes to how your team runs the commercial process - new tools, playbooks, or team structure?"
@@ -134,7 +134,7 @@ let salesData = {
           },
           {
             "emoji": "📊",
-            "title": "Conversion Metrics",
+            "title": "Sales Cycle Length",
             "questions": [
               "How long does it typically take from first meeting to closed-won?",
               "How many meaningful conversations (not leads) typically result in one closed deal?",
@@ -143,7 +143,7 @@ let salesData = {
           },
           {
             "emoji": "⏱️",
-            "title": "Timing & Patterns",
+            "title": "Where Deals Get Stuck",
             "questions": [
               "Where do most deals tend to stall - early engagement, proposal stage, or late stage?",
               "Do you notice any seasonality or timing patterns in the middle of the funnel - when deals accelerate or slow?",
@@ -152,7 +152,7 @@ let salesData = {
           },
           {
             "emoji": "🚀",
-            "title": "Capacity & Bandwidth",
+            "title": "Team Capacity Limits",
             "questions": [
               "How many opportunities does your team produce monthly, and from your perspective, is the team operating at full potential?",
               "If we increased the flow of qualified opportunities into your pipeline, does the current team structure and process have the capacity to handle that additional volume without breaking down?"
@@ -174,21 +174,21 @@ let salesData = {
         "question_groups": [
           {
             "emoji": "👥",
-            "title": "Ownership & Handoffs",
+            "title": "Who Closes The Deals",
             "questions": [
               "Who's primarily responsible for closing new business and how does that handoff typically occur - same rep or different team/function?"
             ]
           },
           {
             "emoji": "📈",
-            "title": "Conversion Rates",
+            "title": "How Many Close Monthly",
             "questions": [
               "From qualified opportunities at the top, what percentage convert into new accounts and how many close per month/quarter on average?"
             ]
           },
           {
             "emoji": "💰",
-            "title": "Deal Value & Revenue",
+            "title": "How Much You Close For",
             "questions": [
               "What's the typical average contract value (ACV) and lifetime value (LTV) of a new account?",
               "How long do you typically retain a client or account before renewal or churn?"
@@ -196,7 +196,7 @@ let salesData = {
           },
           {
             "emoji": "🎯",
-            "title": "Success Factors",
+            "title": "Why You Win Deals",
             "questions": [
               "When deals close, what usually determines success - price, speed, relationship, or process?",
               "Are there any recurring or expansion opportunities that increase revenue post-sale?"
@@ -204,7 +204,7 @@ let salesData = {
           },
           {
             "emoji": "🚀",
-            "title": "Scaling Potential",
+            "title": "Room For Growth",
             "questions": [
               "From your perspective, is there a clear ceiling or constraint that keeps conversion rates from improving further?"
             ]
