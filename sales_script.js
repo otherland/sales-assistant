@@ -29,7 +29,14 @@ let salesData = {
         "phase": 2,
         "purpose": "Set up the comprehensive due diligence flow",
         "script": "<i>Perfect</i>. Let's go through some questions so I can understand how <b>demand flows through the business</b> - from <u>first touch all the way through to a conversion</u>.<br><br>Let's start at the top - how you're currently <b>generating interest</b> and where that demand is coming from.",
-        "advisor_guidance": "Ask 1 question at a time and then be quiet - silence is a powerful tool, use it as often as possible. Don't overthink the order — what matters most is getting reps in."
+        "advisor_guidance": "Ask 1 question at a time and then be quiet - silence is a powerful tool, use it as often as possible. Don't overthink the order — what matters most is getting reps in.",
+        "advisor_notes": [
+          "CARPET FRAMEWORK: The next three sections extract all 6 financial modeling variables",
+          "Top Funnel = C (Cycle) + P (Pipeline) | Middle Funnel = R (Rep) + A (ACV) | Bottom Funnel = E (Environment) + T (Timeline)",
+          "Your goal: Complete CARPET extraction so you can build a defensible engagement model on Call Two",
+          "Maintain DaDD™ posture: You're a peer conducting due diligence, not a vendor qualifying a lead",
+          "Silent pauses are powerful - let them fill the space, don't rush to the next question"
+        ]
       },
       {
         "id": "discovery_top_funnel",
@@ -39,6 +46,12 @@ let salesData = {
         "section": "A",
         "purpose": "Map how demand is created and which markets are being targeted",
         "carpet_integration": ["C (Cycle)", "P (Pipeline)"],
+        "advisor_notes": [
+          "CARPET FOCUS: You're extracting C (Cycle) and P (Pipeline) variables in this section",
+          "Maintain advisory posture: You're auditing their demand generation system, not pitching your services",
+          "Listen for: channel performance, market sophistication, brand sensitivity - all thesis indicators",
+          "If they mention 'sophisticated buyers' or 'brand risk' - that's thesis alignment, note it for later"
+        ],
         "question_groups": [
           {
             "emoji": "🎯",
@@ -93,6 +106,12 @@ let salesData = {
         "carpet_integration": ["R (Rep)", "A (ACV)"],
         "intro": "Now, once that initial interest is created - can you walk me through what happens next?",
         "advisor_guidance": "You're tracing the handoff: interest → meeting → qualified opportunity → sales process → conversion. Keep asking 'What happens next?' 'Who owns that stage?' 'Who's accountable for moving it forward?' to keep them talking and identify ownership at each stage.",
+        "advisor_notes": [
+          "CARPET FOCUS: You're extracting R (Rep performance) and A (ACV) variables in this section",
+          "Key questions extract: conversion rates, sales cycle length, rep capacity, deal size ranges",
+          "This is where you identify the 'installation point' - where your qualified opportunities will enter their system",
+          "Listen for process breakdown, capacity constraints, and conversion bottlenecks - these inform your milestone sizing"
+        ],
         "question_groups": [
           {
             "emoji": "🔄",
@@ -149,6 +168,13 @@ let salesData = {
         "carpet_integration": ["E (Environment)", "T (Timeline & Decision-makers)"],
         "intro": "Let's carry on and finish at what happens further down the funnel - how demand turns into actual revenue, and who's responsible for that conversion.",
         "advisor_guidance": "You're collecting hard metrics to model a 45-day milestone: conversion ratios, retention timelines, deal values, and lifetime value. You're also looking for ownership clarity.",
+        "advisor_notes": [
+          "CARPET FOCUS: You're extracting E (Environment/compliance) and T (Timeline/decision-makers) variables",
+          "Critical metrics: conversion %, ACV, LTV, retention - these build your ROI model for the SOW",
+          "This section completes your financial modeling data - you should now be able to calculate realistic milestones",
+          "After this section, you'll have all CARPET variables needed to build the engagement model",
+          "If any anchors are missing (conversion %, ACV, etc.), schedule Discovery Part 2 immediately"
+        ],
         "question_groups": [
           {
             "emoji": "👥",
@@ -335,7 +361,7 @@ let salesData = {
         "category": "sequential",
         "phase": 5,
         "purpose": "Close all open loops and secure a defined next step on the calendar",
-        "script": "At this point, what we'll do is take all of the data you've given us and build out an <b>internal engagement model</b> — that's where we <b>reverse-engineer the numbers</b> and map out what a <u>90-day structure</u> could realistically result in.<br><br>From there, we'll wrap that model into a <b>formal scope of work</b> that lays out:<br><br>The <b>channels we'd deploy</b><br>The <b>milestone structure and success metrics</b><br>The <u>built-in risk-mitigation language that protects you</u><br><br>That gets presented on Call Two — <b>typically 48 to 72 hours from now</b> — where we walk through the proposal, answer any questions, and determine if it makes sense to move forward.<br><br>(Pause)<br><br>Before we schedule that, are there any other questions about how we operate or what we've discussed?<br><br>(After questions resolved)<br><br>Good. Let me get Call Two on the calendar. What works better for you — <b>[Day/Time A]</b> or <b>[Day/Time B]</b>?<br><br>(Work with them to get it booked)<br><br>(If they hesitate or seem unsure)<br><br><i>Totally fine</i> — we don't need to confirm anything today; it just helps me lock in time on our end so the team can <b>prioritize building your model</b> this week.<br><br>Would you prefer to receive the scope first before scheduling a review?<br><br>(If they strongly prefer to schedule later)<br><br>Works fine either way, I appreciate your time and we're looking forward to building out a scope for review - I'll have that sent over for processing and then shipped to you in the next day or two",
+        "script": "At this point, what we'll do is take all of the data you've given us and build out an <b>internal engagement model</b> — that's where we <b>reverse-engineer the numbers</b> and map out what a <u>90-day structure</u> could realistically result in.<br><br>From there, we'll wrap that model into a <b>formal scope of work</b> that lays out:<br><br>The <b>thesis-driven approach</b> tailored to your market<br>The <b>milestone structure and success metrics</b><br>The <u>built-in risk-mitigation language that protects you</u><br><br>That gets presented on Call Two — <b>typically 48 to 72 hours from now</b> — where we walk through the proposal, answer any questions, and determine if it makes sense to move forward.<br><br>(Pause)<br><br>Before we schedule that, are there any other questions about how we operate or what we've discussed?<br><br>(After questions resolved)<br><br>Good. Let me get Call Two on the calendar. What works better for you — <b>[Day/Time A]</b> or <b>[Day/Time B]</b>?<br><br>(Work with them to get it booked)<br><br>(If they hesitate or seem unsure)<br><br><i>Totally fine</i> — we don't need to confirm anything today; it just helps me lock in time on our end so the team can <b>prioritize building your model</b> this week.<br><br>Would you prefer to receive the scope first before scheduling a review?<br><br>(If they strongly prefer to schedule later)<br><br>Works fine either way, I appreciate your time and we're looking forward to building out a scope for review - I'll have that sent over for processing and then shipped to you in the next day or two",
         "content": "Perfect - before I let you go, we always like to make sure the scope we put together aligns with what actually matters most on your side.<br><br>Everyone has different biases when it comes to greenlighting something like this.<br><br>Just so we're catering it toward what's most important to you — what do you think typically pushes something like this across the line internally? Is it the ROI potential, the de-risking language, the milestone structure, or something else entirely?",
         "advisor_notes": [
           "Your tone should stay professional and composed, not excited",
