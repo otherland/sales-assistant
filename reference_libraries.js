@@ -1631,3 +1631,6 @@ let reference_libraries = {
     }
   }
 }
+
+// Make reference_libraries available on window for React components
+window.reference_libraries = reference_libraries;
