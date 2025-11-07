@@ -193,6 +193,208 @@
     </button>
 
     <script src="sales_script.js"></script>
+    <script src="reference_libraries.js"></script>
+    <script type="text/javascript">
+// ===== MOBILE SWIPE FUNCTIONALITY =====
+
+class MobileSidebarManager {
+  constructor() {
+    this.leftSidebar = document.querySelector('.sidebar-left');
+    this.rightSidebar = document.querySelector('.sidebar-right');
+    this.overlay = document.getElementById('sidebar-overlay');
+    this.mainContent = document.querySelector('.main-content');
+
+    // Touch tracking variables
+    this.touchStartX = 0;
+    this.touchStartY = 0;
+    this.touchEndX = 0;
+    this.touchEndY = 0;
+    this.minSwipeDistance = 50;
+    this.maxVerticalDistance = 100;
+
+    this.init();
+  }
+
+  init() {
+    // Only initialize on mobile devices
+    if (window.innerWidth > 768) return;
+
+    this.initialized = true;
+    this.addTouchListeners();
+    this.addToggleButtons();
+  }
+
+  addTouchListeners() {
+    // Touch start
+    document.addEventListener('touchstart', (e) => {
+      this.touchStartX = e.touches[0].clientX;
+      this.touchStartY = e.touches[0].clientY;
+    }, { passive: false });
+
+    // Touch move - prevent scrolling during horizontal swipes
+    document.addEventListener('touchmove', (e) => {
+      if (!this.isHorizontalSwipe(e)) return;
+
+      const currentX = e.touches[0].clientX;
+      const deltaX = currentX - this.touchStartX;
+
+      // If it's a significant horizontal swipe, prevent default scrolling
+      if (Math.abs(deltaX) > 30) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Touch end
+    document.addEventListener('touchend', (e) => {
+      this.touchEndX = e.changedTouches[0].clientX;
+      this.touchEndY = e.changedTouches[0].clientY;
+      this.handleSwipe();
+    }, { passive: false });
+  }
+
+  isHorizontalSwipe(e) {
+    const deltaX = Math.abs(e.touches[0].clientX - this.touchStartX);
+    const deltaY = Math.abs(e.touches[0].clientY - this.touchStartY);
+    return deltaX > deltaY && deltaX > 10;
+  }
+
+  handleSwipe() {
+    const deltaX = this.touchEndX - this.touchStartX;
+    const deltaY = Math.abs(this.touchEndY - this.touchStartY);
+
+    // Ignore if vertical movement is too large
+    if (deltaY > this.maxVerticalDistance) return;
+
+    // Determine swipe direction and distance
+    if (Math.abs(deltaX) < this.minSwipeDistance) return;
+
+    // Left edge swipe - open left sidebar
+    if (this.touchStartX < 50 && deltaX > 0) {
+      this.openLeftSidebar();
+    }
+    // Right edge swipe - open right sidebar
+    else if (this.touchStartX > window.innerWidth - 50 && deltaX < 0) {
+      this.openRightSidebar();
+    }
+    // Close sidebars with swipe gestures
+    else if (this.leftSidebar.classList.contains('active') && deltaX < -this.minSwipeDistance) {
+      this.closeLeftSidebar();
+    }
+    else if (this.rightSidebar.classList.contains('active') && deltaX > this.minSwipeDistance) {
+      this.closeRightSidebar();
+    }
+  }
+
+  addToggleButtons() {
+    // Check if buttons already exist to avoid duplicates
+    if (document.querySelector('.sidebar-toggle-left')) return;
+
+    // Add toggle buttons to the main content for mobile
+    const toggleLeft = document.createElement('button');
+    toggleLeft.className = 'sidebar-toggle sidebar-toggle-left';
+    toggleLeft.innerHTML = '☰';
+    toggleLeft.onclick = () => this.toggleLeftSidebar();
+    toggleLeft.title = 'Open Main Track';
+
+    const toggleRight = document.createElement('button');
+    toggleRight.className = 'sidebar-toggle sidebar-toggle-right';
+    toggleRight.innerHTML = '⛽';
+    toggleRight.onclick = () => this.toggleRightSidebar();
+    toggleRight.title = 'Open Handler Library';
+
+    this.mainContent.appendChild(toggleLeft);
+    this.mainContent.appendChild(toggleRight);
+  }
+
+  toggleLeftSidebar() {
+    if (this.leftSidebar.classList.contains('active')) {
+      this.closeLeftSidebar();
+    } else {
+      this.openLeftSidebar();
+    }
+  }
+
+  toggleRightSidebar() {
+    if (this.rightSidebar.classList.contains('active')) {
+      this.closeRightSidebar();
+    } else {
+      this.openRightSidebar();
+    }
+  }
+
+  openLeftSidebar() {
+    this.leftSidebar.classList.add('active');
+    this.overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  openRightSidebar() {
+    this.rightSidebar.classList.add('active');
+    this.overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeLeftSidebar() {
+    this.leftSidebar.classList.remove('active');
+    this.checkAndRemoveOverlay();
+  }
+
+  closeRightSidebar() {
+    this.rightSidebar.classList.remove('active');
+    this.checkAndRemoveOverlay();
+  }
+
+  closeSidebars() {
+    this.leftSidebar.classList.remove('active');
+    this.rightSidebar.classList.remove('active');
+    this.overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  checkAndRemoveOverlay() {
+    if (!this.leftSidebar.classList.contains('active') && !this.rightSidebar.classList.contains('active')) {
+      this.overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+}
+
+// Global function for HTML onclick
+function closeSidebars() {
+  if (window.mobileSidebarManager) {
+    window.mobileSidebarManager.closeSidebars();
+  }
+}
+
+// Initialize mobile sidebar functionality when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  window.mobileSidebarManager = new MobileSidebarManager();
+});
+
+// Re-initialize on window resize (for responsive behavior)
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    if (window.mobileSidebarManager) {
+      const isMobile = window.innerWidth <= 768;
+      const wasInitialized = window.mobileSidebarManager.initialized;
+      
+      if (isMobile && !wasInitialized) {
+        // Moving from desktop to mobile - initialize
+        window.mobileSidebarManager.init();
+      } else if (!isMobile && wasInitialized) {
+        // Moving from mobile to desktop - clean up
+        window.mobileSidebarManager.closeSidebars();
+        window.mobileSidebarManager.initialized = false;
+        // Remove toggle buttons
+        const buttons = document.querySelectorAll('.sidebar-toggle');
+        buttons.forEach(btn => btn.remove());
+      }
+    }
+  }, 250);
+});
+    </script>
 
     <!-- Question toggle functionality -->
     <script>
@@ -406,6 +608,13 @@
 
         function buildReferenceNavigation() {
             const referenceNav = document.getElementById('reference-nav');
+            if (!referenceNav) {
+                console.error('Reference nav element not found');
+                return;
+            }
+
+            // Clear any existing items
+            referenceNav.innerHTML = '';
 
             // Reference libraries available
             const referenceLibraries = [
@@ -415,7 +624,11 @@
                 { id: 'active_listening', title: 'Active Listening', icon: '👂' },
                 { id: 'qualified_opportunity_anchor_mastery', title: 'QOA™ Complete Training Guide', icon: '⚓' },
                 { id: 'discovery_objection_handling_os', title: 'Discovery Objection Handling OS', icon: '🛡️' },
-                { id: 'referrals_objection_mastery', title: 'Referrals Objection Mastery', icon: '🔗' }
+                { id: 'referrals_objection_mastery', title: 'Referrals Objection Mastery', icon: '🔗' },
+                { id: 'story_mode_selling', title: 'Story Mode Selling™', icon: '🎭' },
+                { id: 'mechanism_framing', title: 'Mechanism Framing™', icon: '⚙️' },
+                { id: 'risk_mitigation_language', title: 'Risk Mitigation Language', icon: '🛡️' },
+                { id: 'micro_commitment_pattern', title: 'Micro-Commitment Pattern', icon: '✅' }
             ];
 
             referenceLibraries.forEach(library => {
@@ -717,7 +930,7 @@
             console.log('Total categories in navigation:', handlerCategories.length);
             
             const allHandlersInNav = new Set();
-            const handlersInData = salesData?.reference_libraries?.objection_handlers?.handlers || {};
+            const handlersInData = salesData.objection_handlers?.handlers || {};
             const handlersByCategoryInData = {};
             
             // First, analyze all handlers in data and group by category
@@ -953,14 +1166,14 @@
             // Debug: Check data structure
             console.log(`\n[LOAD HANDLER] Loading handler: "${handlerId}"`);
             console.log('[LOAD HANDLER] salesData exists:', !!salesData);
-            console.log('[LOAD HANDLER] reference_libraries exists:', !!(salesData && salesData.reference_libraries));
-            console.log('[LOAD HANDLER] objection_handlers exists:', !!(salesData && salesData.reference_libraries && salesData.reference_libraries.objection_handlers));
-            console.log('[LOAD HANDLER] handlers exists:', !!(salesData && salesData.reference_libraries && salesData.reference_libraries.objection_handlers && salesData.reference_libraries.objection_handlers.handlers));
+            console.log('[LOAD HANDLER] reference_libraries exists:', !!(salesData && reference_libraries));
+            console.log('[LOAD HANDLER] objection_handlers exists:', !!(salesData && reference_libraries && salesData.objection_handlers));
+            console.log('[LOAD HANDLER] handlers exists:', !!(salesData && reference_libraries && salesData.objection_handlers && salesData.objection_handlers.handlers));
 
             // Get handler data from the JavaScript data structure
             let handlerData = null;
-            if (salesData && salesData.reference_libraries && salesData.reference_libraries.objection_handlers && salesData.reference_libraries.objection_handlers.handlers) {
-                handlerData = salesData.reference_libraries.objection_handlers.handlers[handlerId];
+            if (salesData && reference_libraries && salesData.objection_handlers && salesData.objection_handlers.handlers) {
+                handlerData = salesData.objection_handlers.handlers[handlerId];
                 if (handlerData) {
                     console.log(`[LOAD HANDLER] ✓ Handler found in data`);
                     console.log(`[LOAD HANDLER] Title: "${handlerData.title}"`);
@@ -968,7 +1181,7 @@
                     console.log(`[LOAD HANDLER] Trigger: "${handlerData.trigger || 'N/A'}"`);
                 } else {
                     console.log(`[LOAD HANDLER] ✗ Handler NOT found in data`);
-                    console.log(`[LOAD HANDLER] Available handler IDs (first 20):`, Object.keys(salesData.reference_libraries.objection_handlers.handlers).slice(0, 20));
+                    console.log(`[LOAD HANDLER] Available handler IDs (first 20):`, Object.keys(salesData.objection_handlers.handlers).slice(0, 20));
                 }
             }
 
@@ -1142,7 +1355,7 @@
         });
         
         function loadObjection(objectionNum, updateURLParam = true) {
-            const refData = salesData.reference_libraries.discovery_objection_handling_os;
+            const refData = reference_libraries.reference_libraries.discovery_objection_handling_os;
             const obj = refData.objections.find(o => o.number === objectionNum);
             
             if (!obj) return;
@@ -1508,6 +1721,84 @@
                 `;
             }
 
+            // Alternative versions (for sections with multiple script options)
+            if (obj.alternative_versions) {
+                html += `
+                    <div style="margin: 2rem 0; padding: 1.5rem; background: var(--bg-secondary); border-left: 4px solid var(--accent-blue); border-radius: 6px;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 1.5rem; font-size: 1.25rem; font-weight: 700;">📋 Alternative Versions</h4>
+                `;
+                
+                Object.keys(obj.alternative_versions).forEach((versionKey, idx) => {
+                    const version = obj.alternative_versions[versionKey];
+                    html += `
+                        <div style="margin-bottom: ${idx < Object.keys(obj.alternative_versions).length - 1 ? '2rem' : '0'}; padding: 1.25rem; background: var(--bg-primary); border-radius: 6px; border: 1px solid var(--border-color);">
+                            <h5 style="color: var(--accent-blue); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">${version.title || 'Alternative Version'}</h5>
+                    `;
+                    
+                    if (version.when_to_use) {
+                        html += `
+                            <div class="info-box" style="margin-bottom: 1rem;">
+                                <div class="info-box-title">When to Use</div>
+                                <p>${version.when_to_use}</p>
+                            </div>
+                        `;
+                    }
+                    
+                    if (version.note) {
+                        html += `<p style="color: var(--text-secondary); font-style: italic; margin-bottom: 1rem;">${version.note}</p>`;
+                    }
+                    
+                    if (version.script) {
+                        html += `
+                            <div style="margin: 1rem 0;">
+                                <div class="info-box-title">Script</div>
+                                <div class="script-block">${formatScript(version.script)}</div>
+                            </div>
+                        `;
+                    }
+                    
+                    if (version.key_improvements && version.key_improvements.length > 0) {
+                        html += `
+                            <div class="info-box advisor-note" style="margin-top: 1rem;">
+                                <div class="info-box-title">Key Improvements</div>
+                                <ul class="bullet-list">
+                        `;
+                        version.key_improvements.forEach(improvement => {
+                            html += `<li>${improvement}</li>`;
+                        });
+                        html += `
+                                </ul>
+                            </div>
+                        `;
+                    }
+                    
+                    if (version.comparison) {
+                        html += `
+                            <div style="margin-top: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: 4px;">
+                                <h6 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.75rem; font-size: 0.95rem;">📊 Comparison Metrics</h6>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; font-size: 0.9rem;">
+                        `;
+                        Object.keys(version.comparison).forEach(key => {
+                            const label = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                            html += `
+                                <div style="padding: 0.5rem; background: var(--bg-primary); border-radius: 4px;">
+                                    <div style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 0.25rem;">${label}</div>
+                                    <div style="color: var(--text-primary); font-weight: 600;">${version.comparison[key]}</div>
+                                </div>
+                            `;
+                        });
+                        html += `
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    html += `</div>`;
+                });
+                
+                html += `</div>`;
+            }
+
             // Example exchange
             if (obj.example_exchange) {
                 html += `
@@ -1854,6 +2145,84 @@
                 html += `
                     <div class="script-block">${formatScript(item.script)}</div>
                 `;
+            }
+
+            // Alternative versions (for sections with multiple script options)
+            if (item.alternative_versions) {
+                html += `
+                    <div style="margin: 2rem 0; padding: 1.5rem; background: var(--bg-secondary); border-left: 4px solid var(--accent-blue); border-radius: 6px;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 1.5rem; font-size: 1.25rem; font-weight: 700;">📋 Alternative Versions</h4>
+                `;
+                
+                Object.keys(item.alternative_versions).forEach((versionKey, idx) => {
+                    const version = item.alternative_versions[versionKey];
+                    html += `
+                        <div style="margin-bottom: ${idx < Object.keys(item.alternative_versions).length - 1 ? '2rem' : '0'}; padding: 1.25rem; background: var(--bg-primary); border-radius: 6px; border: 1px solid var(--border-color);">
+                            <h5 style="color: var(--accent-blue); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">${version.title || 'Alternative Version'}</h5>
+                    `;
+                    
+                    if (version.when_to_use) {
+                        html += `
+                            <div class="info-box" style="margin-bottom: 1rem;">
+                                <div class="info-box-title">When to Use</div>
+                                <p>${version.when_to_use}</p>
+                            </div>
+                        `;
+                    }
+                    
+                    if (version.note) {
+                        html += `<p style="color: var(--text-secondary); font-style: italic; margin-bottom: 1rem;">${version.note}</p>`;
+                    }
+                    
+                    if (version.script) {
+                        html += `
+                            <div style="margin: 1rem 0;">
+                                <div class="info-box-title">Script</div>
+                                <div class="script-block">${formatScript(version.script)}</div>
+                            </div>
+                        `;
+                    }
+                    
+                    if (version.key_improvements && version.key_improvements.length > 0) {
+                        html += `
+                            <div class="info-box advisor-note" style="margin-top: 1rem;">
+                                <div class="info-box-title">Key Improvements</div>
+                                <ul class="bullet-list">
+                        `;
+                        version.key_improvements.forEach(improvement => {
+                            html += `<li>${improvement}</li>`;
+                        });
+                        html += `
+                                </ul>
+                            </div>
+                        `;
+                    }
+                    
+                    if (version.comparison) {
+                        html += `
+                            <div style="margin-top: 1rem; padding: 1rem; background: var(--bg-secondary); border-radius: 4px;">
+                                <h6 style="color: var(--text-primary); font-weight: 700; margin-bottom: 0.75rem; font-size: 0.95rem;">📊 Comparison Metrics</h6>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; font-size: 0.9rem;">
+                        `;
+                        Object.keys(version.comparison).forEach(key => {
+                            const label = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                            html += `
+                                <div style="padding: 0.5rem; background: var(--bg-primary); border-radius: 4px;">
+                                    <div style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 0.25rem;">${label}</div>
+                                    <div style="color: var(--text-primary); font-weight: 600;">${version.comparison[key]}</div>
+                                </div>
+                            `;
+                        });
+                        html += `
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    html += `</div>`;
+                });
+                
+                html += `</div>`;
             }
 
             // Story Mode (for Objection Positioning™)
@@ -2765,7 +3134,7 @@
         }
 
         function loadReferenceContent(refId, updateURLParam = true) {
-            const refData = salesData.reference_libraries[refId];
+            const refData = reference_libraries.reference_libraries[refId];
             if (!refData) return;
 
             // Update URL if requested
@@ -3753,6 +4122,325 @@
                 `;
             }
 
+            // Story Mode Selling™
+            if (refId === 'story_mode_selling') {
+                if (refData.why_it_works && refData.why_it_works.length > 0) {
+                    html += `
+                        <div class="info-box advisor-note" style="margin: 1.5rem 0;">
+                            <div class="info-box-title">Why It Works</div>
+                            <ul class="bullet-list">
+                    `;
+                    refData.why_it_works.forEach(reason => {
+                        html += `<li>${reason}</li>`;
+                    });
+                    html += `</ul></div>`;
+                }
+
+                if (refData.six_beat_structure) {
+                    html += `
+                        <div style="margin: 2rem 0; padding: 1.5rem; background: var(--bg-secondary); border-left: 4px solid var(--primary-color); border-radius: 6px;">
+                            <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 700;">The 6-Beat Structure</h3>
+                    `;
+                    const beats = refData.six_beat_structure;
+                    Object.keys(beats).forEach((beatKey, idx) => {
+                        const beat = beats[beatKey];
+                        html += `
+                            <div style="margin-bottom: ${idx < Object.keys(beats).length - 1 ? '2' : '0'}rem; padding: 1.25rem; background: var(--bg-main); border-radius: 6px; border: 1px solid var(--border-color);">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                                    <div style="width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; margin-right: 1rem;">${idx + 1}</div>
+                                    <h4 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary);">${beat.name}</h4>
+                                </div>
+                                <p style="margin-bottom: 0.75rem; color: var(--text-secondary); font-style: italic;">${beat.purpose}</p>
+                                <div class="script-block" style="margin-bottom: 0.75rem;">${formatScript(beat.example)}</div>
+                                ${beat.key_phrase ? `<p style="color: var(--accent-green); font-weight: 600; margin-bottom: 0.5rem;"><strong>Key Phrase:</strong> ${beat.key_phrase}</p>` : ''}
+                                ${beat.critical_rule ? `<p style="color: var(--accent-red); font-weight: 600;"><strong>Critical Rule:</strong> ${beat.critical_rule}</p>` : ''}
+                            </div>
+                        `;
+                    });
+                    html += `</div>`;
+                }
+
+                if (refData.redaction_as_status_signal) {
+                    const redaction = refData.redaction_as_status_signal;
+                    html += `
+                        <div class="info-box" style="margin: 2rem 0;">
+                            <div class="info-box-title">Redaction as Status Signal</div>
+                            <p style="margin-bottom: 1rem;">${redaction.purpose}</p>
+                            <div class="script-block" style="margin-bottom: 1rem;">${formatScript(redaction.example)}</div>
+                            <ul class="bullet-list">
+                    `;
+                    redaction.why_this_works.forEach(reason => {
+                        html += `<li>${reason}</li>`;
+                    });
+                    html += `</ul></div>`;
+                }
+
+                if (refData.where_to_deploy && refData.where_to_deploy.length > 0) {
+                    html += `
+                        <div class="info-box" style="margin: 2rem 0;">
+                            <div class="info-box-title">Where to Deploy</div>
+                            <ul class="bullet-list">
+                    `;
+                    refData.where_to_deploy.forEach(location => {
+                        html += `<li>${location}</li>`;
+                    });
+                    html += `</ul></div>`;
+                }
+
+                if (refData.critical_rules && refData.critical_rules.length > 0) {
+                    html += `
+                        <div class="info-box advisor-note" style="margin: 2rem 0;">
+                            <div class="info-box-title">Critical Rules</div>
+                            <ul class="bullet-list">
+                    `;
+                    refData.critical_rules.forEach(rule => {
+                        html += `<li style="font-weight: 600;">${rule}</li>`;
+                    });
+                    html += `</ul></div>`;
+                }
+            }
+
+            // Mechanism Framing™
+            if (refId === 'mechanism_framing') {
+                if (refData.philosophy) {
+                    html += `
+                        <div class="info-box advisor-note" style="margin: 1.5rem 0;">
+                            <div class="info-box-title">Philosophy</div>
+                            <p style="font-size: 1.05rem; font-weight: 600;">${refData.philosophy}</p>
+                        </div>
+                    `;
+                }
+
+                if (refData.translation_table) {
+                    const tt = refData.translation_table;
+                    html += `
+                        <div style="margin: 2rem 0;">
+                            <h3 style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 1.5rem;">Translation Table</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                                <div style="padding: 1.5rem; background: var(--bg-secondary); border-left: 4px solid var(--accent-red); border-radius: 6px;">
+                                    <h4 style="color: var(--accent-red); margin-bottom: 1rem; font-size: 1.1rem; font-weight: 700;">❌ Never Say</h4>
+                                    <ul class="bullet-list">
+                    `;
+                    tt.never_say.forEach(phrase => {
+                        html += `<li style="color: var(--text-secondary);">${phrase}</li>`;
+                    });
+                    html += `
+                                    </ul>
+                                </div>
+                                <div style="padding: 1.5rem; background: var(--bg-secondary); border-left: 4px solid var(--accent-green); border-radius: 6px;">
+                                    <h4 style="color: var(--accent-green); margin-bottom: 1rem; font-size: 1.1rem; font-weight: 700;">✅ Always Say</h4>
+                                    <ul class="bullet-list">
+                    `;
+                    tt.always_say.forEach(phrase => {
+                        html += `<li style="color: var(--text-primary); font-weight: 500;">${phrase}</li>`;
+                    });
+                    html += `
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                if (refData.strategic_deflection_pattern) {
+                    const sdp = refData.strategic_deflection_pattern;
+                    html += `
+                        <div class="info-box" style="margin: 2rem 0;">
+                            <div class="info-box-title">Strategic Deflection Pattern</div>
+                            <div class="script-block" style="margin-bottom: 1rem;">${formatScript(sdp.when_asked_about_tactics)}</div>
+                            <ul class="bullet-list">
+                    `;
+                    sdp.why_this_works.forEach(reason => {
+                        html += `<li>${reason}</li>`;
+                    });
+                    html += `</ul></div>`;
+                }
+
+                if (refData.examples_in_context) {
+                    const examples = refData.examples_in_context;
+                    html += `
+                        <div style="margin: 2rem 0;">
+                            <h3 style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 1.5rem;">Examples in Context</h3>
+                    `;
+                    if (examples.bad && examples.good) {
+                        html += `
+                            <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--bg-secondary); border-radius: 6px;">
+                                <p style="color: var(--accent-red); font-weight: 600; margin-bottom: 0.5rem;">❌ Bad:</p>
+                                <p style="margin-bottom: 1rem; color: var(--text-secondary);">${examples.bad}</p>
+                                <p style="color: var(--accent-green); font-weight: 600; margin-bottom: 0.5rem;">✅ Good:</p>
+                                <p style="color: var(--text-primary);">${examples.good}</p>
+                            </div>
+                        `;
+                    }
+                    if (examples.bad_2 && examples.good_2) {
+                        html += `
+                            <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--bg-secondary); border-radius: 6px;">
+                                <p style="color: var(--accent-red); font-weight: 600; margin-bottom: 0.5rem;">❌ Bad:</p>
+                                <p style="margin-bottom: 1rem; color: var(--text-secondary);">${examples.bad_2}</p>
+                                <p style="color: var(--accent-green); font-weight: 600; margin-bottom: 0.5rem;">✅ Good:</p>
+                                <p style="color: var(--text-primary);">${examples.good_2}</p>
+                            </div>
+                        `;
+                    }
+                    if (examples.bad_3 && examples.good_3) {
+                        html += `
+                            <div style="margin-bottom: 1.5rem; padding: 1rem; background: var(--bg-secondary); border-radius: 6px;">
+                                <p style="color: var(--accent-red); font-weight: 600; margin-bottom: 0.5rem;">❌ Bad:</p>
+                                <p style="margin-bottom: 1rem; color: var(--text-secondary);">${examples.bad_3}</p>
+                                <p style="color: var(--accent-green); font-weight: 600; margin-bottom: 0.5rem;">✅ Good:</p>
+                                <p style="color: var(--text-primary);">${examples.good_3}</p>
+                            </div>
+                        `;
+                    }
+                    html += `</div>`;
+                }
+
+                if (refData.critical_principle) {
+                    html += `
+                        <div class="info-box advisor-note" style="margin: 2rem 0;">
+                            <div class="info-box-title">Critical Principle</div>
+                            <p style="font-weight: 600;">${refData.critical_principle}</p>
+                        </div>
+                    `;
+                }
+            }
+
+            // Risk Mitigation Language
+            if (refId === 'risk_mitigation_language') {
+                if (refData.philosophy) {
+                    html += `
+                        <div class="info-box advisor-note" style="margin: 1.5rem 0;">
+                            <div class="info-box-title">Philosophy</div>
+                            <p style="font-size: 1.05rem; font-weight: 600;">${refData.philosophy}</p>
+                        </div>
+                    `;
+                }
+
+                if (refData.enhanced_pattern) {
+                    html += `
+                        <div style="margin: 2rem 0; padding: 1.5rem; background: var(--bg-secondary); border-left: 4px solid var(--primary-color); border-radius: 6px;">
+                            <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 700;">Enhanced Pattern</h3>
+                    `;
+                    const pattern = refData.enhanced_pattern;
+                    Object.keys(pattern).forEach((stepKey, idx) => {
+                        const step = pattern[stepKey];
+                        html += `
+                            <div style="margin-bottom: ${idx < Object.keys(pattern).length - 1 ? '1.5' : '0'}rem; padding: 1.25rem; background: var(--bg-main); border-radius: 6px; border: 1px solid var(--border-color);">
+                                <div style="display: flex; align-items: center; margin-bottom: 0.75rem;">
+                                    <div style="width: 40px; height: 40px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; margin-right: 1rem;">${idx + 1}</div>
+                                    <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">${step.name}</h4>
+                                </div>
+                                <div class="script-block" style="margin-bottom: 0.75rem;">${formatScript(step.example)}</div>
+                                ${step.why_this_works ? `<p style="color: var(--text-secondary); font-style: italic;">${step.why_this_works}</p>` : ''}
+                            </div>
+                        `;
+                    });
+                    html += `</div>`;
+                }
+
+                if (refData.full_script_example) {
+                    html += `
+                        <div class="info-box" style="margin: 2rem 0;">
+                            <div class="info-box-title">Full Script Example</div>
+                            <div class="script-block">${formatScript(refData.full_script_example)}</div>
+                        </div>
+                    `;
+                }
+
+                if (refData.key_differences_from_original && refData.key_differences_from_original.length > 0) {
+                    html += `
+                        <div class="info-box advisor-note" style="margin: 2rem 0;">
+                            <div class="info-box-title">Key Differences from Original</div>
+                            <ul class="bullet-list">
+                    `;
+                    refData.key_differences_from_original.forEach(diff => {
+                        html += `<li style="font-weight: 600;">${diff}</li>`;
+                    });
+                    html += `</ul></div>`;
+                }
+
+                if (refData.where_to_deploy && refData.where_to_deploy.length > 0) {
+                    html += `
+                        <div class="info-box" style="margin: 2rem 0;">
+                            <div class="info-box-title">Where to Deploy</div>
+                            <ul class="bullet-list">
+                    `;
+                    refData.where_to_deploy.forEach(location => {
+                        html += `<li>${location}</li>`;
+                    });
+                    html += `</ul></div>`;
+                }
+            }
+
+            // Micro-Commitment Pattern
+            if (refId === 'micro_commitment_pattern') {
+                if (refData.philosophy) {
+                    html += `
+                        <div class="info-box advisor-note" style="margin: 1.5rem 0;">
+                            <div class="info-box-title">Philosophy</div>
+                            <p style="font-size: 1.05rem; font-weight: 600;">${refData.philosophy}</p>
+                        </div>
+                    `;
+                }
+
+                if (refData.the_pattern) {
+                    html += `
+                        <div class="info-box" style="margin: 2rem 0;">
+                            <div class="info-box-title">The Pattern</div>
+                            <p style="font-size: 1.1rem; font-weight: 600; color: var(--primary-color);">${refData.the_pattern}</p>
+                        </div>
+                    `;
+                }
+
+                if (refData.why_it_works && refData.why_it_works.length > 0) {
+                    html += `
+                        <div class="info-box" style="margin: 2rem 0;">
+                            <div class="info-box-title">Why It Works</div>
+                            <ul class="bullet-list">
+                    `;
+                    refData.why_it_works.forEach(reason => {
+                        html += `<li>${reason}</li>`;
+                    });
+                    html += `</ul></div>`;
+                }
+
+                if (refData.examples && refData.examples.length > 0) {
+                    html += `
+                        <div style="margin: 2rem 0;">
+                            <h3 style="font-size: 1.5rem; color: var(--primary-color); margin-bottom: 1.5rem;">Examples</h3>
+                    `;
+                    refData.examples.forEach((example, idx) => {
+                        html += `
+                            <div style="margin-bottom: ${idx < refData.examples.length - 1 ? '1' : '0'}rem; padding: 1rem; background: var(--bg-secondary); border-radius: 6px;">
+                                <div class="script-block">${formatScript(example)}</div>
+                            </div>
+                        `;
+                    });
+                    html += `</div>`;
+                }
+
+                if (refData.where_to_deploy && refData.where_to_deploy.length > 0) {
+                    html += `
+                        <div class="info-box" style="margin: 2rem 0;">
+                            <div class="info-box-title">Where to Deploy</div>
+                            <ul class="bullet-list">
+                    `;
+                    refData.where_to_deploy.forEach(location => {
+                        html += `<li>${location}</li>`;
+                    });
+                    html += `</ul></div>`;
+                }
+
+                if (refData.critical_note) {
+                    html += `
+                        <div class="info-box advisor-note" style="margin: 2rem 0;">
+                            <div class="info-box-title">Critical Note</div>
+                            <p style="font-weight: 600;">${refData.critical_note}</p>
+                        </div>
+                    `;
+                }
+            }
+
             html += `</div>`;
             contentArea.innerHTML = html;
             contentArea.scrollTop = 0;
@@ -3888,13 +4576,80 @@
             if (!path) return;
 
             const displayArea = document.getElementById('economy-script-display');
-            displayArea.innerHTML = `
+            let html = `
                 <div class="info-box" style="margin-top: 2rem;">
                     <div class="info-box-title">${path.economy}</div>
                     <p><em>${path.context}</em></p>
                     <div class="script-block">${formatScript(path.script)}</div>
                 </div>
             `;
+
+            // Add Six Beats proof narrative if it exists
+            if (path.proof_narrative) {
+                const proof = path.proof_narrative;
+                html += `
+                    <div style="margin: 2.5rem 0; padding: 2rem; background: var(--bg-secondary); border: 2px solid var(--primary-color); border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+                            <span style="font-size: 1.75rem;">🎭</span>
+                            <h3 style="color: var(--primary-color); font-size: 1.3rem; font-weight: 700; margin: 0;">${proof.title}</h3>
+                        </div>
+                        <div class="script-block" style="margin-bottom: 2rem;">${formatScript(proof.introduction)}</div>
+                `;
+
+                // Add Six Beats structure
+                if (proof.six_beats) {
+                    html += `
+                        <div style="margin-top: 2rem;">
+                            <h4 style="color: var(--text-primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center;">The Six Beats (Speakable, in order)</h4>
+                    `;
+
+                    const beatOrder = [
+                        { key: 'beat_1_engagement_context', label: 'Beat 1 — Engagement Context' },
+                        { key: 'beat_2_diligence_extraction', label: 'Beat 2 — Diligence & Extraction' },
+                        { key: 'beat_3_brand_integrity_constraint', label: 'Beat 3 — Brand-Integrity Constraint' },
+                        { key: 'beat_4_audience_presence_findings', label: 'Beat 4 — Audience-Presence Findings' },
+                        { key: 'beat_5_private_infrastructure', label: 'Beat 5 — Private Infrastructure' },
+                        { key: 'beat_6_hardest_first_proof_tieback', label: 'Beat 6 — Hardest-First Proof + Tie-Back' }
+                    ];
+
+                    beatOrder.forEach((beat, idx) => {
+                        if (proof.six_beats[beat.key]) {
+                            html += `
+                                <div style="margin-bottom: ${idx < beatOrder.length - 1 ? '2rem' : '1.5rem'}; padding: 1.25rem; background: var(--bg-primary); border-left: 4px solid var(--accent-blue); border-radius: 6px;">
+                                    <h5 style="color: var(--accent-blue); font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">${beat.label}</h5>
+                                    <div class="script-block">${formatScript(proof.six_beats[beat.key])}</div>
+                                </div>
+                            `;
+                        }
+                    });
+
+                    html += `</div>`;
+                }
+
+                // Add tie-back line
+                if (proof.tie_back_line) {
+                    html += `
+                        <div style="margin-top: 2rem; padding: 1.25rem; background: var(--bg-primary); border-left: 4px solid var(--accent-green); border-radius: 6px;">
+                            <h5 style="color: var(--accent-green); font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Tie-Back Line</h5>
+                            <div class="script-block">${formatScript(proof.tie_back_line)}</div>
+                        </div>
+                    `;
+                }
+
+                html += `</div>`;
+            }
+
+            // Add pivot if it exists
+            if (path.pivot) {
+                html += `
+                    <div class="info-box advisor-note" style="margin-top: 2rem;">
+                        <div class="info-box-title">Pivot to Discovery</div>
+                        <div class="script-block">${formatScript(path.pivot)}</div>
+                    </div>
+                `;
+            }
+
+            displayArea.innerHTML = html;
         }
 
         // Theme management
