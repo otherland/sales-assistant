@@ -6,31 +6,18 @@ import { useContent } from '../context/ContentContext'
 const CATEGORY_ORDER = [
   'Opening',
   'Fork',
-  'Discovery Top',
-  'Discovery Mid',
-  'Discovery Bottom',
-  'Tic',
-  'Tac',
-  'Toe',
+  'Discovery',
+  'Tic-Tac-Toe',
   'Money',
   'Quality',
   'Timing',
   'How',
   'Referrals',
   'Competition',
-  'Internal',
   'Process',
-  'Scope',
   'Legal',
-  'Integration',
+  'Issues',
   'Call Two',
-  'Mid Issues',
-  'Integration/Close Issues',
-  'Post Issues',
-  'Tic-Tac-Toe',
-  'Var Mechanism',
-  'Var Quality',
-  'Var Timing',
   'Disqualify',
   'Edge Cases',
   'Other'
@@ -43,31 +30,41 @@ const CATEGORY_EMOJIS = {
   'Timing': '⏰',
   'Opening': '🎬',
   'Fork': '🔀',
-  'Discovery Top': '⬆️',
-  'Discovery Mid': '⚙️',
-  'Discovery Bottom': '💰',
-  'Tic': '🔄',
-  'Tac': '📋',
-  'Toe': '⚡',
-  'Process': '🔍',
-  'Scope': '📐',
+  'Discovery': '🔍',
+  'Tic-Tac-Toe': '🎯',
+  'Process': '⚙️',
   'Legal': '📜',
   'How': '⚙️',
   'Referrals': '🤝',
   'Competition': '🏆',
-  'Internal': '👥',
   'Disqualify': '🚩',
   'Edge Cases': '🎲',
-  'Integration': '💼',
-  'Integration/Close Issues': '🔗',
-  'Mid Issues': '⚠️',
-  'Var Mechanism': '🔄',
-  'Var Quality': '⭐',
-  'Var Timing': '⏰',
-  'Post Issues': '📋',
-  'Tic-Tac-Toe': '🎯',
+  'Issues': '⚠️',
   'Call Two': '➡️',
   'Other': '📄'
+}
+
+// Category mapping: old category names -> new consolidated names
+const CATEGORY_MAP = {
+  // Discovery consolidation
+  'Discovery Top': 'Discovery',
+  'Discovery Mid': 'Discovery',
+  'Discovery Bottom': 'Discovery',
+  // Tic-Tac-Toe consolidation
+  'Tic': 'Tic-Tac-Toe',
+  'Tac': 'Tic-Tac-Toe',
+  'Toe': 'Tic-Tac-Toe',
+  'Var Mechanism': 'Tic-Tac-Toe',
+  'Var Quality': 'Tic-Tac-Toe',
+  'Var Timing': 'Tic-Tac-Toe',
+  // Process consolidation
+  'Scope': 'Process',
+  'Internal': 'Process',
+  // Issues consolidation
+  'Integration': 'Issues',
+  'Integration/Close Issues': 'Issues',
+  'Mid Issues': 'Issues',
+  'Post Issues': 'Issues'
 }
 
 // Unique emoji mapping for each handler
@@ -386,7 +383,9 @@ function RightSidebar({ isOpen, onClose }) {
       const initial = {}
       const categories = new Set()
       Object.values(salesData.objection_handlers.handlers).forEach(handler => {
-        categories.add(handler.category || 'Other')
+        const originalCategory = handler.category || 'Other'
+        const category = CATEGORY_MAP[originalCategory] || originalCategory
+        categories.add(category)
       })
       categories.forEach(cat => {
         if (!(cat in collapsedCategories)) {
@@ -408,7 +407,9 @@ function RightSidebar({ isOpen, onClose }) {
 
     Object.keys(handlers).forEach(handlerId => {
       const handler = handlers[handlerId]
-      const category = handler.category || 'Other'
+      const originalCategory = handler.category || 'Other'
+      // Map old category names to consolidated names
+      const category = CATEGORY_MAP[originalCategory] || originalCategory
       
       if (!categoriesMap[category]) {
         categoriesMap[category] = []
