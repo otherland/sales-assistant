@@ -541,7 +541,7 @@ body.dark-mode .font-selector select {
 }
 
 .nav-group-header {
-    padding: 1rem 1.5rem;
+    padding: 0rem 1.5rem;
     font-weight: 600;
     font-size: 0.95rem;
     text-transform: none;

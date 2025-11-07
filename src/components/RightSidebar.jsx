@@ -4,70 +4,70 @@ import { useContent } from '../context/ContentContext'
 
 // Framework sequential order for categories
 const CATEGORY_ORDER = [
-  'Opening Frame',
-  'Fork Deflection',
-  'Discovery - Top of Funnel',
-  'Discovery - Middle/Bottom of Funnel',
-  'Discovery - Bottom of Funnel',
-  'The Tic - Process Repeatability',
-  'The Tac - Definition',
-  'The Toe - Power Transfer',
-  'Money & Budget',
-  'Quality & Proof',
-  'Timing & Process',
-  'How & Mechanism',
-  'Referrals & Connections',
+  'Opening',
+  'Fork',
+  'Discovery Top',
+  'Discovery Mid',
+  'Discovery Bottom',
+  'Tic',
+  'Tac',
+  'Toe',
+  'Money',
+  'Quality',
+  'Timing',
+  'How',
+  'Referrals',
   'Competition',
-  'Internal Dynamics',
-  'Process & Clarity',
-  'Scope & Structure',
-  'Contract & Legal',
-  'Integration & Pricing',
-  'Transition to Call Two',
-  'Mid-Discovery Issues',
+  'Internal',
+  'Process',
+  'Scope',
+  'Legal',
+  'Integration',
+  'Call Two',
+  'Mid Issues',
   'Integration/Close Issues',
-  'Post-Scope Issues',
-  'Tic-Tac-Toe Variations',
-  'Objection Variations - Mechanism',
-  'Objection Variations - Quality',
-  'Objection Variations - Timing',
-  'Disqualification Signals',
-  'Edge Cases & Unexpected',
-  'Uncategorized'
+  'Post Issues',
+  'Tic-Tac-Toe',
+  'Var Mechanism',
+  'Var Quality',
+  'Var Timing',
+  'Disqualify',
+  'Edge Cases',
+  'Other'
 ]
 
 // Category emoji mapping
 const CATEGORY_EMOJIS = {
-  'Money & Budget': '💰',
-  'Quality & Proof': '⭐',
-  'Timing & Process': '⏰',
-  'Opening Frame': '🎬',
-  'Fork Deflection': '🔀',
-  'Discovery - Top of Funnel': '⬆️',
-  'Discovery - Middle/Bottom of Funnel': '⚙️',
-  'Discovery - Bottom of Funnel': '💰',
-  'The Tic - Process Repeatability': '🔄',
-  'The Tac - Definition': '📋',
-  'The Toe - Power Transfer': '⚡',
-  'Process & Clarity': '🔍',
-  'Scope & Structure': '📐',
-  'Contract & Legal': '📜',
-  'How & Mechanism': '⚙️',
-  'Referrals & Connections': '🤝',
+  'Money': '💰',
+  'Quality': '⭐',
+  'Timing': '⏰',
+  'Opening': '🎬',
+  'Fork': '🔀',
+  'Discovery Top': '⬆️',
+  'Discovery Mid': '⚙️',
+  'Discovery Bottom': '💰',
+  'Tic': '🔄',
+  'Tac': '📋',
+  'Toe': '⚡',
+  'Process': '🔍',
+  'Scope': '📐',
+  'Legal': '📜',
+  'How': '⚙️',
+  'Referrals': '🤝',
   'Competition': '🏆',
-  'Internal Dynamics': '👥',
-  'Disqualification Signals': '🚩',
-  'Edge Cases & Unexpected': '🎲',
-  'Integration & Pricing': '💼',
+  'Internal': '👥',
+  'Disqualify': '🚩',
+  'Edge Cases': '🎲',
+  'Integration': '💼',
   'Integration/Close Issues': '🔗',
-  'Mid-Discovery Issues': '⚠️',
-  'Objection Variations - Mechanism': '🔄',
-  'Objection Variations - Quality': '⭐',
-  'Objection Variations - Timing': '⏰',
-  'Post-Scope Issues': '📋',
-  'Tic-Tac-Toe Variations': '🎯',
-  'Transition to Call Two': '➡️',
-  'Uncategorized': '📄'
+  'Mid Issues': '⚠️',
+  'Var Mechanism': '🔄',
+  'Var Quality': '⭐',
+  'Var Timing': '⏰',
+  'Post Issues': '📋',
+  'Tic-Tac-Toe': '🎯',
+  'Call Two': '➡️',
+  'Other': '📄'
 }
 
 // Unique emoji mapping for each handler
@@ -386,7 +386,7 @@ function RightSidebar({ isOpen, onClose }) {
       const initial = {}
       const categories = new Set()
       Object.values(salesData.objection_handlers.handlers).forEach(handler => {
-        categories.add(handler.category || 'Uncategorized')
+        categories.add(handler.category || 'Other')
       })
       categories.forEach(cat => {
         if (!(cat in collapsedCategories)) {
@@ -408,7 +408,7 @@ function RightSidebar({ isOpen, onClose }) {
 
     Object.keys(handlers).forEach(handlerId => {
       const handler = handlers[handlerId]
-      const category = handler.category || 'Uncategorized'
+      const category = handler.category || 'Other'
       
       if (!categoriesMap[category]) {
         categoriesMap[category] = []
@@ -589,7 +589,7 @@ function RightSidebar({ isOpen, onClose }) {
                   onClick={() => toggleCategory(category.title)}
                 >
                   <span className="nav-group-emoji">{CATEGORY_EMOJIS[category.title] || '📄'}</span>
-                  <span>{category.title} ({category.handlers.length})</span>
+                  <span>{category.title}</span>
                   <span className="nav-group-toggle">{shouldShow ? '▲' : '▼'}</span>
                 </div>
                 {shouldShow && (
