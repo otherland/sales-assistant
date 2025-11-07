@@ -23,61 +23,10 @@ let salesData = {
         ]
       },
       {
-        "id": "fork_deflection",
-        "title": "What do you do?",
-        "category": "sequential",
-        "phase": 2,
-        "purpose": "Navigate when prospect asks 'What do you do?' without losing control",
-        "context": "If the prospect doesn't answer your opening prompt and instead asks: 'Yeah, sure - but could you maybe start by telling me a bit more about what you do?'",
-        "golden_rule": "You can acknowledge their question, but you must always end with one of your own. Never spend more than 45–60 seconds explaining your firm before returning to discovery.",
-        "paths": [
-          {
-            "id": "new_economy",
-            "economy": "New Economy (Tech, SaaS, Data, AI)",
-            "context": "They're fluent in GTM, pipeline, and outbound language. They've probably been pitched by a dozen operators. If you go tactical, you'll sound like one of them.",
-            "script": "Of course - <i>totally fair question</i>. I'll start with our <b>thesis</b>, which is that in <u>sophisticated markets</u> - education, technology, AI, and modern distribution - traditional go-to-market strategies tend to fall short because the <b>data is harder to acquire</b>, the buyers are more <b>specialized</b>, and <b>brand integrity matters</b> a lot more.<br><br>We focus on helping companies in those markets generate qualified opportunities by running a <u>diligence process</u> that really gets into who the specialized profiles are, what they value, and how they buy - so that every conversation we start is <b>intentional, credible, and brand-safe</b>.<br><br>What we've seen is that when <b>diligence, message integrity, and the right infrastructure</b> come together, demand becomes <u>predictable</u> - even in markets where most strategies usually fail.",
-            "proof_narrative": {
-              "title": "Proof Narrative — National Book Fair Company",
-              "introduction": "To give you a clearer picture, one of the best examples is our engagement with a national book fair company — about a $50M-a-year operator that sells into thousands of schools across the U.S.<br><br>They had an incredible brand that educators and families trusted for decades, but they were struggling to modernize how they generated demand. Everything was still manual — word-of-mouth, relationships, and outdated outreach methods — which made it hard to scale without risking the reputation they'd built.<br><br>And because that market's so consolidated — really only three major players nationwide — they wanted full discretion. That's why they're redacted in our case study; they don't want any of their tools, systems, or partners publicly visible.<br><br>That's exactly the kind of challenge our thesis is designed for — markets with specialized buyers, limited data, strict brand standards, and the need for qualified, brand-safe conversations that protect legacy while driving growth.",
-              "six_beats": {
-                "beat_1_engagement_context": "Just to give an example of our thesis being cemented - I'll go through how it came together. They engaged us to help them open up more qualified opportunities with schools and districts across the country — principals, administrators, and parent committees who select vendors.<br><br>This market's incredibly complex: you're dealing with education, events, and distribution all layered under one national brand. That makes it a perfect fit for our thesis because it combines specialized buyer profiles, a lot of brand sensitivity, and data that's hard to capture without proper diligence.",
-                "beat_2_diligence_extraction": "We started by spending time with their internal teams — the field reps, the regional managers, logistics, and executive leadership — to understand how schools actually make decisions, what drives trust, and what language lands or doesn't.<br><br>That diligence process is what lets us identify who the real qualified buyers are, and how to reach them without guessing. You'll experience that same level of diligence with us. It's what allows us to define quality opportunities instead of chasing volume.",
-                "beat_3_brand_integrity_constraint": "In education, the brand standard is important. One message that feels too pushy can set you back years. So our first rule was simple: generate interest, but never harm the brand.<br><br>Tone, pacing, and positioning had to reflect exactly how this market communicates — personal, values-driven, and reputation-first. That principle is built into every part of how we run our engagements.",
-                "beat_4_audience_presence_findings": "As part of diligence, our analysts mapped where these buyers actually spend time. Over 50% of them were active on LinkedIn, and the entire industry still relied on email to communicate with outside vendors.<br><br>That insight is what validated our approach — even in a traditional, conservative market like education, the audience was still digital-first, just unapproached the right way. That's a common pattern across the sophisticated markets we serve.",
-                "beat_5_private_infrastructure": "So for this engagement, just like most of our clients, we ran everything through our internal infrastructure that's built for precision targeting — the messaging, contacts, follow-up process, and everything in between runs through quality checks for tone, cadence, and compliance.<br><br>It also lets us scale nationally — regional rollouts, multi-state coverage, and even global if needed — all while keeping the same tone and personality the brand is known for.<br><br>A nuance advantage we don't talk about enough is the vendor partnerships. We bring those partners into our infrastructure and give them access to it, which allows us to stay consistent and even more specialized inside the difficult markets we build our theses around.",
-                "beat_6_hardest_first_proof_tieback": "To wrap that up — we processed, mapped, acquired the data and set out new targets from schools and educational networks. 373 sales-focused conversations and they have a very short sales cycle so they realized over $1M in new revenue within a quarter — all while keeping the brand's tone and trust intact.<br><br>So, if we can help a legacy education company like that build one of its strongest pipelines in years — all in a reputation-first market — applying that same framework to other sophisticated, brand-sensitive environments becomes very straightforward."
-              },
-              "tie_back_line": "And that's really the focus of our thesis — we use diligence to understand who the specialized profiles are, protect the brand's integrity at every step, and build systems that generate qualified opportunities at scale in the markets where data is hardest to get."
-            },
-            "pivot": "Now, to see if that makes sense for your business - how are you currently generating demand, and what does that process look like from first touch to conversion?"
-          },
-          {
-            "id": "old_economy",
-            "economy": "Old Economy (Industrial, Services, Legacy)",
-            "context": "They're typically not fluent in GTM mechanics. They value stability, brand integrity, and credibility. Here, you speak to modernization - not 'tactics.'",
-            "script": "Of course - <i>totally fair question</i>. I'll start with our <b>thesis</b> which is in <u>legacy markets</u> with careful buyers and high brand risk, the <b>data you need is hard to acquire</b> and the message has to generate demand while <b>protecting our clients' pedigree</b>.<br><br>We go into markets where <b>established companies</b> want new, qualified conversations at scale and still haven't been able to fully figure out a modern channel for revenue generation, or want it done better.<br><br>We've seen time and time again that there's <b>pent up, unmet demand</b> on the other side of a properly designed solution.",
-            "proof_narrative": {
-              "title": "Proof Narrative — Raiseview (Corporate Finance Group)",
-              "introduction": "To paint a better picture we can point to our engagement with Raiseview Capital, a corporate finance group.<br><br>They wanted to expand their sell-side Rolodex - the institutions they could do more transactions with: family offices, LPs, credit funds, SBICs, regional banks, and credit unions.<br><br>This is the most conservative, brand-aware corner of the market. The data is expensive and hard to acquire. These profiles are the hardest to get a positive response from without hurting brand integrity. So these markets match extremely well with our thesis and solutions.",
-              "six_beats": {
-                "beat_1_engagement_context": "Raiseview engaged us to find those qualified counterparties on the sell side—family offices, LPs, credit funds, SBICs, regional banks, credit unions. Not deal principals which we've had a lot of experience with; the goal was more institutional relationships they could transact with. We deem this to be the pinnacle example because we haven't seen an industry more difficult to properly execute in than sell side banking.",
-                "beat_2_diligence_extraction": "We started by sitting with their team and learning the details of mandates they fund—how they evaluate counterparties, how conversations usually start, what language earns trust, and what lines you never cross.<br><br>You'll experience this with us as well, which is how much focus we put into diligence, and our process allows us to operate in these industries where our clients have decades of experience and we can extract that information which helps us define quality opportunities rather than a volumed approach.",
-                "beat_3_brand_integrity_constraint": "In banking for example, the risk tolerance for spammy behavior is very low. One clumsy message can undo years of goodwill. So we set a hard rule: create interest, never cheapen the name. Tone, timing, and targeting had to match the way this market actually behaves.",
-                "beat_4_audience_presence_findings": "Our analysts also have a diligence process that happens in the background, for engagement we put time into finding where these buyers actually spend time. About 75% were active on LinkedIn for professional signals, and 97–98% still used email to communicate with outside partners. This is extremely common with our thesis, these are the markets we go into and find that unmet demand.",
-                "beat_5_private_infrastructure": "So for Raiseview and most of our clients, we used our internal infrastructure that's built for targeting - the messaging, contacts, conversion process and everything in between runs through quality checks—language, cadence, compliance. It also allows us to reach multi national roll out, regional efforts, all the way to global targets - which worked great for Raiseview since they had a global mandate.<br><br>A nuance advantage we don't talk about often enough is our vendors and partnerships, we always bring in partners and give them access to our infrastructure, this allows us to specialize even more in these difficult markets we built our thesis around.",
-                "beat_6_hardest_first_proof_tieback": "To wrap that up, it resulted in 102 New Sell Side Introductions with the exact institutions Raiseview needed - without a single dent to reputation. If we can do that in sell-side banking—the most conservative, brand-sensitive environment—doing it in completely different but still difficult markets with highly specialized buyer profilers is where we continue to cement our thesis over and over again."
-              },
-              "tie_back_line": "And that's the main focus of our thesis, specialized profiles, hard-to-get data, strict brand standards—we build a system that respects all of it and still scales."
-            },
-            "pivot": "So just to give me a better sense of context - how are you currently generating demand today, and where is most of that business coming from?"
-          }
-        ]
-      },
-      {
         "id": "discovery_intro",
         "title": "Discovery Questions — Introduction",
         "category": "sequential",
-        "phase": 3,
+        "phase": 2,
         "purpose": "Set up the comprehensive due diligence flow",
         "script": "<i>Perfect</i>. Let's go through some questions so I can understand how <b>demand flows through the business</b> - from <u>first touch all the way through to a conversion</u>.<br><br>Let's start at the top - how you're currently <b>generating interest</b> and where that demand is coming from.",
         "advisor_guidance": "Ask 1 question at a time and then be quiet - silence is a powerful tool, use it as often as possible. Don't overthink the order — what matters most is getting reps in."
@@ -86,7 +35,7 @@ let salesData = {
         "id": "discovery_top_funnel",
         "title": "Top of Funnel — Demand Generation",
         "category": "sequential",
-        "phase": 3,
+        "phase": 2,
         "section": "A",
         "purpose": "Map how demand is created and which markets are being targeted",
         "carpet_integration": ["C (Cycle)", "P (Pipeline)"],
@@ -138,7 +87,7 @@ let salesData = {
         "id": "discovery_middle_funnel",
         "title": "Middle of Funnel — Sales Process & Conversion",
         "category": "sequential",
-        "phase": 3,
+        "phase": 2,
         "section": "B",
         "purpose": "Understand what happens when demand enters the business and identify the 'installation point'",
         "carpet_integration": ["R (Rep)", "A (ACV)"],
@@ -194,7 +143,7 @@ let salesData = {
         "id": "discovery_bottom_funnel",
         "title": "Bottom of Funnel — Revenue Mechanics",
         "category": "sequential",
-        "phase": 3,
+        "phase": 2,
         "section": "C",
         "purpose": "Uncover how effectively the business converts opportunities into revenue and who owns that conversion",
         "carpet_integration": ["E (Environment)", "T (Timeline & Decision-makers)"],
@@ -243,10 +192,61 @@ let salesData = {
         ]
       },
       {
+        "id": "fork_deflection",
+        "title": "What do you do?",
+        "category": "sequential",
+        "phase": 3,
+        "purpose": "Explain what you do after completing discovery — now that you understand their business, present your thesis and proof",
+        "context": "After completing discovery (Top, Middle, and Bottom of Funnel), the prospect will naturally want to understand what you do and how you can help. This is the ideal time to present your thesis with the Six Beats proof narrative.",
+        "golden_rule": "You've completed discovery, so you now have context about their business. Use that context to tie your thesis and proof directly to their situation. Deploy the Six Beats structure to reveal methodology through narrative.",
+        "paths": [
+          {
+            "id": "new_economy",
+            "economy": "New Economy (Tech, SaaS, Data, AI)",
+            "context": "They're fluent in GTM, pipeline, and outbound language. They've probably been pitched by a dozen operators. If you go tactical, you'll sound like one of them.",
+            "script": "Of course - <i>totally fair question</i>. I'll start with our <b>thesis</b>, which is that in <u>sophisticated markets</u> - education, technology, AI, and modern distribution - traditional go-to-market strategies tend to fall short because the <b>data is harder to acquire</b>, the buyers are more <b>specialized</b>, and <b>brand integrity matters</b> a lot more.<br><br>We focus on helping companies in those markets generate qualified opportunities by running a <u>diligence process</u> that really gets into who the specialized profiles are, what they value, and how they buy - so that every conversation we start is <b>intentional, credible, and brand-safe</b>.<br><br>What we've seen is that when <b>diligence, message integrity, and the right infrastructure</b> come together, demand becomes <u>predictable</u> - even in markets where most strategies usually fail.",
+            "proof_narrative": {
+              "title": "Proof Narrative — National Book Fair Company",
+              "introduction": "To give you a clearer picture, one of the best examples is our engagement with a national book fair company — about a $50M-a-year operator that sells into thousands of schools across the U.S.<br><br>They had an incredible brand that educators and families trusted for decades, but they were struggling to modernize how they generated demand. Everything was still manual — word-of-mouth, relationships, and outdated outreach methods — which made it hard to scale without risking the reputation they'd built.<br><br>And because that market's so consolidated — really only three major players nationwide — they wanted full discretion. That's why they're redacted in our case study; they don't want any of their tools, systems, or partners publicly visible.<br><br>That's exactly the kind of challenge our thesis is designed for — markets with specialized buyers, limited data, strict brand standards, and the need for qualified, brand-safe conversations that protect legacy while driving growth.",
+              "six_beats": {
+                "beat_1_engagement_context": "Just to give an example of our thesis being cemented - I'll go through how it came together. They engaged us to help them open up more qualified opportunities with schools and districts across the country — principals, administrators, and parent committees who select vendors.<br><br>This market's incredibly complex: you're dealing with education, events, and distribution all layered under one national brand. That makes it a perfect fit for our thesis because it combines specialized buyer profiles, a lot of brand sensitivity, and data that's hard to capture without proper diligence.",
+                "beat_2_diligence_extraction": "We started by spending time with their internal teams — the field reps, the regional managers, logistics, and executive leadership — to understand how schools actually make decisions, what drives trust, and what language lands or doesn't.<br><br>That diligence process is what lets us identify who the real qualified buyers are, and how to reach them without guessing. You'll experience that same level of diligence with us. It's what allows us to define quality opportunities instead of chasing volume.",
+                "beat_3_brand_integrity_constraint": "In education, the brand standard is important. One message that feels too pushy can set you back years. So our first rule was simple: generate interest, but never harm the brand.<br><br>Tone, pacing, and positioning had to reflect exactly how this market communicates — personal, values-driven, and reputation-first. That principle is built into every part of how we run our engagements.",
+                "beat_4_audience_presence_findings": "As part of diligence, our analysts mapped where these buyers actually spend time. Over 50% of them were active on LinkedIn, and the entire industry still relied on email to communicate with outside vendors.<br><br>That insight is what validated our approach — even in a traditional, conservative market like education, the audience was still digital-first, just unapproached the right way. That's a common pattern across the sophisticated markets we serve.",
+                "beat_5_private_infrastructure": "So for this engagement, just like most of our clients, we ran everything through our internal infrastructure that's built for precision targeting — the messaging, contacts, follow-up process, and everything in between runs through quality checks for tone, cadence, and compliance.<br><br>It also lets us scale nationally — regional rollouts, multi-state coverage, and even global if needed — all while keeping the same tone and personality the brand is known for.<br><br>A nuance advantage we don't talk about enough is the vendor partnerships. We bring those partners into our infrastructure and give them access to it, which allows us to stay consistent and even more specialized inside the difficult markets we build our theses around.",
+                "beat_6_hardest_first_proof_tieback": "To wrap that up — we processed, mapped, acquired the data and set out new targets from schools and educational networks. 373 sales-focused conversations and they have a very short sales cycle so they realized over $1M in new revenue within a quarter — all while keeping the brand's tone and trust intact.<br><br>So, if we can help a legacy education company like that build one of its strongest pipelines in years — all in a reputation-first market — applying that same framework to other sophisticated, brand-sensitive environments becomes very straightforward."
+              },
+              "tie_back_line": "And that's really the focus of our thesis — we use diligence to understand who the specialized profiles are, protect the brand's integrity at every step, and build systems that generate qualified opportunities at scale in the markets where data is hardest to get."
+            },
+            "pivot": "Now that we've walked through your business, does that framework make sense for what you're trying to accomplish?"
+          },
+          {
+            "id": "old_economy",
+            "economy": "Old Economy (Industrial, Services, Legacy)",
+            "context": "They're typically not fluent in GTM mechanics. They value stability, brand integrity, and credibility. Here, you speak to modernization - not 'tactics.'",
+            "script": "Of course - <i>totally fair question</i>. I'll start with our <b>thesis</b> which is in <u>legacy markets</u> with careful buyers and high brand risk, the <b>data you need is hard to acquire</b> and the message has to generate demand while <b>protecting our clients' pedigree</b>.<br><br>We go into markets where <b>established companies</b> want new, qualified conversations at scale and still haven't been able to fully figure out a modern channel for revenue generation, or want it done better.<br><br>We've seen time and time again that there's <b>pent up, unmet demand</b> on the other side of a properly designed solution.",
+            "proof_narrative": {
+              "title": "Proof Narrative — Raiseview (Corporate Finance Group)",
+              "introduction": "To paint a better picture we can point to our engagement with Raiseview Capital, a corporate finance group.<br><br>They wanted to expand their sell-side Rolodex - the institutions they could do more transactions with: family offices, LPs, credit funds, SBICs, regional banks, and credit unions.<br><br>This is the most conservative, brand-aware corner of the market. The data is expensive and hard to acquire. These profiles are the hardest to get a positive response from without hurting brand integrity. So these markets match extremely well with our thesis and solutions.",
+              "six_beats": {
+                "beat_1_engagement_context": "Raiseview engaged us to find those qualified counterparties on the sell side—family offices, LPs, credit funds, SBICs, regional banks, credit unions. Not deal principals which we've had a lot of experience with; the goal was more institutional relationships they could transact with. We deem this to be the pinnacle example because we haven't seen an industry more difficult to properly execute in than sell side banking.",
+                "beat_2_diligence_extraction": "We started by sitting with their team and learning the details of mandates they fund—how they evaluate counterparties, how conversations usually start, what language earns trust, and what lines you never cross.<br><br>You'll experience this with us as well, which is how much focus we put into diligence, and our process allows us to operate in these industries where our clients have decades of experience and we can extract that information which helps us define quality opportunities rather than a volumed approach.",
+                "beat_3_brand_integrity_constraint": "In banking for example, the risk tolerance for spammy behavior is very low. One clumsy message can undo years of goodwill. So we set a hard rule: create interest, never cheapen the name. Tone, timing, and targeting had to match the way this market actually behaves.",
+                "beat_4_audience_presence_findings": "Our analysts also have a diligence process that happens in the background, for engagement we put time into finding where these buyers actually spend time. About 75% were active on LinkedIn for professional signals, and 97–98% still used email to communicate with outside partners. This is extremely common with our thesis, these are the markets we go into and find that unmet demand.",
+                "beat_5_private_infrastructure": "So for Raiseview and most of our clients, we used our internal infrastructure that's built for targeting - the messaging, contacts, conversion process and everything in between runs through quality checks—language, cadence, compliance. It also allows us to reach multi national roll out, regional efforts, all the way to global targets - which worked great for Raiseview since they had a global mandate.<br><br>A nuance advantage we don't talk about often enough is our vendors and partnerships, we always bring in partners and give them access to our infrastructure, this allows us to specialize even more in these difficult markets we built our thesis around.",
+                "beat_6_hardest_first_proof_tieback": "To wrap that up, it resulted in 102 New Sell Side Introductions with the exact institutions Raiseview needed - without a single dent to reputation. If we can do that in sell-side banking—the most conservative, brand-sensitive environment—doing it in completely different but still difficult markets with highly specialized buyer profilers is where we continue to cement our thesis over and over again."
+              },
+              "tie_back_line": "And that's the main focus of our thesis, specialized profiles, hard-to-get data, strict brand standards—we build a system that respects all of it and still scales."
+            },
+            "pivot": "Now that we've walked through your business, does that framework make sense for what you're trying to accomplish?"
+          }
+        ]
+      },
+      {
         "id": "qoa_deployment_guide",
         "title": "QOA™ Deployment — On-Call Script",
         "category": "sequential",
-        "phase": 4,
+        "phase": 3,
         "purpose": "Deploy the Qualified Opportunity Anchor™ when quality concerns arise—gives you verbatim on-call scripts for the complete sequence",
         "context": "Use this when quality/conversion concerns surface during or after discovery. This is your practical guide for deploying QOA™ on live calls.",
         "when_to_deploy": {
@@ -679,15 +679,6 @@ let salesData = {
         }
       },
 
-      "guarantees": {
-        "title": "Guarantees",
-        "category": "Quality & Proof",
-        "trigger": "Requests for guarantees or assurances",
-        "quick_response": "We provide structural guarantees through our risk mitigation model and 45-day milestone.",
-        "full_script": "We don't provide traditional 'guarantees' because revenue outcomes are probabilistic. What we provide is risk mitigation through structure:<br><br>- 50% contingent payment tied to measurable milestones\n- Conservative milestone calculations based on your benchmarks\n- Complete transparency and reporting\n- Your veto power through the QOA™<br><br>If we don't deliver the agreed outcomes, you don't pay. This is stronger than any traditional guarantee because your money is protected.<br><br>Would you like to see how the milestone is calculated to ensure it's achievable?",
-        "key_principle": "Structural guarantees through risk mitigation, not promises."
-      },
-
       "will_they_convert": {
         "title": "Will They Convert?",
         "category": "Quality & Proof",
@@ -788,21 +779,6 @@ let salesData = {
         "key_principle": "Validate time pressure but insist on complete discovery for proper scoping."
       },
 
-
-      "entity_size_credibility": {
-        "title": "Entity Size/Credibility",
-        "category": "Quality & Proof",
-        "trigger": "Questions about company size, experience, or credibility",
-        "quick_response": "We're a focused Revenue Advisory firm with deep expertise in outbound execution. Our Commercial Finance arm adds additional credibility.",
-        "full_script": "That's a fair question. We're a specialized Revenue Advisory firm that operates with a focused model: we either win big or stay small. This allows us to maintain the highest standards and invest heavily in our infrastructure.<br><br>We also run a Commercial Finance arm that structures multi-million dollar deals, which gives us additional insight into executive decision-making and capital allocation.<br><br>Our track record includes X clients across Y industries, with average outcomes of Z. Would you like me to share some specific results?",
-        "key_principle": "Focus on specialization and Commercial Finance credibility.",
-        "story_mode": {
-          "title": "Story Mode: The Boutique Advantage Story",
-          "when_to_use": "Use when prospects question your size, headcount, or credibility. Best for sophisticated buyers who value quality over scale. Shows that boutique positioning is intentional, not a weakness. 2-3 minute investment.",
-          "script": "That's a great question, and I'll be direct with you — we're <b>intentionally boutique</b>. Let me tell you why that's actually an advantage.<br><br>(Pause, shift into story mode)<br><br>One of our clients was evaluating us against a <b>70-person agency</b> with offices in three cities, flashy presentations, big team photos on their website. On paper, they looked more 'credible.'<br><br>But here's what happened.<br><br>The agency promised them the world, assigned them to a junior account manager, and delivered <i>generic spray-and-pray campaigns</i> that destroyed their brand reputation. After 6 months and $80K spent, they had 3 qualified meetings and zero deals.<br><br>When they came to us, we took a different approach.<br><br>We're <b>President-led</b> — I personally oversee every engagement. We don't pass clients to juniors. We operate with a <b>focused model: we either win big or stay small</b>. This allows us to maintain the highest standards and invest heavily in our infrastructure.<br><br>We also run a <b>Commercial Finance arm</b> that structures <b>multi-million dollar deals</b> — ABL transactions, acquisition financing, M&A advisory. That division is larger and actively participates in capital markets, which gives us insight into executive decision-making that most agencies will never have.<br><br>For this client, we spent <b>3 weeks mapping their world</b> — not pitching, but diagnosing. We extracted their institutional knowledge, designed messaging that sounded like a peer in their industry, and deployed it through our <b>private infrastructure</b>.<br><br>Within <b>45 days</b>, <b>19 qualified meetings</b>. By <b>day 90</b>, <b>5 new clients worth $1.2M</b> in their first-year revenue.<br><br>(Pause, bring it back)<br><br>The boutique model isn't a weakness — it's <u>why we outperform</u>. Bigger firms assign you to juniors and recycle the same playbook across every client. We stay small, invest in world-class infrastructure, and treat every engagement like it's the only one that matters.<br><br>The outcomes speak louder than headcount. Now, to see if that positioning makes sense for your business: what's been your biggest frustration with vendors or agencies in the past?"
-        }
-      },
-
       "guarantees": {
         "title": "Guarantees",
         "category": "Quality & Proof",
@@ -817,42 +793,7 @@ let salesData = {
         }
       },
 
-      "will_they_convert": {
-        "title": "Will They Convert?",
-        "category": "Quality & Proof",
-        "trigger": "Concerns about whether delivered leads will actually close",
-        "quick_response": "Conversion is your expertise—we guarantee the qualified opportunities, you handle the conversion.",
-        "full_script": "That's the perfect question, and it highlights why our model works. We own the input (qualified opportunities), and you own the conversion outcomes.<br><br>This division of responsibility is what makes the economics work:\n- We guarantee delivering qualified opportunities that meet your A/B/C criteria\n- You apply your proven sales process and expertise to convert them\n- Everyone wins when the system works together<br><br>You've already told me your conversion rate is X%. At that rate, our guaranteed volume would represent $Y in potential revenue. Does that align with your expectations?",
-        "key_principle": "Clear accountability: We deliver input, they own conversion."
-      },
-
-      "define_qualified": {
-        "title": "Define Qualified",
-        "category": "Quality & Proof",
-        "trigger": "Want to know what 'qualified' means to us",
-        "quick_response": "Qualified means they meet your A/B/C criteria: Financially Able, Serviceable, and Genuinely Interested.",
-        "full_script": "We define 'qualified' through the A/B/C framework that we establish with you during discovery:<br><br>A: Financially Able - They have the budget and authority to make purchasing decisions\nB: Serviceable - They fit your target market and can actually use your solution\nC: Genuinely Interested - They're not just researching; they're actively looking to solve this problem<br><br>This framework is objective and measurable, preventing the ambiguity that causes most lead quality issues. You get to define what A/B/C means for your business.<br><br>Shall we work through defining these criteria for your specific market?",
-        "key_principle": "A/B/C framework makes qualification objective and controllable."
-      },
-
       // Additional Money & Budget handlers
-      "payment_terms": {
-        "title": "Payment Terms",
-        "category": "Money & Budget",
-        "trigger": "Questions about payment structure, installments, etc.",
-        "quick_response": "Our payment structure is designed to align incentives: 50% upfront to fund the infrastructure build, 50% contingent on the 45-day milestone.",
-        "full_script": "Our payment terms are structured to ensure mutual commitment to success. The initial 50% funds the strategic infrastructure and execution setup required to hit your Day-45 milestone. The remaining 50% is only paid upon successful delivery of that milestone.<br><br>This structure protects both sides—if we don't deliver the guaranteed outcomes, you don't pay the full fee. If we do deliver, you've paid for a risk-mitigated capital allocation.",
-        "key_principle": "Terms protect both parties and align incentives."
-      },
-
-      "budget_constraints": {
-        "title": "Budget Constraints",
-        "category": "Money & Budget",
-        "trigger": "They say they don't have budget or it's limited",
-        "quick_response": "Budget conversations are exactly why we run this due diligence first. Let's see if the economics pencil out before we discuss allocation.",
-        "full_script": "Budget constraints are real, which is precisely why we conduct this due diligence first. Rather than discussing budget availability, let's determine if this makes economic sense for your business.<br><br>If we could guarantee you 35 qualified executive meetings over 90 days at a cost that represents X% of your average contract value, would that be worth the investment? What's your typical ACV?",
-        "key_principle": "Focus on ROI, not budget limits. Economics drive allocation."
-      },
 
       // Opening Frame (Phase 1) - 8 handlers
       "just_email_me_info": {
@@ -909,7 +850,7 @@ let salesData = {
         "key_principle": "Redirect to mapping decision architecture."
       },
 
-      // Fork Deflection (Phase 2) - 6 handlers
+      // Fork Deflection (Phase 3) - 6 handlers
       "still_confused": {
         "title": "Still Confused",
         "category": "Fork Deflection",
@@ -964,7 +905,7 @@ let salesData = {
         "key_principle": "Objection Positioning™: Turn the weakness into your thesis. Use Story Mode Selling™ to deliver what you do, how, who for, and results through narrative — not dictionary definitions. This creates novelty and bypasses objection sophistication. Always pivot back to discovery after the story."
       },
 
-      // Discovery - Top of Funnel (Phase 3A) - 10 handlers
+      // Discovery - Top of Funnel (Phase 2A) - 10 handlers
       "doesnt_answer_evasion": {
         "title": "Doesn't Answer / Evasion",
         "category": "Discovery - Top of Funnel",
@@ -1046,7 +987,7 @@ let salesData = {
         "key_principle": "Reframe as exceeding capacity ceiling."
       },
 
-      // Discovery - Middle/Bottom of Funnel (Phase 3B) - 9 handlers
+      // Discovery - Middle/Bottom of Funnel (Phase 2B) - 9 handlers
       "were_rebuilding_our_process_right_now": {
         "title": "We're Rebuilding Our Process Right Now",
         "category": "Discovery - Middle/Bottom of Funnel",
@@ -1128,7 +1069,7 @@ let salesData = {
         "key_principle": "Leverage successful segmentation as proof of concept."
       },
 
-      // Discovery - Bottom of Funnel Constraints (Phase 3C) - 9 handlers
+      // Discovery - Bottom of Funnel Constraints (Phase 2C) - 9 handlers
       "we_want_to_scale_beyond_current_capacity": {
         "title": "We Want to Scale Beyond Current Capacity",
         "category": "Discovery - Bottom of Funnel",
@@ -1210,7 +1151,7 @@ let salesData = {
         "key_principle": "Reconstruct process from historical wins."
       },
 
-      // The Tic (Process Repeatability) (Phase 3D) - 7 handlers
+      // The Tic (Process Repeatability) (Phase 2D) - 7 handlers
       "no_its_not_repeatable": {
         "title": "No, It's Not Repeatable",
         "category": "The Tic - Process Repeatability",
@@ -1274,7 +1215,7 @@ let salesData = {
         "key_principle": "Require commitment to one operational hypothesis."
       },
 
-      // The Tac (Definition) (Phase 3E) - 9 handlers
+      // The Tac (Definition) (Phase 2E) - 9 handlers
       "thats_not_how_we_define_qualified": {
         "title": "That's Not How We Define Qualified",
         "category": "The Tac - Definition",
@@ -1356,7 +1297,7 @@ let salesData = {
         "key_principle": "Verify operational understanding of definition."
       },
 
-      // The Toe (Power Transfer) (Phase 3F) - 7 handlers
+      // The Toe (Power Transfer) (Phase 2F) - 7 handlers
       "how_does_verification_actually_work": {
         "title": "How Does Verification Actually Work?",
         "category": "The Toe - Power Transfer",
@@ -1626,14 +1567,6 @@ let salesData = {
         "key_principle": "Use request as leverage to complete discovery."
       },
 
-      "rejects_abc_tac": {
-        "title": "Rejects A/B/C (Tac)",
-        "category": "Tic-Tac-Toe Variations",
-        "trigger": "Prospect rejects the qualification criteria",
-        "quick_response": "I understand your perspective. What criteria would you use to determine if a prospect is qualified? We want to make sure we're aligned on what constitutes a real opportunity for you.",
-        "full_script": "I understand your perspective. What criteria would you use to determine if a prospect is qualified? We want to make sure we're aligned on what constitutes a real opportunity for you.<br><br>Seek alternative criteria while maintaining qualification focus.",
-        "key_principle": "Seek alternative criteria while maintaining focus."
-      },
 
       "getting_acquired": {
         "title": "Getting Acquired",
@@ -1725,7 +1658,7 @@ let salesData = {
         "key_principle": "Compress steps with Combined Close on immediate yes."
       },
 
-      // Integration & Pricing (Phase 4) - 13 handlers
+      // Integration & Pricing (Phase 4) - handlers
       "can_we_pay_monthly_instead_of_upfront": {
         "title": "Can We Pay Monthly Instead of Upfront?",
         "category": "Integration & Pricing",
@@ -1843,15 +1776,7 @@ let salesData = {
         "key_principle": "Two-part structure is the inherent payment plan."
       },
 
-      // Transition to Call Two (Phase 5) - 12 handlers
-      "when_can_you_start": {
-        "title": "When Can You Start?",
-        "category": "Transition to Call Two",
-        "trigger": "Question about timeline for engagement commencement",
-        "quick_response": "Once the Engagement Letter is executed, we commence onboarding within 1 to 2 business days. Campaign deployment typically follows within two to four weeks, once we finalize the strategy and allocate the required infrastructure. We are ready to begin as soon as you are.",
-        "full_script": "Once the Engagement Letter is executed, we commence onboarding within 1 to 2 business days. Campaign deployment typically follows within two to four weeks, once we finalize the strategy and allocate the required infrastructure. We are ready to begin as soon as you are.<br><br>Signals readiness and sets realistic expectations for the timeline (1-2 days onboarding, 2-4 weeks deployment).",
-        "key_principle": "Signal readiness with realistic timeline expectations."
-      },
+      // Transition to Call Two (Phase 5) - handlers
 
       "can_we_start_sooner_than_2_weeks": {
         "title": "Can We Start Sooner Than 2 Weeks?",
@@ -2541,9 +2466,9 @@ let salesData = {
         "title": "When Can We Start?",
         "category": "Integration/Close Issues",
         "trigger": "Questions about implementation timeline",
-        "quick_response": "We can begin onboarding immediately upon signature. Full execution typically takes 2-4 weeks for infrastructure setup. What's your ideal start date?",
-        "full_script": "We can begin onboarding immediately upon signature. Full execution typically takes 2-4 weeks for infrastructure setup. What's your ideal start date?<br><br>Provide realistic timeline and seek client preference.",
-        "key_principle": "Provide realistic timeline, seek client preference."
+        "quick_response": "Once the Engagement Letter is executed, we commence onboarding within 1 to 2 business days. Campaign deployment typically follows within two to four weeks, once we finalize the strategy and allocate the required infrastructure. We are ready to begin as soon as you are. What's your ideal start date?",
+        "full_script": "Once the Engagement Letter is executed, we commence onboarding within 1 to 2 business days. Campaign deployment typically follows within two to four weeks, once we finalize the strategy and allocate the required infrastructure. We are ready to begin as soon as you are. What's your ideal start date?<br><br>Signals readiness, sets realistic expectations for the timeline (1-2 days onboarding, 2-4 weeks deployment), and seeks client preference.",
+        "key_principle": "Signal readiness with realistic timeline expectations and seek client preference."
       },
 
       "onboarding_questions": {
@@ -2637,15 +2562,7 @@ let salesData = {
         "key_principle": "Accelerate process for immediate agreement."
       },
 
-      // Edge Cases & Unexpected - 10 handlers
-      "i_love_this_lets_sign_today": {
-        "title": "I Love This, Let's Sign Today",
-        "category": "Edge Cases & Unexpected",
-        "trigger": "Immediate enthusiastic agreement to proceed",
-        "quick_response": "That's excellent news. I'm moving to formalize the Engagement Letter and Invoice immediately and will send both in one package within the hour. Once executed, onboarding commences within 24 hours. Sound good?",
-        "full_script": "That's excellent news. I'm moving to formalize the Engagement Letter and Invoice immediately and will send both in one package within the hour. Once executed, onboarding commences within 24 hours. Sound good?<br><br>When a verbal 'yes' occurs, compress steps. The strategy is the Combined Close (EL + Invoice) sent immediately, leveraging the momentum. Readiness signals control.",
-        "key_principle": "Compress steps with Combined Close on immediate yes."
-      },
+      // Edge Cases & Unexpected - 9 handlers (i_love_this_lets_sign_today removed - duplicate of i_love_this_sign_today)
 
       "were_getting_acquired": {
         "title": "We're Getting Acquired",

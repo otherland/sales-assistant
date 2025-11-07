@@ -25,17 +25,17 @@
             </div>
 
             <div class="nav-section collapsed">
-                <div class="nav-section-title" onclick="togglePhase(this)">2. Qualification</div>
+                <div class="nav-section-title" onclick="togglePhase(this)">2. Discovery</div>
                 <div id="phase2-nav" class="nav-content"></div>
             </div>
 
             <div class="nav-section collapsed">
-                <div class="nav-section-title" onclick="togglePhase(this)">3. Discovery</div>
+                <div class="nav-section-title" onclick="togglePhase(this)">3. Presentation</div>
                 <div id="phase3-nav" class="nav-content"></div>
             </div>
 
             <div class="nav-section collapsed">
-                <div class="nav-section-title" onclick="togglePhase(this)">4. Deployment</div>
+                <div class="nav-section-title" onclick="togglePhase(this)">4. Integration</div>
                 <div id="phase3df-nav" class="nav-content"></div>
             </div>
 
@@ -539,11 +539,11 @@ window.addEventListener('resize', () => {
         function buildNavigation() {
             // Define phase navigation mappings
             const phaseNavs = {
-                1: 'phase1-nav',
-                2: 'phase2-nav',
-                3: 'phase3-nav',
-                4: 'phase3df-nav', // Tic-Tac-Toe items
-                5: 'phase45-nav'
+                1: 'phase1-nav', // Opening
+                2: 'phase2-nav', // Discovery
+                3: 'phase3-nav', // Presentation (What do you do? + QOA)
+                4: 'phase3df-nav', // Integration
+                5: 'phase45-nav' // Close
             };
             
             // Group items by phase
@@ -556,10 +556,7 @@ window.addEventListener('resize', () => {
                 //     phase = 3;
                 // }
 
-                // Special handling for QOA deployment items
-                if (item.id && (item.id.includes('qoa') || item.id.includes('tic') || item.id.includes('tac') || item.id.includes('toe'))) {
-                    phase = 4; // QOA Deployment phase
-                }
+                // QOA deployment items stay in Phase 3 (Presentation) - no special handling needed
 
                 if (!phaseGroups[phase]) phaseGroups[phase] = [];
                 phaseGroups[phase].push(item);
@@ -667,15 +664,16 @@ window.addEventListener('resize', () => {
                     ]
                 },
                 {
-                    title: "🎬 Opening Frame (6)",
-                    count: 6,
+                    title: "🎬 Opening Frame (7)",
+                    count: 7,
                     handlers: [
                         { id: 'just_email_me_info', title: '📧 Just Email Me Info' },
                         { id: 'research_mode', title: '🔍 Research Mode' },
                         { id: 'not_interested', title: '🙅 Not Interested' },
                         { id: 'what_makes_you_different', title: '⭐ What Makes You Different?' },
                         { id: 'who_else_worked_with', title: '🤝 Who Else Worked With' },
-                        { id: 'calling_other_people', title: '📞 Calling Other People' }
+                        { id: 'calling_other_people', title: '📞 Calling Other People' },
+                        { id: 'differentiation_question', title: '⭐ Differentiation Question' }
                     ]
                 },
                 {
@@ -691,22 +689,38 @@ window.addEventListener('resize', () => {
                     ]
                 },
                 {
-                    title: "💰 Money & Budget (8)",
-                    count: 8,
+                    title: "💰 Pricing & Budget (9)",
+                    count: 9,
                     handlers: [
                         { id: 'discount_request', title: '💸 Discount Request' },
-                        { id: 'payment_terms', title: '⏰ Payment Terms' },
                         { id: 'budget_constraints', title: '💵 Budget Constraints' },
                         { id: 'free_pilot', title: '🆓 Free Pilot' },
                         { id: 'performance_only', title: '📈 Performance-Only' },
                         { id: 'roi_questions', title: '📊 ROI Questions' },
                         { id: 'cost_breakdown', title: '🧮 Cost Breakdown' },
-                        { id: 'payment_plans', title: '📅 Payment Plans' }
+                        { id: 'can_you_break_down_the_pricing', title: '🧮 Can You Break Down the Pricing?' },
+                        { id: 'we_have_budget_approved_for_x_but_youre_at_y', title: '💰 We Have Budget Approved for X But You\'re at Y' },
+                        { id: 'this_needs_board_approval', title: '🏛️ This Needs Board Approval' }
                     ]
                 },
                 {
-                    title: "⚠️ Quality & Proof (12)",
-                    count: 12,
+                    title: "💳 Payment Terms & Plans (9)",
+                    count: 9,
+                    handlers: [
+                        { id: 'payment_terms', title: '⏰ Payment Terms' },
+                        { id: 'payment_plans', title: '📅 Payment Plans' },
+                        { id: 'can_we_pay_monthly_instead_of_upfront', title: '📅 Can We Pay Monthly Instead of Upfront?' },
+                        { id: 'can_we_do_month_to_month', title: '📆 Can We Do Month-to-Month?' },
+                        { id: 'can_we_cancel_mid_engagement', title: '❌ Can We Cancel Mid-Engagement?' },
+                        { id: 'whats_included_vs_add_on', title: '📦 What\'s Included vs Add-On?' },
+                        { id: 'do_we_own_the_data_lists', title: '💾 Do We Own the Data/Lists?' },
+                        { id: 'can_we_start_with_one_market_then_expand', title: '🌍 Can We Start with One Market Then Expand?' },
+                        { id: 'do_you_have_payment_plans', title: '💳 Do You Have Payment Plans?' }
+                    ]
+                },
+                {
+                    title: "⚠️ Quality & Proof (15)",
+                    count: 15,
                     handlers: [
                         { id: 'quality_concern_early', title: '🔍 Quality Concern (Early)' },
                         { id: 'quality_concern_late', title: '🎯 Quality Concern (Late)' },
@@ -719,32 +733,35 @@ window.addEventListener('resize', () => {
                         { id: 'guarantees', title: '🛡️ Guarantees' },
                         { id: 'will_they_convert', title: '📈 Will They Convert?' },
                         { id: 'define_qualified', title: '🎲 Define Qualified' },
-                        { id: 'verification_questions', title: '✅ Verification Questions' }
+                        { id: 'verification_questions', title: '✅ Verification Questions' },
+                        { id: 'what_if_they_say_theyre_interested_but_arent', title: '🤔 What If They Say They\'re Interested But Aren\'t?' },
+                        { id: 'how_do_you_validate_theyre_real_decision_makers', title: '✅ How Do You Validate They\'re Real Decision Makers?' },
+                        { id: 'what_if_theyre_just_gathering_info', title: '📊 What If They\'re Just Gathering Info?' }
                     ]
                 },
                 {
                     title: "⚙️ How & Mechanism (8)",
                     count: 8,
                     handlers: [
-                        { id: 'how_do_you_do_it', title: '🔧 How Do You Do It?' },
                         { id: 'what_tools', title: '🛠️ What Tools?' },
                         { id: 'are_you_using_ai', title: '🤖 Are You Using AI?' },
                         { id: 'do_you_buy_lists', title: '📋 Do You Buy Lists?' },
                         { id: 'spam_filter_question', title: '🛡️ Spam Filter Question' },
                         { id: 'channel_questions', title: '📡 Channel Questions' },
                         { id: 'infrastructure_questions', title: '🏗️ Infrastructure Questions' },
+                        { id: 'messaging_approach', title: '💬 Messaging Approach' },
+                        { id: 'do_you_use_automation', title: '🤖 Do You Use Automation?' }
                     ]
                 },
                 {
-                    title: "🔗 Referrals & Connections (6)",
-                    count: 6,
+                    title: "🔗 Referrals & Connections (5)",
+                    count: 5,
                     handlers: [
                         { id: 'do_you_have_connections', title: '🤝 Do You Have Connections?' },
                         { id: 'we_only_do_referrals', title: '👥 We Only Do Referrals' },
                         { id: 'referral_purist', title: '🎯 Referral Purist' },
                         { id: 'warm_intro_obsession', title: '🔥 Warm Intro Obsession' },
-                        { id: 'network_questions', title: '🌐 Network Questions' },
-                        { id: 'referrals_objection', title: '🔗 Referrals Objection' }
+                        { id: 'network_questions', title: '🌐 Network Questions' }
                     ]
                 },
                 {
@@ -759,8 +776,8 @@ window.addEventListener('resize', () => {
                     ]
                 },
                 {
-                    title: "⏰ Timing & Process (8)",
-                    count: 8,
+                    title: "⏰ Timing & Process (9)",
+                    count: 9,
                     handlers: [
                         { id: 'timing_isnt_right', title: '⏳ Timing Isn\'t Right' },
                         { id: 'q4_freeze', title: '❄️ Q4 Freeze' },
@@ -769,7 +786,8 @@ window.addEventListener('resize', () => {
                         { id: 'need_more_time', title: '🕐 Need More Time' },
                         { id: 'send_info_first', title: '📧 Send Info First' },
                         { id: 'call_length_question', title: '📞 Call Length Question' },
-                        { id: 'can_we_make_this_quick', title: '⚡ Can We Make This Quick?' }
+                        { id: 'can_we_make_this_quick', title: '⚡ Can We Make This Quick?' },
+                        { id: 'after_specific_event', title: '📅 After Specific Event' }
                     ]
                 },
                 {
@@ -789,21 +807,36 @@ window.addEventListener('resize', () => {
                     ]
                 },
                 {
-                    title: "📊 Process & Clarity (12)",
-                    count: 12,
+                    title: "🔍 Discovery Evasion (10)",
+                    count: 10,
+                    handlers: [
+                        { id: 'doesnt_answer_evasion', title: '😶 Doesn\'t Answer / Evasion' },
+                        { id: 'why_do_you_need_to_know_this', title: '🤷 Why Do You Need to Know This?' },
+                        { id: 'can_i_get_back_to_you', title: '⏰ Can I Get Back to You?' },
+                        { id: 'this_is_too_many_questions', title: '❓ This Is Too Many Questions' },
+                        { id: 'can_we_come_back_to_that_later', title: '↩️ Can We Come Back to That Later?' },
+                        { id: 'i_need_to_check_with_my_team_first', title: '👥 I Need to Check with My Team First' },
+                        { id: 'thats_confidential_information', title: '🔒 That\'s Confidential Information' },
+                        { id: 'why_does_that_matter', title: '🤔 Why Does That Matter?' },
+                        { id: 'deflects_question', title: '🌀 Deflects Question' },
+                        { id: 'too_many_questions', title: '❓ Too Many Questions' }
+                    ]
+                },
+                {
+                    title: "📊 Process & Data Issues (11)",
+                    count: 11,
                     handlers: [
                         { id: 'vague_responses', title: '💭 Vague Responses' },
                         { id: 'dont_have_data', title: '📊 Don\'t Have Data' },
                         { id: 'need_to_check', title: '🔍 Need to Check' },
                         { id: 'dont_track_formally', title: '📈 Don\'t Track Formally' },
                         { id: 'cant_answer', title: '🤷 Can\'t Answer' },
-                        { id: 'deflects_question', title: '🌀 Deflects Question' },
-                        { id: 'too_many_questions', title: '❓ Too Many Questions' },
                         { id: 'why_does_this_matter', title: '🤔 Why Does This Matter?' },
                         { id: 'confidential_info', title: '🔒 Confidential Info' },
                         { id: 'process_is_broken', title: '🔧 Process is Broken' },
                         { id: 'were_rebuilding', title: '🏗️ We\'re Rebuilding' },
-                        { id: 'no_crm_tracking', title: '🚫 No CRM/Tracking' }
+                        { id: 'no_crm_tracking', title: '🚫 No CRM/Tracking' },
+                        { id: 'were_doing_fine_without_help', title: '✅ We\'re Doing Fine Without Help' }
                     ]
                 },
                 {
@@ -853,7 +886,22 @@ window.addEventListener('resize', () => {
                     ]
                 },
                 {
-                    title: "🔄 Mid-Discovery Issues (8)",
+                    title: "🔧 Process Problems (9)",
+                    count: 9,
+                    handlers: [
+                        { id: 'were_rebuilding_our_process_right_now', title: '🏗️ We\'re Rebuilding Our Process Right Now' },
+                        { id: 'our_process_is_broken', title: '🔧 Our Process is Broken' },
+                        { id: 'can_you_help_us_build_the_process', title: '🛠️ Can You Help Us Build the Process?' },
+                        { id: 'we_have_a_problem_converting', title: '📉 We Have a Problem Converting' },
+                        { id: 'we_need_help_with_closing_not_lead_gen', title: '🎯 We Need Help with Closing, Not Lead Gen' },
+                        { id: 'our_team_is_overwhelmed_already', title: '😰 Our Team is Overwhelmed Already' },
+                        { id: 'we_lose_deals_at_specific_stage', title: '💔 We Lose Deals at Specific Stage' },
+                        { id: 'we_cant_get_past_gatekeepers', title: '🚪 We Can\'t Get Past Gatekeepers' },
+                        { id: 'we_have_no_crm_or_tracking', title: '📊 We Have No CRM/Tracking' }
+                    ]
+                },
+                {
+                    title: "📈 Business Challenges (8)",
                     count: 8,
                     handlers: [
                         { id: 'mentions_referrals_data', title: '🔗 Mentions Referrals (data?)' },
@@ -863,35 +911,93 @@ window.addEventListener('resize', () => {
                         { id: 'sales_cycle_too_long', title: '⏳ Sales Cycle Too Long' },
                         { id: 'close_rate_problems', title: '📉 Close Rate Problems' },
                         { id: 'founder_dependency', title: '👑 Founder Dependency' },
-                        { id: 'high_churn', title: '🔄 High Churn' }
+                        { id: 'high_churn', title: '🔄 High Churn' },
+                        { id: 'we_want_to_scale_beyond_current_capacity', title: '📈 We Want to Scale Beyond Current Capacity' },
+                        { id: 'we_need_to_hire_more_closers_first', title: '👥 We Need to Hire More Closers First' },
+                        { id: 'our_margins_are_thin', title: '💰 Our Margins are Thin' },
+                        { id: 'we_have_high_churn', title: '🔄 We Have High Churn' },
+                        { id: 'were_seasonal_business', title: '📅 We\'re Seasonal Business' },
+                        { id: 'our_close_rate_is_terrible', title: '📉 Our Close Rate is Terrible' },
+                        { id: 'only_the_founder_can_close', title: '👑 Only the Founder Can Close' },
+                        { id: 'our_sales_cycle_is_too_long', title: '⏳ Our Sales Cycle is Too Long' }
                     ]
                 },
                 {
-                    title: "✅ Tic-Tac-Toe Variations (9)",
+                    title: "🔄 The Tic - Process Repeatability (9)",
                     count: 9,
                     handlers: [
                         { id: 'it_depends_tic', title: '🤔 "It Depends" (Tic)' },
                         { id: 'not_repeatable_tic', title: '🔄 "Not Repeatable" (Tic)' },
                         { id: 'hedged_tic', title: '🛡️ Hedged Tic' },
                         { id: 'conditional_tic', title: '⚖️ Conditional Tic' },
-                        { id: 'rejects_a_b_c_tac', title: '❌ Rejects A/B/C (Tac)' },
-                        { id: 'wants_to_narrow_tac', title: '🎯 Wants to Narrow (Tac)' },
-                        { id: 'toe_process_questions', title: '🗣️ Toe Process Questions' },
-                        { id: 'dispute_resolution', title: '⚔️ Dispute Resolution' },
-                        { id: 'verification_timing', title: '⏰ Verification Timing' }
+                        { id: 'no_its_not_repeatable', title: '❌ No, It\'s Not Repeatable' },
+                        { id: 'were_still_figuring_it_out', title: '🤷 We\'re Still Figuring It Out' },
+                        { id: 'its_repeatable_when_i_do_it_personally', title: '👤 It\'s Repeatable When I Do It Personally' },
+                        { id: 'only_in_certain_markets', title: '🌍 Only in Certain Markets' },
+                        { id: 'was_repeatable_pre_covid_but_not_now', title: '🦠 Was Repeatable Pre-COVID But Not Now' },
+                        { id: 'used_to_work_but_doesnt_anymore', title: '⏰ Used to Work But Doesn\'t Anymore' },
+                        { id: 'were_testing_different_approaches', title: '🧪 We\'re Testing Different Approaches' }
                     ]
                 },
                 {
-                    title: "🎯 Integration/Close Issues (7)",
-                    count: 7,
+                    title: "🎯 The Tac - Definition (8)",
+                    count: 8,
                     handlers: [
-                        { id: 'price_shock', title: '💸 Price Shock' },
-                        { id: 'comparing_to_last_vendor', title: '⚖️ Comparing to Last Vendor' },
-                        { id: 'whats_included', title: '📦 What\'s Included?' },
+                        { id: 'rejects_a_b_c_tac', title: '❌ Rejects A/B/C (Tac)' },
+                        { id: 'wants_to_narrow_tac', title: '🎯 Wants to Narrow (Tac)' },
+                        { id: 'thats_not_how_we_define_qualified', title: '❌ That\'s Not How We Define Qualified' },
+                        { id: 'we_need_them_to_have_x_y_z', title: '📋 We Need Them to Have X/Y/Z' },
+                        { id: 'only_c_level_titles_count', title: '👔 Only C-Level Titles Count' },
+                        { id: 'they_must_have_current_vendor', title: '🏢 They Must Have Current Vendor' },
+                        { id: 'i_need_to_run_this_by_my_team', title: '👥 I Need to Run This by My Team' },
+                        { id: 'what_if_they_lie_about_being_interested', title: '🤥 What If They Lie About Being Interested?' },
+                        { id: 'problem_aware_is_too_subjective', title: '🤔 Problem Aware is Too Subjective' },
+                        { id: 'too_easy_acceptance_without_engaging', title: '✅ Too Easy Acceptance Without Engaging' }
+                    ]
+                },
+                {
+                    title: "⚓ The Toe - Power Transfer (6)",
+                    count: 6,
+                    handlers: [
+                        { id: 'toe_process_questions', title: '🗣️ Toe Process Questions' },
+                        { id: 'dispute_resolution', title: '⚔️ Dispute Resolution' },
+                        { id: 'verification_timing', title: '⏰ Verification Timing' },
+                        { id: 'how_does_verification_actually_work', title: '🔍 How Does Verification Actually Work?' },
+                        { id: 'how_long_do_i_have_to_verify_each_one', title: '⏰ How Long Do I Have to Verify Each One?' },
+                        { id: 'what_if_we_disagree_on_qualification', title: '⚔️ What If We Disagree on Qualification?' },
+                        { id: 'can_we_have_a_third_party_verify', title: '👤 Can We Have a Third Party Verify?' },
+                        { id: 'that_sounds_like_a_lot_of_work_on_our_end', title: '😓 That Sounds Like a Lot of Work on Our End' },
+                        { id: 'who_makes_the_final_call_if_we_dispute', title: '⚖️ Who Makes the Final Call If We Dispute?' },
+                        { id: 'can_we_reject_unlimited_times', title: '🚫 Can We Reject Unlimited Times?' }
+                    ]
+                },
+                {
+                    title: "🚀 Integration Questions (9)",
+                    count: 9,
+                    handlers: [
                         { id: 'when_can_we_start', title: '🚀 When Can We Start?' },
                         { id: 'onboarding_questions', title: '📋 Onboarding Questions' },
                         { id: 'communication_cadence', title: '💬 Communication Cadence' },
-                        { id: 'success_definition', title: '🎯 Success Definition' }
+                        { id: 'success_definition', title: '🎯 Success Definition' },
+                        { id: 'whats_the_onboarding_process', title: '📋 What\'s the Onboarding Process?' },
+                        { id: 'who_will_we_work_with_day_to_day', title: '👥 Who Will We Work With Day-to-Day?' },
+                        { id: 'how_often_do_we_get_updates', title: '📊 How Often Do We Get Updates?' },
+                        { id: 'need_faster_results', title: '⚡ Need Faster Results' },
+                        { id: 'whats_included', title: '📦 What\'s Included?' }
+                    ]
+                },
+                {
+                    title: "📋 Close & Legal Issues (8)",
+                    count: 8,
+                    handlers: [
+                        { id: 'price_shock', title: '💸 Price Shock' },
+                        { id: 'comparing_to_last_vendor', title: '⚖️ Comparing to Last Vendor' },
+                        { id: 'were_in_a_budget_freeze_right_now', title: '❄️ We\'re in a Budget Freeze Right Now' },
+                        { id: 'were_reorganizing_right_now', title: '🔄 We\'re Reorganizing Right Now' },
+                        { id: 'can_we_get_started_while_legal_reviews', title: '⚖️ Can We Get Started While Legal Reviews?' },
+                        { id: 'whats_the_contract_term', title: '📄 What\'s the Contract Term?' },
+                        { id: 'do_you_have_insurance', title: '🛡️ Do You Have Insurance?' },
+                        { id: 'can_we_do_an_nda_first', title: '🔐 Can We Do an NDA First?' }
                     ]
                 },
                 {
@@ -908,21 +1014,36 @@ window.addEventListener('resize', () => {
                     ]
                 },
                 {
-                    title: "🌪️ Edge Cases (10)",
-                    count: 10,
+                    title: "🏢 Company Changes (9)",
+                    count: 9,
                     handlers: [
                         { id: 'getting_acquired', title: '🏢 Getting Acquired' },
+                        { id: 'were_getting_acquired', title: '🏢 We\'re Getting Acquired' },
                         { id: 'lost_big_client', title: '💔 Lost Big Client' },
-                        { id: 'emergency_reschedule', title: '🚨 Emergency/Reschedule' },
+                        { id: 'we_just_lost_our_biggest_client', title: '💔 We Just Lost Our Biggest Client' },
                         { id: 'shutting_down', title: '🔌 Shutting Down' },
+                        { id: 'were_shutting_down', title: '🔌 We\'re Shutting Down' },
                         { id: 'just_raised_funding', title: '💰 Just Raised Funding' },
+                        { id: 'we_just_raised_funding_lets_go_bigger', title: '💰 We Just Raised Funding, Let\'s Go Bigger' },
                         { id: 'competitor_did_this', title: '🏆 Competitor Did This' },
+                        { id: 'our_competitor_just_did_this_we_need_it_now', title: '🏆 Our Competitor Just Did This, We Need It Now' }
+                    ]
+                },
+                {
+                    title: "🌪️ Unexpected Requests (9)",
+                    count: 9,
+                    handlers: [
+                        { id: 'emergency_reschedule', title: '🚨 Emergency/Reschedule' },
+                        { id: 'we_have_an_emergency_can_we_reschedule', title: '🚨 We Have an Emergency, Can We Reschedule?' },
+                        { id: 'the_person_you_need_to_talk_to_just_left', title: '🚶 The Person You Need to Talk to Just Left' },
                         { id: 'hire_you_for_something_else', title: '🔄 Hire You for Something Else' },
+                        { id: 'can_we_hire_you_to_do_something_else_instead', title: '🔄 Can We Hire You for Something Else Instead?' },
                         { id: 'train_our_team_instead', title: '🎓 Train Our Team Instead' },
+                        { id: 'can_you_just_train_our_team_instead', title: '🎓 Can You Just Train Our Team Instead?' },
                         { id: 'multiple_questions_at_once', title: '❓ Multiple Questions at Once' },
                         { id: 'i_love_this_sign_today', title: '🎉 I Love This, Let\'s Sign Today' }
                     ]
-                }
+                },
             ];
 
             // Debug: Check which handlers exist in data vs nav
@@ -1265,6 +1386,115 @@ window.addEventListener('resize', () => {
                         </div>
                         <div class="script-block">
                             ${formatScript(handlerData.story_mode.script)}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Primary Reframe
+            if (handlerData.primary_reframe) {
+                html += `
+                    <div class="info-box advisor-note">
+                        <div class="info-box-title">Primary Reframe Script</div>
+                        <div class="script-block">${formatScript(handlerData.primary_reframe)}</div>
+                    </div>
+                `;
+            }
+
+            // Validation Spins
+            if (handlerData.validation_spins && handlerData.validation_spins.length > 0) {
+                html += `
+                    <div class="info-box">
+                        <div class="info-box-title">Validation Spins — Choose Your Response</div>
+                        <ul class="bullet-list">
+                `;
+                handlerData.validation_spins.forEach(spin => {
+                    html += `<li>"${spin}"</li>`;
+                });
+                html += `</ul></div>`;
+            }
+
+            // Polite Disqualification
+            if (handlerData.polite_disqualification) {
+                html += `
+                    <div class="info-box warning">
+                        <div class="info-box-title">Polite Disqualification Script</div>
+                        <div class="script-block">${formatScript(handlerData.polite_disqualification)}</div>
+                    </div>
+                `;
+            }
+
+            // Why They Do It
+            if (handlerData.why_they_do_it && handlerData.why_they_do_it.length > 0) {
+                html += `
+                    <div class="info-box">
+                        <div class="info-box-title">Why They Do It</div>
+                        <ul class="bullet-list">
+                `;
+                handlerData.why_they_do_it.forEach(reason => {
+                    html += `<li>${linkifyReferences(reason)}</li>`;
+                });
+                html += `</ul></div>`;
+            }
+
+            // Handle Steps
+            if (handlerData.handle_steps && handlerData.handle_steps.length > 0) {
+                html += `
+                    <div class="info-box" style="margin: 2rem 0;">
+                        <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.25rem;">How to Handle It:</h3>
+                `;
+                handlerData.handle_steps.forEach((stepObj, idx) => {
+                    html += `
+                        <div style="margin-bottom: 2rem; padding-left: 1rem; border-left: 3px solid var(--primary-color);">
+                            <h4 style="color: var(--primary-color); margin-bottom: 0.75rem; font-weight: 700;">${stepObj.step}</h4>
+                    `;
+                    if (stepObj.script) {
+                        html += `<div class="script-block" style="margin-bottom: 1rem;">${formatScript(stepObj.script)}</div>`;
+                    }
+                    if (stepObj.goal) {
+                        html += `<p style="font-style: italic; color: var(--text-secondary); margin-bottom: 0.5rem;">${stepObj.goal}</p>`;
+                    }
+                    if (stepObj.questions && stepObj.questions.length > 0) {
+                        html += `<ul class="bullet-list">`;
+                        stepObj.questions.forEach(q => {
+                            html += `<li>${linkifyReferences(q)}</li>`;
+                        });
+                        html += `</ul>`;
+                    }
+                    html += `</div>`;
+                });
+                html += `</div>`;
+            }
+
+            // Recognize the Projection
+            if (handlerData.recognize_the_projection) {
+                const proj = handlerData.recognize_the_projection;
+                html += `
+                    <div class="info-box warning" style="margin: 1.5rem 0;">
+                        <div class="info-box-title">${proj.title}</div>
+                        <p><strong>Reality:</strong> ${proj.reality}</p>
+                        <p style="margin-top: 0.5rem;"><strong>Interpretation:</strong> ${proj.interpretation}</p>
+                    </div>
+                `;
+            }
+
+            // Accountability Boundaries
+            if (handlerData.accountability_boundaries) {
+                const acc = handlerData.accountability_boundaries;
+                html += `
+                    <div style="margin: 2rem 0; padding: 1.5rem; background: var(--bg-secondary); border-left: 4px solid var(--primary-color); border-radius: 6px;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.25rem; font-weight: 700;">${acc.title}</h3>
+                        <div class="info-box">
+                            <div class="info-box-title">Your Domain</div>
+                            <p>${linkifyReferences(acc.your_domain)}</p>
+                        </div>
+                        <div class="info-box" style="margin-top: 1rem;">
+                            <div class="info-box-title">Their Domain</div>
+                            <p>${linkifyReferences(acc.their_domain)}</p>
+                        </div>
+                        <div class="info-box advisor-note" style="margin-top: 1rem;">
+                            <div class="info-box-title">Positioning</div>
+                            <p style="font-weight: 600;">${linkifyReferences(acc.positioning)}</p>
                         </div>
                     </div>
                 `;
