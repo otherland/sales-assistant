@@ -187,9 +187,27 @@ function SequentialContent({ item, itemId }) {
           </InfoBox>
         )}
 
+        {item.advisor_notes && item.advisor_notes.length > 0 && (
+          <InfoBox title="Advisor Notes" variant="advisor-note">
+            <ul className="bullet-list">
+              {item.advisor_notes.map((note, idx) => (
+                <li key={idx}>
+                  <LinkifiedText text={note} />
+                </li>
+              ))}
+            </ul>
+          </InfoBox>
+        )}
+
         {item.script && <ScriptBlock script={item.script} />}
 
         {item.intro && <ScriptBlock script={item.intro} />}
+
+        {item.content && (
+          <InfoBox title="Additional Content">
+            <LinkifiedText text={item.content} />
+          </InfoBox>
+        )}
 
         {item.question_groups && item.question_groups.length > 0 && (
           <>

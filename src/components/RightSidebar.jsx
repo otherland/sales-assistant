@@ -2,6 +2,40 @@ import React, { useState, useMemo, useEffect } from 'react'
 import { useSalesData } from '../context/SalesDataContext'
 import { useContent } from '../context/ContentContext'
 
+// Framework sequential order for categories
+const CATEGORY_ORDER = [
+  'Opening Frame',
+  'Fork Deflection',
+  'Discovery - Top of Funnel',
+  'Discovery - Middle/Bottom of Funnel',
+  'Discovery - Bottom of Funnel',
+  'The Tic - Process Repeatability',
+  'The Tac - Definition',
+  'The Toe - Power Transfer',
+  'Money & Budget',
+  'Quality & Proof',
+  'Timing & Process',
+  'How & Mechanism',
+  'Referrals & Connections',
+  'Competition',
+  'Internal Dynamics',
+  'Process & Clarity',
+  'Scope & Structure',
+  'Contract & Legal',
+  'Integration & Pricing',
+  'Transition to Call Two',
+  'Mid-Discovery Issues',
+  'Integration/Close Issues',
+  'Post-Scope Issues',
+  'Tic-Tac-Toe Variations',
+  'Objection Variations - Mechanism',
+  'Objection Variations - Quality',
+  'Objection Variations - Timing',
+  'Disqualification Signals',
+  'Edge Cases & Unexpected',
+  'Uncategorized'
+]
+
 // Category emoji mapping
 const CATEGORY_EMOJIS = {
   'Money & Budget': '💰',
@@ -236,6 +270,12 @@ const HANDLER_EMOJIS = {
   'time_waster_behaviors': '⏰',
   'we_have_an_emergency_can_we_reschedule': '🚨',
   
+  // Transition to Call Two
+  'can_we_start_sooner_than_2_weeks': '⚡',
+  
+  // Objection Variations - Timing
+  'lets_start_in_q1': '📅',
+  
   // Additional Discovery
   'cant_answer': '❓',
   'deflects_question': '🔄',
@@ -255,6 +295,7 @@ const HANDLER_EMOJIS = {
   'communication_cadence': '📞',
   'onboarding_questions': '🎓',
   'whats_included': '📦',
+  'no_crm_tracking': '🗂️',
   
   // Additional Referrals & Network
   'referral_only_absolutist': '🚫',
@@ -380,9 +421,19 @@ function RightSidebar({ isOpen, onClose }) {
       })
     })
 
-    // Convert to array and sort
+    // Convert to array and sort by framework order
     return Object.keys(categoriesMap)
-      .sort()
+      .sort((a, b) => {
+        const indexA = CATEGORY_ORDER.indexOf(a)
+        const indexB = CATEGORY_ORDER.indexOf(b)
+        // If both are in the order array, sort by their position
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB
+        // If only one is in the order array, prioritize it
+        if (indexA !== -1) return -1
+        if (indexB !== -1) return 1
+        // If neither is in the order array, sort alphabetically
+        return a.localeCompare(b)
+      })
       .map(category => ({
         title: category,
         handlers: categoriesMap[category].sort((a, b) => a.title.localeCompare(b.title))

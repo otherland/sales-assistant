@@ -40,6 +40,12 @@ function HandlerContent({ handlerData, handlerId }) {
           </InfoBox>
         )}
 
+        {handlerData.content && (
+          <InfoBox title="Additional Content">
+            <LinkifiedText text={handlerData.content} />
+          </InfoBox>
+        )}
+
         {handlerData.story_mode && (
           <div style={{
             margin: '2.5rem 0',
