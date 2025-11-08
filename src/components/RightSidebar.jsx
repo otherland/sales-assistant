@@ -367,6 +367,13 @@ function RightSidebar({ isOpen, onClose }) {
   
   // Initialize all categories as collapsed (closed by default)
   const [collapsedCategories, setCollapsedCategories] = useState({})
+  
+  // Initialize top-level sections collapsed state (all expanded by default)
+  const [collapsedSections, setCollapsedSections] = useState({
+    'top-objections': false,
+    'search-handlers': false,
+    'full-library': false
+  })
 
   // Update mobile state on resize
   useEffect(() => {
@@ -481,6 +488,13 @@ function RightSidebar({ isOpen, onClose }) {
     }))
   }
 
+  const toggleSection = (sectionKey) => {
+    setCollapsedSections(prev => ({
+      ...prev,
+      [sectionKey]: !prev[sectionKey]
+    }))
+  }
+
   const handleHandlerClick = (handlerId) => {
     loadHandler(handlerId)
     if (window.innerWidth <= 768) {
@@ -521,59 +535,88 @@ function RightSidebar({ isOpen, onClose }) {
 
       {/* Top Objections */}
       <div className="nav-section">
-        <div className="nav-section-title">⭐ Top Objections</div>
-        <div className="interrupt-sequence nav-content">
-          <div className="interrupt-step" onClick={() => handleContentClick('pricing_objection')}>
-            <div className="step-number">1</div>
-            <div className="step-content">
-              <div className="step-title">Pricing Objection</div>
-              <div className="step-desc">Handle early pricing questions</div>
-            </div>
-          </div>
-          <div className="interrupt-step" onClick={() => handleContentClick('universal_objection_handle')}>
-            <div className="step-number">2</div>
-            <div className="step-content">
-              <div className="step-title">Universal Handle</div>
-              <div className="step-desc">Framework for any objection</div>
-            </div>
-          </div>
-          <div className="interrupt-step" onClick={() => handleContentClick('referrals_objection')}>
-            <div className="step-number">3</div>
-            <div className="step-content">
-              <div className="step-title">Referrals Objection</div>
-              <div className="step-desc">Handle referral-only prospects</div>
-            </div>
-          </div>
+        <div 
+          className="nav-section-title nav-section-title-collapsible"
+          onClick={() => toggleSection('top-objections')}
+        >
+          <span>⭐ Top Objections</span>
+          <span className="nav-section-toggle">
+            {collapsedSections['top-objections'] ? '▼' : '▲'}
+          </span>
         </div>
+        {!collapsedSections['top-objections'] && (
+          <div className="interrupt-sequence nav-content">
+            <div className="interrupt-step" onClick={() => handleContentClick('pricing_objection')}>
+              <div className="step-number">1</div>
+              <div className="step-content">
+                <div className="step-title">Pricing Objection</div>
+                <div className="step-desc">Handle early pricing questions</div>
+              </div>
+            </div>
+            <div className="interrupt-step" onClick={() => handleContentClick('universal_objection_handle')}>
+              <div className="step-number">2</div>
+              <div className="step-content">
+                <div className="step-title">Universal Handle</div>
+                <div className="step-desc">Framework for any objection</div>
+              </div>
+            </div>
+            <div className="interrupt-step" onClick={() => handleContentClick('referrals_objection')}>
+              <div className="step-number">3</div>
+              <div className="step-content">
+                <div className="step-title">Referrals Objection</div>
+                <div className="step-desc">Handle referral-only prospects</div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Search Handlers */}
       <div className="nav-section">
-        <div className="nav-section-title">🔍 Search Handlers</div>
-        <div className="search-container">
-          <input
-            type="text"
-            id="handler-search"
-            placeholder="Search objections by keyword..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          {searchQuery && (
-            <button
-              type="button"
-              className="clear-search-btn"
-              onClick={handleClearSearch}
-              title="Clear search"
-            >
-              ×
-            </button>
-          )}
+        <div 
+          className="nav-section-title nav-section-title-collapsible"
+          onClick={() => toggleSection('search-handlers')}
+        >
+          <span>🔍 Search Handlers</span>
+          <span className="nav-section-toggle">
+            {collapsedSections['search-handlers'] ? '▼' : '▲'}
+          </span>
         </div>
+        {!collapsedSections['search-handlers'] && (
+          <div className="search-container">
+            <input
+              type="text"
+              id="handler-search"
+              placeholder="Search objections by keyword..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                className="clear-search-btn"
+                onClick={handleClearSearch}
+                title="Clear search"
+              >
+                ×
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Full Handler Library */}
       <div className="nav-section">
-        <div className="nav-section-title">⛽ FULL HANDLER LIBRARY</div>
+        <div 
+          className="nav-section-title nav-section-title-collapsible"
+          onClick={() => toggleSection('full-library')}
+        >
+          <span>⛽ FULL HANDLER LIBRARY</span>
+          <span className="nav-section-toggle">
+            {collapsedSections['full-library'] ? '▼' : '▲'}
+          </span>
+        </div>
+        {!collapsedSections['full-library'] && (
         <div className="nav-content">
           {filteredCategories.map((category, idx) => {
             const isCollapsed = collapsedCategories[category.title]
@@ -620,6 +663,7 @@ function RightSidebar({ isOpen, onClose }) {
             )
           })}
         </div>
+        )}
       </div>
     </nav>
   )

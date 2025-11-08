@@ -462,6 +462,50 @@ let currentTheme = typeof localStorage !== 'undefined' ? localStorage.getItem('t
 let currentUITheme = typeof localStorage !== 'undefined' ? localStorage.getItem('ui-theme') || 'presentation' : 'presentation';
 
 /**
+ * Applies a theme object directly (for custom themes)
+ * @param {Object} themeColors - Theme color object
+ * @param {boolean} isDarkMode - Whether this is a dark mode theme
+ */
+export function applyThemeObject(themeColors, isDarkMode = false) {
+    if (typeof document === 'undefined') return;
+    
+    const root = document.documentElement;
+    const body = document.body;
+
+    // Apply theme colors
+    for (const [property, value] of Object.entries(themeColors)) {
+        root.style.setProperty(`--${property}`, value);
+    }
+
+    // Update UI theme classes
+    const uiTheme = themeColors['ui-theme'] || 'custom';
+    const layoutMode = themeColors['layout-mode'] || 'executive-presentation';
+
+    // Remove all existing theme classes
+    body.className = body.className.replace(/\bui-theme-\w+\b/g, '').replace(/\blayout-\w+[-\w]*\b/g, '').trim();
+
+    // Add new theme classes
+    body.classList.add(`ui-theme-${uiTheme}`);
+    body.classList.add(`layout-${layoutMode.replace(/-/g, '-')}`);
+
+    // Handle dark mode styling for sidebar
+    if (isDarkMode) {
+        root.style.setProperty('--sidebar-text', '#f1f5f9');
+        root.style.setProperty('--sidebar-border', 'rgba(241, 245, 249, 0.1)');
+        body.classList.add('dark-mode');
+    } else {
+        root.style.setProperty('--sidebar-text', '#cbd5e1');
+        root.style.setProperty('--sidebar-border', 'rgba(255, 255, 255, 0.1)');
+        body.classList.remove('dark-mode');
+    }
+
+    if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('custom-theme', JSON.stringify(themeColors));
+        localStorage.setItem('ui-theme', uiTheme);
+    }
+}
+
+/**
  * Sets the application theme
  * @param {string} theme - Theme name (e.g., 'presentation-light', 'ocean-dark')
  */
@@ -508,6 +552,7 @@ export function setTheme(theme) {
     if (typeof localStorage !== 'undefined') {
         localStorage.setItem('theme', theme);
         localStorage.setItem('ui-theme', uiTheme);
+        localStorage.removeItem('custom-theme'); // Clear custom theme when using preset
     }
     currentTheme = theme;
     currentUITheme = uiTheme;
@@ -565,16 +610,34 @@ export function getCurrentUITheme() {
 
 // Initialize theme and font on load
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-    // Initialize theme from localStorage or default
-    const savedTheme = localStorage.getItem('theme') || 'presentation-light';
-    setTheme(savedTheme);
+    // Check if using custom color picker first
+    const useColorPicker = localStorage.getItem('use-color-picker') === 'true';
+    const customTheme = localStorage.getItem('custom-theme');
+    
+    if (useColorPicker && customTheme) {
+        try {
+            // Load custom theme
+            const themeColors = JSON.parse(customTheme);
+            const isDarkMode = localStorage.getItem('dark-mode') === 'true';
+            applyThemeObject(themeColors, isDarkMode);
+        } catch (e) {
+            console.error('Failed to load custom theme on init:', e);
+            // Fallback to preset theme
+            const savedTheme = localStorage.getItem('color-theme') || localStorage.getItem('theme') || 'presentation-light';
+            setTheme(savedTheme);
+        }
+    } else {
+        // Initialize preset theme from localStorage or default
+        const savedTheme = localStorage.getItem('color-theme') || localStorage.getItem('theme') || 'presentation-light';
+        setTheme(savedTheme);
+    }
 
     // Initialize font from localStorage or default to Merriweather
-    const savedFont = localStorage.getItem('selectedFont') || 'Merriweather';
+    const savedFont = localStorage.getItem('selectedFont') || localStorage.getItem('script-font-family') || 'Merriweather';
     setFont(savedFont);
 
     // Initialize font size from localStorage or default to 16px
-    const savedFontSize = localStorage.getItem('scriptFontSize') || '16';
+    const savedFontSize = localStorage.getItem('scriptFontSize') || localStorage.getItem('script-font-size') || '16';
     document.documentElement.style.setProperty('--script-font-size', savedFontSize + 'px');
     
     // Initialize advice visibility from localStorage (default: visible)
@@ -589,6 +652,7 @@ if (typeof window !== 'undefined') {
     window.themes = themes;
     window.fontOptions = fontOptions;
     window.setTheme = setTheme;
+    window.applyThemeObject = applyThemeObject;
     window.setFont = setFont;
     window.toggleTheme = toggleTheme;
     window.getCurrentTheme = getCurrentTheme;
