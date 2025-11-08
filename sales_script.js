@@ -163,6 +163,52 @@ let salesData = {
         "soft_commitment": "This is really helpful - and just so we're calibrated correctly, when we take what we're covering here and start building out a scope for review, does that decision typically sit with you directly, or will you have it reviewed internally first so we can make sure you've got everything you'd need?"
       },
       {
+        "id": "two_paths_emerge",
+        "title": "Two Paths Emerge — Process Assessment",
+        "category": "sequential",
+        "phase": 2,
+        "section": "B.5",
+        "purpose": "Determine if they have a repeatable process or need to reconstruct from past success",
+        "advisor_notes": [
+          "This is a critical branching point: you're determining whether to frame your offer as fuel to an existing engine, or reconstruct their process from a past win",
+          "Most referral-driven businesses don't have a formal process - they have patterns of luck. This stage surfaces that reality.",
+          "The goal: build a map that becomes the backbone of your proposal, revealing whether you're plugging into an existing system or building one from scratch"
+        ],
+        "assessment_question": "Based on what you've described, would you say you have a <b>repeatable, documented process</b> that converts qualified interest into clients consistently? Or is it more that each deal tends to follow its own path?",
+        "paths": [
+          {
+            "id": "has_repeatable_process",
+            "condition": "They confirm they have a repeatable process",
+            "script": "<i>Perfect</i> — since that system converts consistently, we'll feed it with qualified interest. Think of us as <b>fuel to an engine you've already proven</b>.<br><br>What that means is: we'll generate qualified opportunities that enter at the same point where your best-performing channels currently feed in — whether that's referrals, partnerships, or inbound. Then your existing process takes over from there.<br><br>Does that structure make sense?",
+            "advisor_notes": [
+              "Frame your offer as a predictable channel bolted onto what already works",
+              "This positions you as extending capacity, not replacing their system",
+              "Anchor the 'installation point' - where your opportunities will enter their proven process"
+            ]
+          },
+          {
+            "id": "no_repeatable_process",
+            "condition": "They say they don't have a formal process, or it's inconsistent/ad-hoc",
+            "script": "<i>That makes sense</i> — a lot of businesses grow through referrals and relationships, which means each deal can feel unique.<br><br>Here's what I want to do: let's <b>reconstruct your process from your last successful conversion</b>.<br><br>Can you name <b>one client you actually converted through your network</b> — whether that was a referral, introduction, or relationship-based opportunity?<br><br>(Wait for them to name a client)<br><br>Perfect. Now walk me through that win <b>step-by-step</b>: how did it come in? What moved it forward? What sealed it?<br><br>(Trace the entire path: first contact → initial conversation → what was exchanged → follow-up cadence → what closed it)<br><br>(After they've walked through it)<br><br><i>Got it</i>. So here's what we'll do: <b>we'll replicate that same path for every introduction we generate</b>. All you need to do is run the same play that converted this client.<br><br>That single sequence becomes the <b>standardized playbook</b> we feed qualified opportunities into. We're turning your past success into a repeatable system.",
+            "advisor_notes": [
+              "This converts confusion into clarity — you've turned their past luck into a standardized playbook",
+              "Ask granular questions: Who took the first call? What questions were asked? What assets were sent? How was follow-up handled? How long did it take?",
+              "The goal: extract the functional reality of their business, even if it's not formally documented",
+              "After reconstruction, confirm: 'So this is the process we'll replicate for every introduction we generate'"
+            ],
+            "reconstruction_questions": [
+              "Who took that first call or initial conversation?",
+              "What questions were asked on that call?",
+              "What information or assets were exchanged next — deck, proposal, case study, engagement letter?",
+              "How was follow-up handled and how often?",
+              "How long did it take to move from first touch to signed agreement?",
+              "What specifically sealed it — was it the relationship, the fit, timing, or something else?"
+            ]
+          }
+        ],
+        "transition": "Now that we've mapped how opportunities move through your system — whether that's a documented process or the sequence we just reconstructed — let's talk about what happens at the bottom of the funnel."
+      },
+      {
         "id": "discovery_bottom_funnel",
         "title": "Bottom of Funnel — Revenue Mechanics",
         "category": "sequential",

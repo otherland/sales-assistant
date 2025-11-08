@@ -284,12 +284,75 @@ function SequentialContent({ item, itemId }) {
           </>
         )}
 
-        {item.paths && (
+        {item.assessment_question && (
+          <InfoBox title="Assessment Question" variant="advisor-note" style={{ margin: '2rem 0' }}>
+            <ScriptBlock script={item.assessment_question} />
+          </InfoBox>
+        )}
+
+        {item.paths && item.assessment_question ? (
+          // Two Paths Emerge structure - custom rendering
+          <div style={{ margin: '2rem 0' }}>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', fontSize: '1.25rem' }}>
+              Two Paths Emerge:
+            </h3>
+            {item.paths.map((path, idx) => (
+              <div
+                key={path.id || idx}
+                style={{
+                  marginBottom: '2rem',
+                  padding: '1.5rem',
+                  background: 'var(--bg-secondary)',
+                  border: '2px solid var(--primary-color)',
+                  borderRadius: '8px'
+                }}
+              >
+                <h4 style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontWeight: 700 }}>
+                  Path {idx + 1}: {path.condition}
+                </h4>
+                {path.script && (
+                  <div style={{ marginBottom: '1rem' }}>
+                    <ScriptBlock script={path.script} />
+                  </div>
+                )}
+                {path.advisor_notes && path.advisor_notes.length > 0 && (
+                  <InfoBox title="Advisor Notes" variant="advisor-note" style={{ marginTop: '1rem' }}>
+                    <ul className="bullet-list">
+                      {path.advisor_notes.map((note, noteIdx) => (
+                        <li key={noteIdx}>
+                          <LinkifiedText text={note} />
+                        </li>
+                      ))}
+                    </ul>
+                  </InfoBox>
+                )}
+                {path.reconstruction_questions && path.reconstruction_questions.length > 0 && (
+                  <InfoBox title="Reconstruction Questions" variant="advisor-note" style={{ marginTop: '1rem' }}>
+                    <ul className="bullet-list">
+                      {path.reconstruction_questions.map((q, qIdx) => (
+                        <li key={qIdx}>
+                          <LinkifiedText text={q} />
+                        </li>
+                      ))}
+                    </ul>
+                  </InfoBox>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : item.paths ? (
+          // Economy paths structure - use ForkPaths component
           <ForkPaths
             itemId={itemId}
             paths={item.paths}
             onPathSelect={handleEconomyPath}
           />
+        ) : null}
+
+        {item.transition && (
+          <InfoBox title="Transition" variant="advisor-note" style={{ margin: '2rem 0' }}>
+            <ScriptBlock script={item.transition} />
+          </InfoBox>
         )}
 
         {item.on_call_sequence && (
@@ -434,7 +497,8 @@ function SequentialContent({ item, itemId }) {
             'handle_steps', 'how_to_handle', 'key_lesson', 'advisor_mindset', 'advisor_guidance',
             'advisor_notes', 'script', 'intro', 'content', 'soft_commitment', 'carpet_integration',
             'when_to_deploy', 'when_NOT_to_deploy', 'where_to_go_next', 'question_groups', 'paths',
-            'on_call_sequence', 'handling_quality_objections', 'quick_reference_card', 'capitalization_framing'
+            'on_call_sequence', 'handling_quality_objections', 'quick_reference_card', 'capitalization_framing',
+            'assessment_question', 'transition'
           ])
 
           const unrenderedProps = Object.keys(item).filter(key => 
