@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSalesData } from '../context/SalesDataContext'
 import { useContent } from '../context/ContentContext'
+import ProgressIndicator from './ProgressIndicator'
+import RecentlyViewed from './RecentlyViewed'
 
 function LeftSidebar({ isOpen, onClose }) {
   const { salesData, loading } = useSalesData()
@@ -222,6 +224,12 @@ function LeftSidebar({ isOpen, onClose }) {
           ))}
         </div>
       </div>
+
+      {/* Progress Indicator */}
+      <ProgressIndicator />
+
+      {/* Recently Viewed */}
+      <RecentlyViewed />
     </nav>
   )
 }

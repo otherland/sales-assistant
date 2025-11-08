@@ -12,6 +12,28 @@ function SequentialContent({ item, itemId }) {
   const { salesData } = useSalesData()
   const [selectedEconomyPath, setSelectedEconomyPath] = useState(null)
 
+  // Calculate starting question number for this section
+  const getStartingQuestionNumber = () => {
+    if (!salesData?.sequential_flow?.call_one) return 1
+    
+    let questionCount = 0
+    const currentIndex = salesData.sequential_flow.call_one.findIndex(i => i.id === itemId)
+    
+    // Count all questions in sections before this one
+    for (let i = 0; i < currentIndex; i++) {
+      const section = salesData.sequential_flow.call_one[i]
+      if (section.question_groups && Array.isArray(section.question_groups)) {
+        section.question_groups.forEach(group => {
+          if (group.questions && Array.isArray(group.questions)) {
+            questionCount += group.questions.length
+          }
+        })
+      }
+    }
+    
+    return questionCount + 1
+  }
+
   if (!item) return null
 
   const category = item.category === 'interrupt' ? 'Objection Handler' : item.category
@@ -260,29 +282,36 @@ function SequentialContent({ item, itemId }) {
           </InfoBox>
         )}
 
-        {item.question_groups && item.question_groups.length > 0 && (
-          <>
-            {item.question_groups.map((group, groupIndex) => {
-              // Create a unique key that includes sectionId and group title
-              const groupKey = `${itemId}_${group.title.replace(/\s+/g, '_')}_${groupIndex}`
-              return (
-                <QuestionGroup
-                  key={groupKey}
-                  ref={(el) => {
-                    // Store ref in a global map for resumeDiscovery to access
-                    if (el && typeof window !== 'undefined') {
-                      if (!window.questionGroupRefs) window.questionGroupRefs = new Map()
-                      window.questionGroupRefs.set(groupKey, el)
-                    }
-                  }}
-                  group={group}
-                  sectionId={itemId}
-                  groupIndex={groupIndex}
-                />
-              )
-            })}
-          </>
-        )}
+        {item.question_groups && item.question_groups.length > 0 && (() => {
+          let currentQuestionNumber = getStartingQuestionNumber()
+          return (
+            <>
+              {item.question_groups.map((group, groupIndex) => {
+                // Create a unique key that includes sectionId and group title
+                const groupKey = `${itemId}_${group.title.replace(/\s+/g, '_')}_${groupIndex}`
+                const startingNumber = currentQuestionNumber
+                // Increment for next group
+                currentQuestionNumber += group.questions ? group.questions.length : 0
+                return (
+                  <QuestionGroup
+                    key={groupKey}
+                    ref={(el) => {
+                      // Store ref in a global map for resumeDiscovery to access
+                      if (el && typeof window !== 'undefined') {
+                        if (!window.questionGroupRefs) window.questionGroupRefs = new Map()
+                        window.questionGroupRefs.set(groupKey, el)
+                      }
+                    }}
+                    group={group}
+                    sectionId={itemId}
+                    groupIndex={groupIndex}
+                    startingQuestionNumber={startingNumber}
+                  />
+                )
+              })}
+            </>
+          )
+        })()}
 
         {item.assessment_question && (
           <InfoBox title="Assessment Question" variant="advisor-note" style={{ margin: '2rem 0' }}>

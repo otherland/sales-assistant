@@ -66,6 +66,11 @@ export function ContentProvider({ children }) {
     // Store last sequential content for breadcrumb trail
     localStorage.setItem('lastSequentialContent', itemId)
 
+    // Track recently viewed
+    if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
+      window.addToRecentlyViewed('content', itemId, item.title)
+    }
+
     if (updateURLParam) {
       updateURL('content', itemId)
     }
@@ -83,6 +88,11 @@ export function ContentProvider({ children }) {
     if (!handlerData) {
       console.warn(`Handler not found: ${handlerId}`)
       return
+    }
+
+    // Track recently viewed
+    if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
+      window.addToRecentlyViewed('handler', handlerId, handlerData.title || handlerId)
     }
 
     if (updateURLParam) {
@@ -108,6 +118,11 @@ export function ContentProvider({ children }) {
       return
     }
 
+    // Track recently viewed
+    if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
+      window.addToRecentlyViewed('reference', refId, refData.title || refId)
+    }
+
     if (updateURLParam) {
       updateURL('reference', refId)
     }
@@ -127,6 +142,11 @@ export function ContentProvider({ children }) {
     if (!objection) {
       console.warn(`Objection ${objectionNum} not found`)
       return
+    }
+
+    // Track recently viewed
+    if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
+      window.addToRecentlyViewed('objection', objectionNum.toString(), `Objection #${objectionNum}: ${objection.objection || 'Untitled'}`)
     }
 
     if (updateURLParam) {

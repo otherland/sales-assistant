@@ -12,6 +12,8 @@ export function useQuestionState(questionId) {
     const newState = !isAsked
     setIsAsked(newState)
     localStorage.setItem(`question_${questionId}`, newState.toString())
+    // Dispatch event for progress tracking
+    window.dispatchEvent(new Event('questionToggled'))
   }, [isAsked, questionId])
 
   return { isAsked, toggleQuestion }

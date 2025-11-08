@@ -2,7 +2,7 @@ import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'rea
 import { useQuestionState } from '../../hooks/useQuestionState'
 import LinkifiedText from './LinkifiedText'
 
-const QuestionGroup = forwardRef(function QuestionGroup({ group, sectionId, groupIndex }, ref) {
+const QuestionGroup = forwardRef(function QuestionGroup({ group, sectionId, groupIndex, startingQuestionNumber = 1 }, ref) {
   const [isCollapsed, setIsCollapsed] = useState(true)
   const [questionNumbers, setQuestionNumbers] = useState({})
 
@@ -12,16 +12,15 @@ const QuestionGroup = forwardRef(function QuestionGroup({ group, sectionId, grou
   }))
 
   useEffect(() => {
-    // Calculate question numbers across all groups
-    // This is a simplified version - you may need to adjust based on your data structure
-    let questionNumber = 1
+    // Calculate question numbers starting from the provided startingQuestionNumber
+    let questionNumber = startingQuestionNumber
     const numbers = {}
     group.questions.forEach((q, idx) => {
       const questionId = `${sectionId}_${group.title.replace(/\s+/g, '_')}_${idx}`
       numbers[questionId] = questionNumber++
     })
     setQuestionNumbers(numbers)
-  }, [group, sectionId])
+  }, [group, sectionId, startingQuestionNumber])
 
   // Listen for expand events for this group's questions
   useEffect(() => {
@@ -56,7 +55,7 @@ const QuestionGroup = forwardRef(function QuestionGroup({ group, sectionId, grou
         <div className="question-group-list">
           {group.questions.map((q, idx) => {
             const questionId = `${sectionId}_${group.title.replace(/\s+/g, '_')}_${idx}`
-            const questionNumber = questionNumbers[questionId] || idx + 1
+            const questionNumber = questionNumbers[questionId] || startingQuestionNumber + idx
             return (
               <QuestionItem
                 key={idx}

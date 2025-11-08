@@ -1379,9 +1379,8 @@ let salesData = {
         "title": "They Must Have Current Vendor",
         "category": "Tac",
         "trigger": "Requirement that prospects have existing vendor to replace",
-        "quick_response": "Understood. We will lock that replacement focus into the targeting criteria, which tightens the Serviceable anchor. To ensure the scope remains mathematically sound, we must confirm that the volume of vendors available for replacement is sufficient to support the 90-day engagement milestones we are anchoring to.",
-        "full_script": "Understood. We will lock that replacement focus into the targeting criteria, which tightens the Serviceable anchor. To ensure the scope remains mathematically sound, we must confirm that the volume of vendors available for replacement is sufficient to support the 90-day engagement milestones we are anchoring to.<br><br>This accepts the constraint as defining the scope, but immediately pivots the conversation back to the feasibility of the TAM and Sizable/Serviceable criteria.",
-        "key_principle": "Accept constraint, verify TAM sufficiency."
+        "full_script": "Understood. We will lock that replacement focus into the targeting criteria, which tightens the Serviceable anchor. To ensure the scope remains mathematically sound, we must confirm that the volume of vendors available for replacement is sufficient to support the 90-day engagement milestones we are anchoring to.",
+        "key_principle": "This accepts the constraint as defining the scope, but immediately pivots the conversation back to the feasibility of the TAM and Sizable/Serviceable criteria. Accept constraint, verify TAM sufficiency."
       },
 
       "minimum_company_size_of_50m": {
