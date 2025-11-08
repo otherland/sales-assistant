@@ -6,6 +6,7 @@ import ScriptBlock from './ScriptBlock'
 import LinkifiedText from './LinkifiedText'
 import QuestionGroup from './QuestionGroup'
 import ForkPaths from './ForkPaths'
+import CollapsibleSection from './CollapsibleSection'
 
 function SequentialContent({ item, itemId }) {
   const { loadContent } = useContent()
@@ -197,6 +198,152 @@ function SequentialContent({ item, itemId }) {
           </InfoBox>
         )}
 
+        {/* Main Script - Core verbatim (collapsible, expanded by default) */}
+        {item.main_script && (
+          <CollapsibleSection 
+            title={item.main_script.title || "📝 What to Say (Standard Script)"}
+            // defaultCollapsed={false}
+            variant="default"
+          >
+            {item.main_script.script && (
+              <div style={{ marginBottom: item.main_script.advisor_notes ? '1rem' : '0' }}>
+                <ScriptBlock script={item.main_script.script} />
+              </div>
+            )}
+            {item.main_script.advisor_notes && item.main_script.advisor_notes.length > 0 && (
+              <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--border-color)' }}>
+                <strong style={{ color: 'var(--primary-color)' }}>💡 How to Deliver:</strong>
+                <ul className="bullet-list" style={{ marginTop: '0.5rem' }}>
+                  {item.main_script.advisor_notes.map((note, idx) => (
+                    <li key={idx}>
+                      <LinkifiedText text={note} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </CollapsibleSection>
+        )}
+
+        {/* Legacy script support (for backward compatibility) */}
+        {!item.main_script && item.script && <ScriptBlock script={item.script} />}
+
+        {item.intro && <ScriptBlock script={item.intro} />}
+
+        {/* Context Variations - Collapsible */}
+        {item.context_variations && item.context_variations.variations && item.context_variations.variations.length > 0 && (
+          <>
+            {item.context_variations.variations.map((variation, idx) => {
+              // Special handling for CRE dual-track - make it stand out
+              const isCRE = variation.id === 'cre_dual_track'
+              const variationTitle = isCRE 
+                ? 'When They Need Both Deals AND Capital'
+                : variation.id === 'why_now_timeline'
+                ? 'When They Ask About Timeline'
+                : variation.title
+
+              return (
+                <CollapsibleSection
+                  key={variation.id || idx}
+                  title={variationTitle}
+                  defaultCollapsed={true}
+                  icon={isCRE ? '🏢' : '⏰'}
+                >
+                  {variation.when_to_use && (
+                    <div style={{ marginBottom: '1rem', padding: '0.75rem', backgroundColor: 'var(--bg-secondary)', borderRadius: '4px' }}>
+                      <strong style={{ color: 'var(--primary-color)' }}>When to Use:</strong>
+                      <div style={{ marginTop: '0.25rem' }}>
+                        <LinkifiedText text={variation.when_to_use} />
+                      </div>
+                    </div>
+                  )}
+                  {variation.context && (
+                    <div style={{ marginBottom: '1rem' }}>
+                      <strong style={{ color: 'var(--text-primary)' }}>Context:</strong>
+                      <div style={{ marginTop: '0.25rem' }}>
+                        <LinkifiedText text={variation.context} />
+                      </div>
+                    </div>
+                  )}
+                  {variation.diagnosis_questions && variation.diagnosis_questions.length > 0 && (
+                    <div style={{ marginBottom: '1rem' }}>
+                      <strong style={{ color: 'var(--text-primary)' }}>Questions to Ask:</strong>
+                      <ul className="bullet-list" style={{ marginTop: '0.5rem' }}>
+                        {variation.diagnosis_questions.map((q, qIdx) => (
+                          <li key={qIdx}>
+                            <LinkifiedText text={q} />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {variation.script && (
+                    <div style={{ marginBottom: '1rem' }}>
+                      <strong style={{ color: 'var(--text-primary)' }}>What to Say:</strong>
+                      <div style={{ marginTop: '0.5rem' }}>
+                        <ScriptBlock script={variation.script} />
+                      </div>
+                    </div>
+                  )}
+                  {variation.milestone_structure && (
+                    <div style={{ marginBottom: '1rem', padding: '0.75rem', backgroundColor: 'var(--bg-secondary)', borderRadius: '4px' }}>
+                      <strong style={{ color: 'var(--text-primary)' }}>Milestone Structure:</strong>
+                      <div style={{ marginTop: '0.25rem' }}>
+                        <LinkifiedText text={variation.milestone_structure} />
+                      </div>
+                    </div>
+                  )}
+                  {variation.risk_mitigation && (
+                    <div style={{ marginBottom: '1rem', padding: '0.75rem', backgroundColor: 'var(--bg-secondary)', borderRadius: '4px' }}>
+                      <strong style={{ color: 'var(--text-primary)' }}>Risk Mitigation:</strong>
+                      <div style={{ marginTop: '0.25rem' }}>
+                        <LinkifiedText text={variation.risk_mitigation} />
+                      </div>
+                    </div>
+                  )}
+                  {variation.advisor_notes && variation.advisor_notes.length > 0 && (
+                    <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--border-color)' }}>
+                      <strong style={{ color: 'var(--primary-color)' }}>💡 How to Deliver:</strong>
+                      <ul className="bullet-list" style={{ marginTop: '0.5rem' }}>
+                        {variation.advisor_notes.map((note, noteIdx) => (
+                          <li key={noteIdx}>
+                            <LinkifiedText text={note} />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </CollapsibleSection>
+              )
+            })}
+          </>
+        )}
+
+        {/* Additional Resources - Collapsible */}
+        {item.additional_resources && (
+          <CollapsibleSection 
+            title="📚 Additional Resources"
+            defaultCollapsed={true}
+            variant="default"
+          >
+            {item.additional_resources.approval_flow_questions && (
+              <div>
+                <strong style={{ color: 'var(--primary-color)' }}>Approval Flow Questions:</strong>
+                <div style={{ marginTop: '0.5rem' }}>
+                  <LinkifiedText text={item.additional_resources.approval_flow_questions} />
+                </div>
+              </div>
+            )}
+          </CollapsibleSection>
+        )}
+
+        {/* Legacy content support (for backward compatibility) */}
+        {!item.additional_resources && item.content && (
+          <InfoBox title="Additional Content">
+            <LinkifiedText text={item.content} />
+          </InfoBox>
+        )}
+
         {item.advisor_mindset && (
           <InfoBox title="Advisor Mindset" variant="advisor-note">
             <p>{item.advisor_mindset}</p>
@@ -209,7 +356,8 @@ function SequentialContent({ item, itemId }) {
           </InfoBox>
         )}
 
-        {item.advisor_notes && item.advisor_notes.length > 0 && (
+        {/* Legacy advisor notes (only render if not in main_script) */}
+        {!item.main_script && item.advisor_notes && item.advisor_notes.length > 0 && (
           <InfoBox title="Advisor Notes" variant="advisor-note">
             <ul className="bullet-list">
               {item.advisor_notes.map((note, idx) => (
@@ -218,16 +366,6 @@ function SequentialContent({ item, itemId }) {
                 </li>
               ))}
             </ul>
-          </InfoBox>
-        )}
-
-        {item.script && <ScriptBlock script={item.script} />}
-
-        {item.intro && <ScriptBlock script={item.intro} />}
-
-        {item.content && (
-          <InfoBox title="Additional Content">
-            <LinkifiedText text={item.content} />
           </InfoBox>
         )}
 
@@ -321,54 +459,58 @@ function SequentialContent({ item, itemId }) {
 
         {item.paths && item.assessment_question ? (
           // Two Paths Emerge structure - custom rendering
-          <div style={{ margin: '2rem 0' }}>
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', fontSize: '1.25rem' }}>
-              Two Paths Emerge:
-            </h3>
-            {item.paths.map((path, idx) => (
-              <div
-                key={path.id || idx}
-                style={{
-                  marginBottom: '2rem',
-                  padding: '1.5rem',
-                  background: 'var(--bg-secondary)',
-                  border: '2px solid var(--primary-color)',
-                  borderRadius: '8px'
-                }}
-              >
-                <h4 style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontWeight: 700 }}>
-                  Path {idx + 1}: {path.condition}
-                </h4>
-                {path.script && (
-                  <div style={{ marginBottom: '1rem' }}>
-                    <ScriptBlock script={path.script} />
-                  </div>
-                )}
-                {path.advisor_notes && path.advisor_notes.length > 0 && (
-                  <InfoBox title="Advisor Notes" variant="advisor-note" style={{ marginTop: '1rem' }}>
-                    <ul className="bullet-list">
-                      {path.advisor_notes.map((note, noteIdx) => (
-                        <li key={noteIdx}>
-                          <LinkifiedText text={note} />
-                        </li>
-                      ))}
-                    </ul>
-                  </InfoBox>
-                )}
-                {path.reconstruction_questions && path.reconstruction_questions.length > 0 && (
-                  <InfoBox title="Reconstruction Questions" variant="advisor-note" style={{ marginTop: '1rem' }}>
-                    <ul className="bullet-list">
-                      {path.reconstruction_questions.map((q, qIdx) => (
-                        <li key={qIdx}>
-                          <LinkifiedText text={q} />
-                        </li>
-                      ))}
-                    </ul>
-                  </InfoBox>
-                )}
-              </div>
-            ))}
-          </div>
+          <CollapsibleSection 
+            title="Two Paths Emerge — Process Assessment"
+            defaultCollapsed={true}
+            variant="highlight"
+            className="two-paths-emerge-section"
+          >
+            <div style={{ marginTop: '1rem' }}>
+              {item.paths.map((path, idx) => (
+                <div
+                  key={path.id || idx}
+                  style={{
+                    marginBottom: '2rem',
+                    padding: '1.5rem',
+                    background: 'var(--bg-secondary)',
+                    border: '2px solid var(--primary-color)',
+                    borderRadius: '8px'
+                  }}
+                >
+                  <h4 style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontWeight: 700 }}>
+                    Path {idx + 1}: {path.condition}
+                  </h4>
+                  {path.script && (
+                    <div style={{ marginBottom: '1rem' }}>
+                      <ScriptBlock script={path.script} />
+                    </div>
+                  )}
+                  {path.advisor_notes && path.advisor_notes.length > 0 && (
+                    <InfoBox title="Advisor Notes" variant="advisor-note" style={{ marginTop: '1rem' }}>
+                      <ul className="bullet-list">
+                        {path.advisor_notes.map((note, noteIdx) => (
+                          <li key={noteIdx}>
+                            <LinkifiedText text={note} />
+                          </li>
+                        ))}
+                      </ul>
+                    </InfoBox>
+                  )}
+                  {path.reconstruction_questions && path.reconstruction_questions.length > 0 && (
+                    <InfoBox title="Reconstruction Questions" variant="advisor-note" style={{ marginTop: '1rem' }}>
+                      <ul className="bullet-list">
+                        {path.reconstruction_questions.map((q, qIdx) => (
+                          <li key={qIdx}>
+                            <LinkifiedText text={q} />
+                          </li>
+                        ))}
+                      </ul>
+                    </InfoBox>
+                  )}
+                </div>
+              ))}
+            </div>
+          </CollapsibleSection>
         ) : item.paths ? (
           // Economy paths structure - use ForkPaths component
           <ForkPaths
@@ -516,6 +658,7 @@ function SequentialContent({ item, itemId }) {
           </InfoBox>
         )}
 
+
         {/* Generic fallback renderer for unhandled properties */}
         {(() => {
           // Properties that are already explicitly rendered
@@ -527,7 +670,7 @@ function SequentialContent({ item, itemId }) {
             'advisor_notes', 'script', 'intro', 'content', 'soft_commitment', 'carpet_integration',
             'when_to_deploy', 'when_NOT_to_deploy', 'where_to_go_next', 'question_groups', 'paths',
             'on_call_sequence', 'handling_quality_objections', 'quick_reference_card', 'capitalization_framing',
-            'assessment_question', 'transition'
+            'assessment_question', 'transition', 'main_script', 'context_variations', 'additional_resources'
           ])
 
           const unrenderedProps = Object.keys(item).filter(key => 

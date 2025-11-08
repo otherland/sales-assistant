@@ -851,6 +851,55 @@ body.dark-mode .font-selector select {
     padding: 1rem;
 }
 
+/* Collapsible Section Component */
+.collapsible-section {
+    margin: 1rem 0;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.collapsible-section.collapsed .collapsible-section-content {
+    display: none;
+}
+
+.collapsible-section-header {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.collapsible-section-header:hover {
+    opacity: 0.9;
+}
+
+.collapsible-section.collapsed .collapsible-section-header {
+    opacity: 0.8;
+}
+
+.collapsible-section-content {
+    padding: 1rem;
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 1000px;
+    }
+}
+
+body.dark-mode .collapsible-section {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
 .question-group-list .question-item {
     margin-bottom: 0.75rem;
 }
