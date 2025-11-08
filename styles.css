@@ -731,30 +731,12 @@ body.dark-mode .font-selector select {
     color: var(--script-text, var(--text-primary));
 }
 
-.script-block::before {
-    content: '“';
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-    font-size: 4rem;
-    font-weight: 900;
-    color: var(--quote-color, var(--primary-color));
-    opacity: 0.25;
-    line-height: 1;
-    font-family: 'Georgia', serif;
-}
 
-.script-block::after {
-    content: '”';
-    position: absolute;
-    bottom: 0.5rem;
-    right: 0.5rem;
-    font-size: 4rem;
-    font-weight: 900;
-    color: var(--quote-color, var(--primary-color));
-    opacity: 0.25;
-    line-height: 1;
-    font-family: 'Georgia', serif;
+
+/* Remove quotes for question items */
+.script-block.question-item::before,
+.script-block.question-item::after {
+    content: none;
 }
 
 /* Script formatting for better scannability */
@@ -1603,6 +1585,7 @@ body.advice-hidden .script-block {
         height: 100vh;
         z-index: 1000;
         transition: transform 0.3s ease;
+        pointer-events: auto;
     }
 
     /* Show sidebars when active */
@@ -1626,6 +1609,13 @@ body.advice-hidden .script-block {
         flex: 1;
         margin-left: 0 !important;
         margin-right: 0 !important;
+        padding: 0.5rem;
+        padding-bottom: 8rem;
+        padding-top: 6rem;
+    }
+
+    .script-block {
+        padding: 0.5rem;
     }
 
     .ui-theme-dashboard .content-wrapper {
@@ -1671,29 +1661,55 @@ body.advice-hidden .script-block {
         right: 20px;
     }
 
-    /* Hide toggle buttons when sidebars are open */
-    .sidebar-left.active ~ .main-content .sidebar-toggle-left,
-    .sidebar-right.active ~ .main-content .sidebar-toggle-right {
-        display: none;
+    /* Toggle buttons when sidebar is open - move into sidebar */
+    .sidebar-toggle.in-sidebar {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 24px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: none !important;
     }
 
-    /* Close buttons inside sidebars */
-    .sidebar-left .sidebar-toggle,
-    .sidebar-right .sidebar-toggle {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        width: 40px;
-        height: 40px;
-        font-size: 24px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+    .sidebar-toggle-left.in-sidebar {
+        left: calc(280px - 2.5rem) !important; /* sidebar width - button width/2 - padding */
     }
 
-    .sidebar-left .sidebar-toggle:hover,
-    .sidebar-right .sidebar-toggle:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: scale(1.05);
+    .sidebar-toggle-right.in-sidebar {
+        right: 1rem !important; /* Position at right edge of sidebar */
+    }
+
+    .sidebar-toggle.in-sidebar:hover {
+        background: rgba(255, 255, 255, 0.2) !important;
+        transform: scale(1.05) !important;
+    }
+
+    /* Settings popup mobile adjustments */
+    .settings-popup {
+        bottom: auto;
+        right: auto;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, calc(-50% + 10px)) scale(0.95);
+        max-width: calc(100vw - 2rem);
+        max-height: calc(100vh - 2rem);
+    }
+
+    .settings-popup.show {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .settings-content {
+        width: calc(100vw - 2rem);
+        max-width: 320px;
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
+        padding: 1rem;
+    }
+
+    .settings-content:has(.color-picker) {
+        width: calc(100vw - 2rem);
+        max-width: 340px;
     }
 }
 
@@ -1701,6 +1717,31 @@ body.advice-hidden .script-block {
 @media (min-width: 769px) {
     .main-content .sidebar-toggle {
         display: none !important;
+    }
+    .script-block::before {
+        content: '"';
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        font-size: 4rem;
+        font-weight: 900;
+        color: var(--quote-color, var(--primary-color));
+        opacity: 0.25;
+        line-height: 1;
+        font-family: 'Georgia', serif;
+    }
+    
+    .script-block::after {
+        content: '"';
+        position: absolute;
+        bottom: 0.5rem;
+        right: 0.5rem;
+        font-size: 4rem;
+        font-weight: 900;
+        color: var(--quote-color, var(--primary-color));
+        opacity: 0.25;
+        line-height: 1;
+        font-family: 'Georgia', serif;
     }
 }
 

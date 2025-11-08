@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSalesData } from '../context/SalesDataContext'
 import ContentDisplay from './ContentDisplay'
 
-function MainContent({ onOpenLeftSidebar, onOpenRightSidebar }) {
+function MainContent({ leftSidebarOpen, rightSidebarOpen, onToggleLeftSidebar, onToggleRightSidebar }) {
   const { loading } = useSalesData()
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768)
 
@@ -19,20 +19,24 @@ function MainContent({ onOpenLeftSidebar, onOpenRightSidebar }) {
       <main className="main-content">
         {isMobile && (
           <>
-            <button 
-              className="sidebar-toggle sidebar-toggle-left"
-              onClick={onOpenLeftSidebar}
-              aria-label="Open left sidebar"
-            >
-              ☰
-            </button>
-            <button 
-              className="sidebar-toggle sidebar-toggle-right"
-              onClick={onOpenRightSidebar}
-              aria-label="Open right sidebar"
-            >
-              ☷
-            </button>
+            {!rightSidebarOpen && (
+              <button 
+                className={`sidebar-toggle sidebar-toggle-left ${leftSidebarOpen ? 'in-sidebar' : ''}`}
+                onClick={onToggleLeftSidebar}
+                aria-label={leftSidebarOpen ? 'Close left sidebar' : 'Open left sidebar'}
+              >
+                {leftSidebarOpen ? '×' : '☰'}
+              </button>
+            )}
+            {!leftSidebarOpen && (
+              <button 
+                className={`sidebar-toggle sidebar-toggle-right ${rightSidebarOpen ? 'in-sidebar' : ''}`}
+                onClick={onToggleRightSidebar}
+                aria-label={rightSidebarOpen ? 'Close right sidebar' : 'Open right sidebar'}
+              >
+                {rightSidebarOpen ? '×' : '☷'}
+              </button>
+            )}
           </>
         )}
         <div className="content-wrapper">
@@ -50,20 +54,24 @@ function MainContent({ onOpenLeftSidebar, onOpenRightSidebar }) {
     <main className="main-content">
       {isMobile && (
         <>
-          <button 
-            className="sidebar-toggle sidebar-toggle-left"
-            onClick={onOpenLeftSidebar}
-            aria-label="Open left sidebar"
-          >
-            ☰
-          </button>
-          <button 
-            className="sidebar-toggle sidebar-toggle-right"
-            onClick={onOpenRightSidebar}
-            aria-label="Open right sidebar"
-          >
-            ☷
-          </button>
+          {!rightSidebarOpen && (
+            <button 
+              className={`sidebar-toggle sidebar-toggle-left ${leftSidebarOpen ? 'in-sidebar' : ''}`}
+              onClick={onToggleLeftSidebar}
+              aria-label={leftSidebarOpen ? 'Close left sidebar' : 'Open left sidebar'}
+            >
+              {leftSidebarOpen ? '×' : '☰'}
+            </button>
+          )}
+          {!leftSidebarOpen && (
+            <button 
+              className={`sidebar-toggle sidebar-toggle-right ${rightSidebarOpen ? 'in-sidebar' : ''}`}
+              onClick={onToggleRightSidebar}
+              aria-label={rightSidebarOpen ? 'Close right sidebar' : 'Open right sidebar'}
+            >
+              {rightSidebarOpen ? '×' : '☷'}
+            </button>
+          )}
         </>
       )}
       <div className="content-wrapper">

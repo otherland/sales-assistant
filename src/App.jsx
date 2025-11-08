@@ -49,8 +49,10 @@ function App() {
           onClose={closeLeftSidebar}
         />
         <MainContent 
-          onOpenLeftSidebar={openLeftSidebar}
-          onOpenRightSidebar={openRightSidebar}
+          leftSidebarOpen={leftSidebarOpen}
+          rightSidebarOpen={rightSidebarOpen}
+          onToggleLeftSidebar={leftSidebarOpen ? closeLeftSidebar : openLeftSidebar}
+          onToggleRightSidebar={rightSidebarOpen ? closeRightSidebar : openRightSidebar}
         />
         <RightSidebar 
           isOpen={rightSidebarOpen}

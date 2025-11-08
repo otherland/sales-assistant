@@ -42,11 +42,21 @@ export function useMobileSidebar() {
     const maxVerticalDistance = 100
 
     function handleTouchStart(e) {
+      // Ignore touches on buttons or interactive elements
+      const target = e.target
+      if (target.closest('button') || target.closest('.sidebar-toggle')) {
+        return
+      }
       touchStartX = e.touches[0].clientX
       touchStartY = e.touches[0].clientY
     }
 
     function handleTouchMove(e) {
+      // Ignore touches on buttons or interactive elements
+      const target = e.target
+      if (target.closest('button') || target.closest('.sidebar-toggle')) {
+        return
+      }
       const deltaX = Math.abs(e.touches[0].clientX - touchStartX)
       const deltaY = Math.abs(e.touches[0].clientY - touchStartY)
       
@@ -57,6 +67,11 @@ export function useMobileSidebar() {
     }
 
     function handleTouchEnd(e) {
+      // Ignore touches on buttons or interactive elements
+      const target = e.target
+      if (target.closest('button') || target.closest('.sidebar-toggle')) {
+        return
+      }
       touchEndX = e.changedTouches[0].clientX
       touchEndY = e.changedTouches[0].clientY
       

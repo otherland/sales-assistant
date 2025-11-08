@@ -98,19 +98,6 @@ function LeftSidebar({ isOpen, onClose }) {
 
   return (
     <nav className={`sidebar-left ${isOpen ? 'active' : ''}`}>
-      {/* Mobile toggle button */}
-      {isMobile && (
-        <button 
-          className="sidebar-toggle sidebar-toggle-left"
-          onClick={(e) => {
-            e.stopPropagation()
-            onClose()
-          }}
-          aria-label="Close left sidebar"
-        >
-          ←
-        </button>
-      )}
       <div className="sidebar-header">
         <h1>📞 CALL ONE FLOW</h1>
         <p>Revenue Discovery Script</p>

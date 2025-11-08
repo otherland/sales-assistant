@@ -515,19 +515,6 @@ function RightSidebar({ isOpen, onClose }) {
 
   return (
     <nav className={`sidebar-right ${isOpen ? 'active' : ''}`}>
-      {/* Mobile toggle button */}
-      {isMobile && (
-        <button 
-          className="sidebar-toggle sidebar-toggle-right"
-          onClick={(e) => {
-            e.stopPropagation()
-            onClose()
-          }}
-          aria-label="Close right sidebar"
-        >
-          →
-        </button>
-      )}
       <div className="sidebar-header">
         <h1>⛽ HANDLER LIBRARY</h1>
         <p>Pull off, handle, return</p>
