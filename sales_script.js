@@ -52,7 +52,7 @@ let salesData = {
         "question_groups": [
           {
             "emoji": "🎯",
-            "title": "Core Discovery Questions",
+            "title": "How are you generating interest?",
             "questions": [
               "How are you currently generating interest in the market?",
               "Which of those sources is most consistent in producing qualified conversations?",
@@ -62,7 +62,7 @@ let salesData = {
           },
           {
             "emoji": "📊",
-            "title": "Referral Path (If 70%+ Referrals)",
+            "title": "How consistent are referrals?",
             "intro_script": "<b>Note:</b> If they indicate referral-dominant business, use these questions. For deeper referral process extraction, see <a href='#' data-action='loadContent' data-id='discovery_referral_based' class='content-link'>Referral-Based Business Flow</a>.",
             "questions": [
               "How consistent are those referrals month to month?",
@@ -71,7 +71,7 @@ let salesData = {
           },
           {
             "emoji": "🌐",
-            "title": "Multi-Channel Path (If Multiple Sources)",
+            "title": "What percentage are proactive vs inbound?",
             "when_to_use": "USE IF: They mention multiple channels (not referral-dominant)",
             "questions": [
               "What percentage of your opportunities are proactive versus inbound or referral-driven?",
@@ -97,7 +97,7 @@ let salesData = {
         "question_groups": [
           {
             "emoji": "✅",
-            "title": "Q1: Validate Consistency",
+            "title": "How consistent are referrals?",
             "questions": [
               "How consistent are those referrals month to month?"
             ],
@@ -109,7 +109,7 @@ let salesData = {
           },
           {
             "emoji": "📈",
-            "title": "Q2: Test Ceiling",
+            "title": "Have you hit a referral ceiling?",
             "questions": [
               "Has the business scaled meaningfully on referrals alone, or have you hit a ceiling?"
             ],
@@ -121,7 +121,7 @@ let salesData = {
           },
           {
             "emoji": "🔍",
-            "title": "Q3: Extract Process",
+            "title": "Walk me through a referral conversion?",
             "questions": [
               "Can you walk me through one client you actually converted through a referral — how did it come in?",
               "What moved it forward?",
@@ -147,7 +147,7 @@ let salesData = {
         "question_groups": [
           {
             "emoji": "🔄",
-            "title": "Process & Conversion",
+            "title": "What happens after initial interest?",
             "questions": [
               "Once that initial interest is created, what happens next? Who takes the call, and who owns moving it forward?",
               "How long does it typically take from first meeting to closed-won?",
@@ -230,7 +230,7 @@ let salesData = {
         "question_groups": [
           {
             "emoji": "💰",
-            "title": "Conversion & Economics",
+            "title": "Who closes deals?",
             "questions": [
               "Who's primarily responsible for closing deals — same rep who sourced it, or does it transfer?",
               "From qualified opportunities at the top, what percentage convert into new accounts?",
@@ -281,10 +281,8 @@ let salesData = {
                 "beat_5_private_infrastructure": "So we deployed the outreach through our internal infrastructure.<br><br>[Shift tone - more technical, confident]<br><br>Think of it like <b>mission control</b>—every message, every contact list, every follow-up sequence runs through quality gates. We're checking tone, compliance, brand alignment. Nothing goes out that doesn't reflect their world.<br><br>[Pause]<br><br>And because it's all orchestrated centrally, we can scale it—from one region to fifty states to international—all while maintaining the same brand voice.<br><br>[Slow down - crystallize the concept]<br><br>That's what '<u>private infrastructure</u>' means. Not tools. <b>Orchestration</b>.<br><br>[Pause - let that distinction land]",
                 "beat_6_hardest_first_proof_tieback": "Here's what happened: <b>373 qualified conversations in 90 days</b>.<br><br>[Pause - let the numbers land]<br><br>Their sales cycle is short—about 30 days—so they closed business quickly. <u>Over $1M in new revenue</u> in that first quarter, all without touching their brand reputation.<br><br>[Lean forward - bridge back to them]<br><br>And here's why I'm telling you this: if we can do that in education—where brand risk is the highest I've seen—then what we're doing in your market is essentially the same playbook. <b>Different industry, same thesis</b>.<br><br>[Pause - let the portability land]"
               },
-              "tie_back_line": "So that's the thesis: <b>sophisticated markets where traditional strategies fail</b>—specialized buyers, brand-first execution, diligence-led targeting. And when that framework works in education—where brand risk kills you overnight—it works everywhere else.",
-              "ceo_cascade": "Here's what I want you to take back to your team. <b>One</b>: we specialize in <u>sophisticated profiles under brand-integrity constraints</u>. <b>Two</b>: we have a <u>diligence process that extracts decades of your institutional knowledge</u>. <b>Three</b>: we operate through <u>private infrastructure built for the exact channels where your buyers already are</u>. That's it. That's the thesis. That's what makes it work at scale."
             },
-            "pivot": "So that's the framework: <b>start with diligence, then deploy precision, all through controlled infrastructure</b>.<br><br>Now here's what I want to confirm: based on what you told me about <u>[reference specific constraint/gap from discovery—e.g., 'referrals being inconsistent' or 'team hitting capacity']</u>, does this approach map to your world?<br><br>If it does, here's what the next conversation looks like: we'll take everything we covered today and build out a scope that models what a 90-day engagement could look like—anchored to your actual conversion math and capacity constraints. That becomes the framework we review together before moving forward."
+            "pivot": "So that's the framework: <b>start with diligence, then deploy precision, all through controlled infrastructure</b>.<br><br>Now here's what I want to confirm: based on what you told me about <u>[reference PAIN POINT from discovery—e.g., 'referrals being inconsistent' or 'team hitting capacity']</u>, does this approach map to your world?<br><br>If it does, here's what the next conversation looks like: we'll take everything we covered today and build out a scope that models what a 90-day engagement could look like—anchored to your actual conversion math and capacity constraints. That becomes the framework we review together before moving forward. So that's the thesis: <b>sophisticated markets where traditional strategies fail</b>—specialized buyers, brand-first execution, diligence-led targeting. And when that framework works in education—where brand risk kills you overnight—it works everywhere else.<br><br>Here's what I want you to take back to your team. <b>One</b>: we specialize in <u>sophisticated profiles under brand-integrity constraints</u>. <b>Two</b>: we have a <u>diligence process that extracts decades of your institutional knowledge</u>. <b>Three</b>: we operate through <u>private infrastructure built for the exact channels where your buyers already are</u>. That's it. That's the thesis. That's what makes it work at scale."
           },
           {
             "id": "old_economy",
@@ -302,10 +300,8 @@ let salesData = {
                 "beat_5_private_infrastructure": "So we deployed the outreach through our internal infrastructure.<br><br>[Shift tone - more technical, confident]<br><br>Think of it like <b>mission control</b>—every message, every contact list, every follow-up sequence runs through quality gates. We're checking tone, compliance, brand alignment. Nothing goes out that doesn't reflect their world.<br><br>[Pause]<br><br>And because it's all orchestrated centrally, we can scale it—from regional to national to global—all while maintaining the same brand voice. That worked perfectly for Raiseview since they had a global mandate.<br><br>[Slow down - crystallize the concept]<br><br>That's what '<u>private infrastructure</u>' means. Not tools. <b>Orchestration</b>.<br><br>[Pause - let that distinction land]",
                 "beat_6_hardest_first_proof_tieback": "Here's what happened: <b>102 new sell-side introductions</b> with the exact institutions Raiseview needed—without a single dent to reputation.<br><br>[Pause - let the numbers land]<br><br>[Lean forward - bridge back to them]<br><br>And here's why I'm telling you this: if we can do that in sell-side banking—the most conservative, brand-sensitive environment I've seen—then what we're doing in your market is essentially the same playbook. <b>Different industry, same thesis</b>.<br><br>[Pause - let the portability land]"
               },
-              "tie_back_line": "So that's the thesis: <b>sophisticated markets where traditional strategies fail</b>—specialized profiles, hard-to-get data, strict brand standards. And when that framework works in sell-side banking—the most conservative corner of finance—it works everywhere else.",
-              "ceo_cascade": "Here's what I want you to take back to your team. <b>One</b>: we specialize in <u>sophisticated profiles under brand-integrity constraints</u>. <b>Two</b>: we have a <u>diligence process that extracts decades of your institutional knowledge</u>. <b>Three</b>: we operate through <u>private infrastructure built for the exact channels where your buyers already are</u>. That's it. That's the thesis. That's what makes it work at scale."
             },
-            "pivot": "So that's the framework: <b>start with diligence, then deploy precision, all through controlled infrastructure</b>.<br><br>Now here's what I want to confirm: based on what you told me about <u>[reference specific constraint/gap from discovery—e.g., 'referrals being inconsistent' or 'team hitting capacity']</u>, does this approach map to your world?<br><br>If it does, here's what the next conversation looks like: we'll take everything we covered today and build out a scope that models what a 90-day engagement could look like—anchored to your actual conversion math and capacity constraints. That becomes the framework we review together before moving forward."
+            "pivot": "So that's the thesis: <b>sophisticated markets where traditional strategies fail</b>—specialized profiles, hard-to-get data, strict brand standards. And when that framework works in sell-side banking—the most conservative corner of finance—it works everywhere else.<br><br>So that's the framework: <b>start with diligence, then deploy precision, all through controlled infrastructure</b>.<br><br>Now here's what I want to confirm: based on what you told me about <u>[reference PAIN POINT from discovery—e.g., 'referrals being inconsistent' or 'team hitting capacity']</u>, does this approach map to your world?<br><br>If it does, here's what the next conversation looks like: we'll take everything we covered today and build out a scope that models what a 90-day engagement could look like—anchored to your actual conversion math and capacity constraints. That becomes the framework we review together before moving forward.<br><br>Here's what I want you to take back to your team. <b>One</b>: we specialize in <u>sophisticated profiles under brand-integrity constraints</u>. <b>Two</b>: we have a <u>diligence process that extracts decades of your institutional knowledge</u>. <b>Three</b>: we operate through <u>private infrastructure built for the exact channels where your buyers already are</u>. That's it. That's the thesis. That's what makes it work at scale."
           }
         ],
         "related_objection_handlers": {
@@ -565,35 +561,60 @@ let salesData = {
         "purpose": "Defuse tension, provide clarity, reclaim frame without being defensive",
         "trigger": "When they ask 'What's the price?' too early in discovery, or say 'We don't have a budget'",
         "where_it_shows_up": "Prospects bring up cost prematurely in discovery, often before you've laid any value or explained the engagement model. It's usually a frame check, not a real objection.",
-        "script": "<i>Fair question</i>. Our typical engagements fall between <u>$25,000 and $75,000</u> over a <b>90-day window</b> — half upfront, half tied to <b>contingency</b>.<br><br>We <b>contractually obligate ourselves</b> to a <b>tangible milestone at Day 45</b> — for example, <b>25 qualified opportunities</b>. If we don't hit it, that <u>second payment doesn't unlock</u> and we keep working until we do. Makes the <u>worst-case scenario ROI-positive</u> for you.<br><br>I can't give you an exact number today because the scope depends on <i>what qualifies as an opportunity in your world</i> — and that's what we'll map out in this conversation.",
+        "main_script": {
+          "title": "📝 What to Say (Standard Script)",
+          "script": "<i>Fair question</i>. Our typical engagements fall between <u>$25,000 and $75,000</u> over a <b>90-day window</b> — half upfront, half tied to <b>contingency</b>.<br><br>We <b>contractually obligate ourselves</b> to a <b>tangible milestone at Day 45</b> — for example, <b>25 qualified opportunities</b>. If we don't hit it, that <u>second payment doesn't unlock</u> and we keep working until we do. Makes the <u>worst-case scenario ROI-positive</u> for you.<br><br>I can't give you an exact number today because the scope depends on <i>what qualifies as an opportunity in your world</i> — and that's what we'll map out in this conversation.",
+          "advisor_notes": [
+            "Deliver this with complete neutrality - no defensiveness, no hesitation",
+            "Keep tone measured, factual, and steady - this is just how the firm operates",
+            "The phrase 'worst-case scenario ROI-positive' is a power anchor",
+            "Critical: Never sit in a pricing question. The moment you finish, immediately move back into discovery",
+            "If they push on upfront payment, use the capitalization framing scripts above"
+          ]
+        },
         "how_to_handle": [
           {
             "step": "Give a Broad Range, Briefly",
-            "content": "Don't dodge the question outright (that makes you look slippery). Anchor with a range so you sound confident: 'Engagements typically fall anywhere between $25K and $75K depending on scope.'"
+            "script": "Engagements typically fall anywhere between $25K and $75K depending on scope."
           },
           {
             "step": "Reframe Around Risk Mitigation",
-            "content": "Immediately pull them away from price fixation and into value logic: 'What's unique about how we structure these is that risk mitigation is always the top priority. Every engagement has a milestone at the halfway point, and the scope is built so that the worst-case scenario is still significantly ROI positive.'"
+            "script": "What's unique about how we structure these is that risk mitigation is always the top priority. Every engagement has a milestone at the halfway point, and the scope is built so that the worst-case scenario is still significantly ROI positive."
           },
           {
             "step": "Push to Scope, Not Numbers",
-            "content": "Make it clear the real answer only comes after due diligence: 'The reality is, until we build your engagement model, it's not possible to give you an exact figure. That model is what shows you the end of the engagement before we even begin, and it's what allows us to scope a conservative, realistic outcome for both of us.'"
+            "script": "The reality is, until we build your engagement model, it's not possible to give you an exact figure. That model is what shows you the end of the engagement before we even begin, and it's what allows us to scope a conservative, realistic outcome for both of us."
           },
           {
             "step": "Position Discovery Properly",
-            "content": "Frame the call as mutual due diligence: 'This conversation is simply to answer your questions and gather what we need. Once we've got that, we can build the model and present the scope, and that's where the pricing becomes specific and makes sense.'"
+            "script": "This conversation is simply to answer your questions and gather what we need. Once we've got that, we can build the model and present the scope, and that's where the pricing becomes specific and makes sense."
           }
         ],
         "capitalization_framing": {
-          "title": "Why Capitalization Up Front Is Non-Negotiable",
+          "title": "Why We Need Money Up Front",
           "key_principle": "You can't deliver results without being capitalized up front. Capitalization funds the vendors, SDRs, list-builders, and internal capacity that guarantee the baseline milestone. No capital, no delivery. Period.",
           "content": "Your fee is never a 'retainer.' It's capitalization directly correlated to results. The only reason you can de-risk their downside is because you're capitalized.",
-          "script": [
-            "The reason we structure it this way is because capitalization directly funds the diligence and infrastructure that only works in <b>sophisticated, brand-sensitive markets</b>. We don't just deploy tools — we deploy a <u>specialized diligence process</u> that extracts your institutional knowledge, <u>vendor partnerships</u> that operate at enterprise scale, and <u>private infrastructure</u> that protects brand integrity. That whole system has to be capitalized up front. Without that allocation, we can't guarantee outcomes. That's why we can de-risk your downside.",
-            "Think of it this way: the upfront fee capitalizes the engagement. But this isn't standard campaign execution — we only work in <b>markets where data is hard to acquire</b> and <b>brand integrity can't be compromised</b>. That capital funds the diligence process that extracts decades of your knowledge, the vendor capacity to operate in difficult markets, and the infrastructure built for specialized profiles. That's why we can contractually commit to outcomes in environments where most strategies fail.",
-            "Here's what makes this different from a retainer model: every dollar you allocate up front is directly tied to the <u>thesis-driven system</u> we deploy on your behalf. We're not billing you for our time — we're capitalizing the diligence, vendor partnerships, and private infrastructure that only work when you're targeting <b>sophisticated profiles under brand-integrity constraints</b>. That's the only way we can de-risk your downside while operating in difficult markets.",
-            "The capitalization model is what allows us to take on accountability in <b>markets where traditional approaches fail</b>. If we didn't have that capital up front, we couldn't run the diligence process that extracts your institutional knowledge, pre-commit specialized vendor capacity, or deploy the private infrastructure that protects your brand. The fee and the deliverable are mathematically linked — but more importantly, they're <u>thesis-linked</u>.",
-            "Most agencies charge retainers and hope for results. We don't operate that way. Your upfront payment capitalizes a <b>thesis-driven system</b> — specialized diligence that extracts your decades of knowledge, vendor partnerships calibrated for difficult markets, and private infrastructure built for brand-sensitive profiles — all of which are contractually obligated to hit a number. That's why the structure works where standard execution doesn't."
+          "scripts": [
+            {
+              "title": "How We Use the Money",
+              "script": "The reason we structure it this way is because capitalization directly funds the diligence and infrastructure that only works in <b>sophisticated, brand-sensitive markets</b>. We don't just deploy tools — we deploy a <u>specialized diligence process</u> that extracts your institutional knowledge, <u>vendor partnerships</u> that operate at enterprise scale, and <u>private infrastructure</u> that protects brand integrity. That whole system has to be capitalized up front. Without that allocation, we can't guarantee outcomes. That's why we can de-risk your downside."
+            },
+            {
+              "title": "Why This Is Different",
+              "script": "Think of it this way: the upfront fee capitalizes the engagement. But this isn't standard campaign execution — we only work in <b>markets where data is hard to acquire</b> and <b>brand integrity can't be compromised</b>. That capital funds the diligence process that extracts decades of your knowledge, the vendor capacity to operate in difficult markets, and the infrastructure built for specialized profiles. That's why we can contractually commit to outcomes in environments where most strategies fail."
+            },
+            {
+              "title": "Not a Retainer",
+              "script": "Here's what makes this different from a retainer model: every dollar you allocate up front is directly tied to the <u>thesis-driven system</u> we deploy on your behalf. We're not billing you for our time — we're capitalizing the diligence, vendor partnerships, and private infrastructure that only work when you're targeting <b>sophisticated profiles under brand-integrity constraints</b>. That's the only way we can de-risk your downside while operating in difficult markets."
+            },
+            {
+              "title": "Why We Can Promise Results",
+              "script": "The capitalization model is what allows us to take on accountability in <b>markets where traditional approaches fail</b>. If we didn't have that capital up front, we couldn't run the diligence process that extracts your institutional knowledge, pre-commit specialized vendor capacity, or deploy the private infrastructure that protects your brand. The fee and the deliverable are mathematically linked — but more importantly, they're <u>thesis-linked</u>."
+            },
+            {
+              "title": "How We're Different",
+              "script": "Most agencies charge retainers and hope for results. We don't operate that way. Your upfront payment capitalizes a <b>thesis-driven system</b> — specialized diligence that extracts your decades of knowledge, vendor partnerships calibrated for difficult markets, and private infrastructure built for brand-sensitive profiles — all of which are contractually obligated to hit a number. That's why the structure works where standard execution doesn't."
+            }
           ]
         },
         "pivot_examples": [
@@ -609,18 +630,6 @@ let salesData = {
           }
         ],
         "key_lesson": "Price questions in discovery are premature. Always give a confident range, then immediately pivot back to risk mitigation and the unique value of your scope process. Your leverage only comes once the SOW is in their hands — so keep the frame focused on due diligence, not discounts or exact numbers.",
-        "advisor_notes": [
-          "Deliver this with complete neutrality - no defensiveness, no hesitation",
-          "Keep tone measured, factual, and steady - this is just how the firm operates",
-          "The phrase 'worst-case scenario ROI-positive' is a power anchor",
-          "Critical: Never sit in a pricing question. The moment you finish, immediately move back into discovery",
-          "If they push on upfront payment, use the capitalization framing scripts above"
-        ],
-        "where_to_go_next": {
-          "title": "Where to Go Next",
-          "guidance": "After addressing pricing, immediately pivot back to discovery—never sit in a pricing question:",
-          "default": "Give the range ($25K-$75K), then immediately pivot back to discovery. Continue with <a href='#' onclick=\"loadReferenceContent('discovery_framework'); return false;\" style='color: var(--primary-color); text-decoration: underline; cursor: pointer;'>Discovery Framework</a> or continue gathering data through <a href='#' onclick=\"loadContent('discovery_top_funnel'); return false;\" style='color: var(--primary-color); text-decoration: underline; cursor: pointer;'>Top of Funnel</a>, <a href='#' onclick=\"loadContent('discovery_middle_funnel'); return false;\" style='color: var(--primary-color); text-decoration: underline; cursor: pointer;'>Middle of Funnel</a>, or <a href='#' onclick=\"loadContent('discovery_bottom_funnel'); return false;\" style='color: var(--primary-color); text-decoration: underline; cursor: pointer;'>Bottom of Funnel</a> questions to build the engagement model"
-        }
       },
       {
         "id": "universal_objection_handle",

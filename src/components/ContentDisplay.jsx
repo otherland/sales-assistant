@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useContent } from '../context/ContentContext'
 import { formatScript, linkifyReferences } from '../utils/textFormatting'
 import SequentialContent from './content/SequentialContent'
@@ -19,9 +20,9 @@ function ContentDisplay() {
       <div className="welcome-screen">
         <h2>Revenue Advisory Sales Assistant</h2>
         <p>Navigate through the Call One Discovery process. Use the left sidebar for sequential flow, right sidebar for objection handlers.</p>
-        <a href="#" className="welcome-cta" onClick={handleWelcomeClick}>
+        <Link to="/content/opening_frame" className="welcome-cta" onClick={handleWelcomeClick}>
           Start Call One →
-        </a>
+        </Link>
       </div>
     )
   }

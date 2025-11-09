@@ -364,7 +364,7 @@ const HANDLER_EMOJIS = {
 
 function RightSidebar({ isOpen, onClose }) {
   const { salesData, loading } = useSalesData()
-  const { loadHandler, loadContent, contentId, currentContent } = useContent()
+  const { loadHandler, loadContent, contentId, currentContent, contentType } = useContent()
   const [searchQuery, setSearchQuery] = useState('')
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768)
   
@@ -474,6 +474,87 @@ function RightSidebar({ isOpen, onClose }) {
         handlers: categoriesMap[category].sort((a, b) => a.title.localeCompare(b.title))
       }))
   }, [salesData])
+
+  // Auto-expand the parent category when handler or objection content changes
+  useEffect(() => {
+    if (!contentId || !salesData) return
+
+    if (contentType === 'handler' && salesData?.objection_handlers?.handlers) {
+      // Find the handler and its category
+      const handler = salesData.objection_handlers.handlers[contentId]
+      if (!handler) return
+
+      const originalCategory = handler.category || 'Other'
+      const category = CATEGORY_MAP[originalCategory] || originalCategory
+
+      // Expand the category and the full-library section, collapse all others
+      setCollapsedCategories(prev => {
+        const newState = {}
+        // First, collapse all existing categories
+        Object.keys(prev).forEach(cat => {
+          newState[cat] = true
+        })
+        // Also ensure all categories from handlerCategories are initialized and collapsed
+        handlerCategories.forEach(cat => {
+          newState[cat.title] = true
+        })
+        // Expand the target category
+        newState[category] = false
+        return newState
+      })
+
+      // Expand the full-library section
+      setCollapsedSections(prev => ({
+        ...prev,
+        'full-library': false
+      }))
+    } else if (contentType === 'objection' && salesData?.objection_handlers?.objections) {
+      // Find the objection and check if it has an associated handler
+      const objection = salesData.objection_handlers.objections.find(
+        obj => obj.number === parseInt(contentId, 10)
+      )
+      
+      if (objection) {
+        // If objection has a handler ID, find that handler's category
+        if (objection.handler_id && salesData?.objection_handlers?.handlers) {
+          const handler = salesData.objection_handlers.handlers[objection.handler_id]
+          if (handler) {
+            const originalCategory = handler.category || 'Other'
+            const category = CATEGORY_MAP[originalCategory] || originalCategory
+
+            // Expand the category and the full-library section, collapse all others
+            setCollapsedCategories(prev => {
+              const newState = {}
+              // First, collapse all existing categories
+              Object.keys(prev).forEach(cat => {
+                newState[cat] = true
+              })
+              // Also ensure all categories from handlerCategories are initialized and collapsed
+              handlerCategories.forEach(cat => {
+                newState[cat.title] = true
+              })
+              // Expand the target category
+              newState[category] = false
+              return newState
+            })
+
+            // Expand the full-library section
+            setCollapsedSections(prev => ({
+              ...prev,
+              'full-library': false
+            }))
+            return
+          }
+        }
+        
+        // If no handler ID, expand the top-objections section
+        setCollapsedSections(prev => ({
+          ...prev,
+          'top-objections': false
+        }))
+      }
+    }
+  }, [contentId, contentType, salesData, handlerCategories])
 
   // Filter handlers based on search
   const filteredCategories = useMemo(() => {

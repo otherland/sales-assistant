@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import LeftSidebar from './components/LeftSidebar'
 import RightSidebar from './components/RightSidebar'
 import MainContent from './components/MainContent'
@@ -67,57 +68,59 @@ function App() {
   }, [layoutReversed])
 
   return (
-    <SalesDataProvider>
-      <ContentProvider>
-        <div className={`container ${layoutReversed ? 'layout-reversed' : ''}`}>
-        <LeftSidebar 
-          isOpen={leftSidebarOpen}
-          onClose={closeLeftSidebar}
-        />
-        <MainContent 
-          leftSidebarOpen={leftSidebarOpen}
-          rightSidebarOpen={rightSidebarOpen}
-          onToggleLeftSidebar={leftSidebarOpen ? closeLeftSidebar : openLeftSidebar}
-          onToggleRightSidebar={rightSidebarOpen ? closeRightSidebar : openRightSidebar}
-        />
-        <RightSidebar 
-          isOpen={rightSidebarOpen}
-          onClose={closeRightSidebar}
-        />
-      </div>
+    <BrowserRouter>
+      <SalesDataProvider>
+        <ContentProvider>
+          <div className={`container ${layoutReversed ? 'layout-reversed' : ''}`}>
+          <LeftSidebar 
+            isOpen={leftSidebarOpen}
+            onClose={closeLeftSidebar}
+          />
+          <MainContent 
+            leftSidebarOpen={leftSidebarOpen}
+            rightSidebarOpen={rightSidebarOpen}
+            onToggleLeftSidebar={leftSidebarOpen ? closeLeftSidebar : openLeftSidebar}
+            onToggleRightSidebar={rightSidebarOpen ? closeRightSidebar : openRightSidebar}
+          />
+          <RightSidebar 
+            isOpen={rightSidebarOpen}
+            onClose={closeRightSidebar}
+          />
+        </div>
 
-      {/* Mobile Sidebar Overlay */}
-      {(leftSidebarOpen || rightSidebarOpen) && (
-        <div 
-          className="sidebar-overlay active" 
-          onClick={closeSidebars}
+        {/* Mobile Sidebar Overlay */}
+        {(leftSidebarOpen || rightSidebarOpen) && (
+          <div 
+            className="sidebar-overlay active" 
+            onClick={closeSidebars}
+          />
+        )}
+
+        {/* Settings Popup */}
+        <SettingsPopup 
+          isOpen={settingsOpen}
+          onClose={() => setSettingsOpen(false)}
+          layoutReversed={layoutReversed}
+          onLayoutReversedChange={setLayoutReversed}
         />
-      )}
 
-      {/* Settings Popup */}
-      <SettingsPopup 
-        isOpen={settingsOpen}
-        onClose={() => setSettingsOpen(false)}
-        layoutReversed={layoutReversed}
-        onLayoutReversedChange={setLayoutReversed}
-      />
+        {/* Global Search */}
+        <GlobalSearch 
+          isOpen={globalSearchOpen}
+          onClose={() => setGlobalSearchOpen(false)}
+        />
 
-      {/* Global Search */}
-      <GlobalSearch 
-        isOpen={globalSearchOpen}
-        onClose={() => setGlobalSearchOpen(false)}
-      />
-
-      {/* FAB Buttons */}
-      <SettingsFAB onClick={() => setSettingsOpen(!settingsOpen)} />
-      <AdviceToggleFAB 
-        isVisible={adviceVisible}
-        onClick={() => setAdviceVisible(!adviceVisible)}
-      />
-      <ResumeFAB />
-      <EmergencyScripts />
-      </ContentProvider>
-    </SalesDataProvider>
+        {/* FAB Buttons */}
+        <SettingsFAB onClick={() => setSettingsOpen(!settingsOpen)} />
+        <AdviceToggleFAB 
+          isVisible={adviceVisible}
+          onClick={() => setAdviceVisible(!adviceVisible)}
+        />
+        <ResumeFAB />
+        <EmergencyScripts />
+        </ContentProvider>
+      </SalesDataProvider>
+    </BrowserRouter>
   )
 }
 

@@ -25,6 +25,7 @@ function getInitialState() {
   return {
     fontFamily: localStorage.getItem('script-font-family') || 'Merriweather',
     fontSize: parseInt(localStorage.getItem('script-font-size') || '16', 10),
+    contentPadding: parseInt(localStorage.getItem('content-padding') || '48', 10), // Default 3rem = 48px
     colorTheme: localStorage.getItem('color-theme') || 'orange-light',
     useColorPicker: savedUsePicker,
     customHue: savedHue,
@@ -37,6 +38,7 @@ function SettingsPopup({ isOpen, onClose, layoutReversed, onLayoutReversedChange
   const initialState = getInitialState()
   const [fontFamily, setFontFamily] = useState(initialState.fontFamily)
   const [fontSize, setFontSize] = useState(initialState.fontSize)
+  const [contentPadding, setContentPadding] = useState(initialState.contentPadding)
   const [colorTheme, setColorTheme] = useState(initialState.colorTheme)
   const [useColorPicker, setUseColorPicker] = useState(initialState.useColorPicker)
   const [customHue, setCustomHue] = useState(initialState.customHue)
@@ -47,6 +49,10 @@ function SettingsPopup({ isOpen, onClose, layoutReversed, onLayoutReversedChange
     // Load and apply saved preferences from localStorage
     const savedCustomTheme = localStorage.getItem('custom-theme')
     const savedUsePicker = localStorage.getItem('use-color-picker') === 'true'
+
+    // Apply initial padding
+    const savedPadding = parseInt(localStorage.getItem('content-padding') || '48', 10)
+    document.documentElement.style.setProperty('--content-padding', `${savedPadding}px`)
 
     // If custom theme exists and we're using color picker, load it
     if (savedCustomTheme && savedUsePicker) {
@@ -88,6 +94,12 @@ function SettingsPopup({ isOpen, onClose, layoutReversed, onLayoutReversedChange
   }, [fontSize])
 
   useEffect(() => {
+    // Apply content padding
+    document.documentElement.style.setProperty('--content-padding', `${contentPadding}px`)
+    localStorage.setItem('content-padding', contentPadding.toString())
+  }, [contentPadding])
+
+  useEffect(() => {
     // Apply color theme (only if not using color picker)
     if (!useColorPicker && typeof window.setTheme === 'function') {
       window.setTheme(colorTheme)
@@ -97,8 +109,13 @@ function SettingsPopup({ isOpen, onClose, layoutReversed, onLayoutReversedChange
   }, [colorTheme, useColorPicker])
 
   const handleFontSizeChange = (delta) => {
-    const newSize = Math.max(12, Math.min(24, fontSize + delta))
+    const newSize = Math.max(10, Math.min(36, fontSize + delta))
     setFontSize(newSize)
+  }
+
+  const handlePaddingChange = (delta) => {
+    const newPadding = Math.max(16, Math.min(400, contentPadding + delta))
+    setContentPadding(newPadding)
   }
 
   const handleThemeChange = (e) => {
@@ -280,6 +297,31 @@ function SettingsPopup({ isOpen, onClose, layoutReversed, onLayoutReversedChange
                 id="size-increase" 
                 title="Increase Font Size"
                 onClick={() => handleFontSizeChange(1)}
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <div className="control-group control-group-size">
+            <label className="control-label">Content Padding</label>
+            <div className="font-size-controls">
+              <button 
+                className="control-btn" 
+                id="padding-decrease" 
+                title="Decrease Padding"
+                onClick={() => handlePaddingChange(-8)}
+              >
+                −
+              </button>
+              <span className="font-size-display" id="padding-value">
+                {contentPadding}px
+              </span>
+              <button 
+                className="control-btn" 
+                id="padding-increase" 
+                title="Increase Padding"
+                onClick={() => handlePaddingChange(8)}
               >
                 +
               </button>

@@ -157,40 +157,23 @@ function SequentialContent({ item, itemId }) {
           </div>
         )}
 
+        {/* How to Handle It - Each step gets its own collapsible section */}
         {item.how_to_handle && item.how_to_handle.length > 0 && (
-          <div className="info-box" style={{ margin: '2rem 0' }}>
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', fontSize: '1.25rem' }}>
-              How to Handle It:
-            </h3>
-            {item.how_to_handle.map((stepObj, idx) => (
-              <div
-                key={idx}
-                style={{
-                  marginBottom: '2rem',
-                  paddingLeft: '1rem',
-                  borderLeft: '3px solid var(--primary-color)'
-                }}
-              >
-                <h4 style={{ color: 'var(--primary-color)', marginBottom: '0.75rem', fontWeight: 700 }}>
-                  {stepObj.step}
-                </h4>
-                {stepObj.content && (
-                  <LinkifiedText
-                    text={stepObj.content}
-                    style={{ marginBottom: '0.5rem', lineHeight: 1.6 }}
-                  />
-                )}
-                {stepObj.script && (
-                  <ScriptBlock script={stepObj.script} style={{ marginBottom: '1rem' }} />
-                )}
-                {stepObj.goal && (
-                  <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
-                    {stepObj.goal}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
+          <>
+            {item.how_to_handle.map((stepObj, idx) => {
+              if (!stepObj || !stepObj.step || !stepObj.script) return null
+              return (
+                <CollapsibleSection
+                  key={`how-to-handle-${idx}`}
+                  title={stepObj.step}
+                  defaultCollapsed={true}
+                  variant="default"
+                >
+                  <ScriptBlock script={stepObj.script} />
+                </CollapsibleSection>
+              )
+            })}
+          </>
         )}
 
         {item.key_lesson && (
@@ -721,35 +704,59 @@ function SequentialContent({ item, itemId }) {
           </InfoBox>
         )}
 
-        {item.capitalization_framing && (
-          <InfoBox title={item.capitalization_framing.title || "Capitalization Framing"} variant="advisor-note" style={{ margin: '2rem 0' }}>
-            {item.capitalization_framing.key_principle && (
-              <div style={{ marginBottom: '1.5rem' }}>
-                <h4 style={{ color: 'var(--primary-color)', marginBottom: '0.5rem', fontWeight: 700 }}>Key Principle</h4>
+        {item.capitalization_framing ? (
+          <div style={{ margin: '2rem 0' }}>
+            {item.capitalization_framing.title ? (
+              <h3 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', fontSize: '1.25rem', fontWeight: 700 }}>
+                {item.capitalization_framing.title}
+              </h3>
+            ) : null}
+            {item.capitalization_framing.key_principle ? (
+              <InfoBox title="Key Principle" variant="advisor-note" style={{ marginBottom: '1.5rem' }}>
                 <LinkifiedText text={item.capitalization_framing.key_principle} />
-              </div>
-            )}
-            {item.capitalization_framing.content && (
-              <div style={{ marginBottom: '1.5rem' }}>
+              </InfoBox>
+            ) : null}
+            {item.capitalization_framing.content ? (
+              <InfoBox variant="default" style={{ marginBottom: '1.5rem' }}>
                 <LinkifiedText text={item.capitalization_framing.content} />
-              </div>
-            )}
-            {item.capitalization_framing.script && (
-              <div style={{ marginTop: '1.5rem' }}>
-                <h4 style={{ color: 'var(--primary-color)', marginBottom: '0.5rem', fontWeight: 700 }}>Scripts</h4>
-                {Array.isArray(item.capitalization_framing.script) ? (
+              </InfoBox>
+            ) : null}
+            {/* Each script gets its own collapsible section */}
+            {item.capitalization_framing.scripts && 
+             Array.isArray(item.capitalization_framing.scripts) && 
+             item.capitalization_framing.scripts.length > 0 ? (
+               item.capitalization_framing.scripts.map((scriptObj, idx) => {
+                 if (!scriptObj || !scriptObj.script) return null
+                 return (
+                   <CollapsibleSection
+                     key={`capitalization-script-${idx}`}
+                     title={scriptObj.title || `Script ${idx + 1}`}
+                     defaultCollapsed={true}
+                     variant="default"
+                   >
+                     <ScriptBlock script={scriptObj.script} />
+                   </CollapsibleSection>
+                 )
+               })
+             ) : null}
+            {/* Legacy support for old script array format */}
+            {item.capitalization_framing.script && 
+             Array.isArray(item.capitalization_framing.script) && 
+             item.capitalization_framing.script.length > 0 && 
+             !item.capitalization_framing.scripts ? (
                   item.capitalization_framing.script.map((scriptText, idx) => (
-                    <div key={idx} style={{ marginBottom: '1rem' }}>
+                 <CollapsibleSection
+                   key={`capitalization-legacy-script-${idx}`}
+                   title={`Script ${idx + 1}`}
+                   defaultCollapsed={true}
+                   variant="default"
+                 >
                       <ScriptBlock script={scriptText} />
-                    </div>
+                 </CollapsibleSection>
                   ))
-                ) : (
-                  <ScriptBlock script={item.capitalization_framing.script} />
-                )}
+             ) : null}
               </div>
-            )}
-          </InfoBox>
-        )}
+        ) : null}
 
         {item.related_objection_handlers && (
           <InfoBox title={item.related_objection_handlers.title || "Related Objection Handlers"} variant="advisor-note" style={{ margin: '2rem 0' }}>

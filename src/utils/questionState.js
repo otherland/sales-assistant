@@ -107,7 +107,10 @@ export function resumeDiscovery(salesData, loadContent) {
   console.log('First unchecked question:', firstUncheckedQuestion)
 
   // Navigate to the section if not already there
-  const currentContentId = window.location.hash.replace('#', '') || 'welcome'
+  // Use pathname instead of hash for React Router compatibility
+  const pathParts = window.location.pathname.split('/').filter(p => p)
+  const currentContentId = pathParts.length >= 2 && pathParts[0] === 'content' ? pathParts[1] : null
+  
   if (currentContentId !== firstUncheckedQuestion.section) {
     loadContent(firstUncheckedQuestion.section)
     // Wait a bit for content to load, then scroll

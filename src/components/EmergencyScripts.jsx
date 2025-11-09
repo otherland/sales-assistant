@@ -6,7 +6,7 @@ const PROTOCOLS = [
     title: 'Prospect Goes Silent After Your Question',
     steps: [
       'Count to 3 in your head (don\'t panic)',
-      'Say: "Sorry, let me ask that differently — [simpler version of same question]"'
+      'Rephrase the question in simpler form'
     ],
     script: 'Sorry, let me ask that differently — [simpler version]',
     example: {
@@ -20,7 +20,6 @@ const PROTOCOLS = [
     title: 'You Freeze and Don\'t Know What to Ask Next',
     steps: [
       'Buy time by summarizing',
-      'Say: "Let me make sure I captured that — [summarize their last answer]. Did I get that right?"',
       'While they confirm, scan your CARPET tracker to see what you\'re missing'
     ],
     script: 'Let me make sure I captured that — [summarize their answer]. Did I get that right?',
@@ -35,7 +34,7 @@ const PROTOCOLS = [
     title: 'You\'re Genuinely Lost in the Flow',
     steps: [
       'Loop back to something from 2 questions ago',
-      'Say: "Before we move on, help me understand [topic from earlier] a bit more — [ask clarifying question]"'
+      'Ask a clarifying question about that earlier topic'
     ],
     script: 'Before we move on, help me understand [EARLIER TOPIC] a bit more — [CLARIFYING QUESTION]',
     example: {
@@ -49,8 +48,7 @@ const PROTOCOLS = [
     title: 'They\'re Giving You Too Much Information',
     steps: [
       'Acknowledge what they said',
-      'Narrow the focus immediately',
-      'Say: "That\'s helpful context. Just to narrow the focus — [specific thing you need]"'
+      'Narrow the focus immediately'
     ],
     script: 'That\'s helpful context. Just to narrow the focus — [SPECIFIC THING YOU NEED]',
     example: {
@@ -64,7 +62,7 @@ const PROTOCOLS = [
     title: 'You Asked Too Many Questions at Once',
     steps: [
       'Acknowledge it immediately',
-      'Say: "Sorry, that was three questions in one. Let me focus — [ask just ONE]"'
+      'Narrow to just one question'
     ],
     script: 'Sorry, that was three questions in one. Let me focus — [ASK JUST ONE]',
     example: {
@@ -78,12 +76,6 @@ const PROTOCOLS = [
 function EmergencyScripts() {
   const [isOpen, setIsOpen] = useState(false)
   const [expandedProtocol, setExpandedProtocol] = useState(null)
-
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text).then(() => {
-      // Visual feedback could be added here
-    })
-  }
 
   const toggleProtocol = (protocolId) => {
     setExpandedProtocol(expandedProtocol === protocolId ? null : protocolId)
@@ -149,12 +141,6 @@ function EmergencyScripts() {
                       <div className="protocol-script-box">
                         <div className="script-label">Script:</div>
                         <div className="script-text">{protocol.script}</div>
-                        <button
-                          className="copy-button"
-                          onClick={() => copyToClipboard(protocol.script)}
-                        >
-                          📋 Copy Script
-                        </button>
                       </div>
 
                       {protocol.example && (

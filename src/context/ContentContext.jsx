@@ -1,10 +1,13 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useSalesData } from './SalesDataContext'
 
 const ContentContext = createContext()
 
 export function ContentProvider({ children }) {
   const { salesData } = useSalesData()
+  const navigate = useNavigate()
+  const location = useLocation()
   const [contentType, setContentType] = useState(null) // 'content', 'handler', 'reference', 'objection', null
   const [contentId, setContentId] = useState(null)
   const [currentContent, setCurrentContent] = useState(null)
@@ -13,48 +16,16 @@ export function ContentProvider({ children }) {
   const updateURL = useCallback((type, id) => {
     if (type && id) {
       const newPath = `/${type}/${id}`
-      if (window.location.pathname !== newPath) {
-        window.history.pushState({ type, id }, '', newPath)
+      if (location.pathname !== newPath) {
+        navigate(newPath, { replace: false })
       }
     } else {
       // Welcome screen
-      if (window.location.pathname !== '/') {
-        window.history.pushState({}, '', '/')
+      if (location.pathname !== '/') {
+        navigate('/', { replace: false })
       }
     }
-  }, [])
-
-  // Handle route from URL
-  const handleRoute = useCallback(() => {
-    const path = window.location.pathname
-    
-    if (path === '/' || path === '') {
-      setContentType(null)
-      setContentId(null)
-      setCurrentContent(null)
-      return
-    }
-    
-    const parts = path.split('/').filter(p => p)
-    
-    if (parts.length >= 2) {
-      const type = parts[0]
-      const id = parts[1]
-      
-      if (type === 'content') {
-        loadContent(id, false) // Skip URL update to avoid double push
-      } else if (type === 'reference') {
-        loadReferenceContent(id, false)
-      } else if (type === 'objection') {
-        const objectionNum = parseInt(id, 10)
-        if (!isNaN(objectionNum)) {
-          loadObjection(objectionNum, false)
-        }
-      } else if (type === 'handler') {
-        loadHandler(id, false)
-      }
-    }
-  }, [])
+  }, [navigate, location.pathname])
 
   // Load sequential flow content
   const loadContent = useCallback((itemId, updateURLParam = true) => {
@@ -212,14 +183,44 @@ export function ContentProvider({ children }) {
     updateURL(null, null)
   }, [updateURL])
 
-  // Handle browser back/forward
+  // Handle route from URL (must be defined after all load functions)
+  const handleRoute = useCallback(() => {
+    const path = location.pathname
+    
+    if (path === '/' || path === '') {
+      setContentType(null)
+      setContentId(null)
+      setCurrentContent(null)
+      return
+    }
+    
+    const parts = path.split('/').filter(p => p)
+    
+    if (parts.length >= 2) {
+      const type = parts[0]
+      const id = parts[1]
+      
+      if (type === 'content') {
+        loadContent(id, false) // Skip URL update to avoid double push
+      } else if (type === 'reference') {
+        loadReferenceContent(id, false)
+      } else if (type === 'objection') {
+        const objectionNum = parseInt(id, 10)
+        if (!isNaN(objectionNum)) {
+          loadObjection(objectionNum, false)
+        }
+      } else if (type === 'handler') {
+        loadHandler(id, false)
+      }
+    }
+  }, [location.pathname, loadContent, loadReferenceContent, loadObjection, loadHandler])
+
+  // Handle route changes from React Router (replaces popstate listener)
   useEffect(() => {
-    const handlePopState = () => {
+    if (salesData) {
       handleRoute()
     }
-    window.addEventListener('popstate', handlePopState)
-    return () => window.removeEventListener('popstate', handlePopState)
-  }, [handleRoute])
+  }, [location.pathname, salesData, handleRoute])
 
   // Handle hash changes (for backward compatibility)
   useEffect(() => {
@@ -232,13 +233,6 @@ export function ContentProvider({ children }) {
     window.addEventListener('hashchange', handleHashChange)
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [salesData, loadContent])
-
-  // Initial route handling
-  useEffect(() => {
-    if (salesData) {
-      handleRoute()
-    }
-  }, [salesData, handleRoute])
 
   // No longer exposing on window - all code uses React hooks directly
 

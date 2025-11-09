@@ -6,7 +6,7 @@ import RecentlyViewed from './RecentlyViewed'
 
 function LeftSidebar({ isOpen, onClose }) {
   const { salesData, referenceLibraries, loading } = useSalesData()
-  const { loadContent, loadReferenceContent, contentId } = useContent()
+  const { loadContent, loadReferenceContent, contentId, contentType } = useContent()
   const [collapsedPhases, setCollapsedPhases] = useState({
     phase1: true,
     phase2: true,
@@ -25,6 +25,41 @@ function LeftSidebar({ isOpen, onClose }) {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  // Auto-expand the parent group when content changes
+  useEffect(() => {
+    if (!contentId || !salesData) return
+
+    // Determine which phase/section to expand
+    let phaseToExpand = null
+
+    if (contentType === 'reference') {
+      // Expand reference library section
+      phaseToExpand = 'reference'
+    } else if (contentType === 'content' && salesData?.sequential_flow?.call_one) {
+      // Find the item and its phase
+      const item = salesData.sequential_flow.call_one.find(i => i.id === contentId)
+      if (item && item.phase) {
+        phaseToExpand = `phase${item.phase}`
+      }
+    }
+
+    // If we found a phase to expand, expand it and collapse all others
+    if (phaseToExpand) {
+      setCollapsedPhases(prev => {
+        const newState = {
+          phase1: true,
+          phase2: true,
+          phase3: true,
+          phase4: true,
+          phase5: true,
+          reference: true
+        }
+        newState[phaseToExpand] = false // Expand the target phase
+        return newState
+      })
+    }
+  }, [contentId, contentType, salesData])
 
   // Get icon for reference library (must be defined before useMemo)
   const getReferenceIcon = (refId) => {
