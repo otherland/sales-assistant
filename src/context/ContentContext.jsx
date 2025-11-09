@@ -61,47 +61,93 @@ export function ContentProvider({ children }) {
     if (!salesData?.sequential_flow?.call_one) return
 
     const item = salesData.sequential_flow.call_one.find(i => i.id === itemId)
-    if (!item) return
+    if (item) {
+      // Store last sequential content for breadcrumb trail
+      localStorage.setItem('lastSequentialContent', itemId)
 
-    // Store last sequential content for breadcrumb trail
-    localStorage.setItem('lastSequentialContent', itemId)
+      // Track recently viewed
+      if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
+        window.addToRecentlyViewed('content', itemId, item.title)
+      }
 
-    // Track recently viewed
-    if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
-      window.addToRecentlyViewed('content', itemId, item.title)
+      if (updateURLParam) {
+        updateURL('content', itemId)
+      }
+
+      setContentType('content')
+      setContentId(itemId)
+      setCurrentContent(item)
+      return
     }
 
-    if (updateURLParam) {
-      updateURL('content', itemId)
-    }
+    // If not found in sequential flow, check objections array by ID
+    if (salesData?.objection_handlers?.objections) {
+      const objection = salesData.objection_handlers.objections.find(
+        obj => obj.id === itemId
+      )
+      if (objection) {
+        // Load as handler since objections use HandlerContent via ObjectionContent
+        if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
+          window.addToRecentlyViewed('handler', itemId, objection.title || itemId)
+        }
 
-    setContentType('content')
-    setContentId(itemId)
-    setCurrentContent(item)
+        if (updateURLParam) {
+          updateURL('handler', itemId)
+        }
+
+        setContentType('handler')
+        setContentId(itemId)
+        setCurrentContent(objection)
+        return
+      }
+    }
   }, [salesData, updateURL])
 
   // Load objection handler
   const loadHandler = useCallback((handlerId, updateURLParam = true) => {
-    if (!salesData?.objection_handlers?.handlers) return
+    // First check handlers object
+    if (salesData?.objection_handlers?.handlers) {
+      const handlerData = salesData.objection_handlers.handlers[handlerId]
+      if (handlerData) {
+        // Track recently viewed
+        if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
+          window.addToRecentlyViewed('handler', handlerId, handlerData.title || handlerId)
+        }
 
-    const handlerData = salesData.objection_handlers.handlers[handlerId]
-    if (!handlerData) {
-      console.warn(`Handler not found: ${handlerId}`)
-      return
+        if (updateURLParam) {
+          updateURL('handler', handlerId)
+        }
+
+        setContentType('handler')
+        setContentId(handlerId)
+        setCurrentContent(handlerData)
+        return
+      }
     }
 
-    // Track recently viewed
-    if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
-      window.addToRecentlyViewed('handler', handlerId, handlerData.title || handlerId)
+    // If not found in handlers, check objections array by ID
+    if (salesData?.objection_handlers?.objections) {
+      const objection = salesData.objection_handlers.objections.find(
+        obj => obj.id === handlerId
+      )
+      if (objection) {
+        // Track recently viewed
+        if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
+          window.addToRecentlyViewed('handler', handlerId, objection.title || handlerId)
+        }
+
+        if (updateURLParam) {
+          updateURL('handler', handlerId)
+        }
+
+        setContentType('handler')
+        setContentId(handlerId)
+        setCurrentContent(objection)
+        return
+      }
     }
 
-    if (updateURLParam) {
-      updateURL('handler', handlerId)
-    }
-
-    setContentType('handler')
-    setContentId(handlerId)
-    setCurrentContent(handlerData)
+    console.warn(`Handler not found: ${handlerId}`)
   }, [salesData, updateURL])
 
   // Load reference library content

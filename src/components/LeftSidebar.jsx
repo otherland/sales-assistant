@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useSalesData } from '../context/SalesDataContext'
 import { useContent } from '../context/ContentContext'
 import ProgressIndicator from './ProgressIndicator'
 import RecentlyViewed from './RecentlyViewed'
 
 function LeftSidebar({ isOpen, onClose }) {
-  const { salesData, loading } = useSalesData()
+  const { salesData, referenceLibraries, loading } = useSalesData()
   const { loadContent, loadReferenceContent, contentId } = useContent()
   const [collapsedPhases, setCollapsedPhases] = useState({
     phase1: true,
@@ -26,6 +26,45 @@ function LeftSidebar({ isOpen, onClose }) {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  // Get icon for reference library (must be defined before useMemo)
+  const getReferenceIcon = (refId) => {
+    const iconMap = {
+      'two_economies': '🏢',
+      'carpet_framework': '🧹',
+      'discovery_framework': '🔍',
+      'active_listening': '👂',
+      'qualified_opportunity_anchor_mastery': '⚓',
+      'discovery_objection_handling_os': '🛡️',
+      'referrals_objection_mastery': '🔗',
+      'story_mode_selling': '🎭',
+      'mechanism_framing': '⚙️',
+      'risk_mitigation_language': '🛡️',
+      'micro_commitment_pattern': '✅',
+      'dadd_formula': '📐',
+      'curiosity_standard': '❓',
+      'approval_flow_questions': '📋'
+    }
+    return iconMap[refId] || '📚'
+  }
+
+  // Build reference libraries list dynamically from context
+  // MUST be called before any conditional returns
+  const referenceLibrariesList = useMemo(() => {
+    if (!referenceLibraries?.reference_libraries) return []
+    
+    return Object.keys(referenceLibraries.reference_libraries)
+      .map(refId => {
+        const refData = referenceLibraries.reference_libraries[refId]
+        return {
+          id: refId,
+          title: refData.title || refId,
+          icon: getReferenceIcon(refId)
+        }
+      })
+      .sort((a, b) => a.title.localeCompare(b.title)) // Optional: sort alphabetically
+  }, [referenceLibraries])
+
+  // Early return AFTER all hooks
   if (loading) {
     return (
       <nav className={`sidebar-left ${isOpen ? 'active' : ''}`}>
@@ -82,21 +121,6 @@ function LeftSidebar({ isOpen, onClose }) {
     if (item.id === 'transition_call_two') return '📅'
     return '📄'
   }
-
-  // Reference libraries
-  const referenceLibraries = [
-    { id: 'two_economies', title: 'Understanding The Two Economies', icon: '🏢' },
-    { id: 'carpet_framework', title: 'CARPET Framework', icon: '🧹' },
-    { id: 'discovery_framework', title: 'Discovery Framework', icon: '🔍' },
-    { id: 'active_listening', title: 'Active Listening', icon: '👂' },
-    { id: 'qualified_opportunity_anchor_mastery', title: 'QOA™ Complete Training Guide', icon: '⚓' },
-    { id: 'discovery_objection_handling_os', title: 'Discovery Objection Handling OS', icon: '🛡️' },
-    { id: 'referrals_objection_mastery', title: 'Referrals Objection Mastery', icon: '🔗' },
-    { id: 'story_mode_selling', title: 'Story Mode Selling™', icon: '🎭' },
-    { id: 'mechanism_framing', title: 'Mechanism Framing™', icon: '⚙️' },
-    { id: 'risk_mitigation_language', title: 'Risk Mitigation Language', icon: '🛡️' },
-    { id: 'micro_commitment_pattern', title: 'Micro-Commitment Pattern', icon: '✅' }
-  ]
 
   return (
     <nav className={`sidebar-left ${isOpen ? 'active' : ''}`}>
@@ -211,7 +235,7 @@ function LeftSidebar({ isOpen, onClose }) {
           📚 Library
         </div>
         <div className="nav-content">
-          {referenceLibraries.map((library) => (
+          {referenceLibrariesList.map((library) => (
             <div
               key={library.id}
               className={`nav-item ${contentId === library.id ? 'active' : ''}`}

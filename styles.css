@@ -731,6 +731,21 @@ body.dark-mode .font-selector select {
     color: var(--script-text, var(--text-primary));
 }
 
+.script-block .content-link,
+.script-block a.content-link {
+    color: var(--primary-color, #f97316);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.script-block .content-link:hover,
+.script-block a.content-link:hover {
+    color: var(--primary-dark, #ea580c);
+    text-decoration: underline;
+}
+
 
 
 /* Remove quotes for question items */
@@ -1396,6 +1411,301 @@ body.dark-mode .question-group-list .question-item:hover {
     transform: scale(0.95);
 }
 
+/* EMERGENCY SCRIPTS FAB */
+.emergency-scripts-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 230px;
+    background: var(--accent-red, #dc2626);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: all 0.2s ease;
+}
+
+.emergency-scripts-fab:hover {
+    background: var(--primary-dark, #ea580c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.emergency-scripts-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+body.dark-mode .emergency-scripts-overlay {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.emergency-scripts-modal {
+    background: var(--bg-main, #ffffff);
+    border-radius: 12px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.emergency-scripts-header {
+    padding: 24px;
+    border-bottom: 2px solid var(--border-color, #e0e0e0);
+    position: sticky;
+    top: 0;
+    background: var(--bg-main, #ffffff);
+    z-index: 10;
+}
+
+.emergency-scripts-header h2 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    color: var(--text-primary, #0f172a);
+}
+
+.emergency-scripts-subtitle {
+    margin: 0;
+    color: var(--text-secondary, #475569);
+    font-size: 14px;
+}
+
+.emergency-scripts-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: var(--text-secondary, #475569);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emergency-scripts-close:hover {
+    color: var(--text-primary, #0f172a);
+}
+
+.emergency-scripts-content {
+    padding: 20px;
+}
+
+.protocol-card {
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.protocol-card:hover {
+    border-color: var(--primary-color, #f97316);
+}
+
+.protocol-card.expanded {
+    border-color: var(--primary-color, #f97316);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.protocol-header {
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-secondary, #f8fafc);
+    transition: background 0.2s ease;
+}
+
+.protocol-header:hover {
+    background: var(--bg-main, #ffffff);
+}
+
+.protocol-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.protocol-id {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-color, #f97316);
+    letter-spacing: 0.5px;
+}
+
+.protocol-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary, #0f172a);
+}
+
+.protocol-toggle {
+    font-size: 18px;
+    color: var(--text-secondary, #475569);
+}
+
+.protocol-content {
+    padding: 20px;
+    background: var(--bg-main, #ffffff);
+}
+
+.protocol-steps {
+    margin-bottom: 20px;
+}
+
+.protocol-step {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+}
+
+.step-number {
+    font-weight: 700;
+    color: var(--text-primary, #0f172a);
+    min-width: 24px;
+}
+
+.step-text {
+    color: var(--text-primary, #0f172a);
+    line-height: 1.6;
+}
+
+.protocol-script-box {
+    background: var(--bg-secondary, #f8fafc);
+    border-left: 4px solid var(--primary-color, #f97316);
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.script-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-color, #f97316);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.script-text {
+    font-size: 15px;
+    color: var(--text-primary, #0f172a);
+    font-weight: 500;
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.copy-button {
+    background: var(--primary-color, #f97316);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.copy-button:hover {
+    background: var(--primary-dark, #ea580c);
+}
+
+.protocol-example {
+    background: var(--bg-secondary, #f8fafc);
+    border-left: 4px solid var(--accent-yellow, #d97706);
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+body.dark-mode .protocol-example {
+    background: var(--bg-secondary, #1e293b);
+}
+
+.example-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-yellow, #d97706);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.example-original,
+.example-simpler,
+.example-text {
+    font-size: 14px;
+    color: var(--text-primary, #0f172a);
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.example-text {
+    white-space: pre-line;
+}
+
+.example-note {
+    font-size: 13px;
+    color: var(--text-secondary, #475569);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+.protocol-guidance {
+    background: var(--bg-secondary, #f8fafc);
+    border-left: 4px solid var(--accent-green, #059669);
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--accent-green, #059669);
+    line-height: 1.6;
+}
+
+body.dark-mode .protocol-guidance {
+    background: var(--bg-secondary, #1e293b);
+}
+
+@media (max-width: 768px) {
+    .emergency-scripts-modal {
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .emergency-scripts-fab {
+        bottom: 16px;
+        right: 16px;
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+    
+    .resume-fab {
+        right: 16px;
+    }
+}
+
 /* Hide advice boxes when toggled off, but keep script-blocks visible */
 body.advice-hidden .info-box {
     /* Hide the info-box container and its non-script content */
@@ -1405,20 +1715,36 @@ body.advice-hidden .info-box {
     margin: 0;
 }
 
+/* Keep question groups fully visible in focus mode (they have info-box class) */
+body.advice-hidden .question-group.info-box {
+    display: block !important;
+    border: 1px solid var(--border-color) !important;
+    background: var(--bg-secondary) !important;
+    padding: 0 !important;
+    margin: 2rem 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 /* Hide direct children that aren't script-blocks and don't contain script-blocks */
-body.advice-hidden .info-box > *:not(.script-block):not(:has(.script-block)) {
+/* But exclude question groups from this rule */
+body.advice-hidden .info-box:not(.question-group) > *:not(.script-block):not(:has(.script-block)) {
     display: none;
 }
 
 /* Show containers that have script-blocks (like step divs) */
-body.advice-hidden .info-box > *:has(.script-block) {
+/* But exclude question groups from this rule */
+body.advice-hidden .info-box:not(.question-group) > *:has(.script-block) {
     display: block;
     margin: 0;
     padding: 0;
 }
 
 /* Hide non-script content inside containers that have scripts */
-body.advice-hidden .info-box > *:has(.script-block) > *:not(.script-block) {
+/* But exclude question groups from this rule */
+body.advice-hidden .info-box:not(.question-group) > *:has(.script-block) > *:not(.script-block) {
     display: none;
 }
 
@@ -1428,9 +1754,169 @@ body.advice-hidden .info-box .script-block {
     margin: 1.5rem 0;
 }
 
+/* Keep InfoBox components inside question groups visible */
+body.advice-hidden .question-group .info-box {
+    display: block !important;
+    border: 1px solid var(--border-color) !important;
+    background: var(--bg-secondary) !important;
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
 /* Ensure standalone script-blocks remain visible */
 body.advice-hidden .script-block {
     display: block !important;
+}
+
+/* Keep question groups visible in focus mode */
+body.advice-hidden .question-group {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body.advice-hidden .question-group-header {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    padding: 0.75rem 1.5rem 0.25rem !important;
+    border-bottom: 2px solid var(--border-color) !important;
+}
+
+body.advice-hidden .question-group-content {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body.advice-hidden .question-group-list {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body.advice-hidden .question-item {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Two Paths Emerge - Big buttons side by side, content below based on selection */
+.two-paths-emerge-section {
+    margin: 2rem 0;
+}
+
+.two-paths-buttons-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.two-paths-button {
+    flex: 1;
+    padding: 2rem 2.5rem;
+    background: var(--bg-secondary, #f8fafc);
+    border: 3px solid var(--primary-color, #f97316);
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+    color: var(--text-primary, #0f172a);
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.two-paths-button:hover {
+    background: var(--primary-color, #f97316);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.two-paths-button.selected {
+    background: var(--primary-color, #f97316);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.two-paths-button-title {
+    line-height: 1.4;
+    text-align: center;
+}
+
+.two-paths-content {
+    padding: 1.5rem;
+    background: var(--bg-secondary, #f8fafc);
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #e2e8f0);
+    margin-top: 1rem;
+}
+
+/* Keep Two Paths Emerge visible in focus mode */
+body.advice-hidden .two-paths-emerge-section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body.advice-hidden .two-paths-buttons-row {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body.advice-hidden .two-paths-button {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+body.advice-hidden .two-paths-content {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Keep all collapsible sections visible in focus mode */
+body.advice-hidden .collapsible-section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border: 1px solid var(--border-color) !important;
+    background: var(--bg-secondary) !important;
+    padding: 0 !important;
+    margin: 1rem 0 !important;
+}
+
+body.advice-hidden .collapsible-section-header {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 0.75rem 1rem !important;
+    cursor: pointer !important;
+}
+
+body.advice-hidden .collapsible-section-content {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 1rem !important;
+}
+
+/* Keep Six Beats collapsible sections visible in focus mode */
+body.advice-hidden .six-beat-section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* ===== PRESENTATION THEME STYLES ===== */

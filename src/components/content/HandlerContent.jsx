@@ -3,6 +3,7 @@ import { useContent } from '../../context/ContentContext'
 import InfoBox from './InfoBox'
 import ScriptBlock from './ScriptBlock'
 import LinkifiedText from './LinkifiedText'
+import CollapsibleSection from './CollapsibleSection'
 
 function HandlerContent({ handlerData, handlerId }) {
   const { loadContent } = useContent()
@@ -19,13 +20,34 @@ function HandlerContent({ handlerData, handlerId }) {
       <div className="content-header">
         <span className="content-category">{handlerData.category}</span>
         <h2 className="content-title">{handlerData.title}</h2>
+        {handlerData.purpose && (
+          <p className="content-purpose" style={{ fontStyle: 'italic', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
+            {handlerData.purpose}
+          </p>
+        )}
         <p className="content-purpose">{handlerData.trigger}</p>
       </div>
       <div className="content-body">
+        {handlerData.where_it_shows_up && (
+          <InfoBox title="📍 Where It Shows Up" variant="default" style={{ marginBottom: '1.5rem' }}>
+            <LinkifiedText text={handlerData.where_it_shows_up} />
+          </InfoBox>
+        )}
         {handlerData.quick_response && (
           <InfoBox title="⚡ Quick Response">
             <LinkifiedText text={handlerData.quick_response} />
           </InfoBox>
+        )}
+
+        {/* Pricing Objection Handler - Main Script (Collapsible) - Check early */}
+        {handlerData.script && !handlerData.full_script && (
+          <CollapsibleSection 
+            title="📝 What to Say (Standard Script)"
+            defaultCollapsed={false}
+            variant="default"
+          >
+            <ScriptBlock script={handlerData.script} />
+          </CollapsibleSection>
         )}
 
         {handlerData.full_script && (
@@ -107,6 +129,40 @@ function HandlerContent({ handlerData, handlerId }) {
           </InfoBox>
         )}
 
+        {/* Pricing Objection Handler - How to Handle Steps (Collapsible) - Check before handle_steps */}
+        {handlerData.how_to_handle && handlerData.how_to_handle.length > 0 && (
+          <CollapsibleSection 
+            title="📋 How to Handle It"
+            defaultCollapsed={true}
+            variant="default"
+          >
+            {handlerData.how_to_handle.map((stepObj, idx) => (
+              <div
+                key={idx}
+                style={{
+                  marginBottom: idx < handlerData.how_to_handle.length - 1 ? '1.5rem' : '0',
+                  paddingLeft: '1rem',
+                  borderLeft: '3px solid var(--primary-color)'
+                }}
+              >
+                <h4 style={{ color: 'var(--primary-color)', marginBottom: '0.75rem', fontWeight: 700 }}>
+                  {stepObj.step}
+                </h4>
+                {stepObj.content && (
+                  <div style={{ marginTop: '0.5rem' }}>
+                    <LinkifiedText text={stepObj.content} />
+                  </div>
+                )}
+                {stepObj.script && (
+                  <div style={{ marginTop: '0.5rem' }}>
+                    <ScriptBlock script={stepObj.script} />
+                  </div>
+                )}
+              </div>
+            ))}
+          </CollapsibleSection>
+        )}
+
         {handlerData.handle_steps && handlerData.handle_steps.length > 0 && (
           <div className="info-box" style={{ margin: '2rem 0' }}>
             <h3 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', fontSize: '1.25rem' }}>
@@ -144,6 +200,105 @@ function HandlerContent({ handlerData, handlerId }) {
               </div>
             ))}
           </div>
+        )}
+
+        {/* Pricing Objection Handler - Capitalization Framing (Collapsible) - Check early */}
+        {handlerData.capitalization_framing && (
+          <CollapsibleSection 
+            title={handlerData.capitalization_framing.title || "💰 Capitalization Framing"}
+            defaultCollapsed={true}
+            variant="default"
+          >
+            {handlerData.capitalization_framing.key_principle && (
+              <div style={{ marginBottom: '1rem', padding: '0.75rem', backgroundColor: 'var(--bg-secondary)', borderRadius: '4px' }}>
+                <strong style={{ color: 'var(--primary-color)' }}>Key Principle:</strong>
+                <div style={{ marginTop: '0.25rem' }}>
+                  <LinkifiedText text={handlerData.capitalization_framing.key_principle} />
+                </div>
+              </div>
+            )}
+            {handlerData.capitalization_framing.content && (
+              <div style={{ marginBottom: '1rem' }}>
+                <LinkifiedText text={handlerData.capitalization_framing.content} />
+              </div>
+            )}
+            {handlerData.capitalization_framing.script && handlerData.capitalization_framing.script.length > 0 && (
+              <div style={{ marginTop: '1rem' }}>
+                <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.75rem' }}>
+                  Script Variations:
+                </strong>
+                {handlerData.capitalization_framing.script.map((scriptText, idx) => (
+                  <div 
+                    key={idx} 
+                    style={{ 
+                      marginBottom: idx < handlerData.capitalization_framing.script.length - 1 ? '1rem' : '0',
+                      padding: '0.75rem',
+                      backgroundColor: 'var(--bg-secondary)',
+                      borderRadius: '4px'
+                    }}
+                  >
+                    <ScriptBlock script={scriptText} />
+                  </div>
+                ))}
+              </div>
+            )}
+          </CollapsibleSection>
+        )}
+
+        {/* Pricing Objection Handler - Advisor Notes (Collapsible) - Check early */}
+        {handlerData.advisor_notes && handlerData.advisor_notes.length > 0 && (
+          <CollapsibleSection 
+            title="💡 Advisor Notes"
+            defaultCollapsed={true}
+            variant="default"
+          >
+            <ul className="bullet-list">
+              {handlerData.advisor_notes.map((note, idx) => (
+                <li key={idx}>
+                  <LinkifiedText text={note} />
+                </li>
+              ))}
+            </ul>
+          </CollapsibleSection>
+        )}
+
+        {/* Pricing Objection Handler - Key Lesson */}
+        {handlerData.key_lesson && (
+          <InfoBox title="🎯 Key Lesson" variant="advisor-note" style={{ margin: '1.5rem 0' }}>
+            <LinkifiedText text={handlerData.key_lesson} />
+          </InfoBox>
+        )}
+
+        {/* Pricing Objection Handler - Where to Go Next */}
+        {handlerData.where_to_go_next && (
+          <InfoBox title={handlerData.where_to_go_next.title || "Where to Go Next"} variant="advisor-note" style={{ margin: '1.5rem 0' }}>
+            {handlerData.where_to_go_next.guidance && (
+              <p style={{ marginBottom: '0.75rem', fontWeight: 600 }}>
+                {handlerData.where_to_go_next.guidance}
+              </p>
+            )}
+            {handlerData.where_to_go_next.default && (
+              <div>
+                <LinkifiedText text={handlerData.where_to_go_next.default} />
+              </div>
+            )}
+          </InfoBox>
+        )}
+
+        {/* Pricing Objection Handler - Pivot Examples */}
+        {handlerData.pivot_examples && handlerData.pivot_examples.length > 0 && (
+          <InfoBox title="Pivot Examples" variant="advisor-note" style={{ margin: '1.5rem 0' }}>
+            {handlerData.pivot_examples.map((pivot, idx) => (
+              <div key={idx} style={{ marginBottom: idx < handlerData.pivot_examples.length - 1 ? '1rem' : '0' }}>
+                <ScriptBlock script={pivot.text} />
+                {pivot.link_text && (
+                  <p style={{ marginTop: '0.5rem', fontStyle: 'italic', color: 'var(--text-secondary)' }}>
+                    → {pivot.link_text}
+                  </p>
+                )}
+              </div>
+            ))}
+          </InfoBox>
         )}
 
         {handlerData.recognize_the_projection && (
@@ -186,7 +341,9 @@ function HandlerContent({ handlerData, handlerId }) {
           const renderedProps = new Set([
             'title', 'category', 'trigger', 'quick_response', 'full_script', 'key_principle',
             'content', 'story_mode', 'primary_reframe', 'validation_spins', 'polite_disqualification',
-            'why_they_do_it', 'handle_steps', 'recognize_the_projection', 'accountability_boundaries'
+            'why_they_do_it', 'handle_steps', 'recognize_the_projection', 'accountability_boundaries',
+            'script', 'how_to_handle', 'capitalization_framing', 'advisor_notes', 'key_lesson', 
+            'where_to_go_next', 'pivot_examples', 'where_it_shows_up', 'purpose'
           ])
 
           const unrenderedProps = Object.keys(handlerData).filter(key => 

@@ -3,7 +3,7 @@ import { formatScript } from '../../utils/textFormatting'
 import { useContent } from '../../context/ContentContext'
 
 function ScriptBlock({ script, style = {} }) {
-  const { loadContent, loadReferenceContent, loadObjection } = useContent()
+  const { loadContent, loadReferenceContent, loadObjection, loadHandler } = useContent()
   const containerRef = useRef(null)
   const [carpetUpdateTrigger, setCarpetUpdateTrigger] = useState(0)
   
@@ -79,6 +79,9 @@ function ScriptBlock({ script, style = {} }) {
             loadObjection(objectionNum)
           }
           break
+        case 'loadHandler':
+          loadHandler(id)
+          break
         default:
           console.warn(`Unknown action: ${action}`)
       }
@@ -86,7 +89,7 @@ function ScriptBlock({ script, style = {} }) {
 
     container.addEventListener('click', handleClick)
     return () => container.removeEventListener('click', handleClick)
-  }, [loadContent, loadReferenceContent, loadObjection])
+  }, [loadContent, loadReferenceContent, loadObjection, loadHandler])
 
   if (!script) return null
   

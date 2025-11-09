@@ -9,6 +9,7 @@ import ResumeFAB from './components/ResumeFAB'
 import GlobalSearch from './components/GlobalSearch'
 import ProgressIndicator from './components/ProgressIndicator'
 import RecentlyViewed from './components/RecentlyViewed'
+import EmergencyScripts from './components/EmergencyScripts'
 import { useMobileSidebar } from './hooks/useMobileSidebar'
 import { SalesDataProvider } from './context/SalesDataContext'
 import { ContentProvider } from './context/ContentContext'
@@ -114,6 +115,7 @@ function App() {
         onClick={() => setAdviceVisible(!adviceVisible)}
       />
       <ResumeFAB />
+      <EmergencyScripts />
       </ContentProvider>
     </SalesDataProvider>
   )

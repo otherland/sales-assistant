@@ -9,7 +9,7 @@ import ForkPaths from './ForkPaths'
 import CollapsibleSection from './CollapsibleSection'
 
 function SequentialContent({ item, itemId }) {
-  const { loadContent } = useContent()
+  const { loadContent, loadHandler } = useContent()
   const { salesData } = useSalesData()
   const [selectedEconomyPath, setSelectedEconomyPath] = useState(null)
   const [openPaths, setOpenPaths] = useState({})
@@ -302,6 +302,71 @@ function SequentialContent({ item, itemId }) {
                       </div>
                     </div>
                   )}
+                  {variation.paths && variation.paths.length > 0 && (
+                    <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '2px solid var(--border-color)' }}>
+                      <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '1rem' }}>If They Say:</strong>
+                      <div className="two-paths-emerge-section">
+                        <div className="two-paths-buttons-row">
+                          {variation.paths.map((path, pathIdx) => {
+                            const pathId = `${variation.id}_path_${pathIdx}`
+                            const isSelected = openPaths[pathId] || false
+                            
+                            return (
+                              <button
+                                key={pathId}
+                                className={`two-paths-button ${isSelected ? 'selected' : ''}`}
+                                onClick={() => {
+                                  const newOpenPaths = { ...openPaths }
+                                  // First, deselect all paths for this variation
+                                  variation.paths.forEach((_, idx) => {
+                                    const vPathId = `${variation.id}_path_${idx}`
+                                    newOpenPaths[vPathId] = false
+                                  })
+                                  // Then, toggle the clicked path (only select if it wasn't already selected)
+                                  if (!isSelected) {
+                                    newOpenPaths[pathId] = true
+                                  }
+                                  setOpenPaths(newOpenPaths)
+                                }}
+                                style={{ marginBottom: '0.5rem' }}
+                              >
+                                <div className="two-paths-button-title">
+                                  {path.condition}
+                                </div>
+                              </button>
+                            )
+                          })}
+                        </div>
+                        {variation.paths.map((path, pathIdx) => {
+                          const pathId = `${variation.id}_path_${pathIdx}`
+                          const isSelected = openPaths[pathId] || false
+                          
+                          if (!isSelected) return null
+                          
+                          return (
+                            <div key={`content-${pathId}`} className="two-paths-content" style={{ marginTop: '1rem' }}>
+                              {path.script && (
+                                <div style={{ marginBottom: '1rem' }}>
+                                  <ScriptBlock script={path.script} />
+                                </div>
+                              )}
+                              {path.advisor_notes && path.advisor_notes.length > 0 && (
+                                <InfoBox title="Advisor Notes" variant="advisor-note" style={{ marginTop: '1rem' }}>
+                                  <ul className="bullet-list">
+                                    {path.advisor_notes.map((note, noteIdx) => (
+                                      <li key={noteIdx}>
+                                        <LinkifiedText text={note} />
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </InfoBox>
+                              )}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
                   {variation.advisor_notes && variation.advisor_notes.length > 0 && (
                     <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--border-color)' }}>
                       <strong style={{ color: 'var(--primary-color)' }}>💡 How to Deliver:</strong>
@@ -341,7 +406,7 @@ function SequentialContent({ item, itemId }) {
         {/* Legacy content support (for backward compatibility) */}
         {!item.additional_resources && item.content && (
           <InfoBox title="Additional Content">
-            <LinkifiedText text={item.content} />
+            <ScriptBlock script={item.content} />
           </InfoBox>
         )}
 
@@ -357,17 +422,33 @@ function SequentialContent({ item, itemId }) {
           </InfoBox>
         )}
 
-        {/* Legacy advisor notes (only render if not in main_script) */}
-        {!item.main_script && item.advisor_notes && item.advisor_notes.length > 0 && (
-          <InfoBox title="Advisor Notes" variant="advisor-note">
-            <ul className="bullet-list">
-              {item.advisor_notes.map((note, idx) => (
-                <li key={idx}>
-                  <LinkifiedText text={note} />
-                </li>
-              ))}
-            </ul>
-          </InfoBox>
+        {/* Advisor Notes - Collapsible section (when main_script exists) or InfoBox (legacy) */}
+        {item.advisor_notes && item.advisor_notes.length > 0 && (
+          item.main_script ? (
+            <CollapsibleSection 
+              title="💡 Advisor Notes"
+              defaultCollapsed={true}
+              variant="default"
+            >
+              <ul className="bullet-list">
+                {item.advisor_notes.map((note, idx) => (
+                  <li key={idx}>
+                    <LinkifiedText text={note} />
+                  </li>
+                ))}
+              </ul>
+            </CollapsibleSection>
+          ) : (
+            <InfoBox title="Advisor Notes" variant="advisor-note">
+              <ul className="bullet-list">
+                {item.advisor_notes.map((note, idx) => (
+                  <li key={idx}>
+                    <LinkifiedText text={note} />
+                  </li>
+                ))}
+              </ul>
+            </InfoBox>
+          )
         )}
 
         {item.soft_commitment && (
@@ -459,59 +540,39 @@ function SequentialContent({ item, itemId }) {
         )}
 
         {item.paths && item.assessment_question ? (
-          // Two Paths Emerge structure - custom rendering with toggle buttons
-          <CollapsibleSection 
-            title="Two Paths Emerge — Process Assessment"
-            defaultCollapsed={false}
-            variant="highlight"
-            className="two-paths-emerge-section"
-          >
-            <div style={{ 
-              marginTop: '1rem',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1rem'
-            }}>
+          // Two Paths Emerge structure - two big buttons side by side, content below based on selection
+          <div className="two-paths-emerge-section">
+            <div className="two-paths-buttons-row">
               {item.paths.map((path, idx) => {
                 const pathId = path.id || `path-${idx}`
-                const isOpen = openPaths[pathId] || false
+                const isSelected = openPaths[pathId] || false
                 
                 return (
-                  <div
+                  <button
                     key={pathId}
-                    style={{
-                      border: '2px solid var(--primary-color)',
-                      borderRadius: '8px',
-                      overflow: 'hidden'
+                    className={`two-paths-button ${isSelected ? 'selected' : ''}`}
+                    onClick={() => {
+                      // Set this path as selected, deselect others
+                      const newOpenPaths = {}
+                      newOpenPaths[pathId] = !isSelected
+                      setOpenPaths(newOpenPaths)
                     }}
                   >
-                    <button
-                      onClick={() => setOpenPaths(prev => ({ ...prev, [pathId]: !isOpen }))}
-                      style={{
-                        width: '100%',
-                        padding: '1rem 1.5rem',
-                        background: isOpen ? 'var(--primary-color)' : 'var(--bg-secondary)',
-                        color: isOpen ? 'white' : 'var(--primary-color)',
-                        border: 'none',
-                        borderRadius: '0',
-                        cursor: 'pointer',
-                        textAlign: 'left',
-                        fontWeight: 700,
-                        fontSize: '1rem',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        transition: 'all 0.2s ease'
-                      }}
-                    >
-                      <span>Path {idx + 1}: {path.condition}</span>
-                      <span style={{ fontSize: '1.2rem' }}>{isOpen ? '▲' : '▼'}</span>
+                    <div className="two-paths-button-title">
+                      {path.condition}
+                    </div>
                     </button>
-                    {isOpen && (
-                      <div style={{
-                        padding: '1.5rem',
-                        background: 'var(--bg-secondary)'
-                      }}>
+                )
+              })}
+            </div>
+            {item.paths.map((path, idx) => {
+              const pathId = path.id || `path-${idx}`
+              const isSelected = openPaths[pathId] || false
+              
+              if (!isSelected) return null
+              
+              return (
+                <div key={`content-${pathId}`} className="two-paths-content">
                         {path.script && (
                           <div style={{ marginBottom: '1rem' }}>
                             <ScriptBlock script={path.script} />
@@ -538,14 +599,11 @@ function SequentialContent({ item, itemId }) {
                               ))}
                             </ul>
                           </InfoBox>
-                        )}
-                      </div>
                     )}
                   </div>
                 )
               })}
             </div>
-          </CollapsibleSection>
         ) : item.paths ? (
           // Economy paths structure - use ForkPaths component
           <ForkPaths
@@ -693,6 +751,38 @@ function SequentialContent({ item, itemId }) {
           </InfoBox>
         )}
 
+        {item.related_objection_handlers && (
+          <InfoBox title={item.related_objection_handlers.title || "Related Objection Handlers"} variant="advisor-note" style={{ margin: '2rem 0' }}>
+            {item.related_objection_handlers.note && (
+              <p style={{ marginBottom: '1rem', fontStyle: 'italic', color: 'var(--text-secondary)' }}>
+                {item.related_objection_handlers.note}
+              </p>
+            )}
+            {item.related_objection_handlers.handlers && item.related_objection_handlers.handlers.length > 0 && (
+              <div
+                onClick={(e) => {
+                  const link = e.target.closest('.content-link')
+                  if (!link) return
+                  e.preventDefault()
+                  const action = link.getAttribute('data-action')
+                  const id = link.getAttribute('data-id')
+                  if (action === 'loadHandler' && id) {
+                    loadHandler(id)
+                  }
+                }}
+              >
+                <ul className="bullet-list">
+                  {item.related_objection_handlers.handlers.map((handler, idx) => (
+                    <li key={idx} style={{ marginBottom: '0.75rem' }}>
+                      <strong style={{ color: 'var(--primary-color)' }}>{handler.title}:</strong>{' '}
+                      <span dangerouslySetInnerHTML={{ __html: handler.link }} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </InfoBox>
+        )}
 
         {/* Generic fallback renderer for unhandled properties */}
         {(() => {
@@ -705,7 +795,8 @@ function SequentialContent({ item, itemId }) {
             'advisor_notes', 'script', 'intro', 'content', 'soft_commitment', 'carpet_integration',
             'when_to_deploy', 'when_NOT_to_deploy', 'where_to_go_next', 'question_groups', 'paths',
             'on_call_sequence', 'handling_quality_objections', 'quick_reference_card', 'capitalization_framing',
-            'assessment_question', 'transition', 'main_script', 'context_variations', 'additional_resources'
+            'assessment_question', 'transition', 'main_script', 'context_variations', 'additional_resources',
+            'related_objection_handlers'
           ])
 
           const unrenderedProps = Object.keys(item).filter(key => 

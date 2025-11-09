@@ -585,7 +585,7 @@ function RightSidebar({ isOpen, onClose }) {
                 padding: '0 1rem 0.5rem 1rem',
                 fontStyle: 'italic'
               }}>
-                These objections typically arise in this phase
+                These objections typically arise in the {getPhaseDisplayName(currentPhase)} phase
               </div>
               {predictiveHandlers.map((handler, idx) => (
                 <div

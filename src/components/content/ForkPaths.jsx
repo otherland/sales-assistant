@@ -4,6 +4,7 @@ import { useSalesData } from '../../context/SalesDataContext'
 import InfoBox from './InfoBox'
 import ScriptBlock from './ScriptBlock'
 import LinkifiedText from './LinkifiedText'
+import CollapsibleSection from './CollapsibleSection'
 
 function ForkPaths({ itemId, paths, onPathSelect }) {
   const { loadContent } = useContent()
@@ -107,26 +108,15 @@ function ProofNarrative({ proof }) {
           {beatOrder.map((beat, idx) => {
             if (!proof.six_beats[beat.key]) return null
             return (
-              <div
+              <CollapsibleSection
                 key={beat.key}
-                style={{
-                  marginBottom: idx < beatOrder.length - 1 ? '2rem' : '1.5rem',
-                  padding: '1.25rem',
-                  background: 'var(--bg-primary)',
-                  borderLeft: '4px solid var(--accent-blue)',
-                  borderRadius: '6px'
-                }}
+                title={beat.label}
+                defaultCollapsed={true}
+                variant="default"
+                className="six-beat-section"
               >
-                <h5 style={{
-                  color: 'var(--accent-blue)',
-                  fontSize: '1rem',
-                  fontWeight: 700,
-                  marginBottom: '0.75rem'
-                }}>
-                  {beat.label}
-                </h5>
                 <ScriptBlock script={proof.six_beats[beat.key]} />
-              </div>
+              </CollapsibleSection>
             )
           })}
         </div>

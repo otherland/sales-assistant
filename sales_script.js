@@ -63,7 +63,7 @@ let salesData = {
           {
             "emoji": "📊",
             "title": "Referral Path (If 70%+ Referrals)",
-            "intro_script": "<b>Note:</b> If they indicate referral-dominant business, use these questions. For deeper referral process extraction, see <a href='#' data-action='loadContent' data-id='discovery_referral_based' class='content-link' style='color: var(--primary-color); text-decoration: underline; cursor: pointer; font-weight: 600;'>Referral-Based Business Flow</a>.",
+            "intro_script": "<b>Note:</b> If they indicate referral-dominant business, use these questions. For deeper referral process extraction, see <a href='#' data-action='loadContent' data-id='discovery_referral_based' class='content-link'>Referral-Based Business Flow</a>.",
             "questions": [
               "How consistent are those referrals month to month?",
               "Has the business scaled meaningfully on referrals alone, or have you hit a ceiling?"
@@ -281,10 +281,10 @@ let salesData = {
                 "beat_5_private_infrastructure": "So we deployed the outreach through our internal infrastructure.<br><br>[Shift tone - more technical, confident]<br><br>Think of it like <b>mission control</b>—every message, every contact list, every follow-up sequence runs through quality gates. We're checking tone, compliance, brand alignment. Nothing goes out that doesn't reflect their world.<br><br>[Pause]<br><br>And because it's all orchestrated centrally, we can scale it—from one region to fifty states to international—all while maintaining the same brand voice.<br><br>[Slow down - crystallize the concept]<br><br>That's what '<u>private infrastructure</u>' means. Not tools. <b>Orchestration</b>.<br><br>[Pause - let that distinction land]",
                 "beat_6_hardest_first_proof_tieback": "Here's what happened: <b>373 qualified conversations in 90 days</b>.<br><br>[Pause - let the numbers land]<br><br>Their sales cycle is short—about 30 days—so they closed business quickly. <u>Over $1M in new revenue</u> in that first quarter, all without touching their brand reputation.<br><br>[Lean forward - bridge back to them]<br><br>And here's why I'm telling you this: if we can do that in education—where brand risk is the highest I've seen—then what we're doing in your market is essentially the same playbook. <b>Different industry, same thesis</b>.<br><br>[Pause - let the portability land]"
               },
-              "tie_back_line": "So that's the thesis. <b>Specialized markets, brand-first execution, diligence-led targeting</b>. And when that framework works in education, it works everywhere else.",
+              "tie_back_line": "So that's the thesis: <b>sophisticated markets where traditional strategies fail</b>—specialized buyers, brand-first execution, diligence-led targeting. And when that framework works in education—where brand risk kills you overnight—it works everywhere else.",
               "ceo_cascade": "Here's what I want you to take back to your team. <b>One</b>: we specialize in <u>sophisticated profiles under brand-integrity constraints</u>. <b>Two</b>: we have a <u>diligence process that extracts decades of your institutional knowledge</u>. <b>Three</b>: we operate through <u>private infrastructure built for the exact channels where your buyers already are</u>. That's it. That's the thesis. That's what makes it work at scale."
             },
-            "pivot": "So that's the framework. <b>Does that logic make sense?</b> The framework—start with diligence, then deploy precision, all through controlled infrastructure.<br><br>Now here's what I want to confirm: based on what you told me about <u>[reference specific thing from their discovery]</u>, does this approach map to your world? And if it does, here's what the next conversation looks like."
+            "pivot": "So that's the framework: <b>start with diligence, then deploy precision, all through controlled infrastructure</b>.<br><br>Now here's what I want to confirm: based on what you told me about <u>[reference specific constraint/gap from discovery—e.g., 'referrals being inconsistent' or 'team hitting capacity']</u>, does this approach map to your world?<br><br>If it does, here's what the next conversation looks like: we'll take everything we covered today and build out a scope that models what a 90-day engagement could look like—anchored to your actual conversion math and capacity constraints. That becomes the framework we review together before moving forward."
           },
           {
             "id": "old_economy",
@@ -302,39 +302,30 @@ let salesData = {
                 "beat_5_private_infrastructure": "So we deployed the outreach through our internal infrastructure.<br><br>[Shift tone - more technical, confident]<br><br>Think of it like <b>mission control</b>—every message, every contact list, every follow-up sequence runs through quality gates. We're checking tone, compliance, brand alignment. Nothing goes out that doesn't reflect their world.<br><br>[Pause]<br><br>And because it's all orchestrated centrally, we can scale it—from regional to national to global—all while maintaining the same brand voice. That worked perfectly for Raiseview since they had a global mandate.<br><br>[Slow down - crystallize the concept]<br><br>That's what '<u>private infrastructure</u>' means. Not tools. <b>Orchestration</b>.<br><br>[Pause - let that distinction land]",
                 "beat_6_hardest_first_proof_tieback": "Here's what happened: <b>102 new sell-side introductions</b> with the exact institutions Raiseview needed—without a single dent to reputation.<br><br>[Pause - let the numbers land]<br><br>[Lean forward - bridge back to them]<br><br>And here's why I'm telling you this: if we can do that in sell-side banking—the most conservative, brand-sensitive environment I've seen—then what we're doing in your market is essentially the same playbook. <b>Different industry, same thesis</b>.<br><br>[Pause - let the portability land]"
               },
-              "tie_back_line": "So that's the thesis. <b>Specialized profiles, hard-to-get data, strict brand standards</b>. And when that framework works in sell-side banking, it works everywhere else.",
+              "tie_back_line": "So that's the thesis: <b>sophisticated markets where traditional strategies fail</b>—specialized profiles, hard-to-get data, strict brand standards. And when that framework works in sell-side banking—the most conservative corner of finance—it works everywhere else.",
               "ceo_cascade": "Here's what I want you to take back to your team. <b>One</b>: we specialize in <u>sophisticated profiles under brand-integrity constraints</u>. <b>Two</b>: we have a <u>diligence process that extracts decades of your institutional knowledge</u>. <b>Three</b>: we operate through <u>private infrastructure built for the exact channels where your buyers already are</u>. That's it. That's the thesis. That's what makes it work at scale."
             },
-            "pivot": "So that's the framework. <b>Does that logic make sense?</b> The framework—start with diligence, then deploy precision, all through controlled infrastructure.<br><br>Now here's what I want to confirm: based on what you told me about <u>[reference specific thing from their discovery]</u>, does this approach map to your world? And if it does, here's what the next conversation looks like."
+            "pivot": "So that's the framework: <b>start with diligence, then deploy precision, all through controlled infrastructure</b>.<br><br>Now here's what I want to confirm: based on what you told me about <u>[reference specific constraint/gap from discovery—e.g., 'referrals being inconsistent' or 'team hitting capacity']</u>, does this approach map to your world?<br><br>If it does, here's what the next conversation looks like: we'll take everything we covered today and build out a scope that models what a 90-day engagement could look like—anchored to your actual conversion math and capacity constraints. That becomes the framework we review together before moving forward."
           }
         ],
-        "objection_to_story_deflection": {
-          "title": "When They Ask 'How Do We Know This Works?' or 'Prove It'",
-          "trigger": "Prospect says 'How do we know this works?' or 'Prove it' or 'Show me results'",
-          "verbatim": "<i>Fair question</i>. That's exactly why we lead with [Raiseview/Book Fair example]. Because if I just tell you, you'll nod politely. But if I show you how it worked in the <b>most difficult market I know</b>, then you understand the logic.<br><br>Let me walk you through it...",
-          "advisor_notes": [
-            "Acknowledges objection, then reframes to story - doesn't defend, demonstrates",
-            "Use 'most difficult market' language to establish hardest-first frame",
-            "Natural bridge into Six Beats narrative",
-            "[Pause] after 'Let me walk you through it' - shift to story mode"
-          ]
-        },
-        "why_us_not_vendor": {
-          "title": "Why You vs. Vendor/Agency",
-          "trigger": "When they say 'Couldn't an agency do this?' or 'Why not just hire a team?' or 'What's the difference between you and an agency?'",
-          "verbatim": "You could. And a lot of companies do.<br><br>The difference is: most agencies operate on <u>retainer and hope for results</u>. We operate on a <b>fixed scope with contracted outcomes</b>.<br><br>You don't pay for time; you pay for results. And we're accountable to <b>milestones, not activity</b>.",
-          "advisor_notes": [
-            "Don't defend; contrast the models",
-            "Risk mitigation is the differentiator, not talent or process",
-            "Tie back to why capitalization matters - it funds the contracted outcomes",
-            "[Pause] after 'You could. And a lot of companies do.' - let that acknowledgment land",
-            "This positions you as outcome-driven, not service-driven"
+        "related_objection_handlers": {
+          "title": "Related Objection Handlers",
+          "note": "If prospects raise objections during this section, use these handlers:",
+          "handlers": [
+            {
+              "title": "When They Ask 'How Do We Know This Works?' or 'Prove It'",
+              "link": "<a href=\"#\" data-action=\"loadHandler\" data-id=\"case_studies\" class=\"content-link\" style=\"color: var(--primary-color); text-decoration: underline; cursor: pointer; font-weight: 600;\">Case Studies Handler</a>"
+            },
+            {
+              "title": "Why You vs. Vendor/Agency",
+              "link": "<a href=\"#\" data-action=\"loadHandler\" data-id=\"past_vendor_failure\" class=\"content-link\" style=\"color: var(--primary-color); text-decoration: underline; cursor: pointer; font-weight: 600;\">Past Vendor Failure / Agency Comparison Handler</a>"
+            }
           ]
         }
       },
       {
         "id": "qoa_deployment_guide",
-        "title": "QOA™ Deployment — On-Call Script",
+        "title": "Lead Quality",
         "category": "sequential",
         "phase": 3,
         "purpose": "Deploy the Qualified Opportunity Anchor™ when quality concerns arise—gives you verbatim on-call scripts for the complete sequence",
@@ -471,8 +462,88 @@ let salesData = {
         "category": "sequential",
         "phase": 5,
         "purpose": "Close all open loops and secure a defined next step on the calendar",
-        "script": "At this point, what we'll do is take all of the data you've given us and build out an <b>internal engagement model</b> — that's where we <b>reverse-engineer the numbers</b> and map out what a <u>90-day structure</u> could realistically result in.<br><br>From there, we'll wrap that model into a <b>formal scope of work</b> that lays out:<br><br>The <b>thesis-driven approach</b> tailored to your market<br>The <b>milestone structure and success metrics</b><br>The <u>built-in risk-mitigation language that protects you</u><br><br>Once that's ready, we'll send it over for review and then reconvene to walk through it together.<br><br>(Pause, then lightly transition to the push for call 2)<br><br>In terms of scheduling that review — does <b>[suggest specific day/time within 3–5 business days]</b> work on your end?<br><br>(Pause, work with them to get it booked — this can happen in 1,000's of ways so be as helpful as possible and make it effortless for them to book call 2 right now)<br><br>(If they hesitate or seem unsure)<br><br><i>Totally fine</i> — we don't need to confirm anything today; it just helps me lock in time on our end so the team can <b>prioritize building your model</b> this week.<br><br>Would you prefer to receive the scope first before scheduling a review?<br><br>(If they strongly prefer to schedule later, cater to the request)<br><br>Works fine either way, I appreciate your time and we're looking forward to building out a scope for review — I'll have that sent over for processing and then shipped to you in the next day or two.<br><br>Perfect — before I let you go, we always like to make sure the scope we put together aligns with what actually matters most on your side.<br><br>Everyone has different biases when it comes to greenlighting something like this.<br><br>Just so we're catering it toward what's most important to you — <b>what do you think typically pushes something like this across the line internally?</b><br><br>(Pay attention to this feedback — it's gold)<br><br>Really good insight, thank you.<br><br>I'll send the scope within <b>24–48 hours</b>. Before our review, even if you just glance at it, I need your <b>first-wave feedback</b> — concerns, optimism, anything missing. That way I can adjust ahead of the meeting.<br><br>Talk to you then.",
-        "content": "Perfect — before I let you go, we always like to make sure the scope we put together aligns with what actually matters most on your side.<br><br>Everyone has different biases when it comes to greenlighting something like this.<br><br>Just so we're catering it toward what's most important to you — what do you think typically pushes something like this across the line internally?<br><br>(Pay attention to this feedback — it's gold)<br><br>This question helps you understand their internal decision-making process and ensures the scope addresses their specific approval criteria.",
+        "context_variations": {
+          "variations": [
+            {
+              "id": "opening_engagement_model",
+              "title": "1. Explain Engagement Model",
+              "when_to_use": "Start here — explain what happens next",
+              "script": "At this point, what we'll do is take all of the data you've given us and build out an <b>internal engagement model</b> — that's where we <b>reverse-engineer the numbers</b> and map out what a <u>90-day structure</u> could realistically result in.<br><br>From there, we'll wrap that model into a <b>formal scope of work</b> that lays out:<br><br>The <b>thesis-driven approach</b> tailored to your market<br>The <b>milestone structure and success metrics</b><br>The <u>built-in risk-mitigation language that protects you</u><br><br>Once that's ready, we'll send it over for review and then reconvene to walk through it together."
+            },
+            {
+              "id": "scheduling_call_two",
+              "title": "2. Schedule Call Two",
+              "when_to_use": "After explaining the engagement model — transition to scheduling",
+              "script": "(Pause, then lightly transition to the push for call 2)<br><br>In terms of scheduling that review — does <b>[suggest specific day/time within 3–5 business days]</b> work on your end?<br><br>(Pause, work with them to get it booked — this can happen in 1,000's of ways so be as helpful as possible and make it effortless for them to book call 2 right now)",
+              "paths": [
+                {
+                  "id": "they_hesitate",
+                  "condition": "They hesitate or seem unsure",
+                  "script": "<i>Totally fine</i> — we don't need to confirm anything today; it just helps me lock in time on our end so the team can <b>prioritize building your model</b> this week.<br><br>Would you prefer to receive the scope first before scheduling a review?",
+                  "advisor_notes": [
+                    "Stay calm and accommodating — this is not a closing moment",
+                    "Give them an easy out while still maintaining forward momentum"
+                  ]
+                },
+                {
+                  "id": "they_prefer_later",
+                  "condition": "They strongly prefer to schedule later",
+                  "script": "Works fine either way, I appreciate your time and we're looking forward to building out a scope for review — I'll have that sent over for processing and then shipped to you in the next day or two.",
+                  "advisor_notes": [
+                    "Cater to their preference — don't force it",
+                    "Still maintain momentum by committing to send the scope"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "soft_commitment_question",
+              "title": "3. Ask Approval Process Question",
+              "when_to_use": "Before ending the call — ask about their internal approval process",
+              "script": "Perfect — before I let you go, we always like to make sure the scope we put together aligns with what actually matters most on your side.<br><br>Everyone has different biases when it comes to greenlighting something like this.<br><br>Just so we're catering it toward what's most important to you — <b>what do you think typically pushes something like this across the line internally?</b><br><br>(Pay attention to this feedback — it's gold)<br><br>Really good insight, thank you.<br><br>This question helps you understand their internal decision-making process and ensures the scope addresses their specific approval criteria.",
+              "advisor_notes": [
+                "This feedback is gold for tailoring the scope",
+                "Pay close attention to what they say — it reveals their internal decision-making process"
+              ]
+            },
+            {
+              "id": "micro_step_primary",
+              "title": "Micro-Step: Primary",
+              "when_to_use": "Use this when discovery is complete and you have all necessary data",
+              "script": "I'll send the scope within <b>24–48 hours</b>. Before our review, even if you just glance at it, I need your <b>first-wave feedback</b> — concerns, optimism, anything missing. That way I can adjust ahead of the meeting.",
+              "advisor_notes": [
+                "The goal is to leave the call with Call Two booked and confirmed, plus clarity on what drives their internal approval process, plus ONE written micro-step commitment that maintains momentum between calls"
+              ]
+            },
+            {
+              "id": "micro_step_alternative_1",
+              "title": "Micro-Step: If Data Incomplete",
+              "when_to_use": "Use when discovery data is incomplete and you need more information",
+              "script": "Can you confirm the last quarter's qualified opportunity volume and close rate before our next call? That'll help us tighten the 45-day milestone math.",
+              "advisor_notes": [
+                "The goal is to leave the call with Call Two booked and confirmed, plus clarity on what drives their internal approval process, plus ONE written micro-step commitment that maintains momentum between calls"
+              ]
+            },
+            {
+              "id": "micro_step_alternative_2",
+              "title": "Micro-Step: If Approval Unclear",
+              "when_to_use": "Use when you're unsure about their internal approval process",
+              "script": "Before our review, can you confirm who else needs to see this internally and what their typical approval criteria are? That way I can tailor the scope to address their specific concerns.",
+              "advisor_notes": [
+                "The goal is to leave the call with Call Two booked and confirmed, plus clarity on what drives their internal approval process, plus ONE written micro-step commitment that maintains momentum between calls"
+              ]
+            },
+            {
+              "id": "micro_step_alternative_3",
+              "title": "Micro-Step: If Need Benchmark",
+              "when_to_use": "Use when you need their current conversion metrics to build a defensible model",
+              "script": "Can you send me your current conversion metrics or pipeline data before our review? That'll help me build a defensible model that maps to your actual performance.",
+              "advisor_notes": [
+                "The goal is to leave the call with Call Two booked and confirmed, plus clarity on what drives their internal approval process, plus ONE written micro-step commitment that maintains momentum between calls"
+              ]
+            }
+          ]
+        },
         "advisor_notes": [
           "At this point, you should have: Completed the due diligence process and identified a repeatable conversion path; Explained how we install demand into that process; Answered their questions and stabilized the frame",
           "Before you move to next steps, make sure you've closed all open loops — objections, clarifications, pricing curiosities — using the frameworks inside: Advisory Incubator™ | Discovery Objection Handling OS; Advisory Incubator™ | Revenue Advisory Sales Script: Pricing On Call One; Advisory Incubator™ | Mastering the Referrals vs New Channel Objection",
@@ -484,13 +555,7 @@ let salesData = {
           "Force question resolution BEFORE scheduling — prevents unresolved objections from festering",
           "Make scheduling effortless — be as helpful as possible and work with them to get it booked",
           "The Soft Process Commitment Question is critical — ask what typically pushes something like this across the line internally. This feedback is gold for tailoring the scope",
-          "Set a clear Micro Step North Star: Send scope within 24–48 hours and request first-wave feedback (concerns, optimism, anything missing) before the review call. This allows you to adjust ahead of the meeting and ensures the scope addresses their needs",
-          "MICRO-STEP VARIATIONS (context-driven - choose ONE only):",
-          "  • Primary (most common): 'I'll send the scope within 24–48 hours. Before our review, even if you just glance at it, I need your first-wave feedback — concerns, optimism, anything missing. That way I can adjust ahead of the meeting.'",
-          "  • Alternative 1 (if discovery data incomplete): 'Can you confirm the last quarter's qualified opportunity volume and close rate before our next call? That'll help us tighten the 45-day milestone math.'",
-          "  • Alternative 2 (if approval path unclear): 'Before our review, can you confirm who else needs to see this internally and what their typical approval criteria are? That way I can tailor the scope to address their specific concerns.'",
-          "  • Alternative 3 (if benchmark needed): 'Can you send me your current conversion metrics or pipeline data before our review? That'll help me build a defensible model that maps to your actual performance.'",
-          "The goal is to leave the call with Call Two booked and confirmed, plus clarity on what drives their internal approval process, plus ONE written micro-step commitment that maintains momentum between calls"
+          "Set a clear Micro Step North Star: Send scope within 24–48 hours and request first-wave feedback (concerns, optimism, anything missing) before the review call. This allows you to adjust ahead of the meeting and ensures the scope addresses their needs"
         ]
       },
       {

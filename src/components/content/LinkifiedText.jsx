@@ -3,7 +3,7 @@ import { linkifyReferences } from '../../utils/textFormatting'
 import { useContent } from '../../context/ContentContext'
 
 function LinkifiedText({ text, as = 'p', style = {} }) {
-  const { loadContent, loadReferenceContent, loadObjection } = useContent()
+  const { loadContent, loadReferenceContent, loadObjection, loadHandler } = useContent()
   const containerRef = useRef(null)
   
   useEffect(() => {
@@ -33,6 +33,9 @@ function LinkifiedText({ text, as = 'p', style = {} }) {
             loadObjection(objectionNum)
           }
           break
+        case 'loadHandler':
+          loadHandler(id)
+          break
         default:
           console.warn(`Unknown action: ${action}`)
       }
@@ -40,7 +43,7 @@ function LinkifiedText({ text, as = 'p', style = {} }) {
 
     container.addEventListener('click', handleClick)
     return () => container.removeEventListener('click', handleClick)
-  }, [loadContent, loadReferenceContent, loadObjection])
+  }, [loadContent, loadReferenceContent, loadObjection, loadHandler])
 
   if (!text) return null
   
