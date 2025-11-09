@@ -49,14 +49,6 @@ let salesData = {
         "phase": 2,
         "section": "A",
         "purpose": "Extract primary demand source, strongest conversion path, and how deals develop. CARPET: C (Cycle), P (Pipeline)",
-        "carpet_integration": ["C (Cycle)", "P (Pipeline)"],
-        "advisor_notes": [
-          "CARPET FOCUS: Extract C (Cycle) and P (Pipeline) variables",
-          "Maintain advisory posture: You're auditing their demand generation system, not pitching",
-          "Listen for: channel performance, brand sensitivity - thesis indicators",
-          "IF THEY SAY '70%+ REFERRALS' → Use Q5a/Q6a path and link to Referral-Based Business Flow for deeper dive",
-          "IF THEY SAY 'MULTI-CHANNEL' → Use Q5b/Q6b path"
-        ],
         "question_groups": [
           {
             "emoji": "🎯",
@@ -67,27 +59,15 @@ let salesData = {
               "Walk me through how a typical opportunity develops through [strongest source] — from first contact to becoming qualified.",
               "What's your current working definition of what makes someone a qualified opportunity for your team?"
             ],
-            "advisor_notes": [
-              "Q1: Get initial answer - listen for all channels mentioned",
-              "Q2: Identify strongest channel (could be referrals, could be anything)",
-              "Q3: Extract conversion path regardless of channel - replace [strongest source] with actual channel name",
-              "Q4: Quality threshold - critical for defining qualified opportunities"
-            ]
           },
           {
             "emoji": "📊",
             "title": "Referral Path (If 70%+ Referrals)",
-            "when_to_use": "USE IF: They say 'mostly referrals' or '70%+ referrals' or 'word of mouth'",
             "intro_script": "<b>Note:</b> If they indicate referral-dominant business, use these questions. For deeper referral process extraction, see <a href='#' data-action='loadContent' data-id='discovery_referral_based' class='content-link' style='color: var(--primary-color); text-decoration: underline; cursor: pointer; font-weight: 600;'>Referral-Based Business Flow</a>.",
             "questions": [
               "How consistent are those referrals month to month?",
               "Has the business scaled meaningfully on referrals alone, or have you hit a ceiling?"
             ],
-            "advisor_notes": [
-              "Q5a: LISTEN FOR inconsistency, seasonality, unpredictability",
-              "Q6a: IF THEY ADMIT CEILING → You have leverage",
-              "Then transition to referral-based section for process extraction"
-            ]
           },
           {
             "emoji": "🌐",
@@ -97,11 +77,6 @@ let salesData = {
               "What percentage of your opportunities are proactive versus inbound or referral-driven?",
               "Any markets or segments showing stronger performance than others?"
             ],
-            "advisor_notes": [
-              "Q5b: Extract proactive vs reactive mix",
-              "Q6b: Identify market/segment performance differences",
-              "Listen for conversion rate variations by segment"
-            ]
           }
         ]
       },
@@ -169,13 +144,6 @@ let salesData = {
         "phase": 2,
         "section": "B",
         "purpose": "Extract process handoff, conversion metrics, and team capacity. CARPET: R (Rep capacity/performance)",
-        "carpet_integration": ["R (Rep)"],
-        "intro": "Now, once that initial interest is created - can you walk me through what happens next?",
-        "advisor_notes": [
-          "CARPET FOCUS: Extract R (Rep capacity/performance) variables",
-          "Goal: Identify process handoff, conversion ratios, and team capacity",
-          "This identifies the 'installation point' - where qualified opportunities enter their system"
-        ],
         "question_groups": [
           {
             "emoji": "🔄",

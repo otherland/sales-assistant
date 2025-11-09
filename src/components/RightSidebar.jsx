@@ -2,6 +2,8 @@ import React, { useState, useMemo, useEffect } from 'react'
 import { useSalesData } from '../context/SalesDataContext'
 import { useContent } from '../context/ContentContext'
 import CARPETCalculator from './CARPETCalculator'
+import { detectPhaseFromContentId, detectPhaseFromItem, getPhaseDisplayName, PHASES } from '../utils/phaseDetection'
+import { getPredictiveHandlers } from '../utils/phaseHandlerMapping'
 
 // Framework sequential order for categories
 const CATEGORY_ORDER = [
@@ -362,19 +364,43 @@ const HANDLER_EMOJIS = {
 
 function RightSidebar({ isOpen, onClose }) {
   const { salesData, loading } = useSalesData()
-  const { loadHandler, loadContent, contentId } = useContent()
+  const { loadHandler, loadContent, contentId, currentContent } = useContent()
   const [searchQuery, setSearchQuery] = useState('')
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768)
   
   // Initialize all categories as collapsed (closed by default)
   const [collapsedCategories, setCollapsedCategories] = useState({})
   
-  // Initialize top-level sections collapsed state (all expanded by default)
+  // Initialize top-level sections collapsed state (all collapsed by default)
   const [collapsedSections, setCollapsedSections] = useState({
-    'top-objections': false,
-    'search-handlers': false,
-    'full-library': false
+    'carpet-calculator': true,
+    'predictive-handlers': true,
+    'top-objections': true,
+    'search-handlers': true,
+    'full-library': true
   })
+  
+  // Detect current phase from selected page/content
+  const currentPhase = useMemo(() => {
+    // First try to detect from currentContent (the actual selected page/item)
+    if (currentContent) {
+      const phaseFromContent = detectPhaseFromItem(currentContent)
+      if (phaseFromContent) return phaseFromContent
+    }
+    
+    // Fallback to contentId-based detection
+    if (contentId && salesData) {
+      return detectPhaseFromContentId(contentId, salesData)
+    }
+    
+    return PHASES.OPENING_FRAME
+  }, [currentContent, contentId, salesData])
+  
+  // Get predictive handlers for current phase
+  const predictiveHandlers = useMemo(() => {
+    if (!salesData || !currentPhase) return []
+    return getPredictiveHandlers(currentPhase, salesData, 7)
+  }, [salesData, currentPhase])
 
   // Update mobile state on resize
   useEffect(() => {
@@ -522,9 +548,114 @@ function RightSidebar({ isOpen, onClose }) {
       </div>
 
       {/* CARPET Calculator */}
-      <div style={{ padding: '0 1rem', marginBottom: '1rem' }}>
+      <div className="nav-section">
+        <div 
+          className="nav-section-title nav-section-title-collapsible"
+          onClick={() => toggleSection('carpet-calculator')}
+        >
+          <span>📊 CARPET Calculator</span>
+          <span className="nav-section-toggle">
+            {collapsedSections['carpet-calculator'] ? '▼' : '▲'}
+          </span>
+        </div>
+        {!collapsedSections['carpet-calculator'] && (
+          <div className="nav-content" style={{ padding: '0 1rem' }}>
         <CARPETCalculator />
+          </div>
+        )}
       </div>
+
+      {/* Predictive Handlers - CURRENT OBJECTIONS */}
+      {predictiveHandlers.length > 0 && (
+        <div className="nav-section">
+          <div 
+            className="nav-section-title nav-section-title-collapsible"
+            onClick={() => toggleSection('predictive-handlers')}
+          >
+            <span>🔥 Current Objections</span>
+            <span className="nav-section-toggle">
+              {collapsedSections['predictive-handlers'] ? '▼' : '▲'}
+            </span>
+          </div>
+          {!collapsedSections['predictive-handlers'] && (
+            <div className="nav-content" style={{ padding: '0.5rem 0' }}>
+              <div style={{ 
+                fontSize: '0.85rem', 
+                color: 'var(--text-secondary, #666)', 
+                padding: '0 1rem 0.5rem 1rem',
+                fontStyle: 'italic'
+              }}>
+                These objections typically arise in this phase
+              </div>
+              {predictiveHandlers.map((handler, idx) => (
+                <div
+                  key={handler.id}
+                  className={`nav-handler-item ${contentId === handler.id ? 'active' : ''}`}
+                  data-id={handler.id}
+                  onClick={() => handleHandlerClick(handler.id)}
+                  style={{
+                    padding: '0.75rem 1rem',
+                    borderLeft: '3px solid var(--warning-color, #ffc107)',
+                    marginBottom: idx < predictiveHandlers.length - 1 ? '0.5rem' : '0',
+                    cursor: 'pointer',
+                    backgroundColor: contentId === handler.id ? 'var(--active-bg, #e7f3ff)' : 'transparent'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                    <span style={{ 
+                      fontWeight: 'bold', 
+                      color: 'var(--warning-color, #ffc107)',
+                      minWidth: '1.5rem'
+                    }}>
+                      {idx + 1}.
+                    </span>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>
+                        {handler.title}
+                      </div>
+                      {handler.quick_response && (
+                        <div style={{ 
+                          fontSize: '0.8rem', 
+                          color: 'var(--text-secondary, #666)',
+                          fontStyle: 'italic',
+                          marginTop: '0.25rem',
+                          lineHeight: '1.3'
+                        }}>
+                          "{handler.quick_response.substring(0, 80)}{handler.quick_response.length > 80 ? '...' : ''}"
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+              <div style={{ 
+                padding: '0.5rem 1rem', 
+                fontSize: '0.85rem',
+                color: 'var(--primary-color, #007bff)',
+                cursor: 'pointer',
+                textAlign: 'center',
+                marginTop: '0.5rem'
+              }}
+              onClick={() => {
+                // Expand the relevant category in full library
+                const category = predictiveHandlers[0]?.category || 'Discovery'
+                setCollapsedCategories(prev => ({ ...prev, [category]: false }))
+                setCollapsedSections(prev => ({ ...prev, 'full-library': false }))
+                // Scroll to full library section
+                setTimeout(() => {
+                  const fullLibrarySection = document.querySelector('[data-section="full-library"]')
+                  if (fullLibrarySection) {
+                    fullLibrarySection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }
+                }, 100)
+              }}
+              >
+                [Show All {getPhaseDisplayName(currentPhase)} Handlers →]
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Top Objections */}
       <div className="nav-section">
@@ -599,12 +730,12 @@ function RightSidebar({ isOpen, onClose }) {
       </div>
 
       {/* Full Handler Library */}
-      <div className="nav-section">
+      <div className="nav-section" data-section="full-library">
         <div 
           className="nav-section-title nav-section-title-collapsible"
           onClick={() => toggleSection('full-library')}
         >
-          <span>⛽ FULL HANDLER LIBRARY</span>
+          <span>📚 BROWSE BY CATEGORY</span>
           <span className="nav-section-toggle">
             {collapsedSections['full-library'] ? '▼' : '▲'}
           </span>

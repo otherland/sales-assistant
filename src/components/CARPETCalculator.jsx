@@ -40,8 +40,6 @@ function CARPETCalculator() {
     }
   })
 
-  const [isExpanded, setIsExpanded] = useState(false)
-
   // Load metrics from localStorage on mount
   useEffect(() => {
     try {
@@ -142,41 +140,17 @@ function CARPETCalculator() {
   }, [metrics, roi, roiInputs])
 
   return (
-    <div className="carpet-calculator" style={{
-      background: 'var(--bg-secondary)',
-      border: '2px solid var(--primary-color)',
-      borderRadius: '8px',
-      padding: '1rem',
-      marginBottom: '1rem'
-    }}>
-      <div 
-        className="carpet-header"
-        onClick={() => setIsExpanded(!isExpanded)}
-        style={{
-          cursor: 'pointer',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: isExpanded ? '1rem' : '0'
-        }}
-      >
-        <h3 style={{ margin: 0, color: 'var(--primary-color)', fontSize: '1rem', fontWeight: 700 }}>
-          🧮 ROI Calculator
-        </h3>
-        <span style={{ fontSize: '1.2rem' }}>{isExpanded ? '▲' : '▼'}</span>
-      </div>
-
-      {isExpanded && (
-        <div className="carpet-content">
+    <div className="carpet-calculator">
+      <div className="carpet-content">
           {/* CARPET Variables */}
-          <div style={{ marginBottom: '1.5rem' }}>
-            <h4 style={{ marginBottom: '0.75rem', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+          <div style={{ marginBottom: '1rem' }}>
+            <h4 style={{ marginBottom: '0.5rem', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
               CARPET Variables
             </h4>
-            <div style={{ display: 'grid', gap: '0.75rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
               {Object.entries(CARPET_VARIABLES).map(([key, variable]) => (
-                <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                  <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
+                <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', gridColumn: variable.isText ? '1 / -1' : 'auto' }}>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
                     {variable.label}
                     {variable.unit && <span style={{ marginLeft: '0.25rem', color: 'var(--text-secondary)' }}>({variable.unit})</span>}
                   </label>
@@ -186,13 +160,13 @@ function CARPETCalculator() {
                       onChange={(e) => updateMetric(variable.key, e.target.value)}
                       placeholder={variable.description}
                       style={{
-                        padding: '0.5rem',
-                        fontSize: '0.85rem',
+                        padding: '0.4rem',
+                        fontSize: '0.8rem',
                         border: '1px solid var(--border-color)',
                         borderRadius: '4px',
                         background: 'var(--bg-primary)',
                         color: 'var(--text-primary)',
-                        minHeight: '60px',
+                        minHeight: '50px',
                         resize: 'vertical'
                       }}
                     />
@@ -203,8 +177,8 @@ function CARPETCalculator() {
                       onChange={(e) => updateMetric(variable.key, e.target.value)}
                       placeholder={variable.description}
                       style={{
-                        padding: '0.5rem',
-                        fontSize: '0.85rem',
+                        padding: '0.4rem',
+                        fontSize: '0.8rem',
                         border: '1px solid var(--border-color)',
                         borderRadius: '4px',
                         background: 'var(--bg-primary)',
@@ -219,18 +193,18 @@ function CARPETCalculator() {
 
           {/* ROI Calculator */}
           <div style={{ 
-            marginBottom: '1.5rem',
-            padding: '1rem',
+            marginBottom: '1rem',
+            padding: '0.75rem',
             background: 'var(--bg-primary)',
             borderRadius: '4px',
             border: '1px solid var(--border-color)'
           }}>
-            <h4 style={{ marginBottom: '0.75rem', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+            <h4 style={{ marginBottom: '0.5rem', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
               ROI Calculation
             </h4>
-            <div style={{ display: 'grid', gap: '0.75rem', marginBottom: '1rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '0.75rem' }}>
               <div>
-                <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' }}>
+                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' }}>
                   Qualified Opportunities (X)
                 </label>
                 <input
@@ -239,8 +213,8 @@ function CARPETCalculator() {
                   onChange={(e) => updateRoiInput('qualifiedOpportunities', e.target.value)}
                   placeholder="e.g., 35"
                   style={{
-                    padding: '0.5rem',
-                    fontSize: '0.85rem',
+                    padding: '0.4rem',
+                    fontSize: '0.8rem',
                     border: '1px solid var(--border-color)',
                     borderRadius: '4px',
                     background: 'var(--bg-secondary)',
@@ -250,7 +224,7 @@ function CARPETCalculator() {
                 />
               </div>
               <div>
-                <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' }}>
+                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' }}>
                   Close Rate (Y%)
                 </label>
                 <input
@@ -260,8 +234,8 @@ function CARPETCalculator() {
                   placeholder="e.g., 15"
                   step="0.1"
                   style={{
-                    padding: '0.5rem',
-                    fontSize: '0.85rem',
+                    padding: '0.4rem',
+                    fontSize: '0.8rem',
                     border: '1px solid var(--border-color)',
                     borderRadius: '4px',
                     background: 'var(--bg-secondary)',
@@ -271,7 +245,7 @@ function CARPETCalculator() {
                 />
               </div>
               <div>
-                <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' }}>
+                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' }}>
                   Engagement Days
                 </label>
                 <input
@@ -280,8 +254,8 @@ function CARPETCalculator() {
                   onChange={(e) => updateRoiInput('engagementDays', e.target.value)}
                   placeholder="45"
                   style={{
-                    padding: '0.5rem',
-                    fontSize: '0.85rem',
+                    padding: '0.4rem',
+                    fontSize: '0.8rem',
                     border: '1px solid var(--border-color)',
                     borderRadius: '4px',
                     background: 'var(--bg-secondary)',
@@ -294,21 +268,21 @@ function CARPETCalculator() {
 
             {roi && (
               <div style={{
-                padding: '0.75rem',
+                padding: '0.5rem',
                 background: 'var(--bg-secondary)',
                 borderRadius: '4px',
                 border: '2px solid var(--accent-green)'
               }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--accent-green)' }}>
+                <div style={{ fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.4rem', color: 'var(--accent-green)' }}>
                   ROI Results:
                 </div>
-                <div style={{ fontSize: '0.85rem', lineHeight: '1.6', color: 'var(--text-primary)' }}>
+                <div style={{ fontSize: '0.8rem', lineHeight: '1.5', color: 'var(--text-primary)' }}>
                   <div><strong>Qualified Opportunities:</strong> {roi.qualifiedOpportunities}</div>
                   <div><strong>Close Rate:</strong> {roi.closeRate}%</div>
                   <div><strong>New Clients (Z):</strong> {roi.newClients}</div>
                   <div><strong>ACV:</strong> ${parseInt(roi.acv).toLocaleString()}</div>
-                  <div style={{ marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px solid var(--border-color)' }}>
-                    <strong style={{ fontSize: '1rem', color: 'var(--accent-green)' }}>
+                  <div style={{ marginTop: '0.4rem', paddingTop: '0.4rem', borderTop: '1px solid var(--border-color)' }}>
+                    <strong style={{ fontSize: '0.9rem', color: 'var(--accent-green)' }}>
                       Total Revenue: ${parseInt(roi.revenue).toLocaleString()}
                     </strong>
                   </div>
@@ -319,21 +293,20 @@ function CARPETCalculator() {
 
           {/* Placeholder Reference */}
           <div style={{
-            padding: '0.75rem',
+            padding: '0.5rem',
             background: 'var(--bg-primary)',
             borderRadius: '4px',
             border: '1px solid var(--border-color)',
-            fontSize: '0.8rem',
+            fontSize: '0.75rem',
             color: 'var(--text-secondary)'
           }}>
             <strong>Placeholders:</strong> [X], [Y]%, [Z], [$], [ACV], [REVENUE], [CYCLE], [REP_CAPACITY]
             <br />
-            <span style={{ fontSize: '0.75rem', fontStyle: 'italic' }}>
+            <span style={{ fontSize: '0.7rem', fontStyle: 'italic' }}>
               Values auto-fill in Post-Reconstruction Transition and other sections
             </span>
           </div>
         </div>
-      )}
     </div>
   )
 }
