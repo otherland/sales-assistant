@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSalesData } from '../context/SalesDataContext'
 import ContentDisplay from './ContentDisplay'
+import PageTurnerArrows from './PageTurnerArrows'
 
 function MainContent({ leftSidebarOpen, rightSidebarOpen, onToggleLeftSidebar, onToggleRightSidebar }) {
   const { loading } = useSalesData()
@@ -78,6 +79,7 @@ function MainContent({ leftSidebarOpen, rightSidebarOpen, onToggleLeftSidebar, o
         <div id="content-area">
           <ContentDisplay />
         </div>
+        <PageTurnerArrows />
       </div>
     </main>
   )

@@ -1039,43 +1039,85 @@ body.dark-mode .question-group-list .question-item:hover {
     transform: translateY(-1px);
 }
 
-/* NAVIGATION BUTTONS */
-.nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 2px solid var(--border-color);
-}
-
-.nav-btn {
-    padding: 0.875rem 1.5rem;
-    background: var(--primary-color);
-    color: white;
+/* PAGE-TURNER ARROWS */
+.page-turner-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    height: auto;
+    background: transparent;
+    color: var(--text-secondary);
     border: none;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
-    font-family: inherit;
-    flex: 1;
-    max-width: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 100;
+    padding: 0.5rem;
+    opacity: 0.6;
 }
 
-.nav-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+.page-turner-arrow:hover {
+    opacity: 1;
+    color: var(--primary-color);
+    transform: translateY(-50%) scale(1.15);
 }
 
-.nav-btn-prev {
-    margin-right: auto;
+.page-turner-arrow:active {
+    transform: translateY(-50%) scale(1);
 }
 
-.nav-btn-next {
-    margin-left: auto;
+.page-turner-arrow-left {
+    left: calc((100vw - 900px) / 2 - 80px);
+}
+
+.page-turner-arrow-right {
+    right: calc((100vw - 900px) / 2 - 40px);
+}
+
+/* Fallback for smaller screens - position relative to sidebars */
+@media (max-width: 1400px) {
+    .page-turner-arrow-left {
+        left: calc(280px + 1rem);
+    }
+    
+    .page-turner-arrow-right {
+        right: calc(300px + 1rem);
+    }
+}
+
+.page-turner-arrow svg {
+    width: 32px;
+    height: 32px;
+    stroke-width: 2.5;
+}
+
+/* Hide arrows on mobile */
+@media (max-width: 768px) {
+    .page-turner-arrow {
+        display: none;
+    }
+}
+
+/* Adjust position when layout is reversed */
+.container.layout-reversed .page-turner-arrow-left {
+    left: calc((100vw - 900px) / 2 - 40px);
+}
+
+.container.layout-reversed .page-turner-arrow-right {
+    right: calc((100vw - 900px) / 2 - 40px);
+}
+
+@media (max-width: 1400px) {
+    .container.layout-reversed .page-turner-arrow-left {
+        left: calc(320px + 1rem);
+    }
+    
+    .container.layout-reversed .page-turner-arrow-right {
+        right: calc(280px + 1rem);
+    }
 }
 
 /* FORK CHOICE BUTTONS */

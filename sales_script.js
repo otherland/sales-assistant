@@ -14,7 +14,7 @@ let salesData = {
         "phase": 1,
         "purpose": "Establish yourself as a peer conducting due diligence, not a vendor trying to win business",
         "advisor_mindset": "Deliver this like an advisor leading a professional diligence session, not a salesperson opening a discovery call. Slow down, stay calm, and let silence do the work.",
-        "script": "Hey [FirstName], <i>thanks for making time</i>. I've got <u>30 minutes</u> blocked, and I want to use it well.<br><br>Here's how I work: <b>I don't pitch on first calls</b>. What I do is audit how you're currently generating demand, and see if there's a clear fit before we talk next steps.<br><br>So I'm going to ask you some specific questions. Not to interrogate—just to understand one thing: <u>where's your leverage? Where's the constraint?</u><br><br>And once I see that, I can tell you how we'd approach it.<br><br>I'll just say upfront—we specialize in <u>sophisticated, brand-sensitive markets</u> where data is scarce and demand generation has to <b>protect reputation</b>. That context shapes how I'm listening today.<br><br>(Pause)<br><br>So let me start here: <b>how are you currently bringing in new business?</b> And which channels are actually working?",
+        "script": "Hey [FirstName], <i>thanks for making time</i>. I've got <u>30 minutes</u> blocked, and I want to use it well.<br><br>Here's how I work: <b>I don't pitch on first calls</b>. What I do is audit how you're currently generating demand, and see if there's a clear fit before we talk next steps.<br><br>So I'm going to ask you some specific questions. Not to interrogate—just to understand one thing: <u>where's your leverage? Where's the constraint?</u><br><br>And once I see that, I can tell you how we'd approach it.<br><br>I'll just say upfront—we specialize in <u>sophisticated, brand-sensitive markets</u> where data is scarce and demand generation has to <b>protect reputation</b>. That context shapes how I'm listening today.",
         "advisor_notes": [
           "[Pause] after 'I want to use it well' - let the time boundary land",
           "RHYTHM: Notice the shorter sentences and natural pauses - this creates executive presence, not corporate delivery",
@@ -32,7 +32,7 @@ let salesData = {
         "category": "sequential",
         "phase": 2,
         "purpose": "Set up the comprehensive due diligence flow",
-        "script": "<i>Great</i>. So here's what I'm thinking. I'm going to map how demand actually works in your business—specifically, the channels where it starts, how you determine what's qualified, and how it converts to revenue.<br><br>This is my diagnostic. It's how I understand whether there's <u>leverage we can create</u> with new approaches.<br><br>Let me start at the top: <b>how are you currently generating interest in the market?</b> And which channels are producing that interest?",
+        "script": "<i>Great</i>. So here's what I'm thinking. I'm going to map how demand actually works in your business—specifically, the channels where it starts, how you determine what's qualified, and how it converts to revenue.<br><br>This is my diagnostic. It's how I understand whether there's <u>leverage we can create</u> with new approaches.<br><br>Let me start at the top of the funnel.",
         "advisor_guidance": "Ask 1 question at a time and then be quiet - silence is a powerful tool, use it as often as possible. Don't overthink the order — what matters most is getting reps in.",
         "advisor_notes": [
           "CARPET FRAMEWORK: The next three sections extract all 6 financial modeling variables",
@@ -48,67 +48,119 @@ let salesData = {
         "category": "sequential",
         "phase": 2,
         "section": "A",
-        "purpose": "Map how demand is created and which markets are being targeted",
+        "purpose": "Extract primary demand source, strongest conversion path, and how deals develop. CARPET: C (Cycle), P (Pipeline)",
         "carpet_integration": ["C (Cycle)", "P (Pipeline)"],
         "advisor_notes": [
-          "CARPET FOCUS: You're extracting C (Cycle) and P (Pipeline) variables in this section",
-          "Maintain advisory posture: You're auditing their demand generation system, not pitching your services",
-          "Listen for: channel performance, market sophistication, brand sensitivity - all thesis indicators",
-          "If they mention 'sophisticated buyers' or 'brand risk' - that's thesis alignment, note it for later"
+          "CARPET FOCUS: Extract C (Cycle) and P (Pipeline) variables",
+          "Maintain advisory posture: You're auditing their demand generation system, not pitching",
+          "Listen for: channel performance, brand sensitivity - thesis indicators",
+          "IF THEY SAY '70%+ REFERRALS' → Use Q5a/Q6a path and link to Referral-Based Business Flow for deeper dive",
+          "IF THEY SAY 'MULTI-CHANNEL' → Use Q5b/Q6b path"
         ],
         "question_groups": [
           {
             "emoji": "🎯",
-            "title": "Where Demand Comes From",
+            "title": "Core Discovery Questions",
             "questions": [
-              "How are you currently generating interest in the market and which channels are responsible for most of that demand?",
-              "Which channels are most consistent in producing qualified conversations, and what percentage of your opportunities are proactive versus inbound or referral-driven?"
+              "How are you currently generating interest in the market?",
+              "Which of those sources is most consistent in producing qualified conversations?",
+              "Walk me through how a typical opportunity develops through [strongest source] — from first contact to becoming qualified.",
+              "What's your current working definition of what makes someone a qualified opportunity for your team?"
+            ],
+            "advisor_notes": [
+              "Q1: Get initial answer - listen for all channels mentioned",
+              "Q2: Identify strongest channel (could be referrals, could be anything)",
+              "Q3: Extract conversion path regardless of channel - replace [strongest source] with actual channel name",
+              "Q4: Quality threshold - critical for defining qualified opportunities"
             ]
           },
           {
             "emoji": "📊",
-            "title": "What Markets You Target",
-            "intro_script": "I see your website targets [X, Y, Z], but the reason I'm asking about markets specifically is because we build our engagements by reverse-engineering what a 90-day model could look like — based on the actual markets where you're seeing movement and conversions right now, not just where you'd like to be. The gap between your ideal customer profile and where deals are actually closing is what we need to model against.<br><br>So let me ask:",
+            "title": "Referral Path (If 70%+ Referrals)",
+            "when_to_use": "USE IF: They say 'mostly referrals' or '70%+ referrals' or 'word of mouth'",
+            "intro_script": "<b>Note:</b> If they indicate referral-dominant business, use these questions. For deeper referral process extraction, see <a href='#' data-action='loadContent' data-id='discovery_referral_based' class='content-link' style='color: var(--primary-color); text-decoration: underline; cursor: pointer; font-weight: 600;'>Referral-Based Business Flow</a>.",
             "questions": [
-              "How many industries or markets are you currently generating demand in — and I mean actively, not just where you'd like to be — and which of those are performing best right now in terms of actual conversions?",
-              "Which markets, segments, or specific buyer titles are you prioritizing this quarter, and where have you seen the fastest movement or strongest buyer response in the last 12–24 months?"
+              "How consistent are those referrals month to month?",
+              "Has the business scaled meaningfully on referrals alone, or have you hit a ceiling?"
             ],
             "advisor_notes": [
-              "PROACTIVE FRAMING: Start with 'I see your website targets [X, Y, Z]' — this shows you did homework and immediately distinguishes marketing positioning from operational reality. Fill in X, Y, Z based on their website/marketing materials you reviewed pre-call",
-              "IF THEY STILL OBJECT: 'I appreciate that, and I did see that on your site. But I'm asking specifically about where demand is converting right now, not your ideal customer profile. The gap between who you want to target and where you're actually closing deals is what we need to model. Can you walk me through where you're seeing actual movement?'",
-              "FRAME AS OPERATIONAL: You're asking about operational reality, not marketing positioning. Make it clear you need conversion data, not aspirational targets",
-              "LISTEN FOR: Specific market names, conversion rate differences between markets, recent shifts in buyer behavior, title-level specificity",
-              "IF THEY'RE VAGUE: Follow up with 'When you say [vague term], can you give me a specific example? Like, what does a typical deal look like in that market?'",
-              "IF THEY POSTURE: Reframe immediately — 'I understand you target multiple markets, but for modeling purposes, I need to know where you're actually closing deals right now. Which markets are producing qualified opportunities that convert?'",
-              "PURPOSE: Extract market-specific conversion data to build realistic milestone projections. Different markets = different conversion rates = different milestone sizing"
+              "Q5a: LISTEN FOR inconsistency, seasonality, unpredictability",
+              "Q6a: IF THEY ADMIT CEILING → You have leverage",
+              "Then transition to referral-based section for process extraction"
+            ]
+          },
+          {
+            "emoji": "🌐",
+            "title": "Multi-Channel Path (If Multiple Sources)",
+            "when_to_use": "USE IF: They mention multiple channels (not referral-dominant)",
+            "questions": [
+              "What percentage of your opportunities are proactive versus inbound or referral-driven?",
+              "Any markets or segments showing stronger performance than others?"
+            ],
+            "advisor_notes": [
+              "Q5b: Extract proactive vs reactive mix",
+              "Q6b: Identify market/segment performance differences",
+              "Listen for conversion rate variations by segment"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "discovery_referral_based",
+        "title": "Referral-Based Business Flow",
+        "category": "sequential",
+        "phase": 2,
+        "section": "A.5",
+        "purpose": "Conduct proper audit for referral-dominant businesses that don't think in 'markets'",
+        "advisor_notes": [
+          "CARPET FOCUS: You're extracting C (Cycle) and P (Pipeline) variables in this section",
+          "This replaces the 'What Markets You Target' section for referral-dominant businesses",
+          "Goal: Validate referral consistency, test ceiling, extract conversion process",
+          "After Q3, immediately transition to reconstruction confirmation"
+        ],
+        "intro": "That's great to hear — referral-based clients often see the best results when adding a new channel. Let me ask a few questions to understand how referrals work in your business.",
+        "question_groups": [
+          {
+            "emoji": "✅",
+            "title": "Q1: Validate Consistency",
+            "questions": [
+              "How consistent are those referrals month to month?"
+            ],
+            "advisor_notes": [
+              "LISTEN FOR: inconsistency, seasonality, unpredictability",
+              "If inconsistent → leverage point identified",
+              "If consistent → move to Q2 to test ceiling"
+            ]
+          },
+          {
+            "emoji": "📈",
+            "title": "Q2: Test Ceiling",
+            "questions": [
+              "Has the business scaled meaningfully on referrals alone, or have you hit a ceiling?"
+            ],
+            "advisor_notes": [
+              "IF THEY ADMIT CEILING → You have leverage",
+              "This is where you identify the constraint",
+              "Frame as: 'So referrals work, but there's a limit to how much you can scale on them alone'"
             ]
           },
           {
             "emoji": "🔍",
-            "title": "How Strong Leads Develop",
+            "title": "Q3: Extract Process",
             "questions": [
-              "Can we double-click on the channel that's producing the strongest results?",
-              "Walk me through how those strongest opportunities typically develop - from that first meaningful contact through to becoming a qualified lead?",
-              "What's your current working definition of what makes someone a qualified opportunity for your team?"
-            ]
-          },
-          {
-            "emoji": "💬",
-            "title": "What Messaging Works",
-            "questions": [
-              "How are you currently positioning the offer to those markets - what messaging tends to resonate most?",
-              "Any markets or verticals you feel are underserved that could represent upside with the right approach?"
-            ]
-          },
-          {
-            "emoji": "🆕",
-            "title": "What's Changed Recently",
-            "questions": [
-              "Have you introduced any new strategies, tools, or outreach frameworks in the past 6–12 months?",
-              "Have you worked with any external vendors or consultants during that time - and what was your experience like?"
+              "Can you walk me through one client you actually converted through a referral — how did it come in?",
+              "What moved it forward?",
+              "What sealed it?",
+              "How long did it take from first contact to signed agreement?"
+            ],
+            "advisor_notes": [
+              "CAPTURE: Client name/example, how it came in, what moved it forward, what sealed it, timeline",
+              "This becomes the reconstruction data",
+              "After they answer, immediately transition to confirmation"
             ]
           }
-        ]
+        ],
+        "transition": "So this is the process we'll replicate for every introduction we generate. All you need to do is run the same play that converted this client. That single sequence becomes the standardized playbook we feed qualified opportunities into. We're turning your past success into a repeatable system."
       },
       {
         "id": "discovery_middle_funnel",
@@ -116,57 +168,31 @@ let salesData = {
         "category": "sequential",
         "phase": 2,
         "section": "B",
-        "purpose": "Understand what happens when demand enters the business and identify the 'installation point'",
-        "carpet_integration": ["R (Rep)", "A (ACV)"],
+        "purpose": "Extract process handoff, conversion metrics, and team capacity. CARPET: R (Rep capacity/performance)",
+        "carpet_integration": ["R (Rep)"],
         "intro": "Now, once that initial interest is created - can you walk me through what happens next?",
-        "advisor_guidance": "You're tracing the handoff: interest → meeting → qualified opportunity → sales process → conversion. Keep asking 'What happens next?' 'Who owns that stage?' 'Who's accountable for moving it forward?' to keep them talking and identify ownership at each stage.",
         "advisor_notes": [
-          "CARPET FOCUS: You're extracting R (Rep performance) and A (ACV) variables in this section",
-          "Key questions extract: conversion rates, sales cycle length, rep capacity, deal size ranges",
-          "This is where you identify the 'installation point' - where your qualified opportunities will enter their system",
-          "Listen for process breakdown, capacity constraints, and conversion bottlenecks - these inform your milestone sizing"
+          "CARPET FOCUS: Extract R (Rep capacity/performance) variables",
+          "Goal: Identify process handoff, conversion ratios, and team capacity",
+          "This identifies the 'installation point' - where qualified opportunities enter their system"
         ],
         "question_groups": [
           {
             "emoji": "🔄",
-            "title": "How Leads Get Handled",
+            "title": "Process & Conversion",
             "questions": [
-              "When someone shows interest, what happens next? Who takes that call, what information gets exchanged, and what determines whether it moves forward?",
-              "Help me understand your conversion path — from the moment interest lands to the moment a deal closes. Who owns each stage?"
-            ]
-          },
-          {
-            "emoji": "📋",
-            "title": "How You Nurture Leads",
-            "questions": [
-              "What assets, nurturing sequences, and follow-up systems do you use for qualified conversations and stalled deals?",
-              "Have there been any recent changes to how your team runs the commercial process - new tools, playbooks, or team structure?"
-            ]
-          },
-          {
-            "emoji": "📊",
-            "title": "Sales Cycle Length",
-            "questions": [
+              "Once that initial interest is created, what happens next? Who takes the call, and who owns moving it forward?",
               "How long does it typically take from first meeting to closed-won?",
               "How many meaningful conversations (not leads) typically result in one closed deal?",
-              "How do win rates vary by company size, industry, segment, or title? Where are they strongest?"
-            ]
-          },
-          {
-            "emoji": "⏱️",
-            "title": "Where Deals Get Stuck",
-            "questions": [
-              "Where do most deals tend to stall - early engagement, proposal stage, or late stage?",
-              "Do you notice any seasonality or timing patterns in the middle of the funnel - when deals accelerate or slow?",
-              "On average, how much pipeline does one rep or team member generate per month - in meetings or dollar value?"
-            ]
-          },
-          {
-            "emoji": "🚀",
-            "title": "Team Capacity Limits",
-            "questions": [
-              "How many opportunities does your team produce monthly, and from your perspective, is the team operating at full potential?",
-              "If we increased the flow of qualified opportunities into your pipeline, does the current team structure and process have the capacity to handle that additional volume without breaking down?"
+              "Who's your top performer, and how many meetings are they booking per month?",
+              "If we increased qualified opportunities into your pipeline, does the team have capacity to handle that volume without breaking down?"
+            ],
+            "advisor_notes": [
+              "Q1: Process handoff - who owns what stage",
+              "Q2: CARPET C - Cycle length",
+              "Q3: Conversion ratio - critical for milestone sizing",
+              "Q4: CARPET R - Rep capacity benchmark",
+              "Q5: Capacity check - tests if system can absorb more volume"
             ]
           }
         ],
@@ -210,7 +236,8 @@ let salesData = {
               "Who took that first call or initial conversation?",
               "What questions were asked on that call?",
               "What information or assets were exchanged next — deck, proposal, case study, engagement letter?",
-              "How was follow-up handled and how often?",
+              "How was follow-up handled?",
+              "How often?",
               "How long did it take to move from first touch to signed agreement?",
               "What specifically sealed it — was it the relationship, the fit, timing, or something else?"
             ]
@@ -224,74 +251,42 @@ let salesData = {
         "category": "sequential",
         "phase": 2,
         "section": "C",
-        "purpose": "Uncover how effectively the business converts opportunities into revenue and who owns that conversion",
-        "carpet_integration": ["E (Environment)", "T (Timeline & Decision-makers)"],
-        "intro": "Let's carry on and finish at what happens further down the funnel - how demand turns into actual revenue, and who's responsible for that conversion.",
-        "advisor_guidance": "You're collecting hard metrics to model a 45-day milestone: conversion ratios, retention timelines, deal values, and lifetime value. You're also looking for ownership clarity.",
+        "purpose": "Extract conversion metrics and deal economics. CARPET: A (ACV/LTV), E (Environment), T (Timeline/decisions)",
+        "carpet_integration": ["A (ACV/LTV)", "E (Environment)", "T (Timeline & Decision-makers)"],
+        "intro": "Let's finish at what happens further down the funnel - how demand turns into actual revenue.",
         "advisor_notes": [
-          "CARPET FOCUS: You're extracting E (Environment/compliance) and T (Timeline/decision-makers) variables",
-          "Critical metrics: conversion %, ACV, LTV, retention - these build your ROI model for the SOW",
-          "This section completes your financial modeling data - you should now be able to calculate realistic milestones",
-          "After this section, you'll have all CARPET variables needed to build the engagement model",
-          "If any anchors are missing (conversion %, ACV, etc.), schedule Discovery Part 2 immediately"
+          "CARPET FOCUS: Extract A (ACV/LTV), E (Environment), T (Timeline/decision-makers)",
+          "Critical metrics: conversion %, ACV, LTV - these build your ROI model",
+          "After this section, you'll have all CARPET variables needed to build the engagement model"
         ],
         "question_groups": [
           {
-            "emoji": "👥",
-            "title": "Who Closes The Deals",
-            "questions": [
-              "Who's primarily responsible for closing new business or converting qualified opportunities into clients?",
-              "How does that handoff typically occur — is it managed by the same rep who sourced the opportunity, or does it transfer to another team or function?",
-              "Who owns each stage of that process, and who's accountable for moving that from interest to closed deal?"
-            ]
-          },
-          {
-            "emoji": "📈",
-            "title": "How Many Close Monthly",
-            "questions": [
-              "From qualified opportunities at the top, what percentage convert into new accounts and how many close per month/quarter on average?"
-            ]
-          },
-          {
             "emoji": "💰",
-            "title": "How Much You Close For",
+            "title": "Conversion & Economics",
             "questions": [
-              "What's the typical average contract value (ACV) and lifetime value (LTV) of a new account?",
-              "How long do you typically retain a client or account before renewal or churn?"
-            ]
-          },
-          {
-            "emoji": "🎯",
-            "title": "Why You Win Deals",
-            "questions": [
-              "When deals close, what usually determines success - price, speed, relationship, or process?",
-              "Are there any recurring or expansion opportunities that increase revenue post-sale?"
-            ]
-          },
-          {
-            "emoji": "🚀",
-            "title": "Room For Growth",
-            "questions": [
-              "From your perspective, is there a clear ceiling or constraint that keeps conversion rates from improving further?"
+              "Who's primarily responsible for closing deals — same rep who sourced it, or does it transfer?",
+              "From qualified opportunities at the top, what percentage convert into new accounts?",
+              "What's the typical average contract value and lifetime value of a new account?",
+              "When deals close, what usually determines success — price, speed, relationship, or process?"
+            ],
+            "advisor_notes": [
+              "Q1: Ownership clarity",
+              "Q2: Conversion rate - critical for ROI calculation",
+              "Q3: CARPET A - ACV/LTV for financial modeling",
+              "Q4: Win factors - understand what drives success"
             ]
           }
         ]
       },
       {
         "id": "post_discovery_momentum",
-        "title": "Post-Discovery Momentum — Signal Transition",
+        "title": "Post-Discovery Momentum — Process Confirmation, ROI Math & Transition",
         "category": "sequential",
         "phase": 2,
-        "purpose": "Signal that discovery is complete and transition to positioning",
-        "when_to_use": "After completing Top, Middle, and Bottom of Funnel discovery (or when you have enough anchors to build engagement model)",
-        "script": "Okay, I've got what I need. Let me tell you what I'm seeing.<br><br>[Reference 1-2 specific things from their discovery - e.g., 'You mentioned that your conversion rate is around [X%] and your top rep is generating [Y] meetings per month.']<br><br>Here's where I think there's opportunity: <u>[specific gap or constraint they mentioned]</u>.<br><br>Before I walk you through how we'd approach that, let me tell you about how we work and why. Then we can see if it makes sense.",
-        "advisor_notes": [
-          "This creates momentum - signals you were listening and sets up thesis as solution to their gap",
-          "Reference specific data points they shared - shows you were paying attention",
-          "Identify the constraint/gap clearly - this is what your thesis solves",
-          "Natural bridge: 'Before I walk you through how we'd approach that...' leads into 'What Do We Do?' section",
-          "[Pause] after 'I've got what I need' - let them feel the transition"
-        ]
+        "section": "C.5",
+        "purpose": "Confirm process, validate capacity, calculate ROI, identify gap, and transition to thesis",
+        "when_to_use": "After completing Bottom of Funnel discovery (you now have conversion %, ACV, capacity data). Use this after 'Two Paths Emerge' if reconstruction occurred.",
+        "script": "Perfect — so we'll replicate that exact sequence for every introduction we generate. That single sequence becomes the standardized playbook we feed qualified opportunities into.<br><br>Now, here's what I need to confirm: if we fed [X] qualified opportunities into that same process over [CYCLE], does the team have capacity to handle that volume without breaking down?<br><br>Good. So at a [Y]% close rate, that's roughly [Z] new clients over that period.<br><br>At [$] average deal size, that's [REVENUE] in new revenue.<br><br>Does that math work for you?<br><br>Here's where I think there's opportunity: <u>if we could increase the flow of qualified opportunities into your pipeline — while maintaining that same [Y]% conversion rate — you'd scale revenue without changing your process.</u> Your current pipeline generates [PIPELINE], and your top rep is booking [REP_CAPACITY].<br><br>Before I walk you through how we'd approach that, let me tell you about how we work and why. Then we can see if it makes sense.",
       },
       {
         "id": "fork_deflection",

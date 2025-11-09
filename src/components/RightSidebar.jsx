@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import { useSalesData } from '../context/SalesDataContext'
 import { useContent } from '../context/ContentContext'
+import CARPETCalculator from './CARPETCalculator'
 
 // Framework sequential order for categories
 const CATEGORY_ORDER = [
@@ -518,6 +519,11 @@ function RightSidebar({ isOpen, onClose }) {
       <div className="sidebar-header">
         <h1>⛽ HANDLER LIBRARY</h1>
         <p>Pull off, handle, return</p>
+      </div>
+
+      {/* CARPET Calculator */}
+      <div style={{ padding: '0 1rem', marginBottom: '1rem' }}>
+        <CARPETCalculator />
       </div>
 
       {/* Top Objections */}

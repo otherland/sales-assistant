@@ -12,6 +12,7 @@ function SequentialContent({ item, itemId }) {
   const { loadContent } = useContent()
   const { salesData } = useSalesData()
   const [selectedEconomyPath, setSelectedEconomyPath] = useState(null)
+  const [openPaths, setOpenPaths] = useState({})
 
   // Calculate starting question number for this section
   const getStartingQuestionNumber = () => {
@@ -458,57 +459,91 @@ function SequentialContent({ item, itemId }) {
         )}
 
         {item.paths && item.assessment_question ? (
-          // Two Paths Emerge structure - custom rendering
+          // Two Paths Emerge structure - custom rendering with toggle buttons
           <CollapsibleSection 
             title="Two Paths Emerge — Process Assessment"
-            defaultCollapsed={true}
+            defaultCollapsed={false}
             variant="highlight"
             className="two-paths-emerge-section"
           >
-            <div style={{ marginTop: '1rem' }}>
-              {item.paths.map((path, idx) => (
-                <div
-                  key={path.id || idx}
-                  style={{
-                    marginBottom: '2rem',
-                    padding: '1.5rem',
-                    background: 'var(--bg-secondary)',
-                    border: '2px solid var(--primary-color)',
-                    borderRadius: '8px'
-                  }}
-                >
-                  <h4 style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontWeight: 700 }}>
-                    Path {idx + 1}: {path.condition}
-                  </h4>
-                  {path.script && (
-                    <div style={{ marginBottom: '1rem' }}>
-                      <ScriptBlock script={path.script} />
-                    </div>
-                  )}
-                  {path.advisor_notes && path.advisor_notes.length > 0 && (
-                    <InfoBox title="Advisor Notes" variant="advisor-note" style={{ marginTop: '1rem' }}>
-                      <ul className="bullet-list">
-                        {path.advisor_notes.map((note, noteIdx) => (
-                          <li key={noteIdx}>
-                            <LinkifiedText text={note} />
-                          </li>
-                        ))}
-                      </ul>
-                    </InfoBox>
-                  )}
-                  {path.reconstruction_questions && path.reconstruction_questions.length > 0 && (
-                    <InfoBox title="Reconstruction Questions" variant="advisor-note" style={{ marginTop: '1rem' }}>
-                      <ul className="bullet-list">
-                        {path.reconstruction_questions.map((q, qIdx) => (
-                          <li key={qIdx}>
-                            <LinkifiedText text={q} />
-                          </li>
-                        ))}
-                      </ul>
-                    </InfoBox>
-                  )}
-                </div>
-              ))}
+            <div style={{ 
+              marginTop: '1rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem'
+            }}>
+              {item.paths.map((path, idx) => {
+                const pathId = path.id || `path-${idx}`
+                const isOpen = openPaths[pathId] || false
+                
+                return (
+                  <div
+                    key={pathId}
+                    style={{
+                      border: '2px solid var(--primary-color)',
+                      borderRadius: '8px',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    <button
+                      onClick={() => setOpenPaths(prev => ({ ...prev, [pathId]: !isOpen }))}
+                      style={{
+                        width: '100%',
+                        padding: '1rem 1.5rem',
+                        background: isOpen ? 'var(--primary-color)' : 'var(--bg-secondary)',
+                        color: isOpen ? 'white' : 'var(--primary-color)',
+                        border: 'none',
+                        borderRadius: '0',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                        fontWeight: 700,
+                        fontSize: '1rem',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <span>Path {idx + 1}: {path.condition}</span>
+                      <span style={{ fontSize: '1.2rem' }}>{isOpen ? '▲' : '▼'}</span>
+                    </button>
+                    {isOpen && (
+                      <div style={{
+                        padding: '1.5rem',
+                        background: 'var(--bg-secondary)'
+                      }}>
+                        {path.script && (
+                          <div style={{ marginBottom: '1rem' }}>
+                            <ScriptBlock script={path.script} />
+                          </div>
+                        )}
+                        {path.advisor_notes && path.advisor_notes.length > 0 && (
+                          <InfoBox title="Advisor Notes" variant="advisor-note" style={{ marginTop: '1rem' }}>
+                            <ul className="bullet-list">
+                              {path.advisor_notes.map((note, noteIdx) => (
+                                <li key={noteIdx}>
+                                  <LinkifiedText text={note} />
+                                </li>
+                              ))}
+                            </ul>
+                          </InfoBox>
+                        )}
+                        {path.reconstruction_questions && path.reconstruction_questions.length > 0 && (
+                          <InfoBox title="Reconstruction Questions" variant="advisor-note" style={{ marginTop: '1rem' }}>
+                            <ul className="bullet-list">
+                              {path.reconstruction_questions.map((q, qIdx) => (
+                                <li key={qIdx}>
+                                  <LinkifiedText text={q} />
+                                </li>
+                              ))}
+                            </ul>
+                          </InfoBox>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </CollapsibleSection>
         ) : item.paths ? (
@@ -805,48 +840,8 @@ function SequentialContent({ item, itemId }) {
         })()}
 
         {/* Additional content sections can be added here */}
-
-        {/* Navigation buttons */}
-        {salesData?.sequential_flow?.call_one && (
-          <NavButtons currentItemId={itemId} onNavigate={loadContent} />
-        )}
       </div>
     </>
-  )
-}
-
-function NavButtons({ currentItemId, onNavigate }) {
-  const { salesData } = useSalesData()
-  
-  if (!salesData?.sequential_flow?.call_one) return null
-  
-  const currentIndex = salesData.sequential_flow.call_one.findIndex(i => i.id === currentItemId)
-  const prevItem = currentIndex > 0 ? salesData.sequential_flow.call_one[currentIndex - 1] : null
-  const nextItem = currentIndex < salesData.sequential_flow.call_one.length - 1 
-    ? salesData.sequential_flow.call_one[currentIndex + 1] 
-    : null
-
-  if (!prevItem && !nextItem) return null
-
-  return (
-    <div className="nav-buttons">
-      {prevItem && (
-        <button 
-          className="nav-btn nav-btn-prev" 
-          onClick={() => onNavigate(prevItem.id)}
-        >
-          ← Previous: {prevItem.title.split('—')[0].trim()}
-        </button>
-      )}
-      {nextItem && (
-        <button 
-          className="nav-btn nav-btn-next" 
-          onClick={() => onNavigate(nextItem.id)}
-        >
-          Next: {nextItem.title.split('—')[0].trim()} →
-        </button>
-      )}
-    </div>
   )
 }
 

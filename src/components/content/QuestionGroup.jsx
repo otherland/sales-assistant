@@ -69,6 +69,12 @@ const QuestionGroup = forwardRef(function QuestionGroup({ group, sectionId, grou
               )
             })}
           </div>
+          {group.when_to_use && (
+            <InfoBox variant="default" style={{ marginBottom: '1rem', backgroundColor: 'var(--bg-secondary)', borderLeft: '4px solid var(--primary-color)' }}>
+              <strong style={{ color: 'var(--primary-color)', display: 'block', marginBottom: '0.5rem' }}>When to Use:</strong>
+              <LinkifiedText text={group.when_to_use} />
+            </InfoBox>
+          )}
           {group.intro_script && (
             <InfoBox variant="advisor-note" style={{ marginBottom: '1rem' }}>
               <ScriptBlock script={group.intro_script} />
