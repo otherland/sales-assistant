@@ -29,7 +29,20 @@ export function ContentProvider({ children }) {
 
   // Load sequential flow content
   const loadContent = useCallback((itemId, updateURLParam = true) => {
-    if (!salesData?.sequential_flow?.call_one) return
+    if (!salesData) {
+      console.warn('loadContent called but salesData is not available yet')
+      return
+    }
+
+    if (!salesData?.sequential_flow?.call_one) {
+      console.warn('loadContent called but sequential_flow.call_one is not available', {
+        hasSalesData: !!salesData,
+        hasSequentialFlow: !!salesData?.sequential_flow,
+        hasCallOne: !!salesData?.sequential_flow?.call_one,
+        itemId
+      })
+      return
+    }
 
     const item = salesData.sequential_flow.call_one.find(i => i.id === itemId)
     if (item) {
@@ -72,10 +85,22 @@ export function ContentProvider({ children }) {
         return
       }
     }
+
+    console.warn(`Content item not found: ${itemId}`, {
+      hasSequentialFlow: !!salesData?.sequential_flow?.call_one,
+      sequentialFlowLength: salesData?.sequential_flow?.call_one?.length,
+      hasObjections: !!salesData?.objection_handlers?.objections,
+      objectionsLength: salesData?.objection_handlers?.objections?.length
+    })
   }, [salesData, updateURL])
 
   // Load objection handler
   const loadHandler = useCallback((handlerId, updateURLParam = true) => {
+    if (!salesData) {
+      console.warn('loadHandler called but salesData is not available yet', { handlerId })
+      return
+    }
+
     // First check handlers object
     if (salesData?.objection_handlers?.handlers) {
       const handlerData = salesData.objection_handlers.handlers[handlerId]
@@ -118,7 +143,12 @@ export function ContentProvider({ children }) {
       }
     }
 
-    console.warn(`Handler not found: ${handlerId}`)
+    console.warn(`Handler not found: ${handlerId}`, {
+      hasHandlers: !!salesData?.objection_handlers?.handlers,
+      handlersCount: salesData?.objection_handlers?.handlers ? Object.keys(salesData.objection_handlers.handlers).length : 0,
+      hasObjections: !!salesData?.objection_handlers?.objections,
+      objectionsLength: salesData?.objection_handlers?.objections?.length
+    })
   }, [salesData, updateURL])
 
   // Load reference library content
@@ -217,7 +247,12 @@ export function ContentProvider({ children }) {
 
   // Handle route changes from React Router (replaces popstate listener)
   useEffect(() => {
-    if (salesData) {
+    // Ensure salesData is fully loaded with required structures before routing
+    if (salesData && (
+      salesData.sequential_flow?.call_one || 
+      salesData.objection_handlers?.handlers ||
+      salesData.objection_handlers?.objections
+    )) {
       handleRoute()
     }
   }, [location.pathname, salesData, handleRoute])

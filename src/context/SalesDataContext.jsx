@@ -22,16 +22,38 @@ export function SalesDataProvider({ children }) {
           typeof window.reference_libraries !== 'undefined') {
         // Verify the data is actually populated (not just undefined)
         if (window.salesData && window.reference_libraries) {
-          setSalesData(window.salesData)
-          setReferenceLibraries(window.reference_libraries)
-          setLoading(false)
-          console.log('Sales data loaded successfully', { 
-            hasSalesData: !!window.salesData, 
-            hasRefLibs: !!window.reference_libraries,
-            salesDataKeys: window.salesData ? Object.keys(window.salesData).slice(0, 5) : [],
-            elapsed: elapsed + 'ms'
-          })
-          return
+          // Verify critical nested structures exist
+          const hasSequentialFlow = !!window.salesData.sequential_flow?.call_one
+          const hasObjectionHandlers = !!window.salesData.objection_handlers?.handlers || 
+                                       !!window.salesData.objection_handlers?.objections
+          
+          // Only mark as loaded if we have at least one critical structure
+          if (hasSequentialFlow || hasObjectionHandlers) {
+            setSalesData(window.salesData)
+            setReferenceLibraries(window.reference_libraries)
+            setLoading(false)
+            console.log('Sales data loaded successfully', { 
+              hasSalesData: !!window.salesData, 
+              hasRefLibs: !!window.reference_libraries,
+              hasSequentialFlow,
+              hasObjectionHandlers,
+              sequentialFlowLength: window.salesData.sequential_flow?.call_one?.length || 0,
+              handlersCount: window.salesData.objection_handlers?.handlers ? Object.keys(window.salesData.objection_handlers.handlers).length : 0,
+              objectionsCount: window.salesData.objection_handlers?.objections?.length || 0,
+              salesDataKeys: window.salesData ? Object.keys(window.salesData).slice(0, 5) : [],
+              elapsed: elapsed + 'ms'
+            })
+            return
+          } else {
+            // Data exists but structures aren't ready yet - keep waiting
+            console.log('Sales data exists but structures not ready yet', {
+              hasSalesData: !!window.salesData,
+              hasSequentialFlow,
+              hasObjectionHandlers,
+              attempts,
+              elapsed: elapsed + 'ms'
+            })
+          }
         }
       }
       
@@ -62,10 +84,20 @@ export function SalesDataProvider({ children }) {
       if (typeof window.salesData !== 'undefined' && 
           typeof window.reference_libraries !== 'undefined' &&
           window.salesData && window.reference_libraries) {
-        setSalesData(window.salesData)
-        setReferenceLibraries(window.reference_libraries)
-        setLoading(false)
-        console.log('Sales data loaded via window.load event')
+        // Verify critical nested structures exist
+        const hasSequentialFlow = !!window.salesData.sequential_flow?.call_one
+        const hasObjectionHandlers = !!window.salesData.objection_handlers?.handlers || 
+                                     !!window.salesData.objection_handlers?.objections
+        
+        if (hasSequentialFlow || hasObjectionHandlers) {
+          setSalesData(window.salesData)
+          setReferenceLibraries(window.reference_libraries)
+          setLoading(false)
+          console.log('Sales data loaded via window.load event', {
+            hasSequentialFlow,
+            hasObjectionHandlers
+          })
+        }
       }
     }
     
