@@ -1112,10 +1112,41 @@ body.dark-mode .question-group-list .question-item:hover {
     stroke-width: 2.5;
 }
 
-/* Hide arrows on mobile */
+/* Show arrows on mobile with proper positioning */
 @media (max-width: 768px) {
     .page-turner-arrow {
-        display: none;
+        display: flex;
+        z-index: 999;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        opacity: 0.8;
+    }
+    
+    .page-turner-arrow:hover {
+        opacity: 1;
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    .page-turner-arrow:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+    
+    .page-turner-arrow-left {
+        left: 12px;
+    }
+    
+    .page-turner-arrow-right {
+        right: 12px;
+    }
+    
+    .page-turner-arrow svg {
+        width: 24px;
+        height: 24px;
     }
 }
 
@@ -2291,12 +2322,111 @@ body.advice-hidden .six-beat-section {
         width: calc(100vw - 2rem);
         max-width: 340px;
     }
+
+    /* Master FAB Button */
+    .master-fab {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .master-fab:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .master-fab.expanded {
+        transform: rotate(90deg);
+        background: var(--accent-red, #dc2626);
+    }
+
+    .master-fab.expanded:hover {
+        transform: rotate(90deg) scale(1.1);
+    }
+
+    .master-fab-icon {
+        transition: transform 0.3s ease;
+        display: block;
+        line-height: 1;
+    }
+
+    /* Hide FAB buttons by default on mobile when collapsed */
+    .fab-button {
+        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                    bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: auto;
+    }
+
+    .fab-button:not(.fab-expanded) {
+        opacity: 0;
+        transform: scale(0);
+        pointer-events: none;
+        bottom: 24px !important;
+    }
+
+    /* Expanded FAB buttons - animate out with staggered delay */
+    .fab-button.fab-expanded {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+        transition-delay: calc(var(--fab-index) * 0.05s);
+    }
+
+    /* Stack FAB buttons vertically on mobile when expanded */
+    .settings-fab.fab-expanded {
+        bottom: 92px; /* 24px + 56px + 12px spacing */
+        right: 24px;
+    }
+
+    .advice-toggle-fab.fab-expanded {
+        bottom: 160px; /* 92px + 56px + 12px spacing */
+        right: 24px;
+    }
+
+    .resume-fab.fab-expanded {
+        bottom: 228px; /* 160px + 56px + 12px spacing */
+        right: 24px;
+    }
+
+    .emergency-scripts-fab.fab-expanded {
+        bottom: 296px; /* 228px + 56px + 12px spacing */
+        right: 24px;
+        width: auto;
+        min-width: 120px;
+    }
 }
 
 /* Hide mobile toggle buttons on desktop (but not close buttons inside sidebars) */
 @media (min-width: 769px) {
     .main-content .sidebar-toggle {
         display: none !important;
+    }
+    
+    /* Hide master FAB on desktop - show individual FABs */
+    .master-fab {
+        display: none;
+    }
+    
+    /* Show FAB buttons on desktop */
+    .fab-button {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        pointer-events: auto !important;
     }
     .script-block::before {
         content: '"';

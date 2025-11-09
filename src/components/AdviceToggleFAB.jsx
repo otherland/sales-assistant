@@ -1,12 +1,19 @@
 import React from 'react'
 
-function AdviceToggleFAB({ isVisible, onClick }) {
+function AdviceToggleFAB({ isVisible, onClick, expanded, isMobile, onAction }) {
+  const handleClick = (e) => {
+    e.stopPropagation()
+    onClick()
+    if (onAction) onAction()
+  }
+
   return (
     <button 
-      className={`advice-toggle-fab ${!isVisible ? 'hidden' : ''}`}
+      className={`advice-toggle-fab fab-button ${!isVisible ? 'hidden' : ''} ${expanded && isMobile ? 'fab-expanded' : ''}`}
       id="advice-toggle-fab" 
       title="Toggle Advice"
-      onClick={onClick}
+      onClick={handleClick}
+      style={expanded && isMobile ? { '--fab-index': 2 } : {}}
     >
       💡
     </button>

@@ -11,6 +11,7 @@ import GlobalSearch from './components/GlobalSearch'
 import ProgressIndicator from './components/ProgressIndicator'
 import RecentlyViewed from './components/RecentlyViewed'
 import EmergencyScripts from './components/EmergencyScripts'
+import MasterFAB from './components/MasterFAB'
 import { useMobileSidebar } from './hooks/useMobileSidebar'
 import { SalesDataProvider } from './context/SalesDataContext'
 import { ContentProvider } from './context/ContentContext'
@@ -111,13 +112,15 @@ function App() {
         />
 
         {/* FAB Buttons */}
-        <SettingsFAB onClick={() => setSettingsOpen(!settingsOpen)} />
-        <AdviceToggleFAB 
-          isVisible={adviceVisible}
-          onClick={() => setAdviceVisible(!adviceVisible)}
-        />
-        <ResumeFAB />
-        <EmergencyScripts />
+        <MasterFAB>
+          <SettingsFAB onClick={() => setSettingsOpen(!settingsOpen)} />
+          <AdviceToggleFAB 
+            isVisible={adviceVisible}
+            onClick={() => setAdviceVisible(!adviceVisible)}
+          />
+          <ResumeFAB />
+          <EmergencyScripts />
+        </MasterFAB>
         </ContentProvider>
       </SalesDataProvider>
     </BrowserRouter>

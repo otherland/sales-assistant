@@ -73,7 +73,7 @@ const PROTOCOLS = [
   }
 ]
 
-function EmergencyScripts() {
+function EmergencyScripts({ expanded, isMobile, onAction }) {
   const [isOpen, setIsOpen] = useState(false)
   const [expandedProtocol, setExpandedProtocol] = useState(null)
 
@@ -85,9 +85,14 @@ function EmergencyScripts() {
     <>
       {/* Floating Button */}
       <button
-        className="emergency-scripts-fab"
-        onClick={() => setIsOpen(!isOpen)}
+        className={`emergency-scripts-fab fab-button ${expanded && isMobile ? 'fab-expanded' : ''}`}
+        onClick={(e) => {
+          e.stopPropagation()
+          setIsOpen(!isOpen)
+          if (onAction) onAction()
+        }}
         aria-label="Emergency Scripts"
+        style={expanded && isMobile ? { '--fab-index': 4 } : {}}
       >
         🆘 Emergency
       </button>

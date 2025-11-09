@@ -1,12 +1,19 @@
 import React from 'react'
 
-function SettingsFAB({ onClick }) {
+function SettingsFAB({ onClick, expanded, isMobile, onAction }) {
+  const handleClick = (e) => {
+    e.stopPropagation()
+    onClick()
+    if (onAction) onAction()
+  }
+
   return (
     <button 
-      className="settings-fab" 
+      className={`settings-fab fab-button ${expanded && isMobile ? 'fab-expanded' : ''}`}
       id="settings-fab" 
       title="Settings"
-      onClick={onClick}
+      onClick={handleClick}
+      style={expanded && isMobile ? { '--fab-index': 1 } : {}}
     >
       ⚙️
     </button>
