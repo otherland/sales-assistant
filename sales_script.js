@@ -2957,5 +2957,14 @@ let salesData = {
 }
 
 // Make salesData available on window for React components
-window.salesData = salesData;
+try {
+  if (typeof salesData !== 'undefined') {
+    window.salesData = salesData;
+    console.log('salesData assigned to window successfully');
+  } else {
+    console.error('salesData variable is undefined before assignment');
+  }
+} catch (error) {
+  console.error('Error assigning salesData to window:', error);
+}
 

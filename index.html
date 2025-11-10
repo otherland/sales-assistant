@@ -12,8 +12,48 @@
 <body>
     <div id="react-root"></div>
 
-    <script src="sales_script.js"></script>
-    <script src="reference_libraries.js"></script>
+    <script>
+      // Track script loading
+      window._scriptLoadStatus = { salesData: false, reference_libraries: false };
+    </script>
+    <script src="sales_script.js" onload="window._scriptLoadStatus.salesData = true; console.log('sales_script.js loaded')" onerror="console.error('Failed to load sales_script.js')"></script>
+    <script src="reference_libraries.js" onload="window._scriptLoadStatus.reference_libraries = true; console.log('reference_libraries.js loaded')" onerror="console.error('Failed to load reference_libraries.js')"></script>
+    <script>
+      // Verify scripts loaded and assigned to window
+      (function() {
+        function checkScripts() {
+          const salesDataLoaded = typeof window.salesData !== 'undefined' && window.salesData !== null;
+          const refLibsLoaded = typeof window.reference_libraries !== 'undefined' && window.reference_libraries !== null;
+          
+          if (salesDataLoaded && refLibsLoaded) {
+            console.log('✓ Both scripts loaded and assigned to window:', {
+              salesData: typeof window.salesData,
+              reference_libraries: typeof window.reference_libraries,
+              salesDataKeys: window.salesData ? Object.keys(window.salesData).slice(0, 5) : [],
+              refLibsKeys: window.reference_libraries ? Object.keys(window.reference_libraries).slice(0, 5) : []
+            });
+            return;
+          }
+          
+          // Check again if scripts are loaded but not yet assigned
+          if (window._scriptLoadStatus.salesData && window._scriptLoadStatus.reference_libraries) {
+            if (!salesDataLoaded || !refLibsLoaded) {
+              console.warn('Scripts loaded but not assigned to window:', {
+                salesDataLoaded,
+                refLibsLoaded,
+                salesDataType: typeof window.salesData,
+                refLibsType: typeof window.reference_libraries
+              });
+            }
+          }
+        }
+        
+        // Check immediately and after a short delay
+        checkScripts();
+        setTimeout(checkScripts, 100);
+        window.addEventListener('load', checkScripts);
+      })();
+    </script>
     <script type="module" src="/src/utils/textFormatting.js"></script>
     <script type="module" src="/src/utils/themes.js"></script>
     <script type="module" src="/src/utils/questionState.js"></script>

@@ -1633,4 +1633,13 @@ let reference_libraries = {
 }
 
 // Make reference_libraries available on window for React components
-window.reference_libraries = reference_libraries;
+try {
+  if (typeof reference_libraries !== 'undefined') {
+    window.reference_libraries = reference_libraries;
+    console.log('reference_libraries assigned to window successfully');
+  } else {
+    console.error('reference_libraries variable is undefined before assignment');
+  }
+} catch (error) {
+  console.error('Error assigning reference_libraries to window:', error);
+}
