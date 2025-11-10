@@ -6,9 +6,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   root: '.',
   plugins: [react(), {
-    name: 'copy-sales-script',
+    name: 'copy-external-scripts',
     writeBundle() {
       copyFileSync(resolve(__dirname, 'sales_script.js'), resolve(__dirname, 'build/sales_script.js'))
+      copyFileSync(resolve(__dirname, 'reference_libraries.js'), resolve(__dirname, 'build/reference_libraries.js'))
     }
   }],
   build: {
