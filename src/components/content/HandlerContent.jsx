@@ -171,6 +171,33 @@ function HandlerContent({ handlerData, handlerId }) {
           </div>
         )}
 
+        {handlerData.intervention_mode && (
+          <div style={{
+            margin: '2.5rem 0',
+            padding: '2rem',
+            background: 'var(--bg-secondary)',
+            border: '2px solid var(--accent-red)',
+            borderRadius: '12px',
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ fontSize: '1.75rem' }}>🛑</span>
+              <h3 style={{ color: 'var(--accent-red)', fontSize: '1.3rem', fontWeight: 700, margin: 0 }}>
+                {handlerData.intervention_mode.title}
+              </h3>
+            </div>
+            <InfoBox
+              title="⏱️ When to Use This"
+              style={{ background: 'var(--bg-secondary)', borderLeftColor: 'var(--accent-red)', marginBottom: '1.5rem' }}
+            >
+              <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>
+                {handlerData.intervention_mode.when_to_use}
+              </p>
+            </InfoBox>
+            <ScriptBlock script={handlerData.intervention_mode.script} />
+          </div>
+        )}
+
         {handlerData.primary_reframe && (
           <InfoBox title="Primary Reframe Script" variant="advisor-note">
             <ScriptBlock script={handlerData.primary_reframe} />
@@ -358,7 +385,7 @@ function HandlerContent({ handlerData, handlerId }) {
           // Properties that are already explicitly rendered
           const renderedProps = new Set([
             'title', 'category', 'trigger', 'quick_response', 'full_script', 'key_principle',
-            'content', 'story_mode', 'primary_reframe', 'validation_spins', 'polite_disqualification',
+            'content', 'story_mode', 'intervention_mode', 'primary_reframe', 'validation_spins', 'polite_disqualification',
             'why_they_do_it', 'handle_steps', 'recognize_the_projection', 'accountability_boundaries',
             'script', 'main_script', 'how_to_handle', 'capitalization_framing', 'advisor_notes', 'key_lesson', 
             'where_to_go_next', 'pivot_examples', 'where_it_shows_up', 'purpose'

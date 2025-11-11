@@ -1628,6 +1628,12 @@ let reference_libraries = {
         }
       },
       "why_this_matters": "These questions help you map the internal approval path, identify decision-makers, and align your proposal cadence with their review cadence. Equips the internal champion and demonstrates advisory posture."
+    },
+    "hormozi_diagnostic_router": {
+      "title": "The Complete Hormozi Diagnostic Router",
+      "subtitle": "A mechanical, repeatable process to identify business constraints",
+      "purpose": "Systematic diagnostic framework based on Alex Hormozi's business audit methodology. Uses Theory of Constraints to identify the ONE primary bottleneck preventing growth through a series of router questions and confirmation checks.",
+      "isMicroapp": true
     }
   }
 }

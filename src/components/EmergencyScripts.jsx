@@ -70,6 +70,21 @@ const PROTOCOLS = [
       note: ''
     },
     guidance: 'Self-correction shows professionalism. Immediately narrow to one question.'
+  },
+  {
+    id: 'F',
+    title: 'Conversation Isn\'t Moving Forward / Prospect Won\'t Engage',
+    steps: [
+      'Acknowledge the impasse directly',
+      'Offer to defer with materials for their review',
+      'Give them control over next steps'
+    ],
+    script: 'Let me be direct with you. It sounds like no amount of conversation today will move this forward. I completely understand that. Here\'s what makes more sense: I\'ll send you our case studies, client contacts where possible, and a draft proposal. You do your diligence on your timeline. If it checks out and you want to reconnect, I\'m happy to. If not, no hard feelings. Does that sound more reasonable?',
+    example: {
+      text: 'Let me be direct with you. It sounds like no amount of conversation today will move this forward. I completely understand that. Here\'s what makes more sense: I\'ll send you our case studies, client contacts where possible, and a draft proposal. You do your diligence on your timeline. If it checks out and you want to reconnect, I\'m happy to. If not, no hard feelings. Does that sound more reasonable?',
+      note: '(Use when prospect is resistant, guarded, or conversation has stalled. Respects their position while leaving door open.)'
+    },
+    guidance: 'Sometimes the best move is to step back and let them verify credibility on their own timeline. This respects their position while maintaining professionalism and leaving the door open for future engagement.'
   }
 ]
 

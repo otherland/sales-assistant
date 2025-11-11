@@ -77,7 +77,8 @@ function LeftSidebar({ isOpen, onClose }) {
       'micro_commitment_pattern': '✅',
       'dadd_formula': '📐',
       'curiosity_standard': '❓',
-      'approval_flow_questions': '📋'
+      'approval_flow_questions': '📋',
+      'hormozi_diagnostic_router': '🎯'
     }
     return iconMap[refId] || '📚'
   }

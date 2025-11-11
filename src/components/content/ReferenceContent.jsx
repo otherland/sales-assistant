@@ -2,9 +2,15 @@ import React from 'react'
 import InfoBox from './InfoBox'
 import ScriptBlock from './ScriptBlock'
 import LinkifiedText from './LinkifiedText'
+import HormoziDiagnosticRouter from '../HormoziDiagnosticRouter'
 
 function ReferenceContent({ refData, refId }) {
   if (!refData) return null
+
+  // Check if this is a microapp that should use a custom component
+  if (refData.isMicroapp || refId === 'hormozi_diagnostic_router') {
+    return <HormoziDiagnosticRouter refData={refData} refId={refId} />
+  }
 
   // Properties that should be rendered in header or skipped
   const skipProps = new Set(['title', 'subtitle', 'purpose'])

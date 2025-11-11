@@ -29,12 +29,14 @@ export const PHASE_HANDLER_MAPPING = {
     'past_vendor_failure', // "We've tried vendors before / been burned"
     'entity_size_credibility', // "We only work with people who know our industry"
     'referral_purist', // Referral-focused objections
+    'wont_engage_discovery', // "Won't engage in discovery process"
   ],
 
   [PHASES.DISCOVERY_MOF]: [
     'why_do_you_need_to_know_this', // "Why do you need to know this?"
     'thats_confidential_information', // "That's confidential information"
     'this_is_too_many_questions', // "This is too many questions"
+    'wont_engage_discovery', // "Won't engage in discovery process"
     'can_i_get_back_to_you', // "Can I get back to you on that?"
     'i_need_to_check_with_my_team_first', // "I need to check with my team first"
     'were_rebuilding_our_process_right_now', // "We're rebuilding our process right now"
