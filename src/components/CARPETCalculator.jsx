@@ -144,15 +144,15 @@ function CARPETCalculator() {
       <div className="carpet-content">
           {/* CARPET Variables */}
           <div style={{ marginBottom: '1rem' }}>
-            <h4 style={{ marginBottom: '0.5rem', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+            <h4 style={{ marginBottom: '0.5rem', fontSize: '0.85rem', fontWeight: 600, color: '#ffffff' }}>
               CARPET Variables
             </h4>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
               {Object.entries(CARPET_VARIABLES).map(([key, variable]) => (
                 <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', gridColumn: variable.isText ? '1 / -1' : 'auto' }}>
-                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#ffffff' }}>
                     {variable.label}
-                    {variable.unit && <span style={{ marginLeft: '0.25rem', color: 'var(--text-secondary)' }}>({variable.unit})</span>}
+                    {variable.unit && <span style={{ marginLeft: '0.25rem', color: '#ffffff', opacity: 0.9 }}>({variable.unit})</span>}
                   </label>
                   {variable.isText ? (
                     <textarea
@@ -162,10 +162,10 @@ function CARPETCalculator() {
                       style={{
                         padding: '0.4rem',
                         fontSize: '0.8rem',
-                        border: '1px solid var(--border-color)',
+                        border: '1px solid rgba(255, 255, 255, 0.3)',
                         borderRadius: '4px',
-                        background: 'var(--bg-primary)',
-                        color: 'var(--text-primary)',
+                        background: 'rgba(255, 255, 255, 0.15)',
+                        color: '#ffffff',
                         minHeight: '50px',
                         resize: 'vertical'
                       }}
@@ -179,10 +179,10 @@ function CARPETCalculator() {
                       style={{
                         padding: '0.4rem',
                         fontSize: '0.8rem',
-                        border: '1px solid var(--border-color)',
+                        border: '1px solid rgba(255, 255, 255, 0.3)',
                         borderRadius: '4px',
-                        background: 'var(--bg-primary)',
-                        color: 'var(--text-primary)'
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        color: 'var(--text-light, #e2e8f0)'
                       }}
                     />
                   )}
@@ -195,16 +195,16 @@ function CARPETCalculator() {
           <div style={{ 
             marginBottom: '1rem',
             padding: '0.75rem',
-            background: 'var(--bg-primary)',
+            background: 'rgba(255, 255, 255, 0.1)',
             borderRadius: '4px',
-            border: '1px solid var(--border-color)'
+            border: '1px solid rgba(255, 255, 255, 0.3)'
           }}>
-            <h4 style={{ marginBottom: '0.5rem', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+            <h4 style={{ marginBottom: '0.5rem', fontSize: '0.85rem', fontWeight: 600, color: '#ffffff' }}>
               ROI Calculation
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '0.75rem' }}>
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' }}>
+                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#ffffff', display: 'block', marginBottom: '0.25rem' }}>
                   Qualified Opportunities (X)
                 </label>
                 <input
@@ -215,16 +215,16 @@ function CARPETCalculator() {
                   style={{
                     padding: '0.4rem',
                     fontSize: '0.8rem',
-                    border: '1px solid var(--border-color)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
                     borderRadius: '4px',
-                    background: 'var(--bg-secondary)',
-                    color: 'var(--text-primary)',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    color: 'var(--text-light, #e2e8f0)',
                     width: '100%'
                   }}
                 />
               </div>
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' }}>
+                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#ffffff', display: 'block', marginBottom: '0.25rem' }}>
                   Close Rate (Y%)
                 </label>
                 <input
@@ -236,16 +236,16 @@ function CARPETCalculator() {
                   style={{
                     padding: '0.4rem',
                     fontSize: '0.8rem',
-                    border: '1px solid var(--border-color)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
                     borderRadius: '4px',
-                    background: 'var(--bg-secondary)',
-                    color: 'var(--text-primary)',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    color: 'var(--text-light, #e2e8f0)',
                     width: '100%'
                   }}
                 />
               </div>
               <div>
-                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' }}>
+                <label style={{ fontSize: '0.8rem', fontWeight: 600, color: '#ffffff', display: 'block', marginBottom: '0.25rem' }}>
                   Engagement Days
                 </label>
                 <input
@@ -256,10 +256,10 @@ function CARPETCalculator() {
                   style={{
                     padding: '0.4rem',
                     fontSize: '0.8rem',
-                    border: '1px solid var(--border-color)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
                     borderRadius: '4px',
-                    background: 'var(--bg-secondary)',
-                    color: 'var(--text-primary)',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    color: 'var(--text-light, #e2e8f0)',
                     width: '100%'
                   }}
                 />
@@ -276,12 +276,12 @@ function CARPETCalculator() {
                 <div style={{ fontSize: '0.8rem', fontWeight: 600, marginBottom: '0.4rem', color: 'var(--accent-green)' }}>
                   ROI Results:
                 </div>
-                <div style={{ fontSize: '0.8rem', lineHeight: '1.5', color: 'var(--text-primary)' }}>
+                <div style={{ fontSize: '0.8rem', lineHeight: '1.5', color: '#ffffff' }}>
                   <div><strong>Qualified Opportunities:</strong> {roi.qualifiedOpportunities}</div>
                   <div><strong>Close Rate:</strong> {roi.closeRate}%</div>
                   <div><strong>New Clients (Z):</strong> {roi.newClients}</div>
                   <div><strong>ACV:</strong> ${parseInt(roi.acv).toLocaleString()}</div>
-                  <div style={{ marginTop: '0.4rem', paddingTop: '0.4rem', borderTop: '1px solid var(--border-color)' }}>
+                  <div style={{ marginTop: '0.4rem', paddingTop: '0.4rem', borderTop: '1px solid rgba(255, 255, 255, 0.3)' }}>
                     <strong style={{ fontSize: '0.9rem', color: 'var(--accent-green)' }}>
                       Total Revenue: ${parseInt(roi.revenue).toLocaleString()}
                     </strong>
@@ -294,15 +294,15 @@ function CARPETCalculator() {
           {/* Placeholder Reference */}
           <div style={{
             padding: '0.5rem',
-            background: 'var(--bg-primary)',
+            background: 'rgba(255, 255, 255, 0.1)',
             borderRadius: '4px',
-            border: '1px solid var(--border-color)',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
             fontSize: '0.75rem',
-            color: 'var(--text-secondary)'
+            color: '#ffffff'
           }}>
             <strong>Placeholders:</strong> [X], [Y]%, [Z], [$], [ACV], [REVENUE], [CYCLE], [REP_CAPACITY]
             <br />
-            <span style={{ fontSize: '0.7rem', fontStyle: 'italic' }}>
+            <span style={{ fontSize: '0.7rem', fontStyle: 'italic', opacity: 0.95 }}>
               Values auto-fill in Post-Reconstruction Transition and other sections
             </span>
           </div>

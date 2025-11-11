@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react'
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useSalesData } from './SalesDataContext'
+import { trackPageView, addPageTime, isCallOnePage } from '../utils/pageAnalytics'
 
 const ContentContext = createContext()
 
@@ -11,6 +12,10 @@ export function ContentProvider({ children }) {
   const [contentType, setContentType] = useState(null) // 'content', 'handler', 'reference', 'objection', null
   const [contentId, setContentId] = useState(null)
   const [currentContent, setCurrentContent] = useState(null)
+  const pageStartTimeRef = useRef(null)
+  const previousPageIdRef = useRef(null)
+  const pausedTimeRef = useRef(0) // Track accumulated time when paused
+  const isPausedRef = useRef(false) // Track if timer is currently paused
 
   // Update URL based on content type and ID
   const updateURL = useCallback((type, id) => {
@@ -46,6 +51,11 @@ export function ContentProvider({ children }) {
 
     const item = salesData.sequential_flow.call_one.find(i => i.id === itemId)
     if (item) {
+      // Track page view for call_one pages
+      if (isCallOnePage(itemId, salesData)) {
+        trackPageView(itemId)
+      }
+
       // Store last sequential content for breadcrumb trail
       localStorage.setItem('lastSequentialContent', itemId)
 
@@ -268,6 +278,110 @@ export function ContentProvider({ children }) {
     window.addEventListener('hashchange', handleHashChange)
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [salesData, loadContent])
+
+  // Track time spent on call_one pages
+  useEffect(() => {
+    // Save time from previous page before switching
+    if (previousPageIdRef.current && pageStartTimeRef.current && !isPausedRef.current) {
+      const timeSpent = (Date.now() - pageStartTimeRef.current) / 1000 // Convert to seconds
+      if (timeSpent > 0 && isCallOnePage(previousPageIdRef.current, salesData)) {
+        addPageTime(previousPageIdRef.current, timeSpent)
+      }
+    }
+
+    // Reset pause state when switching pages
+    pausedTimeRef.current = 0
+    isPausedRef.current = false
+
+    // Start tracking time for current page if it's a call_one page
+    if (contentType === 'content' && contentId && salesData && isCallOnePage(contentId, salesData)) {
+      // Only start tracking if page is visible
+      if (!document.hidden) {
+        pageStartTimeRef.current = Date.now()
+        previousPageIdRef.current = contentId
+      } else {
+        // Page is hidden, don't start tracking yet
+        pageStartTimeRef.current = null
+        previousPageIdRef.current = contentId
+        isPausedRef.current = true
+      }
+    } else {
+      pageStartTimeRef.current = null
+      previousPageIdRef.current = null
+      pausedTimeRef.current = 0
+      isPausedRef.current = false
+    }
+
+    // Cleanup: save time when component unmounts or page changes
+    return () => {
+      if (previousPageIdRef.current && pageStartTimeRef.current && !isPausedRef.current) {
+        const timeSpent = (Date.now() - pageStartTimeRef.current) / 1000
+        if (timeSpent > 0 && salesData && isCallOnePage(previousPageIdRef.current, salesData)) {
+          addPageTime(previousPageIdRef.current, timeSpent)
+        }
+      }
+    }
+  }, [contentType, contentId, salesData])
+
+  // Pause/resume time tracking when browser loses/gains focus
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        // Browser lost focus - pause tracking
+        if (previousPageIdRef.current && pageStartTimeRef.current && !isPausedRef.current) {
+          // Save accumulated time up to this point
+          const timeSpent = (Date.now() - pageStartTimeRef.current) / 1000
+          if (timeSpent > 0 && salesData && isCallOnePage(previousPageIdRef.current, salesData)) {
+            addPageTime(previousPageIdRef.current, timeSpent)
+          }
+          // Pause tracking - don't reset start time, just mark as paused
+          isPausedRef.current = true
+          pageStartTimeRef.current = null
+        }
+      } else {
+        // Browser gained focus - resume tracking
+        if (previousPageIdRef.current && salesData && isCallOnePage(previousPageIdRef.current, salesData)) {
+          // Only resume if we were tracking this page
+          if (isPausedRef.current || !pageStartTimeRef.current) {
+            // Start fresh tracking session (time while hidden doesn't count)
+            pageStartTimeRef.current = Date.now()
+            isPausedRef.current = false
+          }
+        }
+      }
+    }
+
+    // Also handle window blur/focus as backup (for older browsers)
+    const handleBlur = () => {
+      if (previousPageIdRef.current && pageStartTimeRef.current && !isPausedRef.current) {
+        const timeSpent = (Date.now() - pageStartTimeRef.current) / 1000
+        if (timeSpent > 0 && salesData && isCallOnePage(previousPageIdRef.current, salesData)) {
+          addPageTime(previousPageIdRef.current, timeSpent)
+        }
+        isPausedRef.current = true
+        pageStartTimeRef.current = null
+      }
+    }
+
+    const handleFocus = () => {
+      if (previousPageIdRef.current && salesData && isCallOnePage(previousPageIdRef.current, salesData)) {
+        if (isPausedRef.current || !pageStartTimeRef.current) {
+          pageStartTimeRef.current = Date.now()
+          isPausedRef.current = false
+        }
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    window.addEventListener('blur', handleBlur)
+    window.addEventListener('focus', handleFocus)
+    
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      window.removeEventListener('blur', handleBlur)
+      window.removeEventListener('focus', handleFocus)
+    }
+  }, [salesData])
 
   // No longer exposing on window - all code uses React hooks directly
 

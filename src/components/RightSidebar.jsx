@@ -662,9 +662,10 @@ function RightSidebar({ isOpen, onClose }) {
             <div className="nav-content" style={{ padding: '0.5rem 0' }}>
               <div style={{ 
                 fontSize: '0.85rem', 
-                color: 'var(--text-secondary, #666)', 
+                color: '#ffffff', 
                 padding: '0 1rem 0.5rem 1rem',
-                fontStyle: 'italic'
+                fontStyle: 'italic',
+                opacity: 1
               }}>
                 These objections typically arise in the {getPhaseDisplayName(currentPhase)} phase
               </div>
@@ -691,13 +692,14 @@ function RightSidebar({ isOpen, onClose }) {
                       {idx + 1}.
                     </span>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>
+                      <div style={{ fontWeight: '600', marginBottom: '0.25rem', color: '#ffffff' }}>
                         {handler.title}
                       </div>
                       {handler.quick_response && (
                         <div style={{ 
                           fontSize: '0.8rem', 
-                          color: 'var(--text-secondary, #666)',
+                          color: '#ffffff',
+                          opacity: 0.95,
                           fontStyle: 'italic',
                           marginTop: '0.25rem',
                           lineHeight: '1.3'
@@ -751,7 +753,7 @@ function RightSidebar({ isOpen, onClose }) {
         </div>
         {!collapsedSections['top-objections'] && (
           <div className="interrupt-sequence nav-content">
-            <div className="interrupt-step" onClick={() => handleContentClick('pricing_objection')}>
+            <div className="interrupt-step" onClick={() => handleHandlerClick('pricing_objection')}>
               <div className="step-number">1</div>
               <div className="step-content">
                 <div className="step-title">Pricing Objection</div>

@@ -159,14 +159,6 @@ function HandlerContent({ handlerData, handlerId }) {
                 {handlerData.story_mode.title}
               </h3>
             </div>
-            <InfoBox
-              title="⏱️ When to Use This"
-              style={{ background: 'var(--bg-secondary)', borderLeftColor: 'var(--accent-yellow)', marginBottom: '1.5rem' }}
-            >
-              <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>
-                {handlerData.story_mode.when_to_use}
-              </p>
-            </InfoBox>
             <ScriptBlock script={handlerData.story_mode.script} />
           </div>
         )}
@@ -186,14 +178,6 @@ function HandlerContent({ handlerData, handlerId }) {
                 {handlerData.intervention_mode.title}
               </h3>
             </div>
-            <InfoBox
-              title="⏱️ When to Use This"
-              style={{ background: 'var(--bg-secondary)', borderLeftColor: 'var(--accent-red)', marginBottom: '1.5rem' }}
-            >
-              <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>
-                {handlerData.intervention_mode.when_to_use}
-              </p>
-            </InfoBox>
             <ScriptBlock script={handlerData.intervention_mode.script} />
           </div>
         )}
@@ -336,7 +320,24 @@ function HandlerContent({ handlerData, handlerId }) {
             {handlerData.pivot_examples.map((pivot, idx) => (
               <div key={idx} style={{ marginBottom: idx < handlerData.pivot_examples.length - 1 ? '1rem' : '0' }}>
                 <ScriptBlock script={pivot.text} />
-                {pivot.link_text && (
+                {pivot.link_text && pivot.link_to && (
+                  <p style={{ marginTop: '0.5rem', fontStyle: 'italic', color: 'var(--text-secondary)' }}>
+                    → <a 
+                      href="#" 
+                      data-action="loadContent" 
+                      data-id={pivot.link_to} 
+                      className="content-link"
+                      style={{ color: 'var(--primary-color)', textDecoration: 'underline', cursor: 'pointer' }}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        loadContent(pivot.link_to)
+                      }}
+                    >
+                      {pivot.link_text}
+                    </a>
+                  </p>
+                )}
+                {pivot.link_text && !pivot.link_to && (
                   <p style={{ marginTop: '0.5rem', fontStyle: 'italic', color: 'var(--text-secondary)' }}>
                     → {pivot.link_text}
                   </p>
@@ -380,6 +381,124 @@ function HandlerContent({ handlerData, handlerId }) {
           </div>
         )}
 
+        {/* Universal Opening Script - Collapsible */}
+        {handlerData.universal_opening && (
+          <CollapsibleSection 
+            title={handlerData.universal_opening.title || "🎯 Universal Opening Script"}
+            defaultCollapsed={false}
+            variant="default"
+          >
+            {handlerData.universal_opening.script && (
+              <div style={{ marginBottom: handlerData.universal_opening.advisor_notes ? '1rem' : '0' }}>
+                <ScriptBlock script={handlerData.universal_opening.script} />
+              </div>
+            )}
+            {handlerData.universal_opening.advisor_notes && handlerData.universal_opening.advisor_notes.length > 0 && (
+              <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--border-color)' }}>
+                <strong style={{ color: 'var(--primary-color)' }}>💡 Advisor Notes:</strong>
+                <ul className="bullet-list" style={{ marginTop: '0.5rem' }}>
+                  {handlerData.universal_opening.advisor_notes.map((note, idx) => (
+                    <li key={idx}>
+                      <LinkifiedText text={note} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </CollapsibleSection>
+        )}
+
+        {/* Universal Response Framework */}
+        {handlerData.universal_response && (
+          <CollapsibleSection 
+            title={handlerData.universal_response.title || "📋 Universal Response Framework"}
+            defaultCollapsed={false}
+            variant="default"
+          >
+            {Object.keys(handlerData.universal_response).map((stepKey) => {
+              if (stepKey === 'title') return null
+              const step = handlerData.universal_response[stepKey]
+              if (!step || !step.script) return null
+              return (
+                <div key={stepKey} style={{ marginBottom: '1rem' }}>
+                  <h4 style={{ color: 'var(--primary-color)', marginBottom: '0.5rem', fontSize: '0.95rem', fontWeight: 600 }}>
+                    {step.title || stepKey.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                  </h4>
+                  <ScriptBlock script={step.script} />
+                </div>
+              )
+            })}
+          </CollapsibleSection>
+        )}
+
+        {/* Path Selection - Each path gets its own collapsible section */}
+        {handlerData.path_selection && (
+          <div style={{ margin: '2rem 0' }}>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', fontSize: '1.25rem', fontWeight: 700 }}>
+              🔀 Path Selection (Based on Their Answer and Tone)
+            </h3>
+            {Object.keys(handlerData.path_selection).map((pathKey) => {
+              const path = handlerData.path_selection[pathKey]
+              if (!path || !path.script) return null
+              return (
+                <CollapsibleSection
+                  key={pathKey}
+                  title={path.title || pathKey.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                  defaultCollapsed={true}
+                  variant="default"
+                >
+                  <ScriptBlock script={path.script} />
+                </CollapsibleSection>
+              )
+            })}
+          </div>
+        )}
+
+        {/* Adaptive Branches - Each branch gets its own collapsible section */}
+        {handlerData.adaptive_branches && (
+          <div style={{ margin: '2rem 0' }}>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', fontSize: '1.25rem', fontWeight: 700 }}>
+              🔀 Adaptive Branches (Based on Their Response)
+            </h3>
+            {Object.keys(handlerData.adaptive_branches).map((branchKey) => {
+              const branch = handlerData.adaptive_branches[branchKey]
+              if (!branch || !branch.script) return null
+              return (
+                <CollapsibleSection
+                  key={branchKey}
+                  title={branch.title || branchKey.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                  defaultCollapsed={true}
+                  variant="default"
+                >
+                  <ScriptBlock script={branch.script} />
+                  {branch.follow_up_options && (
+                    <div style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-color)' }}>
+                      <h4 style={{ color: 'var(--primary-color)', marginBottom: '1rem', fontSize: '1rem', fontWeight: 600 }}>
+                        Follow-Up Options:
+                      </h4>
+                      {Object.keys(branch.follow_up_options).map((optionKey) => {
+                        const option = branch.follow_up_options[optionKey]
+                        if (!option || !option.script) return null
+                        return (
+                          <CollapsibleSection
+                            key={optionKey}
+                            title={option.title || optionKey.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                            defaultCollapsed={true}
+                            variant="default"
+                            style={{ marginBottom: '1rem' }}
+                          >
+                            <ScriptBlock script={option.script} />
+                          </CollapsibleSection>
+                        )
+                      })}
+                    </div>
+                  )}
+                </CollapsibleSection>
+              )
+            })}
+          </div>
+        )}
+
         {/* Generic fallback renderer for unhandled properties */}
         {(() => {
           // Properties that are already explicitly rendered
@@ -388,14 +507,16 @@ function HandlerContent({ handlerData, handlerId }) {
             'content', 'story_mode', 'intervention_mode', 'primary_reframe', 'validation_spins', 'polite_disqualification',
             'why_they_do_it', 'handle_steps', 'recognize_the_projection', 'accountability_boundaries',
             'script', 'main_script', 'how_to_handle', 'capitalization_framing', 'advisor_notes', 'key_lesson', 
-            'where_to_go_next', 'pivot_examples', 'where_it_shows_up', 'purpose'
+            'where_to_go_next', 'pivot_examples', 'where_it_shows_up', 'purpose', 'universal_opening', 'adaptive_branches',
+            'universal_response', 'path_selection'
           ])
 
           const unrenderedProps = Object.keys(handlerData).filter(key => {
             // Double-check: explicitly skip pricing objection handler fields
             if (key === 'script' || key === 'main_script' || key === 'how_to_handle' || key === 'capitalization_framing' || 
                 key === 'advisor_notes' || key === 'key_lesson' || key === 'where_to_go_next' || 
-                key === 'pivot_examples') {
+                key === 'pivot_examples' || key === 'universal_opening' || key === 'adaptive_branches' ||
+                key === 'universal_response' || key === 'path_selection') {
               return false
             }
             return !renderedProps.has(key) && 
@@ -455,9 +576,9 @@ function HandlerContent({ handlerData, handlerId }) {
                 )
               } else if (typeof value[0] === 'object') {
                 // Array of objects - render as structured list
-                // Special handling for how_to_handle - should be rendered by specific handler above
-                if (key === 'how_to_handle') {
-                  return null // Skip - already handled by CollapsibleSection above
+                // Special handling for how_to_handle and pivot_examples - should be rendered by specific handlers above
+                if (key === 'how_to_handle' || key === 'pivot_examples') {
+                  return null // Skip - already handled by specific handlers above
                 }
                 return (
                   <InfoBox key={key} title={displayKey} style={{ margin: '1.5rem 0' }}>
@@ -487,8 +608,9 @@ function HandlerContent({ handlerData, handlerId }) {
                 )
               }
             } else if (valueType === 'object' && value !== null) {
-              // Skip capitalization_framing, where_to_go_next, pivot_examples - should be handled by specific handlers above
-              if (key === 'capitalization_framing' || key === 'where_to_go_next' || key === 'pivot_examples') {
+              // Skip capitalization_framing, where_to_go_next - should be handled by specific handlers above
+              // Note: pivot_examples is an array, not an object, so it's handled in the array section above
+              if (key === 'capitalization_framing' || key === 'where_to_go_next') {
                 return null
               }
               // Object - check if it has common structure

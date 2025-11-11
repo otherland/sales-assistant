@@ -85,6 +85,21 @@ const PROTOCOLS = [
       note: '(Use when prospect is resistant, guarded, or conversation has stalled. Respects their position while leaving door open.)'
     },
     guidance: 'Sometimes the best move is to step back and let them verify credibility on their own timeline. This respects their position while maintaining professionalism and leaving the door open for future engagement.'
+  },
+  {
+    id: 'G',
+    title: 'Stuck in Mechanism Ville (Too Deep in Methods/Infrastructure)',
+    steps: [
+      'Pause the conversation explicitly',
+      'Reframe back to diagnostic/advisory mode',
+      'Reset the structure and get agreement'
+    ],
+    script: 'Let me pause us for a second. I want to make sure we\'re using this time well.\n\nHere\'s what I\'m thinking: I\'m going to map how demand actually works in your business—the channels, the conversion process, the economics. This is my diagnostic.\n\nThen I can tell you exactly how we\'d approach it and whether there\'s a fit. That structure work for you?',
+    example: {
+      text: 'Let me pause us for a second. I want to make sure we\'re using this time well.\n\nHere\'s what I\'m thinking: I\'m going to map how demand actually works in your business—the channels, the conversion process, the economics. This is my diagnostic.\n\nThen I can tell you exactly how we\'d approach it and whether there\'s a fit. That structure work for you?',
+      note: '(Use when you\'ve fallen into talking about "XYZ method", "Bainsbridge method", "infrastructure", "two interaction methods" or other framework names without narrative. This pulls you back to Story Mode and the advisory frame.)'
+    },
+    guidance: 'When you\'re too deep in mechanism talk (methods, infrastructure, frameworks), this script resets the conversation back to diagnostic/advisory mode. It reframes you as mapping their business (diagnostic) rather than explaining your methods (mechanism). Gets you out of "Mechanism Ville" and back into Story Mode.'
   }
 ]
 
@@ -129,75 +144,52 @@ function EmergencyScripts({ expanded, isMobile, onAction }) {
             </div>
 
             <div className="emergency-scripts-content">
-              {PROTOCOLS.map((protocol) => (
-                <div 
-                  key={protocol.id} 
-                  className={`protocol-card ${expandedProtocol === protocol.id ? 'expanded' : ''}`}
-                >
+              {PROTOCOLS.map((protocol) => {
+                // Extract clean verbatim script
+                let verbatimScript = protocol.script;
+                
+                if (protocol.example?.text) {
+                  // For Protocol D, extract the quoted part after the context
+                  if (protocol.id === 'D') {
+                    const match = protocol.example.text.match(/"([^"]+)"/);
+                    verbatimScript = match ? match[1] : protocol.script;
+                  } else {
+                    // Use example.text if it's a complete example
+                    verbatimScript = protocol.example.text;
+                  }
+                }
+                
+                return (
                   <div 
-                    className="protocol-header"
-                    onClick={() => toggleProtocol(protocol.id)}
+                    key={protocol.id} 
+                    className={`protocol-card ${expandedProtocol === protocol.id ? 'expanded' : ''}`}
                   >
-                    <div className="protocol-title">
-                      <span className="protocol-id">Protocol {protocol.id}:</span>
-                      <span className="protocol-name">{protocol.title}</span>
+                    <div 
+                      className="protocol-header"
+                      onClick={() => toggleProtocol(protocol.id)}
+                    >
+                      <div className="protocol-title">
+                        <span className="protocol-name">{protocol.title}</span>
+                      </div>
+                      <span className="protocol-toggle">
+                        {expandedProtocol === protocol.id ? '▲' : '▼'}
+                      </span>
                     </div>
-                    <span className="protocol-toggle">
-                      {expandedProtocol === protocol.id ? '▲' : '▼'}
-                    </span>
-                  </div>
 
-                  {expandedProtocol === protocol.id && (
-                    <div className="protocol-content">
-                      <div className="protocol-steps">
-                        {protocol.steps.map((step, index) => (
-                          <div key={index} className="protocol-step">
-                            <span className="step-number">{index + 1}.</span>
-                            <span className="step-text">{step}</span>
+                    {expandedProtocol === protocol.id && (
+                      <div className="protocol-content">
+                        <div className="protocol-script-box">
+                          <div className="script-text">
+                            {verbatimScript.split('\n').map((line, i) => (
+                              <div key={i}>{line || <br />}</div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-
-                      <div className="protocol-script-box">
-                        <div className="script-label">Script:</div>
-                        <div className="script-text">{protocol.script}</div>
-                      </div>
-
-                      {protocol.example && (
-                        <div className="protocol-example">
-                          <div className="example-label">Example:</div>
-                          {protocol.example.original && (
-                            <div className="example-original">
-                              <strong>Original:</strong> {protocol.example.original}
-                            </div>
-                          )}
-                          {protocol.example.simpler && (
-                            <div className="example-simpler">
-                              <strong>Simpler:</strong> {protocol.example.simpler}
-                            </div>
-                          )}
-                          {protocol.example.text && (
-                            <div className="example-text">
-                              {protocol.example.text.split('\n').map((line, i) => (
-                                <div key={i}>{line}</div>
-                              ))}
-                            </div>
-                          )}
-                          {protocol.example.note && (
-                            <div className="example-note">
-                              <em>{protocol.example.note}</em>
-                            </div>
-                          )}
                         </div>
-                      )}
-
-                      <div className="protocol-guidance">
-                        <strong>💡 Guidance:</strong> {protocol.guidance}
                       </div>
-                    </div>
-                  )}
-                </div>
-              ))}
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

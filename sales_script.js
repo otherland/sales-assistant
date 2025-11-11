@@ -14,17 +14,19 @@ let salesData = {
         "phase": 1,
         "purpose": "Establish yourself as a peer conducting due diligence, not a vendor trying to win business",
         "advisor_mindset": "Deliver this like an advisor leading a professional diligence session, not a salesperson opening a discovery call. Slow down, stay calm, and let silence do the work.",
-        "script": "Hey [FirstName], <i>thanks for making time</i>. I've got <u>30 minutes</u> blocked, and I want to use it well.<br><br>Here's how I work: <b>I don't pitch on first calls</b>. What I do is audit how you're currently generating demand, and see if there's a clear fit before we talk next steps.<br><br>So I'm going to ask you some specific questions. Not to interrogate—just to understand one thing: <u>where's your leverage? Where's the constraint?</u><br><br>And once I see that, I can tell you how we'd approach it.<br><br>I'll just say upfront—we specialize in <u>sophisticated, brand-sensitive markets</u> where data is scarce and demand generation has to <b>protect reputation</b>. That context shapes how I'm listening today.",
+        "script": "Hey [FirstName], great to meet you. Happy to get started if that’s all right with you?<br><br>Here's how I work: <b>I don't pitch on first calls</b>. What I do is audit how you're currently generating demand, and see if there's a clear fit before we talk next steps.<br><br>So I'm going to ask you some specific questions. Not to interrogate—just to understand one thing: <u>where's your leverage? Where's the constraint?</u><br><br>And once I see that, I can tell you how we'd approach it.<br><br>I'll just say upfront—we specialize in <u>sophisticated, brand-sensitive markets</u> where data is scarce and demand generation has to <b>protect reputation</b>. That context shapes how I'm listening today.<br><br><br><br>I can start with our overall thesis.<br><br>So we aim to work in sophisticated markets and we're industry agnostic.<br><br>In these verticals with careful buyers, the data is harder to acquire, there's a lot of room for improvement and our thesis is to fill in those specialized gaps.<br><br>So we'll go into these markets where established companies want new, qualified conversations at scale but haven't been able to fully figure out a modern channel for revenue generation - or at least want it done better.<br><br>We've seen time and time again that there's pent up, unmet demand on the other side of a properly designed solution.",
         "advisor_notes": [
           "[Pause] after 'I want to use it well' - let the time boundary land",
           "RHYTHM: Notice the shorter sentences and natural pauses - this creates executive presence, not corporate delivery",
           "PROCESS CLARITY: 'I don't pitch on first calls' immediately sets peer-level authority and removes sales pressure",
           "OBJECTIVE CLARITY: 'Where's your leverage? Where's the constraint?' tells them exactly what you're after",
           "THESIS PRE-ANCHOR: The sophistication/brand-sensitivity positioning happens BEFORE they answer, not after",
+          "OPTIONAL THESIS PRE-ANCHOR: If prospect asks 'what do you do?' before you start discovery, deploy concise thesis: 'We work in sophisticated markets filling specialized gaps where data is harder to acquire. The diagnostic I'm about to walk through helps me see if there's a clear fit.'",
+          "Decision: Only use fuller thesis explanation if they interrupt with 'what do you do?' Otherwise proceed directly to discovery_intro - the brief anchor in the script is sufficient",
           "[Pause] before final question - let the context sink in, then launch into discovery with confidence",
           "[Slow down] on 'where's your leverage' - this is the core question",
           "Your tone is confident peer-to-peer, not deferential or aggressive - you've done this many times"
-        ]
+        ],
       },
       {
         "id": "discovery_intro",
@@ -32,15 +34,8 @@ let salesData = {
         "category": "sequential",
         "phase": 2,
         "purpose": "Set up the comprehensive due diligence flow",
-        "script": "<i>Great</i>. So here's what I'm thinking. I'm going to map how demand actually works in your business—specifically, the channels where it starts, how you determine what's qualified, and how it converts to revenue.<br><br>This is my diagnostic. It's how I understand whether there's <u>leverage we can create</u> with new approaches.<br><br>Let me start at the top of the funnel.",
+        "script": "<i>Great</i>. So here's what I'm thinking. Let’s start at the top - how you’re currently generating interest and where that demand is coming from — specifically, the channels where it starts, how you determine what's qualified, and how it converts to revenue.<br><br>That's how we'll understand whether there's <u>leverage we can create</u> with new approaches.<br><br>So, starting at the top of the funnel...",
         "advisor_guidance": "Ask 1 question at a time and then be quiet - silence is a powerful tool, use it as often as possible. Don't overthink the order — what matters most is getting reps in.",
-        "advisor_notes": [
-          "CARPET FRAMEWORK: The next three sections extract all 6 financial modeling variables",
-          "Top Funnel = C (Cycle) + P (Pipeline) | Middle Funnel = R (Rep) + A (ACV) | Bottom Funnel = E (Environment) + T (Timeline)",
-          "Your goal: Complete CARPET extraction so you can build a defensible engagement model on Call Two",
-          "Maintain DaDD™ posture: You're a peer conducting due diligence, not a vendor qualifying a lead",
-          "Silent pauses are powerful - let them fill the space, don't rush to the next question"
-        ]
       },
       {
         "id": "discovery_top_funnel",
@@ -87,12 +82,6 @@ let salesData = {
         "phase": 2,
         "section": "A.5",
         "purpose": "Conduct proper audit for referral-dominant businesses that don't think in 'markets'",
-        "advisor_notes": [
-          "CARPET FOCUS: You're extracting C (Cycle) and P (Pipeline) variables in this section",
-          "This replaces the 'What Markets You Target' section for referral-dominant businesses",
-          "Goal: Validate referral consistency, test ceiling, extract conversion process",
-          "After Q3, immediately transition to reconstruction confirmation"
-        ],
         "intro": "That's great to hear — referral-based clients often see the best results when adding a new channel. Let me ask a few questions to understand how referrals work in your business.",
         "question_groups": [
           {
@@ -220,13 +209,7 @@ let salesData = {
         "phase": 2,
         "section": "C",
         "purpose": "Extract conversion metrics and deal economics. CARPET: A (ACV/LTV), E (Environment), T (Timeline/decisions)",
-        "carpet_integration": ["A (ACV/LTV)", "E (Environment)", "T (Timeline & Decision-makers)"],
         "intro": "Let's finish at what happens further down the funnel - how demand turns into actual revenue.",
-        "advisor_notes": [
-          "CARPET FOCUS: Extract A (ACV/LTV), E (Environment), T (Timeline/decision-makers)",
-          "Critical metrics: conversion %, ACV, LTV - these build your ROI model",
-          "After this section, you'll have all CARPET variables needed to build the engagement model"
-        ],
         "question_groups": [
           {
             "emoji": "💰",
@@ -274,12 +257,58 @@ let salesData = {
               "title": "Proof Narrative — National Book Fair Company",
               "introduction": "To give you a clearer picture, one of the best examples is our engagement with a national book fair company — about a $50M-a-year operator that sells into thousands of schools across the U.S.<br><br>They had an incredible brand that educators and families trusted for decades, but they were struggling to modernize how they generated demand. Everything was still manual — word-of-mouth, relationships, and outdated outreach methods — which made it hard to scale without risking the reputation they'd built.<br><br>And because that market's so consolidated — really only three major players nationwide — they wanted full discretion. That's why they're redacted in our case study; they don't want any of their tools, systems, or partners publicly visible.<br><br>That's exactly the kind of challenge our thesis is designed for — markets with specialized buyers, limited data, strict brand standards, and the need for qualified, brand-safe conversations that protect legacy while driving growth.",
               "six_beats": {
-                "beat_1_engagement_context": "They came to us needing to open more relationships with schools and districts—principals, administrators, parent committees.<br><br>[Pause - let that context land]<br><br>Now, here's why this is a perfect fit for our thesis: education is specialized, brand-sensitive, and the data is expensive to acquire. Most agencies would fail there. <b>We thrive there</b>.<br><br>[Pause - let 'We thrive there' land]",
-                "beat_2_diligence_extraction": "We spent time with their team—field reps, regional managers, leadership—to understand one thing: <u>how do schools actually decide, and what language matters in that world?</u><br><br>[Lean forward - this is the core question]<br><br>That's the diligence process. It's what lets us identify qualified buyers without guessing. It's also what protects you from wasting time on tire kickers.<br><br>[Pause]<br><br>And here's the thing: they had <b>decades of that knowledge in their heads</b>. Our diligence extracted it and turned it into a targeting map.",
-                "beat_3_brand_integrity_constraint": "In education, the brand standard is <b>unforgiving</b>. One message that feels too pushy, and <u>you're done</u>. Years of credibility, gone.<br><br>[Slow down - let the gravity of this land]<br><br>So we set one rule: <b>generate interest without touching the third rail</b>.<br><br>[Pause]<br><br>That meant every piece of messaging—tone, pacing, positioning—had to sound like it came from someone inside their world, not from a marketing department.<br><br>We didn't compromise on that. <b>Not once</b>.<br><br>[Pause - let conviction land]",
-                "beat_4_audience_presence_findings": "As part of the diligence, we mapped where these buyers actually spend time.<br><br>Over 50% on LinkedIn. The rest? Email, professional networks. So the audience was there, digital-first, even in a traditional market.<br><br>[Pause - let the surprise land]<br><br><b>Most strategies miss it because they're guessing</b>. They don't do the diligence. <b>We did</b>.<br><br>[Lean forward - this is the distinction]",
-                "beat_5_private_infrastructure": "So we deployed the outreach through our internal infrastructure.<br><br>[Shift tone - more technical, confident]<br><br>Think of it like <b>mission control</b>—every message, every contact list, every follow-up sequence runs through quality gates. We're checking tone, compliance, brand alignment. Nothing goes out that doesn't reflect their world.<br><br>[Pause]<br><br>And because it's all orchestrated centrally, we can scale it—from one region to fifty states to international—all while maintaining the same brand voice.<br><br>[Slow down - crystallize the concept]<br><br>That's what '<u>private infrastructure</u>' means. Not tools. <b>Orchestration</b>.<br><br>[Pause - let that distinction land]",
-                "beat_6_hardest_first_proof_tieback": "Here's what happened: <b>373 qualified conversations in 90 days</b>.<br><br>[Pause - let the numbers land]<br><br>Their sales cycle is short—about 30 days—so they closed business quickly. <u>Over $1M in new revenue</u> in that first quarter, all without touching their brand reputation.<br><br>[Lean forward - bridge back to them]<br><br>And here's why I'm telling you this: if we can do that in education—where brand risk is the highest I've seen—then what we're doing in your market is essentially the same playbook. <b>Different industry, same thesis</b>.<br><br>[Pause - let the portability land]"
+                "beat_1_engagement_context": {
+                  "script": "They came to us needing to open more relationships with schools and districts—principals, administrators, parent committees.<br><br>Now, here's why this is a perfect fit for our thesis: education is specialized, brand-sensitive, and the data is expensive to acquire. Most firms would fail there. <b>We thrive there</b>.",
+                  "advisor_notes": [
+                    "[Pause] after setting context - let that context land",
+                    "[Pause] after 'We thrive there' - let that statement land",
+                    "This beat sets up the client and market - establish why this example matters"
+                  ]
+                },
+                "beat_2_diligence_extraction": {
+                  "script": "We spent time with their team—field reps, regional managers, leadership—to understand one thing: <u>how do schools actually decide, and what language matters in that world?</u><br><br>That's the diligence process. It's what lets us identify qualified buyers without guessing. It's also what protects you from wasting time on tire kickers.<br><br>And here's the thing: they had <b>decades of that knowledge in their heads</b>. Our diligence extracted it and turned it into a targeting map.",
+                  "advisor_notes": [
+                    "[Lean forward] when asking the core question - this is the heart of your methodology",
+                    "[Pause] after explaining the diligence process - let them absorb the value",
+                    "Emphasize: 'decades of knowledge' - this shows you extract institutional wisdom"
+                  ]
+                },
+                "beat_3_brand_integrity_constraint": {
+                  "script": "In education, the brand standard is <b>unforgiving</b>. One message that feels too much, and <u>you're done</u>. Years of credibility, gone.<br><br>So we set one rule: <b>generate interest without touching the third rail</b>.<br><br>That meant every piece of messaging—tone, pacing, positioning—had to sound like it came from someone inside their world, not from a marketing department.<br><br>We didn't compromise on that. <b>Not once</b>.",
+                  "advisor_notes": [
+                    "[Slow down] when describing the gravity - let the risk sink in",
+                    "[Pause] after 'third rail' - this is a critical concept",
+                    "[Pause] after 'Not once' - let conviction land",
+                    "This beat shows you understand brand risk at a deep level"
+                  ]
+                },
+                "beat_4_audience_presence_findings": {
+                  "script": "As part of the diligence, we mapped where these buyers actually spend time.<br><br>Over 50% on LinkedIn. The rest? Email, professional networks. So the audience was there, digital-first, even in a traditional market.<br><br><b>Most strategies miss it because they're guessing</b>. They don't do the diligence. <b>We did</b>.",
+                  "advisor_notes": [
+                    "[Pause] after revealing the findings - let the surprise land",
+                    "[Lean forward] when making the distinction - this separates you from competitors",
+                    "This is mechanism framing - showing WHERE targets are, not just tactics"
+                  ]
+                },
+                "beat_5_private_infrastructure": {
+                  "script": "So we deployed the outreach through our internal infrastructure.<br><br>Think of it like <b>mission control</b>—every message, every contact list, every follow-up sequence runs through quality gates. We're checking tone, compliance, brand alignment. Nothing goes out that doesn't reflect their world.<br><br>And because it's all orchestrated centrally, we can scale it—from one region to fifty states to international—all while maintaining the same brand voice.<br><br>That's what '<u>private infrastructure</u>' means. Not tools. <b>Orchestration</b>.",
+                  "advisor_notes": [
+                    "[Shift tone] to more technical and confident - you're describing your system",
+                    "[Pause] after 'mission control' - let the concept crystallize",
+                    "[Slow down] when defining 'private infrastructure' - this is a key distinction",
+                    "[Pause] after 'Orchestration' - let that distinction land",
+                    "This is mechanism framing - showing HOW you operate, not just what you do"
+                  ]
+                },
+                "beat_6_hardest_first_proof_tieback": {
+                  "script": "Here's what happened: <b>373 qualified conversations in 90 days</b>.<br><br>Their sales cycle is short—about 30 days—so they closed business quickly. <u>Over $1M in new revenue</u> in that first quarter, all without touching their brand reputation.<br><br>And here's why I'm telling you this: if we can do that in education—where brand risk is the highest I've seen—then what we're doing in your market is essentially the same playbook. <b>Different industry, same thesis</b>.",
+                  "advisor_notes": [
+                    "[Pause] after the numbers - let them land",
+                    "[Lean forward] when bridging back to them - make the connection explicit",
+                    "[Pause] after 'Different industry, same thesis' - let the portability land",
+                    "This beat proves the thesis with hardest-first proof, then ties back to their situation"
+                  ]
+                }
               },
             },
             "pivot": "So that's the framework: <b>start with diligence, then deploy precision, all through controlled infrastructure</b>.<br><br>Now here's what I want to confirm: based on what you told me about <u>[reference PAIN POINT from discovery—e.g., 'referrals being inconsistent' or 'team hitting capacity']</u>, does this approach map to your world?<br><br>If it does, here's what the next conversation looks like: we'll take everything we covered today and build out a scope that models what a 90-day engagement could look like—anchored to your actual conversion math and capacity constraints. That becomes the framework we review together before moving forward. So that's the thesis: <b>sophisticated markets where traditional strategies fail</b>—specialized buyers, brand-first execution, diligence-led targeting. And when that framework works in education—where brand risk kills you overnight—it works everywhere else.<br><br>Here's what I want you to take back to your team. <b>One</b>: we specialize in <u>sophisticated profiles under brand-integrity constraints</u>. <b>Two</b>: we have a <u>diligence process that extracts decades of your institutional knowledge</u>. <b>Three</b>: we operate through <u>private infrastructure built for the exact channels where your buyers already are</u>. That's it. That's the thesis. That's what makes it work at scale."
@@ -293,12 +322,59 @@ let salesData = {
               "title": "Proof Narrative — Raiseview (Corporate Finance Group)",
               "introduction": "To paint a better picture we can point to our engagement with Raiseview Capital, a corporate finance group.<br><br>They wanted to expand their sell-side Rolodex - the institutions they could do more transactions with: family offices, LPs, credit funds, SBICs, regional banks, and credit unions.<br><br>This is the most conservative, brand-aware corner of the market. The data is expensive and hard to acquire. These profiles are the hardest to get a positive response from without hurting brand integrity. So these markets match extremely well with our thesis and solutions.",
               "six_beats": {
-                "beat_1_engagement_context": "Raiseview came to us needing to expand their sell-side Rolodex—family offices, LPs, credit funds, SBICs, regional banks, credit unions.<br><br>[Pause - let that context land]<br><br>Now, here's why this is the pinnacle example: sell-side banking is the <b>most conservative, brand-sensitive corner</b> of finance. One wrong move and you're done. Most agencies would fail there. <b>We thrive there</b>.<br><br>[Pause - let 'We thrive there' land]",
-                "beat_2_diligence_extraction": "We spent time with their team—learning how they evaluate counterparties, how conversations start, what language earns trust, and <u>what lines you never cross</u>.<br><br>[Lean forward - this is the core question]<br><br>That's the diligence process. It's what lets us identify qualified relationships without guessing. It's also what protects you from wasting time on the wrong profiles.<br><br>[Pause]<br><br>And here's the thing: they had <b>decades of institutional knowledge</b> about how this world works. Our diligence extracted it and turned it into a targeting map.",
-                "beat_3_brand_integrity_constraint": "In banking, the brand standard is <b>unforgiving</b>. One clumsy message, and <u>years of goodwill are gone</u>. Just like that.<br><br>[Slow down - let the gravity of this land]<br><br>So we set one rule: <b>create interest without touching the third rail</b>.<br><br>[Pause]<br><br>That meant every piece of messaging—tone, timing, targeting—had to sound like it came from someone inside their world, not from an agency cold-calling.<br><br>We didn't compromise on that. <b>Not once</b>.<br><br>[Pause - let conviction land]",
-                "beat_4_audience_presence_findings": "As part of the diligence, we mapped where these buyers actually spend time.<br><br>About 75% on LinkedIn for professional signals. 97–98% still used email to communicate with outside partners. So the audience was there, digital-first, even in the most conservative market.<br><br>[Pause - let the surprise land]<br><br><b>Most strategies miss it because they're guessing</b>. They don't do the diligence. <b>We did</b>.<br><br>[Lean forward - this is the distinction]",
-                "beat_5_private_infrastructure": "So we deployed the outreach through our internal infrastructure.<br><br>[Shift tone - more technical, confident]<br><br>Think of it like <b>mission control</b>—every message, every contact list, every follow-up sequence runs through quality gates. We're checking tone, compliance, brand alignment. Nothing goes out that doesn't reflect their world.<br><br>[Pause]<br><br>And because it's all orchestrated centrally, we can scale it—from regional to national to global—all while maintaining the same brand voice. That worked perfectly for Raiseview since they had a global mandate.<br><br>[Slow down - crystallize the concept]<br><br>That's what '<u>private infrastructure</u>' means. Not tools. <b>Orchestration</b>.<br><br>[Pause - let that distinction land]",
-                "beat_6_hardest_first_proof_tieback": "Here's what happened: <b>102 new sell-side introductions</b> with the exact institutions Raiseview needed—without a single dent to reputation.<br><br>[Pause - let the numbers land]<br><br>[Lean forward - bridge back to them]<br><br>And here's why I'm telling you this: if we can do that in sell-side banking—the most conservative, brand-sensitive environment I've seen—then what we're doing in your market is essentially the same playbook. <b>Different industry, same thesis</b>.<br><br>[Pause - let the portability land]"
+                "beat_1_engagement_context": {
+                  "script": "Raiseview came to us needing to expand their sell-side Rolodex—family offices, LPs, credit funds, SBICs, regional banks, credit unions.<br><br>Now, here's why this is the pinnacle example: sell-side banking is the <b>most conservative, brand-sensitive corner</b> of finance. One wrong move and you're done. Most agencies would fail there. <b>We thrive there</b>.",
+                  "advisor_notes": [
+                    "[Pause] after setting context - let that context land",
+                    "[Pause] after 'We thrive there' - let that statement land",
+                    "This beat sets up the client and market - establish why this is the hardest example"
+                  ]
+                },
+                "beat_2_diligence_extraction": {
+                  "script": "We spent time with their team—learning how they evaluate counterparties, how conversations start, what language earns trust, and <u>what lines you never cross</u>.<br><br>That's the diligence process. It's what lets us identify qualified relationships without guessing. It's also what protects you from wasting time on the wrong profiles.<br><br>And here's the thing: they had <b>decades of institutional knowledge</b> about how this world works. Our diligence extracted it and turned it into a targeting map.",
+                  "advisor_notes": [
+                    "[Lean forward] when asking about 'lines you never cross' - this is the core question",
+                    "[Pause] after explaining the diligence process - let them absorb the value",
+                    "Emphasize: 'decades of institutional knowledge' - this shows you extract wisdom from established firms"
+                  ]
+                },
+                "beat_3_brand_integrity_constraint": {
+                  "script": "In banking, the brand standard is <b>unforgiving</b>. One clumsy message, and <u>years of goodwill are gone</u>. Just like that.<br><br>So we set one rule: <b>create interest without touching the third rail</b>.<br><br>That meant every piece of messaging—tone, timing, targeting—had to sound like it came from someone inside their world, not from an agency cold-calling.<br><br>We didn't compromise on that. <b>Not once</b>.",
+                  "advisor_notes": [
+                    "[Slow down] when describing the gravity - let the risk sink in",
+                    "[Pause] after 'third rail' - this is a critical concept",
+                    "[Pause] after 'Not once' - let conviction land",
+                    "This beat shows you understand brand risk in the most conservative markets"
+                  ]
+                },
+                "beat_4_audience_presence_findings": {
+                  "script": "As part of the diligence, we mapped where these buyers actually spend time.<br><br>About 75% on LinkedIn for professional signals. 97–98% still used email to communicate with outside partners. So the audience was there, digital-first, even in the most conservative market.<br><br><b>Most strategies miss it because they're guessing</b>. They don't do the diligence. <b>We did</b>.",
+                  "advisor_notes": [
+                    "[Pause] after revealing the findings - let the surprise land",
+                    "[Lean forward] when making the distinction - this separates you from competitors",
+                    "This is mechanism framing - showing WHERE targets are, even in conservative markets"
+                  ]
+                },
+                "beat_5_private_infrastructure": {
+                  "script": "So we deployed the outreach through our internal infrastructure.<br><br>Think of it like <b>mission control</b>—every message, every contact list, every follow-up sequence runs through quality gates. We're checking tone, compliance, brand alignment. Nothing goes out that doesn't reflect their world.<br><br>And because it's all orchestrated centrally, we can scale it—from regional to national to global—all while maintaining the same brand voice. That worked perfectly for Raiseview since they had a global mandate.<br><br>That's what '<u>private infrastructure</u>' means. Not tools. <b>Orchestration</b>.",
+                  "advisor_notes": [
+                    "[Shift tone] to more technical and confident - you're describing your system",
+                    "[Pause] after 'mission control' - let the concept crystallize",
+                    "[Slow down] when defining 'private infrastructure' - this is a key distinction",
+                    "[Pause] after 'Orchestration' - let that distinction land",
+                    "Note: Mention global mandate for Raiseview - shows scalability",
+                    "This is mechanism framing - showing HOW you operate at scale"
+                  ]
+                },
+                "beat_6_hardest_first_proof_tieback": {
+                  "script": "Here's what happened: <b>102 new sell-side introductions</b> with the exact institutions Raiseview needed—without a single dent to reputation.<br><br>And here's why I'm telling you this: if we can do that in sell-side banking—the most conservative, brand-sensitive environment I've seen—then what we're doing in your market is essentially the same playbook. <b>Different industry, same thesis</b>.",
+                  "advisor_notes": [
+                    "[Pause] after the numbers - let them land",
+                    "[Lean forward] when bridging back to them - make the connection explicit",
+                    "[Pause] after 'Different industry, same thesis' - let the portability land",
+                    "This beat proves the thesis with hardest-first proof (most conservative market), then ties back to their situation"
+                  ]
+                }
               },
             },
             "pivot": "So that's the thesis: <b>sophisticated markets where traditional strategies fail</b>—specialized profiles, hard-to-get data, strict brand standards. And when that framework works in sell-side banking—the most conservative corner of finance—it works everywhere else.<br><br>So that's the framework: <b>start with diligence, then deploy precision, all through controlled infrastructure</b>.<br><br>Now here's what I want to confirm: based on what you told me about <u>[reference PAIN POINT from discovery—e.g., 'referrals being inconsistent' or 'team hitting capacity']</u>, does this approach map to your world?<br><br>If it does, here's what the next conversation looks like: we'll take everything we covered today and build out a scope that models what a 90-day engagement could look like—anchored to your actual conversion math and capacity constraints. That becomes the framework we review together before moving forward.<br><br>Here's what I want you to take back to your team. <b>One</b>: we specialize in <u>sophisticated profiles under brand-integrity constraints</u>. <b>Two</b>: we have a <u>diligence process that extracts decades of your institutional knowledge</u>. <b>Three</b>: we operate through <u>private infrastructure built for the exact channels where your buyers already are</u>. That's it. That's the thesis. That's what makes it work at scale."
@@ -428,7 +504,10 @@ let salesData = {
               "title": "4. Mechanism Framing & Structure",
               "script": "<span class=\"advisor-note\">[STRENGTHENED: Mechanism Framing]</span><br><br>What we do is install a <b>new demand channel</b> that feeds into the exact same conversion process you're already using.<br><br>Think of it like this: we're not replacing referrals or partnerships — we're <b>engineering a parallel channel</b> that produces the same quality conversations, but <u>predictably</u>, at <u>scale</u>, without depending on your existing network.<br><br><span class=\"script-pause\">(Critical separation language)</span><br><br><u>You're not outsourcing closing</u>, and <u>we're not accepting accountability for conversion we don't control</u>.<br><br>Our responsibility: <b>generating qualified interest at the top of your funnel</b>.<br><br>Your responsibility: <b>processing that through your existing middle and bottom funnel</b> — the same way you handle referrals today.<br><br><span class=\"script-question\"><b>Does that structure make sense?</b></span><br><br><span class=\"script-pause\">(Wait for verbal 'yes')</span>",
           "advisor_notes": [
-                "You are visually anchoring the engagement — point at the process as you describe it",
+                "VISUAL ANCHORING TECHNIQUE: Pause, lean slightly forward, gesture with your hands as if pointing at their process",
+                "When you say 'So this process here — the one you just described...' you are literally pointing at their system",
+                "This physical gesture + pointing language makes the abstract installation point concrete and real",
+                "If on video, gesture toward your screen as if their process is drawn on it. If in person, use your hands to 'draw' their funnel in the air",
                 "Keep your tone confident but consultative. This isn't a pitch; it's confirmation"
               ]
             },
@@ -455,7 +534,10 @@ let salesData = {
             "Pause after ROI math — Let the revenue number sink in. This is a pivotal moment.",
             "The 'Does that math work for you?' question is critical — It forces verbal confirmation and locks in the economic logic",
             "Risk mitigation comes IMMEDIATELY after structure confirmation — Don't bury your best card",
-            "You are visually anchoring the engagement — point at the process as you describe it",
+            "VISUAL ANCHORING TECHNIQUE: Pause, lean slightly forward, gesture with your hands as if pointing at their process",
+            "When you say 'So this process here — the one you just described...' you are literally pointing at their system",
+            "This physical gesture + pointing language makes the abstract installation point concrete and real",
+            "If on video, gesture toward your screen as if their process is drawn on it. If in person, use your hands to 'draw' their funnel in the air",
             "Keep your tone confident but consultative. This isn't a pitch; it's confirmation",
             "After this section, optionally deploy 1-2 Approval Flow questions to map internal buying process"
           ]
@@ -559,10 +641,6 @@ let salesData = {
             }
           ]
         },
-        "additional_resources": {
-          "title": "Additional Resources",
-          "approval_flow_questions": "These questions help you gain ground in the buying process without sounding pushy. Ask 1-2 during or after this section. See reference library: 'Approval Flow & Buying Process Questions'"
-        }
       },
       {
         "id": "transition_call_two",
@@ -665,83 +743,6 @@ let salesData = {
           "The Soft Process Commitment Question is critical — ask what typically pushes something like this across the line internally. This feedback is gold for tailoring the scope",
           "Set a clear Micro Step North Star: Send scope within 24–48 hours and request first-wave feedback (concerns, optimism, anything missing) before the review call. This allows you to adjust ahead of the meeting and ensures the scope addresses their needs"
         ]
-      },
-      {
-        "id": "pricing_objection",
-        "title": "Pricing Objection Handler",
-        "category": "interrupt",
-        "purpose": "Defuse tension, provide clarity, reclaim frame without being defensive",
-        "trigger": "When they ask 'What's the price?' too early in discovery, or say 'We don't have a budget'",
-        "where_it_shows_up": "Prospects bring up cost prematurely in discovery, often before you've laid any value or explained the engagement model. It's usually a frame check, not a real objection.",
-        "main_script": {
-          "title": "📝 What to Say (Standard Script)",
-          "script": "<i>Fair question</i>. Our typical engagements fall between <u>$25,000 and $75,000</u> over a <b>90-day window</b> — half upfront, half tied to <b>contingency</b>.<br><br>We <b>contractually obligate ourselves</b> to a <b>tangible milestone at Day 45</b> — for example, <b>25 qualified opportunities</b>. If we don't hit it, that <u>second payment doesn't unlock</u> and we keep working until we do. Makes the <u>worst-case scenario ROI-positive</u> for you.<br><br>I can't give you an exact number today because the scope depends on <i>what qualifies as an opportunity in your world</i> — and that's what we'll map out in this conversation.",
-          "advisor_notes": [
-            "Deliver this with complete neutrality - no defensiveness, no hesitation",
-            "Keep tone measured, factual, and steady - this is just how the firm operates",
-            "The phrase 'worst-case scenario ROI-positive' is a power anchor",
-            "Critical: Never sit in a pricing question. The moment you finish, immediately move back into discovery",
-            "If they push on upfront payment, use the capitalization framing scripts above"
-          ]
-        },
-        "how_to_handle": [
-          {
-            "step": "Give a Broad Range, Briefly",
-            "script": "Engagements typically fall anywhere between $25K and $75K depending on scope."
-          },
-          {
-            "step": "Reframe Around Risk Mitigation",
-            "script": "What's unique about how we structure these is that risk mitigation is always the top priority. Every engagement has a milestone at the halfway point, and the scope is built so that the worst-case scenario is still significantly ROI positive."
-          },
-          {
-            "step": "Push to Scope, Not Numbers",
-            "script": "The reality is, until we build your engagement model, it's not possible to give you an exact figure. That model is what shows you the end of the engagement before we even begin, and it's what allows us to scope a conservative, realistic outcome for both of us."
-          },
-          {
-            "step": "Position Discovery Properly",
-            "script": "This conversation is simply to answer your questions and gather what we need. Once we've got that, we can build the model and present the scope, and that's where the pricing becomes specific and makes sense."
-          }
-        ],
-        "capitalization_framing": {
-          "title": "Why We Need Money Up Front",
-          "key_principle": "You can't deliver results without being capitalized up front. Capitalization funds the vendors, SDRs, list-builders, and internal capacity that guarantee the baseline milestone. No capital, no delivery. Period.",
-          "content": "Your fee is never a 'retainer.' It's capitalization directly correlated to results. The only reason you can de-risk their downside is because you're capitalized.",
-          "scripts": [
-            {
-              "title": "How We Use the Money",
-              "script": "The reason we structure it this way is because capitalization directly funds the diligence and infrastructure that only works in <b>sophisticated, brand-sensitive markets</b>. We don't just deploy tools — we deploy a <u>specialized diligence process</u> that extracts your institutional knowledge, <u>vendor partnerships</u> that operate at enterprise scale, and <u>private infrastructure</u> that protects brand integrity. That whole system has to be capitalized up front. Without that allocation, we can't guarantee outcomes. That's why we can de-risk your downside."
-            },
-            {
-              "title": "Why This Is Different",
-              "script": "Think of it this way: the upfront fee capitalizes the engagement. But this isn't standard campaign execution — we only work in <b>markets where data is hard to acquire</b> and <b>brand integrity can't be compromised</b>. That capital funds the diligence process that extracts decades of your knowledge, the vendor capacity to operate in difficult markets, and the infrastructure built for specialized profiles. That's why we can contractually commit to outcomes in environments where most strategies fail."
-            },
-            {
-              "title": "Not a Retainer",
-              "script": "Here's what makes this different from a retainer model: every dollar you allocate up front is directly tied to the <u>thesis-driven system</u> we deploy on your behalf. We're not billing you for our time — we're capitalizing the diligence, vendor partnerships, and private infrastructure that only work when you're targeting <b>sophisticated profiles under brand-integrity constraints</b>. That's the only way we can de-risk your downside while operating in difficult markets."
-            },
-            {
-              "title": "Why We Can Promise Results",
-              "script": "The capitalization model is what allows us to take on accountability in <b>markets where traditional approaches fail</b>. If we didn't have that capital up front, we couldn't run the diligence process that extracts your institutional knowledge, pre-commit specialized vendor capacity, or deploy the private infrastructure that protects your brand. The fee and the deliverable are mathematically linked — but more importantly, they're <u>thesis-linked</u>."
-            },
-            {
-              "title": "How We're Different",
-              "script": "Most agencies charge retainers and hope for results. We don't operate that way. Your upfront payment capitalizes a <b>thesis-driven system</b> — specialized diligence that extracts your decades of knowledge, vendor partnerships calibrated for difficult markets, and private infrastructure built for brand-sensitive profiles — all of which are contractually obligated to hit a number. That's why the structure works where standard execution doesn't."
-            }
-          ]
-        },
-        "pivot_examples": [
-          {
-            "text": "But before we go deeper into structure, it'll help to get a better picture of how you're currently generating demand - that'll tell me whether we're anchoring on pipeline or revenue.",
-            "link_to": "discovery_top_funnel",
-            "link_text": "Top of Funnel — Demand Generation"
-          },
-          {
-            "text": "So that gives you the framework - now, let's get back to understanding your current process. You mentioned earlier that [reference something they said] - can you walk me through what happens next in that process?",
-            "link_to": "discovery_middle_funnel",
-            "link_text": "Middle of Funnel — Sales Process & Conversion"
-          }
-        ],
-        "key_lesson": "Price questions in discovery are premature. Always give a confident range, then immediately pivot back to risk mitigation and the unique value of your scope process. Your leverage only comes once the SOW is in their hands — so keep the frame focused on due diligence, not discounts or exact numbers.",
       },
       {
         "id": "universal_objection_handle",
@@ -860,6 +861,80 @@ let salesData = {
     "handlers": {
       // Money & Budget (9 handlers)
 
+      "pricing_objection": {
+        "title": "Pricing Objection Handler",
+        "category": "Money",
+        "trigger": "When they ask 'What's the price?' too early in discovery, or say 'We don't have a budget'",
+        "purpose": "Defuse tension, provide clarity, reclaim frame without being defensive",
+        "main_script": {
+          "title": "📝 What to Say (Standard Script)",
+          "script": "<i>Fair question</i>. Our typical engagements fall between <u>$25,000 and $75,000</u> over a <b>90-day window</b> — half upfront, half tied to <b>contingency</b>.<br><br>We <b>contractually obligate ourselves</b> to a <b>tangible milestone at Day 45</b> — for example, <b>25 qualified opportunities</b>. If we don't hit it, that <u>second payment doesn't unlock</u> and we keep working until we do. Makes the <u>worst-case scenario ROI-positive</u> for you.<br><br>I can't give you an exact number today because the scope depends on <i>what qualifies as an opportunity in your world</i> — and that's what we'll map out in this conversation.",
+          "advisor_notes": [
+            "Deliver this with complete neutrality - no defensiveness, no hesitation",
+            "Keep tone measured, factual, and steady - this is just how the firm operates",
+            "The phrase 'worst-case scenario ROI-positive' is a power anchor",
+            "Critical: Never sit in a pricing question. The moment you finish, immediately move back into discovery",
+            "If they push on upfront payment, use the capitalization framing scripts above"
+          ]
+        },
+        "how_to_handle": [
+          {
+            "step": "Give a Broad Range, Briefly",
+            "script": "Engagements typically fall anywhere between $25K and $75K depending on scope."
+          },
+          {
+            "step": "Reframe Around Risk Mitigation",
+            "script": "What's unique about how we structure these is that risk mitigation is always the top priority. Every engagement has a milestone at the halfway point, and the scope is built so that the worst-case scenario is still significantly ROI positive."
+          },
+          {
+            "step": "Push to Scope, Not Numbers",
+            "script": "The reality is, until we build your engagement model, it's not possible to give you an exact figure. That model is what shows you the end of the engagement before we even begin, and it's what allows us to scope a conservative, realistic outcome for both of us."
+          },
+          {
+            "step": "Position Discovery Properly",
+            "script": "This conversation is simply to answer your questions and gather what we need. Once we've got that, we can build the model and present the scope, and that's where the pricing becomes specific and makes sense."
+          }
+        ],
+        "capitalization_framing": {
+          "title": "Why We Need Money Up Front",
+          "scripts": [
+            {
+              "title": "How We Use the Money",
+              "script": "The reason we structure it this way is because capitalization directly funds the diligence and infrastructure that only works in <b>sophisticated, brand-sensitive markets</b>. We don't just deploy tools — we deploy a <u>specialized diligence process</u> that extracts your institutional knowledge, <u>vendor partnerships</u> that operate at enterprise scale, and <u>private infrastructure</u> that protects brand integrity. That whole system has to be capitalized up front. Without that allocation, we can't guarantee outcomes. That's why we can de-risk your downside."
+            },
+            {
+              "title": "Why This Is Different",
+              "script": "Think of it this way: the upfront fee capitalizes the engagement. But this isn't standard campaign execution — we only work in <b>markets where data is hard to acquire</b> and <b>brand integrity can't be compromised</b>. That capital funds the diligence process that extracts decades of your knowledge, the vendor capacity to operate in difficult markets, and the infrastructure built for specialized profiles. That's why we can contractually commit to outcomes in environments where most strategies fail."
+            },
+            {
+              "title": "Not a Retainer",
+              "script": "Here's what makes this different from a retainer model: every dollar you allocate up front is directly tied to the <u>thesis-driven system</u> we deploy on your behalf. We're not billing you for our time — we're capitalizing the diligence, vendor partnerships, and private infrastructure that only work when you're targeting <b>sophisticated profiles under brand-integrity constraints</b>. That's the only way we can de-risk your downside while operating in difficult markets."
+            },
+            {
+              "title": "Why We Can Promise Results",
+              "script": "The capitalization model is what allows us to take on accountability in <b>markets where traditional approaches fail</b>. If we didn't have that capital up front, we couldn't run the diligence process that extracts your institutional knowledge, pre-commit specialized vendor capacity, or deploy the private infrastructure that protects your brand. The fee and the deliverable are mathematically linked — but more importantly, they're <u>thesis-linked</u>."
+            },
+            {
+              "title": "How We're Different",
+              "script": "Most agencies charge retainers and hope for results. We don't operate that way. Your upfront payment capitalizes a <b>thesis-driven system</b> — specialized diligence that extracts your decades of knowledge, vendor partnerships calibrated for difficult markets, and private infrastructure built for brand-sensitive profiles — all of which are contractually obligated to hit a number. That's why the structure works where standard execution doesn't."
+            }
+          ]
+        },
+        "pivot_examples": [
+          {
+            "text": "But before we go deeper into structure, it'll help to get a better picture of how you're currently generating demand - that'll tell me whether we're anchoring on pipeline or revenue.",
+            "link_to": "discovery_top_funnel",
+            "link_text": "Top of Funnel — Demand Generation"
+          },
+          {
+            "text": "So that gives you the framework - now, let's get back to understanding your current process. You mentioned earlier that [reference something they said] - can you walk me through what happens next in that process?",
+            "link_to": "discovery_middle_funnel",
+            "link_text": "Middle of Funnel — Sales Process & Conversion"
+          }
+        ],
+        "key_lesson": "Price questions in discovery are premature. Always give a confident range, then immediately pivot back to risk mitigation and the unique value of your scope process. Your leverage only comes once the SOW is in their hands — so keep the frame focused on due diligence, not discounts or exact numbers."
+      },
+
       "discount_request": {
         "title": "Discount Request",
         "category": "Money",
@@ -871,9 +946,18 @@ let salesData = {
       "payment_terms": {
         "title": "Payment Terms",
         "category": "Money",
-        "trigger": "Questions about payment structure, installments, etc.",
-        "full_script": "Our payment terms are structured to ensure mutual commitment to success. The initial 50% funds the strategic infrastructure and execution setup required to hit your Day-45 milestone. The remaining 50% is only paid upon successful delivery of that milestone.<br><br>This structure protects both sides—if we don't deliver the guaranteed outcomes, you don't pay the full fee. If we do deliver, you've paid for a risk-mitigated capital allocation.",
-        "key_principle": "Terms protect both parties and align incentives."
+        "trigger": "Questions about payment structure, installments, etc., or when prospect objects to non-refundable upfront fee - any reason",
+        "key_principle": "Terms protect both parties and align incentives. Explain capitalization model universally, adapt if past trauma is revealed.",
+        "non_refundable_fee_explanation": {
+          "title": "Non-Refundable Fee Explanation",
+          "script": "The reason the upfront fee is non-refundable is because <b>it capitalizes the entire engagement infrastructure</b>—specialized diligence process, vendor partnerships, private infrastructure. Without that capital allocation up front, we can't guarantee outcomes.<br><br><b>Here's how this protects you:</b> We're contractually obligated to keep working until the milestone is hit. Even if it takes day 50, day 60, day 70—we keep working. No additional fees. <b>The capital doesn't disappear—it funds the work that guarantees your outcome.</b>",
+          "conditional_vendor_trauma": {
+            "title": "Conditional Vendor-Trauma Language (Only if they mention past vendors)",
+            "if_they_mention_past_vendors": "That's exactly what makes this different from vendors who take money and vanish - we're obligated to deliver regardless of timeline.",
+            "if_they_dont_mention": "The milestone is calculated conservatively to ensure it's achievable, and the continuation clause ensures you get what you paid for."
+          }
+        },
+        "full_script": "Our payment terms are structured to ensure mutual commitment to success. The initial 50% funds the strategic infrastructure and execution setup required to hit your Day-45 milestone. The remaining 50% is only paid upon successful delivery of that milestone.<br><br>This structure protects both sides—if we don't deliver the guaranteed outcomes, you don't pay the full fee. If we do deliver, you've paid for a risk-mitigated capital allocation."
       },
 
       "budget_constraints": {
@@ -953,17 +1037,30 @@ let salesData = {
       "case_studies": {
         "title": "Can You Show Me Case Studies / Proof First?",
         "category": "Quality",
-        "trigger": "Can you show me case studies / proof first?",
-        "full_script": "Of course, I'll send you information after the call. What I'd like to do is include not just our deck, but also 1-2 recent successes and, most importantly, your Scope of Work.<br><br>To make that possible, we just need to finish this due diligence — a few more questions on my end, and then I can send something that's actually meaningful to you. Otherwise, you'd just be getting generic info. Does that sound fair?<br><br>A request for case studies is less about needing documents and more about whether the prospect believes your positioning (a frame issue). The recommended handling involves quickly confirming you will send the materials, but insisting on finishing due diligence first to ensure the materials you send are relevant and packaged with a Scope of Work (SOW). The email is not the asset — the SOW is.",
-        "key_principle": "Say yes happily, reset frame, complete discovery for tailored SOW."
-      },
-
-      "references": {
-        "title": "References",
-        "category": "Quality",
-        "trigger": "Requests for client references",
-        "full_script": "References are absolutely available. We work with clients who are happy to speak about their experience.<br><br>However, we only share references after the engagement letter is signed to protect our clients' confidentiality during their growth phase. Would you like me to facilitate an introduction to one of our current clients who matches your industry?<br><br>To make this productive, what specifically would you like to learn from the reference call?",
-        "key_principle": "References available post-signing to protect confidentiality."
+        "trigger": "When prospect asks for references, case studies, or proof - any tone, any timing",
+        "path_selection": {
+          "path_a_proof_first": {
+            "title": "They're proof-first (need before discovery)",
+            "when_to_use": "They need proof before we talk details",
+            "script": "Got it - you need proof before we talk details. I'll send you [case studies/references] today. After you review, we can reconnect if it makes sense. Sound good?"
+          },
+          "path_b_cautious_willing": {
+            "title": "They're cautious but willing (can continue discovery)",
+            "when_to_use": "They're cautious but willing to continue discovery",
+            "script": "Perfect. I'll include [specific materials] in what I send you after this call. To make sure it's relevant, let me ask a few more questions about your situation. Fair?"
+          },
+          "path_c_testing_urgency": {
+            "title": "Want it now",
+            "when_to_use": "They want it right now",
+            "script": "I can send that right now if needed, or include it in a full package after we finish. Which would be more helpful?"
+          },
+          "path_d_reference_call": {
+            "title": "Want to talk to someone",
+            "when_to_use": "They want to talk to a reference",
+            "script": "I can facilitate a reference call with [client type]. Would you prefer that before or after you review the written case study?"
+          }
+        },
+        "full_script": "Of course, I'll send you information after the call. What I'd like to do is include not just our deck, but also 1-2 recent successes and, most importantly, your Scope of Work.<br><br>To make that possible, we just need to finish this due diligence — a few more questions on my end, and then I can send something that's actually meaningful to you. Otherwise, you'd just be getting generic info. Does that sound fair?",
       },
 
       "proof_of_concept": {
@@ -975,20 +1072,45 @@ let salesData = {
       },
 
       "past_vendor_failure": {
-        "title": "Past Vendor Failure / Agency Comparison",
+        "title": "Trust Deficit / Extreme Skepticism",
         "category": "Quality",
-        "trigger": "References to bad experiences with previous vendors or agencies",
-        "full_script": "<i>I'll be the first to tell you</i> we're <b>not trying to distance ourselves from being called an agency</b> — and here's why that matters.<br><br>We're not saying we're 'different' because we're strategic advisors instead of executors. We're different because of <b>how we structure risk</b>: 45-day milestones, continuation clauses, and performance guarantees that make the engagement <u>ROI-positive even in worst case</u>.<br><br>That's where we live.<br><br>(Deploy story about agency failures, your structure, results)<br><br>We had a client who'd been <b>burned by three agencies in 18 months</b>. Each one promised 'qualified leads,' delivered garbage, blamed the client's sales process when nothing converted, and disappeared.<br><br>When they came to us, here's what we did differently: We spent <b>45 minutes mapping their entire funnel</b> — not to pitch, but to diagnose. We identified that their close rate was <b>22% on qualified opportunities</b>. We documented that number. Then we built a <b>45-day milestone</b> around that exact conversion rate — conservative, realistic, tied to their actual performance.<br><br>The structure was simple: If we hit the milestone, they pay the second tranche. If we don't, we keep working until we do — at no additional cost.<br><br>Within 45 days, we delivered 18 qualified meetings (milestone was 15). They closed 4 deals in 60 days. Total engagement fee: $50K. Revenue generated: $220K.<br><br>The difference wasn't that we're 'not an agency' — it's that we <b>structurally eliminate the downside</b> that makes agency relationships fail.<br><br>(Pivot)<br><br>Now, to see if that structure makes sense for your business — what specifically went wrong with your previous vendor?",
-        "key_principle": "Objection Positioning™: Acknowledge weakness ('we're an agency'), reframe as thesis ('we structure risk differently'), deploy story mode, pivot to discovery.",
-        "story_mode": {
-          "title": "Story Mode: The Client-Verified Accountability Story",
-          "when_to_use": "Use when past vendor experience is a major concern and prospect is engaged. Best for sophisticated buyers who've been burned multiple times and need to see prevention, not just promises. 2-3 minute investment.",
-          "script": "I appreciate you sharing that — and honestly, that's <u>exactly the kind of experience</u> that validates why we built our model the way we did.<br><br>Let me walk you through how we handle this differently.<br><br>(Pause, shift into story mode)<br><br>We had a client who'd been <b>burned by three agencies in 18 months</b>. Each one promised 'qualified leads,' delivered garbage, blamed the client's sales process when nothing converted, and disappeared. They were skeptical — rightfully so.<br><br>When they came to us, the first thing they said was: <i>'How do I know you won't do the same thing?'</i><br><br>Here's what we did differently.<br><br>We spent <b>45 minutes mapping their entire funnel</b> — not to pitch, but to diagnose. We identified that their close rate was <b>22% on qualified opportunities</b>. We documented that number. Then we built a <b>45-day milestone</b> around that <u>exact conversion rate</u> — conservative, realistic, tied to their actual performance.<br><br>But here's the key: we gave them <b>veto power</b>.<br><br>Every opportunity we delivered, <u>they verified</u> against the criteria we'd agreed to together. If it didn't meet their standard — if the prospect wasn't genuinely interested, wasn't financially able, wasn't serviceable — it <b>didn't count toward the milestone</b>. We kept working until we hit the number.<br><br>By <b>day 60</b>, we'd delivered <b>17 verified opportunities</b>. They closed <b>4 of them</b>. That's a <b>23% close rate</b> — which matched <i>exactly</i> what they'd told us their process converts at.<br><br>That proved two things: the opportunities we delivered were actually qualified, and their system worked exactly as they'd described.<br><br>(Pause, bring it back to them)<br><br>That's the difference. We're not promising magic or guaranteeing closed deals. We're <b>engineering a system</b> where your risk is completely mitigated — you control what counts, we're accountable to your actual conversion metrics, and the milestone structure protects you if we underdeliver.<br><br>Now, to understand your system: what specifically went wrong with your previous vendor? Where did they fail you?"
+        "trigger": "Extreme skepticism, defensiveness, or hostility - regardless of cause. Deploy within first 60 seconds when prospect shows trust deficit signals: demanding proof, refusing discovery, aggressive tone, repeated deflection.",
+        "main_script": {
+          "title": "📝 Step 1: Universal Diagnostic Question",
+          "script": "Let me stop you there. It sounds like you need to see proof before we go any further. That's completely fair.<br><br>Before we continue, I need to understand: <b>what would need to be true for you to feel comfortable exploring this conversation?</b><br><br>Because if we can't meet that standard, this is pointless for both of us.<br><br>[Pause — let them answer. This reveals the ROOT CAUSE without assuming.]",
+
         },
-        "intervention_mode": {
-          "title": "Intervention Mode: Direct Confrontation of Vendor Burn",
-          "when_to_use": "Use when prospect is highly agitated, repeatedly referencing past vendor failures, or when they're using vendor burn as a shield to avoid engagement. This direct approach stops the pattern and forces them to confront the real issue. Best when they're stuck in a loop of 'I've been burned before' without engaging. 30-60 seconds.",
-          "script": "<b>Let me stop you there.</b> It sounds like you've been <u>burned badly by vendors who took your money and didn't deliver</u>. That's <b>exactly the problem our entire engagement structure is designed to prevent</b>.<br><br>Before we go any further, I need to understand: <b>what specifically went wrong with those engagements?</b> Because if we can't solve that problem, this conversation is pointless for both of us.<br><br>(Pause — let them answer. This forces them to articulate the real failure points, which becomes diagnostic data for how to structure the engagement differently.)<br><br>Now, here's how we prevent that from happening again: <b>We're contractually obligated to deliver a specific milestone by Day 45</b>. Not a promise — a <u>contractual requirement</u>. You verify every opportunity before it counts toward that milestone. <b>Veto power</b> over what gets credited. <b>No second payment</b> until we hit the number. And if we don't hit it, we keep working until we do — at no additional cost.<br><br>That structure exists <u>because</u> of what happened to you. So tell me: what specifically failed? Was it the quality of leads? The lack of accountability? The disappearing act after payment? Because our model addresses all of that — but I need to know which one matters most to you."
+        "adaptive_branches": {
+          "past_vendor_failures": {
+            "title": "If They Mention Past Vendor Failures",
+            "script": "What specifically went wrong with those vendors? Because if we can't solve that problem, we shouldn't proceed.",
+            "follow_up_options": {
+              "story_mode": {
+                "title": "Story Mode (If They're Engaged)",
+                "script": "I appreciate you sharing that — and honestly, that's <u>exactly the kind of experience</u> that validates why we built our model the way we did.<br><br>Let me walk you through how we handle this differently.<br><br>(Pause, shift into story mode)<br><br>We had a client who'd been <b>burned by three agencies in 18 months</b>. Each one promised 'qualified leads,' delivered garbage, blamed the client's sales process when nothing converted, and disappeared. They were skeptical — rightfully so.<br><br>When they came to us, the first thing they said was: <i>'How do I know you won't do the same thing?'</i><br><br>Here's what we did differently.<br><br>We spent <b>45 minutes mapping their entire funnel</b> — not to pitch, but to diagnose. We identified that their close rate was <b>22% on qualified opportunities</b>. We documented that number. Then we built a <b>45-day milestone</b> around that <u>exact conversion rate</u> — conservative, realistic, tied to their actual performance.<br><br>But here's the key: we gave them <b>veto power</b>.<br><br>Every opportunity we delivered, <u>they verified</u> against the criteria we'd agreed to together. If it didn't meet their standard — if the prospect wasn't genuinely interested, wasn't financially able, wasn't serviceable — it <b>didn't count toward the milestone</b>. We kept working until we hit the number.<br><br>By <b>day 60</b>, we'd delivered <b>17 verified opportunities</b>. They closed <b>4 of them</b>. That's a <b>23% close rate</b> — which matched <i>exactly</i> what they'd told us their process converts at.<br><br>That proved two things: the opportunities we delivered were actually qualified, and their system worked exactly as they'd described.<br><br>(Pause, bring it back to them)<br><br>That's the difference. We're not promising magic or guaranteeing closed deals. We're <b>engineering a system</b> where your risk is completely mitigated — you control what counts, we're accountable to your actual conversion metrics, and the milestone structure protects you if we underdeliver.<br><br>Now, to understand your system: what specifically went wrong with your previous vendor? Where did they fail you?"
+              },
+              "intervention_mode": {
+                "title": "Intervention Mode (If They're Stuck in Loop)",
+                "script": "<b>Let me stop you there.</b> It sounds like you've been <u>burned badly by vendors who took your money and didn't deliver</u>. That's <b>exactly the problem our entire engagement structure is designed to prevent</b>.<br><br>Before we go any further, I need to understand: <b>what specifically went wrong with those engagements?</b> Because if we can't solve that problem, this conversation is pointless for both of us.<br><br>(Pause — let them answer. This forces them to articulate the real failure points, which becomes diagnostic data for how to structure the engagement differently.)<br><br>Now, here's how we prevent that from happening again: <b>We're contractually obligated to deliver a specific milestone by Day 45</b>. Not a promise — a <u>contractual requirement</u>. You verify every opportunity before it counts toward that milestone. <b>Veto power</b> over what gets credited. <b>No second payment</b> until we hit the number. And if we don't hit it, we keep working until we do — at no additional cost.<br><br>That structure exists <u>because</u> of what happened to you. So tell me: what specifically failed? Was it the quality of leads? The lack of accountability? The disappearing act after payment? Because our model addresses all of that — but I need to know which one matters most to you."
+              }
+            }
+          },
+          "time_constraints": {
+            "title": "If They Mention Time Constraints",
+            "script": "I understand time is limited. What's the minimum you'd need to see to know if this is worth 15 more minutes?"
+          },
+          "budget_roi_concerns": {
+            "title": "If They Mention Budget/ROI Concerns",
+            "script": "That's smart to be cautious with capital. What ROI multiple would make this a no-brainer for you?"
+          },
+          "testing_credibility": {
+            "title": "If They're Testing Your Credibility",
+            "script": "Fair to test me. What typically helps you evaluate new partners - case studies, references, or something else?"
+          },
+          "protecting_relationships": {
+            "title": "If They're Protecting Existing Relationships",
+            "script": "Makes sense. Are you concerned this would compete with existing channels or replace something working?"
+          }
         }
       },
 
@@ -1016,9 +1138,14 @@ let salesData = {
       "define_qualified": {
         "title": "Define Qualified",
         "category": "Quality",
-        "trigger": "Want to know what 'qualified' means to us",
-        "full_script": "We define 'qualified' through the A/B/C framework that we establish with you during discovery:<br><br>A: Financially Able - They have the budget and authority to make purchasing decisions\nB: Serviceable - They fit your target market and can actually use your solution\nC: Genuinely Interested - They're not just researching; they're actively looking to solve this problem<br><br>This framework is objective and measurable, preventing the ambiguity that causes most lead quality issues. You get to define what A/B/C means for your business.<br><br>Shall we work through defining these criteria for your specific market?",
-        "key_principle": "A/B/C framework makes qualification objective and controllable."
+        "trigger": "Want to know what 'qualified' means to us, or when prospect's definition dramatically differs from yours",
+        "key_principle": "A/B/C framework makes qualification objective and controllable. Address behavior (mismatched expectations) not assumed cause.",
+        "definition_alignment_checkpoint": {
+          "title": "Definition Alignment Checkpoint",
+          "when_to_use": "When prospect's definition of 'qualified' dramatically differs from yours",
+          "script": "Let me make sure we're aligned here. Your definition of qualified is [repeat their definition]. That's a fair standard, but <b>it's not what we do.</b><br><br>We generate first-touch introductions that feel like warm referrals because of the diligence and messaging precision. But they're not coming from your existing network—they're new relationships.<br><br><b>If your only acceptable channel is warm introductions from people who already trust you, then we're not the right fit.</b><br><br>Is that type of new channel interesting to you, or are you only looking to scale what you already have?"
+        },
+        "full_script": "We define 'qualified' through the A/B/C framework that we establish with you during discovery:<br><br>A: Financially Able - They have the budget and authority to make purchasing decisions\nB: Serviceable - They fit your target market and can actually use your solution\nC: Genuinely Interested - They're not just researching; they're actively looking to solve this problem<br><br>This framework is objective and measurable, preventing the ambiguity that causes most lead quality issues. You get to define what A/B/C means for your business.<br><br>Shall we work through defining these criteria for your specific market?"
       },
 
       "verification_questions": {
@@ -1073,9 +1200,32 @@ let salesData = {
       "send_info_first": {
         "title": "Send Info First",
         "category": "Timing",
-        "trigger": "Want information before continuing",
-        "full_script": "Of course, I'll send you information after the call. What I'd like to do is include not just our deck, but also 1-2 recent successes and, most importantly, your Scope of Work. To make that possible, we just need to finish this due diligence—a few more questions on my end, and then I can send something that's actually meaningful to you. Otherwise, you'd just be getting generic info. Does that sound fair?",
-        "key_principle": "Use information request as leverage to complete discovery and customize materials."
+        "trigger": "Want information before continuing, or when standard discovery is blocked for any reason",
+        "key_principle": "Use information request as leverage to complete discovery and customize materials. Offer alternative path without assuming why standard path failed.",
+        "alternative_path_offer": {
+          "title": "Alternative Path Offer",
+          "when_to_use": "When standard discovery is blocked for any reason",
+          "base_script": "I'm sensing that diving into discovery right now doesn't feel right. That's completely fair.<br><br>Here's what might make more sense: <b>I'll send you [case studies/references/draft proposal]. You review on your timeline, and if it checks out, we reconnect for a proper discovery call.</b><br><br>Does that work better?",
+          "variations": {
+            "if_they_need_social_proof": {
+              "title": "If they need social proof",
+              "script": "I'll send you client case studies with results data and testimonials."
+            },
+            "if_they_need_reference_validation": {
+              "title": "If they need reference validation",
+              "script": "I'll include reference contacts you can reach out to directly."
+            },
+            "if_they_need_to_see_model": {
+              "title": "If they need to see the model",
+              "script": "I'll send you a draft scope so you can see what the engagement structure looks like."
+            },
+            "if_they_need_time": {
+              "title": "If they need time",
+              "script": "Take a week to review everything, then let's reconnect if it makes sense."
+            }
+          }
+        },
+        "full_script": "Of course, I'll send you information after the call. What I'd like to do is include not just our deck, but also 1-2 recent successes and, most importantly, your Scope of Work. To make that possible, we just need to finish this due diligence—a few more questions on my end, and then I can send something that's actually meaningful to you. Otherwise, you'd just be getting generic info. Does that sound fair?"
       },
 
       "call_length_question": {
@@ -1113,9 +1263,32 @@ let salesData = {
       "just_email_me_info": {
         "title": "Just Email Me Info",
         "category": "Opening",
-        "trigger": "Deflection requesting to just email information",
-        "full_script": "Of course, I'll send you information after the call. What I'd like to do is include not just our deck, but also 1-2 recent successes and, most importantly, your Scope of Work. To make that possible, we just need to finish this due diligence—a few more questions on my end, and then I can send something that's actually meaningful to you. Otherwise, you'd just be getting generic info. Does that sound fair?<br><br>Say yes confidently. Use the request as leverage to finish discovery, positioning the customized Scope of Work (SOW) as the true asset they need, which requires gathering necessary anchors during the current call.",
-        "key_principle": "Say yes confidently, use as leverage to finish discovery."
+        "trigger": "Deflection requesting to just email information, or when standard discovery is blocked for any reason",
+        "key_principle": "Say yes confidently, use as leverage to finish discovery. Offer alternative path without assuming why standard path failed.",
+        "alternative_path_offer": {
+          "title": "Alternative Path Offer",
+          "when_to_use": "When standard discovery is blocked for any reason",
+          "base_script": "I'm sensing that diving into discovery right now doesn't feel right. That's completely fair.<br><br>Here's what might make more sense: <b>I'll send you [case studies/references/draft proposal]. You review on your timeline, and if it checks out, we reconnect for a proper discovery call.</b><br><br>Does that work better?",
+          "variations": {
+            "if_they_need_social_proof": {
+              "title": "If they need social proof",
+              "script": "I'll send you client case studies with results data and testimonials."
+            },
+            "if_they_need_reference_validation": {
+              "title": "If they need reference validation",
+              "script": "I'll include reference contacts you can reach out to directly."
+            },
+            "if_they_need_to_see_model": {
+              "title": "If they need to see the model",
+              "script": "I'll send you a draft scope so you can see what the engagement structure looks like."
+            },
+            "if_they_need_time": {
+              "title": "If they need time",
+              "script": "Take a week to review everything, then let's reconnect if it makes sense."
+            }
+          }
+        },
+        "full_script": "Of course, I'll send you information after the call. What I'd like to do is include not just our deck, but also 1-2 recent successes and, most importantly, your Scope of Work. To make that possible, we just need to finish this due diligence—a few more questions on my end, and then I can send something that's actually meaningful to you. Otherwise, you'd just be getting generic info. Does that sound fair?<br><br>Say yes confidently. Use the request as leverage to finish discovery, positioning the customized Scope of Work (SOW) as the true asset they need, which requires gathering necessary anchors during the current call."
       },
 
       "research_mode": {
@@ -1129,9 +1302,24 @@ let salesData = {
       "not_interested": {
         "title": "Not Interested",
         "category": "Opening",
-        "trigger": "Early hard rejection or 'not interested'",
-        "full_script": "I appreciate the clarity. If this isn't a priority for you right now, I completely respect that, as we operate with an abundance mindset. Would it still make sense to at least finish the due diligence and build out the engagement model so you have a clear, risk-mitigated option scoped to your economics if internal priorities shift down the road?<br><br>If they are truly healthy and uninterested, move on (abundance mindset). However, always try to anchor the scope first, offering the model as a non-committal strategic asset for future reference.",
-        "key_principle": "Abundance mindset, but always try to anchor scope first."
+        "trigger": "Early hard rejection or 'not interested' - any intensity level",
+        "key_principle": "Match response intensity to their tone. Abundance mindset, but always try to anchor scope first.",
+        "type_a_polite_neutral": {
+          "title": "Type A - Polite/Neutral",
+          "when_to_use": "Polite or neutral tone",
+          "script": "I appreciate the clarity. If this isn't a priority for you right now, I completely respect that, as we operate with an abundance mindset. Would it still make sense to at least finish the due diligence and build out the engagement model so you have a clear, risk-mitigated option scoped to your economics if internal priorities shift down the road?<br><br>If they are truly healthy and uninterested, move on (abundance mindset). However, always try to anchor the scope first, offering the model as a non-committal strategic asset for future reference."
+        },
+        "type_b_defensive_testing": {
+          "title": "Type B - Defensive (Testing You)",
+          "when_to_use": "Defensive tone, testing you",
+          "script": "I appreciate the directness. Before I let you go - what's driving the 'not interested'? Is it timing, fit, or something else? Just want to make sure I'm not missing something."
+        },
+        "type_c_hostile_get_out": {
+          "title": "Type C - Hostile (Get Out)",
+          "when_to_use": "Hostile tone, wants you to leave",
+          "script": "I hear you. I'll follow up in 6 months in case circumstances change. Appreciate your time."
+        },
+        "full_script": "I appreciate the clarity. If this isn't a priority for you right now, I completely respect that, as we operate with an abundance mindset. Would it still make sense to at least finish the due diligence and build out the engagement model so you have a clear, risk-mitigated option scoped to your economics if internal priorities shift down the road?<br><br>If they are truly healthy and uninterested, move on (abundance mindset). However, always try to anchor the scope first, offering the model as a non-committal strategic asset for future reference."
       },
 
       "differentiation_question": {
@@ -1487,9 +1675,14 @@ let salesData = {
       "thats_not_how_we_define_qualified": {
         "title": "That's Not How We Define Qualified",
         "category": "Tac",
-        "trigger": "Rejection of the A/B/C qualification criteria",
-        "full_script": "That is absolutely fair, and we should tailor it. The reason we rely on the core A/B/C logic (Financially Able, Serviceable, Genuinely Interested) is because it creates the only standard that is objective and measurable for the 45-day Milestone. If we can agree on those three primary components, we can integrate your specific nuance into the Serviceable criteria.<br><br>The goal is to have them adopt the standard as a baseline truth because it is fair, reasonable, and measurable. This logic transforms subjective debates into objective standards.",
-        "key_principle": "Adopt A/B/C as objective, measurable standard."
+        "trigger": "Rejection of the A/B/C qualification criteria, or when prospect's definition dramatically differs from yours",
+        "key_principle": "Adopt A/B/C as objective, measurable standard. Address behavior (mismatched expectations) not assumed cause.",
+        "definition_alignment_checkpoint": {
+          "title": "Definition Alignment Checkpoint",
+          "when_to_use": "When prospect's definition of 'qualified' dramatically differs from yours",
+          "script": "Let me make sure we're aligned here. Your definition of qualified is [repeat their definition]. That's a fair standard, but <b>it's not what we do.</b><br><br>We generate first-touch introductions that feel like warm referrals because of the diligence and messaging precision. But they're not coming from your existing network—they're new relationships.<br><br><b>If your only acceptable channel is warm introductions from people who already trust you, then we're not the right fit.</b><br><br>Is that type of new channel interesting to you, or are you only looking to scale what you already have?"
+        },
+        "full_script": "That is absolutely fair, and we should tailor it. The reason we rely on the core A/B/C logic (Financially Able, Serviceable, Genuinely Interested) is because it creates the only standard that is objective and measurable for the 45-day Milestone. If we can agree on those three primary components, we can integrate your specific nuance into the Serviceable criteria.<br><br>The goal is to have them adopt the standard as a baseline truth because it is fair, reasonable, and measurable. This logic transforms subjective debates into objective standards."
       },
 
       "we_need_them_to_have_x_y_z": {
@@ -1649,11 +1842,11 @@ let salesData = {
 
 
       "messaging_approach": {
-        "title": "How Does Your Messaging Work?",
+        "title": "We Need to See the Messaging First",
         "category": "How",
-        "trigger": "When prospects ask specifically about your messaging approach or proprietary methods",
-        "full_script": "Great question about our messaging approach. We operate as a Revenue Advisory group, not an email infrastructure provider, so our messaging is built around two proprietary methods that have consistently booked 800+ meetings this year.<br><br>The first is our X, Y and Z Method: We research industries deeply to understand the common process every serious player already has in place around selling. We frame our outreach around that existing process, positioning our solution as an amplifier rather than a replacement. For example, when targeting real estate firms, we don't pitch 'we'll find you investors' - instead we ask about their LP-to-committed-investor conversion process and position our pipeline program as the accelerator they've been missing.<br><br>The second is our Bait & Switch + X,Y,Z Method: We start with a direct qualification question like 'Do you provide corporate retreat packages to large companies?' to feel like a potential customer or referral source. Once they confirm, we pivot to the X,Y,Z framework, reframing the conversation from buyer to advisory partner.<br><br>What makes this work is that prospects who respond are already halfway to the result - they know they have the foundation, and we're just providing the accelerator. This creates hotter conversations than any generic 'we'll get you leads' approach.<br><br>The messaging itself is crafted to speak to revenue outcomes and commercial finance positioning, not just email infrastructure. Would you like me to walk through how this would apply to your current sales process?",
-        "key_principle": "Frame messaging as proprietary advisory methodology that amplifies existing processes, not as tactical execution."
+        "trigger": "When prospects ask to see verbatim messaging, templates, or sample copy before discovery is complete",
+        "full_script": "<b>Step 1: Acknowledge + Go First</b><br><br>You're absolutely right to push for that. And honestly, if I HAD a generic template I could show you right now, that would be the red flag.<br><br><b>Step 2: Reframe (Why This is Actually Good News)</b><br><br>Here's why: every agency in this space operates the same way—they have pre-written templates, swap in your company name, and blast. That's exactly why referral-based firms like yours get burned. The messaging sounds like marketing, not like someone who understands your world.<br><br>The reason I can't show you verbatim copy yet is because we don't have any. We build it from scratch—extracted from your 50 years of institutional knowledge, using the language your buyers already use, protecting the pedigree you've spent decades building.<br><br><b>Step 3: Anchor Back to Due Diligence (What You Still Need)</b><br><br>To show you what that messaging looks like, I'd need to finish the diligence process we started. Specifically, I still need to understand:<br><br>• How those PE referrals typically phrase introductions to you—what language actually works in your world<br>• What lines you'd never cross in outreach—the stuff that would make you cringe<br>• The specific pain points that get your buyers to take meetings vs. ignore them<br><br>That's the difference between us and every other shop you've talked to. They can show you templates today because they're sending the same thing to everyone. We can't—because we haven't extracted yours yet.<br><br><b>Step 4: Pivot to Raiseview (If Needed for Credibility)</b><br><br>And just to give you proof this isn't theory—we did this exact process for Raiseview Capital, a sell-side banking group. Most conservative, brand-sensitive corner of finance. We spent weeks learning how they evaluate counterparties, what language conveys trust, where the lines are they'd never cross.<br><br>Within 90 days: 102 new institutional introductions. Zero reputation damage. The reason it worked is because the messaging didn't sound like us—it sounded like them.<br><br><b>Step 5: Lock the Micro-Step</b><br><br>So here's what I'd suggest: let's finish the last three discovery questions—takes us maybe 8 more minutes—and then I'll send you a Scope of Work that includes sample messaging angles built from what you just told me. Not final copy, but directional proof of how we'd position you.<br><br>That way, you can see exactly what this looks like before committing to anything. Does that sound fair?",
+        "key_principle": "Reframe the inability to show templates as a FEATURE (bespoke, extracted from their experience) vs. a BUG (hiding generic templates). Anchor back to due diligence requirements and lock micro-step commitment."
       },
 
       "do_you_have_connections": {
@@ -2382,9 +2575,33 @@ let salesData = {
       "wont_engage_discovery": {
         "title": "Won't Engage Discovery",
         "category": "Disqualify",
-        "trigger": "Refuses to participate in discovery process",
+        "trigger": "Refuses to participate in discovery process - any reason",
+        "key_principle": "Diagnose readiness without assuming the cause of resistance. Assess if prospect is ready for discovery or needs different approach.",
+        "early_readiness_assessment": {
+          "title": "Early Readiness Assessment",
+          "if_defensive_hostile": {
+            "title": "If defensive/hostile",
+            "script": "It sounds like you've had some frustrating experiences in this space. I want to make sure we're not wasting each other's time. <b>What would need to be true for you to feel comfortable exploring this?</b>"
+          },
+          "if_time_pressed": {
+            "title": "If time-pressed",
+            "script": "I'm sensing time is tight. <b>What's the minimum you'd need to see in the next 5 minutes to know if this is worth continuing?</b>"
+          },
+          "if_overwhelmed": {
+            "title": "If overwhelmed",
+            "script": "It sounds like you're getting hit from all sides. <b>Would it make more sense for me to send you materials first, and we reconnect after you've had a chance to review?</b>"
+          },
+          "if_testing_evaluating": {
+            "title": "If testing/evaluating",
+            "script": "I'm getting the sense you're evaluating multiple options. <b>What are you comparing us against, and what's most important in that comparison?</b>"
+          }
+        },
+        "decision_tree": {
+          "ready_for_discovery": "Continue with standard flow",
+          "needs_trust_building": "Deploy proof-first path, reconnect later",
+          "fundamentally_misaligned": "Polite disqualification"
+        },
         "full_script": "I understand. Without going through the discovery process to establish the anchors, we can't create an accurate Scope of Work. If you'd like to revisit this later when you're ready for a more detailed discussion, please don't hesitate to reach out.<br><br>Explain the necessity of discovery for accurate scoping.",
-        "key_principle": "Explain necessity of discovery process.",
         "trust_first_approach": {
           "title": "Trust First Approach: Deferred Discovery",
           "when_to_use": "Use when prospect won't engage in discovery because they need to verify credibility first, especially after past vendor burn. This approach respects their need for proof before sharing internal numbers. Best when they're guarded but not hostile.",

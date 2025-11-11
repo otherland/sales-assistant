@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { resetAllQuestions } from '../utils/questionState'
+import { resetAllAnalytics } from '../utils/pageAnalytics'
 import { applyThemeObject } from '../utils/themes'
 import { hexToHsl } from '../utils/colorUtils'
 import ColorPicker from './ColorPicker'
@@ -162,6 +163,14 @@ function SettingsPopup({ isOpen, onClose, layoutReversed, onLayoutReversedChange
 
   const handleResetQuestions = () => {
     resetAllQuestions()
+  }
+
+  const handleResetAnalytics = () => {
+    if (window.confirm('Are you sure you want to reset all page analytics? This will clear all time tracking and progress data.')) {
+      resetAllAnalytics()
+      // Dispatch event to notify components that analytics were reset
+      window.dispatchEvent(new CustomEvent('analyticsReset'))
+    }
   }
 
   if (!isOpen) return null
@@ -337,6 +346,18 @@ function SettingsPopup({ isOpen, onClose, layoutReversed, onLayoutReversedChange
               onClick={handleResetQuestions}
             >
               Reset
+            </button>
+          </div>
+
+          <div className="control-group control-group-reset">
+            <label className="control-label">Page Analytics</label>
+            <button 
+              className="control-btn reset-btn" 
+              id="reset-analytics" 
+              title="Reset All Page Analytics (Time Tracking & Progress)"
+              onClick={handleResetAnalytics}
+            >
+              Reset All Progress
             </button>
           </div>
 

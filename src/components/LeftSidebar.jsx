@@ -3,6 +3,7 @@ import { useSalesData } from '../context/SalesDataContext'
 import { useContent } from '../context/ContentContext'
 import ProgressIndicator from './ProgressIndicator'
 import RecentlyViewed from './RecentlyViewed'
+import { getDailyTimeProgress, getTotalTimeAllPages, formatTimeMinutes } from '../utils/pageAnalytics'
 
 function LeftSidebar({ isOpen, onClose }) {
   const { salesData, referenceLibraries, loading } = useSalesData()
@@ -16,6 +17,7 @@ function LeftSidebar({ isOpen, onClose }) {
     reference: true
   })
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth <= 768)
+  const [refreshKey, setRefreshKey] = useState(0)
 
   // Update mobile state on resize
   useEffect(() => {
@@ -24,6 +26,24 @@ function LeftSidebar({ isOpen, onClose }) {
     }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // Refresh analytics data periodically for real-time updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRefreshKey(prev => prev + 1)
+    }, 1000) // Update every second
+    
+    // Also refresh when analytics are reset
+    const handleAnalyticsReset = () => {
+      setRefreshKey(prev => prev + 1)
+    }
+    window.addEventListener('analyticsReset', handleAnalyticsReset)
+    
+    return () => {
+      clearInterval(interval)
+      window.removeEventListener('analyticsReset', handleAnalyticsReset)
+    }
   }, [])
 
   // Auto-expand the parent group when content changes
@@ -158,11 +178,16 @@ function LeftSidebar({ isOpen, onClose }) {
     return '📄'
   }
 
+  const totalTime = getTotalTimeAllPages()
+
   return (
     <nav className={`sidebar-left ${isOpen ? 'active' : ''}`}>
       <div className="sidebar-header">
         <h1>📞 CALL ONE FLOW</h1>
         <p>Revenue Discovery Script</p>
+        <div className="sidebar-total-time">
+          Total Time: {formatTimeMinutes(totalTime)}
+        </div>
       </div>
 
       {/* Phase 1: Opening */}
@@ -180,6 +205,7 @@ function LeftSidebar({ isOpen, onClose }) {
               icon={getItemIcon(item)}
               isActive={contentId === item.id}
               onClick={() => handleNavClick(item.id)}
+              refreshKey={refreshKey}
             />
           ))}
         </div>
@@ -200,6 +226,7 @@ function LeftSidebar({ isOpen, onClose }) {
               icon={getItemIcon(item)}
               isActive={contentId === item.id}
               onClick={() => handleNavClick(item.id)}
+              refreshKey={refreshKey}
             />
           ))}
         </div>
@@ -220,6 +247,7 @@ function LeftSidebar({ isOpen, onClose }) {
               icon={getItemIcon(item)}
               isActive={contentId === item.id}
               onClick={() => handleNavClick(item.id)}
+              refreshKey={refreshKey}
             />
           ))}
         </div>
@@ -240,6 +268,7 @@ function LeftSidebar({ isOpen, onClose }) {
               icon={getItemIcon(item)}
               isActive={contentId === item.id}
               onClick={() => handleNavClick(item.id)}
+              refreshKey={refreshKey}
             />
           ))}
         </div>
@@ -260,6 +289,7 @@ function LeftSidebar({ isOpen, onClose }) {
               icon={getItemIcon(item)}
               isActive={contentId === item.id}
               onClick={() => handleNavClick(item.id)}
+              refreshKey={refreshKey}
             />
           ))}
         </div>
@@ -294,10 +324,12 @@ function LeftSidebar({ isOpen, onClose }) {
   )
 }
 
-function NavItem({ item, phase, index, icon, isActive, onClick }) {
+function NavItem({ item, phase, index, icon, isActive, onClick, refreshKey }) {
   if (!item.id || !item.title) return null
 
   const pageNumber = `${phase}.${index + 1}`
+  // refreshKey forces re-render to get latest analytics data
+  const dailyProgress = getDailyTimeProgress(item.id)
 
   return (
     <div
@@ -308,6 +340,7 @@ function NavItem({ item, phase, index, icon, isActive, onClick }) {
       <span className="nav-item-number">{pageNumber}</span>
       <span className="nav-item-icon">{icon}</span>
       <span style={{ flex: 1 }}>{item.title.split('—')[0].trim()}</span>
+      <span className="nav-item-progress">{dailyProgress}%</span>
     </div>
   )
 }

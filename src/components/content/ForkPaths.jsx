@@ -107,6 +107,12 @@ function ProofNarrative({ proof }) {
           </h4>
           {beatOrder.map((beat, idx) => {
             if (!proof.six_beats[beat.key]) return null
+            
+            // Handle both old format (string) and new format (object with script and advisor_notes)
+            const beatData = proof.six_beats[beat.key]
+            const beatScript = typeof beatData === 'string' ? beatData : beatData.script
+            const beatNotes = typeof beatData === 'object' && beatData.advisor_notes ? beatData.advisor_notes : null
+            
             return (
               <CollapsibleSection
                 key={beat.key}
@@ -115,7 +121,18 @@ function ProofNarrative({ proof }) {
                 variant="default"
                 className="six-beat-section"
               >
-                <ScriptBlock script={proof.six_beats[beat.key]} />
+                {beatScript && <ScriptBlock script={beatScript} />}
+                {beatNotes && beatNotes.length > 0 && (
+                  <InfoBox title="💡 Delivery Notes" variant="advisor-note" style={{ marginTop: '1rem' }}>
+                    <ul className="bullet-list">
+                      {beatNotes.map((note, noteIdx) => (
+                        <li key={noteIdx}>
+                          <LinkifiedText text={note} />
+                        </li>
+                      ))}
+                    </ul>
+                  </InfoBox>
+                )}
               </CollapsibleSection>
             )
           })}
