@@ -37,8 +37,8 @@ function ScriptBlock({ script, style = {} }) {
       const roiInputs = JSON.parse(localStorage.getItem(ROI_STORAGE_KEY) || '{}')
       
       // Auto-calculate [X] = 1.5 × REP_CAPACITY
-      const repCapacity = parseFloat(metrics.rep_capacity) || 0
-      const autoX = repCapacity > 0 ? Math.round(repCapacity * 1.5) : null
+      const repCapacity = metrics.rep_capacity ? parseFloat(metrics.rep_capacity) : 0
+      const autoX = repCapacity > 0 && !isNaN(repCapacity) ? Math.round(repCapacity * 1.5) : null
       
       // Use ROI input for [X] if provided, otherwise use auto-calculated value
       const manualX = roiInputs.qualifiedOpportunities !== '' && roiInputs.qualifiedOpportunities != null 
@@ -46,10 +46,20 @@ function ScriptBlock({ script, style = {} }) {
         : null
       const x = manualX != null && !isNaN(manualX) ? manualX : autoX
       
-      // [Y]% - Use ROI input if available
-      const closeRate = roiInputs.closeRate !== '' && roiInputs.closeRate != null 
+      // [Y]% - Use ROI input if available, otherwise calculate from R/P ratio
+      let closeRate = roiInputs.closeRate !== '' && roiInputs.closeRate != null 
         ? parseFloat(roiInputs.closeRate) 
         : null
+      
+      // Auto-calculate close rate from REP_CAPACITY / PIPELINE if no manual input
+      if (closeRate == null || isNaN(closeRate)) {
+        const pipeline = metrics.pipeline ? parseFloat(metrics.pipeline) : 0
+        if (repCapacity > 0 && pipeline > 0) {
+          // Calculate close rate as percentage: (pipeline / rep_capacity) * 100
+          // This gives us the conversion rate from meetings to opportunities
+          closeRate = Math.round((pipeline / repCapacity) * 100)
+        }
+      }
       
       // Auto-calculate [Z] = [X] × [Y]% / 100 if we have both
       const z = (x != null && closeRate != null && !isNaN(closeRate)) 
@@ -90,6 +100,7 @@ function ScriptBlock({ script, style = {} }) {
     let processed = script
     
     // Get placeholder replacement function from window (set by CARPETCalculator) or use fallback
+    // Both functions now have the same auto-calculation logic
     const getPlaceholder = typeof window !== 'undefined' && window.getCARPETPlaceholder 
       ? window.getCARPETPlaceholder 
       : getPlaceholderFromStorage
