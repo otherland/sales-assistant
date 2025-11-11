@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useContent } from '../../context/ContentContext'
 import { useSalesData } from '../../context/SalesDataContext'
+import { setEconomyType } from '../../utils/sequenceSelections'
 import InfoBox from './InfoBox'
 import ScriptBlock from './ScriptBlock'
 import LinkifiedText from './LinkifiedText'
@@ -13,6 +14,12 @@ function ForkPaths({ itemId, paths, onPathSelect }) {
 
   const handlePathSelect = (path) => {
     setSelectedPath({ itemId, pathId: path.id, path })
+    
+    // Track economy type selection globally
+    if (itemId === 'fork_deflection' && path.id) {
+      setEconomyType(path.id)
+    }
+    
     if (onPathSelect) {
       onPathSelect(path.id)
     }

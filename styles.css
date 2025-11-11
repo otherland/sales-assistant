@@ -75,7 +75,7 @@ body {
 
 /* RIGHT SIDEBAR: Handler Library */
 .sidebar-right {
-    width: 320px;
+    width: 340px;
     background: var(--bg-sidebar);
     color: var(--text-light);
     overflow-y: auto;
@@ -1140,7 +1140,7 @@ body.dark-mode .question-group-list .question-item:hover {
 }
 
 .page-turner-arrow-right {
-    right: calc((100vw - 900px) / 2 - 40px);
+    right: calc((100vw - 900px) / 2 - 80px);
 }
 
 /* Fallback for smaller screens - position relative to sidebars */
@@ -1150,7 +1150,7 @@ body.dark-mode .question-group-list .question-item:hover {
     }
     
     .page-turner-arrow-right {
-        right: calc(300px + 1rem);
+        right: calc(260px + 1rem);
     }
 }
 
@@ -1204,7 +1204,7 @@ body.dark-mode .question-group-list .question-item:hover {
 }
 
 .container.layout-reversed .page-turner-arrow-right {
-    right: calc((100vw - 900px) / 2 - 40px);
+    right: calc((100vw - 900px) / 2 - 80px);
 }
 
 @media (max-width: 1400px) {
@@ -1315,7 +1315,7 @@ body.dark-mode .question-group-list .question-item:hover {
     border-radius: 16px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     overflow: hidden;
-    padding: 1rem;
+    padding: 0.75rem;
 }
 
 .settings-content:has(.color-picker) {
@@ -1325,7 +1325,7 @@ body.dark-mode .question-group-list .question-item:hover {
 .settings-controls {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
 }
 
 .control-group {
@@ -2216,7 +2216,7 @@ body.advice-hidden .six-beat-section {
 }
 
 .control-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .control-group:last-child {
@@ -2801,30 +2801,21 @@ body.dark-mode .analytics-no-data {
 
 /* Reset Questions Button */
 .reset-btn {
-    background-color: #ff6b6b !important;
-    color: white !important;
-    border: none !important;
-    width: 50px !important;
+    width: 100% !important;
     padding: 8px 16px !important;
-    border-radius: 4px !important;
-    cursor: pointer !important;
-    font-size: 14px !important;
-    transition: background-color 0.2s ease !important;
-}
-
-.reset-btn:hover {
-    background-color: #ff5252 !important;
 }
 
 .control-group-reset {
-    margin-top: 16px;
-    padding-top: 16px;
+    margin-top: 8px;
+    padding-top: 8px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .control-group-layout {
-    margin-top: 16px;
-    padding-top: 16px;
+    margin-top: 8px;
+    padding-top: 8px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 

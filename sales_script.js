@@ -14,19 +14,7 @@ let salesData = {
         "phase": 1,
         "purpose": "Establish yourself as a peer conducting due diligence, not a vendor trying to win business",
         "advisor_mindset": "Deliver this like an advisor leading a professional diligence session, not a salesperson opening a discovery call. Slow down, stay calm, and let silence do the work.",
-        "script": "Hey [FirstName], great to meet you. Happy to get started if that’s all right with you?<br><br>Here's how I work: <b>I don't pitch on first calls</b>. What I do is audit how you're currently generating demand, and see if there's a clear fit before we talk next steps.<br><br>So I'm going to ask you some specific questions. Not to interrogate—just to understand one thing: <u>where's your leverage? Where's the constraint?</u><br><br>And once I see that, I can tell you how we'd approach it.<br><br>I'll just say upfront—we specialize in <u>sophisticated, brand-sensitive markets</u> where data is scarce and demand generation has to <b>protect reputation</b>. That context shapes how I'm listening today.<br><br><br><br>I can start with our overall thesis.<br><br>So we aim to work in sophisticated markets and we're industry agnostic.<br><br>In these verticals with careful buyers, the data is harder to acquire, there's a lot of room for improvement and our thesis is to fill in those specialized gaps.<br><br>So we'll go into these markets where established companies want new, qualified conversations at scale but haven't been able to fully figure out a modern channel for revenue generation - or at least want it done better.<br><br>We've seen time and time again that there's pent up, unmet demand on the other side of a properly designed solution.",
-        "advisor_notes": [
-          "[Pause] after 'I want to use it well' - let the time boundary land",
-          "RHYTHM: Notice the shorter sentences and natural pauses - this creates executive presence, not corporate delivery",
-          "PROCESS CLARITY: 'I don't pitch on first calls' immediately sets peer-level authority and removes sales pressure",
-          "OBJECTIVE CLARITY: 'Where's your leverage? Where's the constraint?' tells them exactly what you're after",
-          "THESIS PRE-ANCHOR: The sophistication/brand-sensitivity positioning happens BEFORE they answer, not after",
-          "OPTIONAL THESIS PRE-ANCHOR: If prospect asks 'what do you do?' before you start discovery, deploy concise thesis: 'We work in sophisticated markets filling specialized gaps where data is harder to acquire. The diagnostic I'm about to walk through helps me see if there's a clear fit.'",
-          "Decision: Only use fuller thesis explanation if they interrupt with 'what do you do?' Otherwise proceed directly to discovery_intro - the brief anchor in the script is sufficient",
-          "[Pause] before final question - let the context sink in, then launch into discovery with confidence",
-          "[Slow down] on 'where's your leverage' - this is the core question",
-          "Your tone is confident peer-to-peer, not deferential or aggressive - you've done this many times"
-        ],
+        "script": "Hey [FirstName], great to meet you. I've got <b>30 minutes</b> blocked for this, and I want to use it well.<br><br>Here's how I work: <b>I don't pitch on first calls</b>. What I do is audit how you're currently generating demand, and see if there's a clear fit before we talk next steps.<br><br>So I'm going to ask you some specific questions. Not to interrogate—just to understand one thing: <u>where's your leverage? Where's the constraint?</u><br><br>And once I see that, I can tell you how we'd approach it.<br><br>I'll just say upfront—we specialize in <u>sophisticated, brand-sensitive markets</u> where data is scarce and demand generation has to <b>protect reputation</b>. That context shapes how I'm listening today.<br><br><br><br>I can start with our overall thesis.<br><br>So we aim to work in sophisticated markets and we're industry agnostic.<br><br>In these verticals with careful buyers, the data is harder to acquire, there's a lot of room for improvement and our thesis is to fill in those specialized gaps.<br><br>So we'll go into these markets where established companies want new, qualified conversations at scale but haven't been able to fully figure out a modern channel for revenue generation - or at least want it done better.<br><br>We've seen time and time again that there's pent up, unmet demand on the other side of a properly designed solution.",
       },
       {
         "id": "discovery_intro",
@@ -220,12 +208,6 @@ let salesData = {
               "What's the typical average contract value and lifetime value of a new account?",
               "When deals close, what usually determines success — price, speed, relationship, or process?"
             ],
-            "advisor_notes": [
-              "Q1: Ownership clarity",
-              "Q2: Conversion rate - critical for ROI calculation",
-              "Q3: CARPET A - ACV/LTV for financial modeling",
-              "Q4: Win factors - understand what drives success"
-            ]
           }
         ]
       },
@@ -236,7 +218,6 @@ let salesData = {
         "phase": 2,
         "section": "C.5",
         "purpose": "Confirm process, validate capacity, calculate ROI, identify gap, and transition to thesis",
-        "when_to_use": "After completing Bottom of Funnel discovery (you now have conversion %, ACV, capacity data). Use this after 'Two Paths Emerge' if reconstruction occurred.",
         "script": "Perfect — so we'll replicate that exact sequence for every introduction we generate. That single sequence becomes the standardized playbook we feed qualified opportunities into.<br><br>Now, here's what I need to confirm: if we fed [X] qualified opportunities into that same process over [CYCLE], does the team have capacity to handle that volume without breaking down?<br><br>Good. So at a [Y]% close rate, that's roughly [Z] new clients over that period.<br><br>At [$] average deal size, that's [REVENUE] in new revenue.<br><br>Does that math work for you?<br><br>Here's where I think there's opportunity: <u>if we could increase the flow of qualified opportunities into your pipeline — while maintaining that same [Y]% conversion rate — you'd scale revenue without changing your process.</u> Your current pipeline generates [PIPELINE], and your top rep is booking [REP_CAPACITY].<br><br>Before I walk you through how we'd approach that, let me tell you about how we work and why. Then we can see if it makes sense.",
       },
       {
@@ -245,8 +226,6 @@ let salesData = {
         "category": "sequential",
         "phase": 3,
         "purpose": "Explain what you do after completing discovery — now that you understand their business, present your thesis and proof",
-        "context": "After completing discovery (Top, Middle, and Bottom of Funnel), the prospect will naturally want to understand what you do and how you can help. This is the ideal time to present your thesis with the Six Beats proof narrative.",
-        "golden_rule": "You've completed discovery, so you now have context about their business. Use that context to tie your thesis and proof directly to their situation. Deploy the Six Beats structure to reveal methodology through narrative.",
         "paths": [
           {
             "id": "new_economy",
@@ -401,7 +380,6 @@ let salesData = {
         "category": "sequential",
         "phase": 3,
         "purpose": "Deploy the Qualified Opportunity Anchor™ when quality concerns arise—gives you verbatim on-call scripts for the complete sequence",
-        "context": "Use this when quality/conversion concerns surface during or after discovery. This is your practical guide for deploying QOA™ on live calls.",
         "when_to_deploy": {
           "title": "⚠️ Deploy QOA™ Only When:",
           "criteria": [
@@ -445,24 +423,6 @@ let salesData = {
           "script": "That's a <i>fair concern</i>—and it's exactly why we walked through your funnel in detail.<br><br>You mentioned earlier that once someone gets to [X stage], you're closing [Y%] of them, and that your process is repeatable.<br><br>So really, the question isn't whether they'll convert—it's whether the opportunities we create meet the standard we've agreed on: financially able, serviceable, and genuinely interested.<br><br>That's why we defined 'qualified' the way we did—so we're both measuring against the same criteria.",
           "content": "Deploy the full Toe sequence above to offer client-verified milestones"
         },
-        "quick_reference_card": {
-          "title": "📋 Quick Reference: When to Use Each Step",
-          "tic": "Use after Bottom of Funnel discovery → 'Would it be fair to say your process is repeatable?'",
-          "tac": "Use when first mentioning quality OR when defining scope → 'Here's what we define as qualified: A/B/C'",
-          "toe": "Use ONLY when quality objection blocks momentum in high-trust context → 'What if you could verify each one before it counts?'"
-        },
-        "advisor_notes": [
-          "This is your on-call playbook—use these exact scripts when quality concerns arise",
-          "Always do Tic → Tac in sequence. Toe is optional based on context.",
-          "After deploying Toe, the full QOA™ structure goes into the SOW you send later",
-          "For deep training on WHY this works and complete system mechanics, see: <a href='#' onclick=\"loadReferenceContent('qualified_opportunity_anchor_mastery'); return false;\" style='color: var(--primary-color); text-decoration: underline; cursor: pointer; font-weight: 600;'>QOA™ Complete Training Guide</a>",
-          "Log each admission in CRM: Tic (process repeatable), Tac (A/B/C aligned), Toe (power transfer accepted)"
-        ],
-        "where_to_go_next": {
-          "title": "Where to Go Next",
-          "guidance": "After deploying QOA™ sequence:",
-          "default": "Continue with <a href='#' onclick=\"loadContent('integration_explanation'); return false;\" style='color: var(--primary-color); text-decoration: underline; cursor: pointer;'>Integration Explanation</a> to transition from diagnosis to design, or proceed to <a href='#' onclick=\"loadContent('transition_call_two'); return false;\" style='color: var(--primary-color); text-decoration: underline; cursor: pointer;'>Transition — Close Loop & Secure Call Two</a>"
-        }
       },
       {
         "id": "integration_explanation",
@@ -475,128 +435,12 @@ let salesData = {
           {
             "id": "with_process",
             "condition": "They have a repeatable process",
-            "sections": [
-            {
-              "title": "1. Opening & CARPET Recap",
-              "script": "<i>Perfect</i> — I really appreciate you walking me through how the business moves from the <u>top of the funnel all the way down to conversion</u>.<br><br><span class=\"advisor-note\">[NEW: Explicit CARPET Recap + Gap Diagnosis]</span><br><br>Let me make sure I've got this right:<br><br>You're running about <b>[PIPELINE]</b> qualified opportunities per month through your system. Those typically take <b>[CYCLE]</b> to close, and you're converting at roughly <b>[Y]%</b>. Your top performer is handling about <b>[REP_CAPACITY]</b> meetings per month, and your average deal size is <b>[ACV]</b>.<br><br><span class=\"script-pause\">(Pause — let them confirm)</span>",
-              "advisor_notes": [
-                "The CARPET recap is not optional — This proves you were listening and anchors everything to their actual data",
-                "Use their language — If they said 'referrals,' say 'referrals.' If they said 'partnerships,' say 'partnerships.'"
-              ]
-            },
-            {
-              "title": "2. ROI Math Calculation",
-              "script": "<span class=\"advisor-note\">[NEW: Live ROI Math Calculation]</span><br><br>So here's what that means: if we increased your qualified opportunity flow by, let's say, <b>[X]</b> additional opportunities over the next <b>[CYCLE]</b> — and those converted at your same <b>[Y]%</b> rate — that's roughly <b>[Z]</b> new clients.<br><br>At <b>[ACV]</b> per client, that's <b>[REVENUE]</b> in new revenue.<br><br><span class=\"script-question\">Does that math work for you?</span><br><br><span class=\"script-pause\">(Wait for confirmation)</span>",
-              "advisor_notes": [
-                "Do the math live — Don't rush this. Pull out a calculator if needed. This moment builds massive credibility.",
-                "Pause after ROI math — Let the revenue number sink in. This is a pivotal moment.",
-                "The 'Does that math work for you?' question is critical — It forces verbal confirmation and locks in the economic logic"
-              ]
-            },
-            {
-              "title": "3. Gap Diagnosis & Opportunity Statement",
-              "script": "<span class=\"advisor-note\">[NEW: Explicit Gap Statement]</span><br><br>Here's where I think there's opportunity: <u>if we could increase the flow of qualified opportunities into your pipeline — while maintaining that same conversion rate — you'd scale revenue without changing your process</u>.<br><br>The <b>constraint isn't your ability to close</b>. It's the <u>volume and consistency of qualified interest</u> reaching your system.",
-              "advisor_notes": [
-                "State the gap explicitly — Don't make them infer it. Say it clearly: 'The constraint isn't X, it's Y.'"
-              ]
-            },
-            {
-              "title": "4. Mechanism Framing & Structure",
-              "script": "<span class=\"advisor-note\">[STRENGTHENED: Mechanism Framing]</span><br><br>What we do is install a <b>new demand channel</b> that feeds into the exact same conversion process you're already using.<br><br>Think of it like this: we're not replacing referrals or partnerships — we're <b>engineering a parallel channel</b> that produces the same quality conversations, but <u>predictably</u>, at <u>scale</u>, without depending on your existing network.<br><br><span class=\"script-pause\">(Critical separation language)</span><br><br><u>You're not outsourcing closing</u>, and <u>we're not accepting accountability for conversion we don't control</u>.<br><br>Our responsibility: <b>generating qualified interest at the top of your funnel</b>.<br><br>Your responsibility: <b>processing that through your existing middle and bottom funnel</b> — the same way you handle referrals today.<br><br><span class=\"script-question\"><b>Does that structure make sense?</b></span><br><br><span class=\"script-pause\">(Wait for verbal 'yes')</span>",
-          "advisor_notes": [
-                "VISUAL ANCHORING TECHNIQUE: Pause, lean slightly forward, gesture with your hands as if pointing at their process",
-                "When you say 'So this process here — the one you just described...' you are literally pointing at their system",
-                "This physical gesture + pointing language makes the abstract installation point concrete and real",
-                "If on video, gesture toward your screen as if their process is drawn on it. If in person, use your hands to 'draw' their funnel in the air",
-                "Keep your tone confident but consultative. This isn't a pitch; it's confirmation"
-              ]
-            },
-            {
-              "title": "5. Risk Mitigation",
-              "script": "<span class=\"advisor-note\">[STRENGTHENED: Risk Mitigation Front-Loaded]</span><br><br>Good. Now here's how we <b>de-risk this completely</b>:<br><br>We'll model a <b>90-day engagement anchored to a 45-day baseline milestone</b>. That milestone is <b>contractually obligated</b> — for example, <b>[X]</b> qualified opportunities by Day 45.<br><br>If we don't hit it, the <u>second payment doesn't unlock</u> and we keep working until we do.<br><br>That structure ensures that <u>even in a worst-case scenario, you're ROI-positive</u>. That language will be <b>blatantly clear in the scope</b> so leadership can see the engagement is <b>fully de-risked</b>.",
-              "advisor_notes": [
-                "Risk mitigation comes IMMEDIATELY after structure confirmation — Don't bury your best card"
-              ]
-            },
-            {
-              "title": "6. Infrastructure & Scope",
-              "script": "<span class=\"advisor-note\">[STRENGTHENED: Mechanism Framing - Infrastructure Not Tactics]</span><br><br>From there, we'll assemble the <b>orchestration infrastructure</b> needed to execute cleanly — <u>talent architecture</u> (internal + external capacity), <u>messaging systems</u> that protect your brand, and <u>data infrastructure</u> calibrated to your exact buyer profile.<br><br>The scope will be conservative and realistic — we'd typically expect demand generated from our channel to convert in a <b>similar range to your current [Y]%</b>, maybe a 10–20% variance depending on deal cycle and ticket size.<br><br>The goal is <b>predictability</b>, not over-promise.<br><br><span class=\"script-pause\">(Tone softens)</span><br><br>If that feels like something you and leadership feel could evolve into a <i>scalable channel</i> — quarterly, semi-annually, or annually — we're happy to walk that path with you, align on <i>risk tolerance</i>, and define what <b>tangible success</b> looks like together.<br><br><span class=\"script-question\">Any questions so far?</span>",
-              "advisor_notes": [
-                "After this section, optionally deploy 1-2 Approval Flow questions to map internal buying process"
-              ]
-            }
-          ],
-          "advisor_notes": [
-            "The CARPET recap is not optional — This proves you were listening and anchors everything to their actual data",
-            "Do the math live — Don't rush this. Pull out a calculator if needed. This moment builds massive credibility.",
-            "State the gap explicitly — Don't make them infer it. Say it clearly: 'The constraint isn't X, it's Y.'",
-            "Use their language — If they said 'referrals,' say 'referrals.' If they said 'partnerships,' say 'partnerships.'",
-            "Pause after ROI math — Let the revenue number sink in. This is a pivotal moment.",
-            "The 'Does that math work for you?' question is critical — It forces verbal confirmation and locks in the economic logic",
-            "Risk mitigation comes IMMEDIATELY after structure confirmation — Don't bury your best card",
-            "VISUAL ANCHORING TECHNIQUE: Pause, lean slightly forward, gesture with your hands as if pointing at their process",
-            "When you say 'So this process here — the one you just described...' you are literally pointing at their system",
-            "This physical gesture + pointing language makes the abstract installation point concrete and real",
-            "If on video, gesture toward your screen as if their process is drawn on it. If in person, use your hands to 'draw' their funnel in the air",
-            "Keep your tone confident but consultative. This isn't a pitch; it's confirmation",
-            "After this section, optionally deploy 1-2 Approval Flow questions to map internal buying process"
-          ]
+            "script": "Just to be crystal clear on ownership: <u>You're not outsourcing closing</u>, and <u>we're not accepting accountability for conversion we don't control</u>.<br><br>Our responsibility: <b>generating qualified interest at the top of your funnel</b>.<br><br>Your responsibility: <b>processing that through your existing middle and bottom funnel</b> — the same way you handle referrals today.<br><br><span class=\"script-question\"><b>Does that structure make sense?</b></span><br><br><span class=\"script-pause\">(Wait for verbal 'yes')</span><br><br>From there, we'll assemble the <b>orchestration infrastructure</b> needed to execute cleanly — <u>talent architecture</u> (internal + external capacity), <u>messaging systems</u> that protect your brand, and <u>data infrastructure</u> calibrated to your exact buyer profile.<br><br>The scope will be conservative and realistic — we'd typically expect demand generated from our channel to convert in a <b>similar range to your current [Y]%</b>, maybe a 10–20% variance depending on deal cycle and ticket size.<br><br>The goal is <b>predictability</b>, not over-promise.<br><br><span class=\"script-pause\">(Tone softens)</span><br><br>If that feels like something you and leadership feel could evolve into a <i>scalable channel</i> — quarterly, semi-annually, or annually — we're happy to walk that path with you, align on <i>risk tolerance</i>, and define what <b>tangible success</b> looks like together.<br><br><span class=\"script-question\">Any questions so far?</span>",
           },
           {
             "id": "without_process",
             "condition": "They don't have a documented process (reconstruction path)",
-            "sections": [
-                {
-                  "title": "1. Opening & Reconstruction Confirmation",
-                  "script": "<i>Perfect</i> — I really appreciate you walking me through that <b>[CLIENT NAME]</b> conversion. That's exactly the playbook we'll replicate.<br><br><span class=\"advisor-note\">[NEW: Reconstruction Confirmation]</span><br><br>So just to confirm what we mapped out:<br><br>That opportunity came in through <b>[SOURCE]</b>, moved forward when <b>[TRIGGER]</b>, and sealed when <b>[CLOSE FACTOR]</b>. The whole cycle took <b>[TIMELINE]</b>, and your average deal size is around <b>[ACV]</b>.<br><br><span class=\"script-pause\">(Pause — let them confirm)</span>",
-                  "advisor_notes": [
-                    "This variant ties back to the 'Two Paths Emerge' reconstruction — explicitly reference the client name and process you mapped",
-                    "The reconstruction confirmation proves you were listening and creates concrete anchor points",
-                    "Use the exact client name they provided during reconstruction — this creates personal connection"
-                  ]
-                },
-                {
-                  "title": "2. ROI Math Calculation",
-                  "script": "<span class=\"advisor-note\">[NEW: Live ROI Math Calculation]</span><br><br>Here's what that means mathematically: if we fed <b>[X]</b> qualified opportunities into that same sequence over <b>[CYCLE]</b>, and you converted at a similar rate to your past wins — let's say conservatively <b>[Y]%</b> — that's roughly <b>[Z]</b> new clients.<br><br>At <b>[ACV]</b> per client, that's <b>[REVENUE]</b> in new revenue.<br><br><span class=\"script-question\">Does that math work for you?</span><br><br><span class=\"script-pause\">(Wait for confirmation)</span>",
-                  "advisor_notes": [
-                    "Do the math live using their reconstructed process data — this builds credibility",
-                    "The 'Does that math work for you?' question is critical — It forces verbal confirmation and locks in the economic logic"
-                  ]
-                },
-                {
-                  "title": "3. Gap Diagnosis & Opportunity Statement",
-                  "script": "<span class=\"advisor-note\">[NEW: Explicit Gap Statement]</span><br><br>Here's where I think there's opportunity: <u>you have a conversion process that works — we just reconstructed it from your last win. The constraint isn't whether you can close; it's the volume and consistency of qualified opportunities entering that system</u>.",
-                  "advisor_notes": [
-                    "Frame reconstruction as turning past success into repeatable system — this reframes their 'lack of process' as opportunity"
-                  ]
-                },
-                {
-                  "title": "4. Mechanism Framing & Structure",
-                  "script": "<span class=\"advisor-note\">[STRENGTHENED: Mechanism Framing]</span><br><br>What we do is <b>replicate that exact conversion sequence for every introduction we generate</b>.<br><br>Think of it like this: we're turning your past success into a <b>repeatable system</b>. All you need to do is run the same play that converted <b>[CLIENT NAME]</b> — that single sequence becomes the <b>standardized playbook</b> we feed qualified opportunities into.<br><br><span class=\"script-pause\">(Critical separation language)</span><br><br><u>You're not outsourcing closing</u>, and <u>we're not accepting accountability for conversion we don't control</u>.<br><br>Our responsibility: <b>generating qualified opportunities that match the profile of [CLIENT NAME]</b>.<br><br>Your responsibility: <b>running them through the same sequence we just mapped</b>.<br><br><span class=\"script-question\"><b>Does that structure make sense?</b></span><br><br><span class=\"script-pause\">(Wait for verbal 'yes')</span>",
-                  "advisor_notes": []
-                },
-                {
-                  "title": "5. Risk Mitigation",
-                  "script": "<span class=\"advisor-note\">[STRENGTHENED: Risk Mitigation Front-Loaded]</span><br><br>Good. Now here's how we <b>de-risk this completely</b>:<br><br>We'll model a <b>90-day engagement anchored to a 45-day baseline milestone</b>. That milestone is <b>contractually obligated</b> — for example, <b>[X] qualified opportunities by Day 45</b>.<br><br>If we don't hit it, the <u>second payment doesn't unlock</u> and we keep working until we do.<br><br>That structure ensures that <u>even in a worst-case scenario, you're ROI-positive</u>. That language will be <b>blatantly clear in the scope</b> so leadership can see the engagement is <b>fully de-risked</b>.",
-                  "advisor_notes": [
-                    "Risk mitigation comes IMMEDIATELY after structure confirmation — Don't bury your best card"
-                  ]
-                },
-                {
-                  "title": "6. Infrastructure & Scope",
-                  "script": "<span class=\"advisor-note\">[STRENGTHENED: Mechanism Framing - Infrastructure Not Tactics]</span><br><br>From there, we'll assemble the <b>orchestration infrastructure</b> needed to execute cleanly — <u>talent architecture</u> (internal + external capacity), <u>messaging systems</u> that protect your brand, and <u>data infrastructure</u> calibrated to your exact buyer profile.<br><br>The scope will be conservative and realistic — we'd typically expect demand generated from our channel to convert in a <b>similar range to your current [Y]%</b>, maybe a 10–20% variance depending on deal cycle and ticket size.<br><br>The goal is <b>predictability</b>, not over-promise.<br><br><span class=\"script-pause\">(Tone softens)</span><br><br>If that feels like something you and leadership feel could evolve into a <i>scalable channel</i> — quarterly, semi-annually, or annually — we're happy to walk that path with you, align on <i>risk tolerance</i>, and define what <b>tangible success</b> looks like together.<br><br><span class=\"script-question\">Any questions so far?</span>",
-                  "advisor_notes": []
-                }
-              ],
-              "advisor_notes": [
-                "This variant ties back to the 'Two Paths Emerge' reconstruction — explicitly reference the client name and process you mapped",
-                "The reconstruction confirmation proves you were listening and creates concrete anchor points",
-                "Do the math live using their reconstructed process data — this builds credibility",
-                "Frame reconstruction as turning past success into repeatable system — this reframes their 'lack of process' as opportunity",
-                "Use the exact client name they provided during reconstruction — this creates personal connection",
-                "The 'Does that math work for you?' question is critical — It forces verbal confirmation and locks in the economic logic",
-                "Risk mitigation comes IMMEDIATELY after structure confirmation — Don't bury your best card"
-              ]
+            "script": "Just to confirm what we mapped out from your last win: that <b>[CLIENT NAME]</b> opportunity came in through <b>[SOURCE]</b>, moved forward when <b>[TRIGGER]</b>, and sealed when <b>[CLOSE FACTOR]</b>. That's exactly the playbook we'll replicate.<br><br><span class=\"script-pause\">(Pause — let them confirm)</span><br><br>What we do is <b>replicate that exact conversion sequence for every introduction we generate</b>. We're turning your past success into a <b>repeatable system</b> — all you need to do is run the same play that converted <b>[CLIENT NAME]</b>.<br><br><span class=\"script-pause\">(Critical separation language)</span><br><br>Just to be crystal clear on ownership: <u>You're not outsourcing closing</u>, and <u>we're not accepting accountability for conversion we don't control</u>.<br><br>Our responsibility: <b>generating qualified opportunities that match the profile of [CLIENT NAME]</b>.<br><br>Your responsibility: <b>running them through the same sequence we just mapped</b>.<br><br><span class=\"script-question\"><b>Does that structure make sense?</b></span><br><br><span class=\"script-pause\">(Wait for verbal 'yes')</span><br><br>From there, we'll assemble the <b>orchestration infrastructure</b> needed to execute cleanly — <u>talent architecture</u> (internal + external capacity), <u>messaging systems</u> that protect your brand, and <u>data infrastructure</u> calibrated to your exact buyer profile.<br><br>The scope will be conservative and realistic — we'd typically expect demand generated from our channel to convert in a <b>similar range to your current [Y]%</b>, maybe a 10–20% variance depending on deal cycle and ticket size.<br><br>The goal is <b>predictability</b>, not over-promise.<br><br><span class=\"script-pause\">(Tone softens)</span><br><br>If that feels like something you and leadership feel could evolve into a <i>scalable channel</i> — quarterly, semi-annually, or annually — we're happy to walk that path with you, align on <i>risk tolerance</i>, and define what <b>tangible success</b> looks like together.<br><br><span class=\"script-question\">Any questions so far?</span>",
           }
         ],
         "context_variations": {
@@ -617,29 +461,20 @@ let salesData = {
               ],
               "script": "<i>Perfect</i> — I'm hearing two distinct constraints: <b>buy-side</b> (LP/equity access to close your $[X]M equity gaps) and <b>sell-side</b> (proprietary deal origination in [target geos/vintages]).<br><br>So we'll structure this as a <b>dual-track scope</b>:<br><br><b>Track One — Buy-Side (LP/FO Access)</b>: We'll originate qualified LP conversations with check sizes aligned to your $[X]M equity gaps. These are introductions to capital partners who fit your investor profile — family offices, institutional LPs, international capital — that can close your recurring equity gaps.<br><br><b>Track Two — Sell-Side (Proprietary Deal Flow)</b>: We'll originate sponsor-fit opportunities in your target geographies and vintages. These are proprietary introductions to sellers/off-market opportunities that match your acquisition criteria.<br><br>(Critical ownership clarity)<br><br><u>Our responsibility</u>: Generate qualified introductions on both tracks — LP meetings and deal opportunities.<br><br><u>Your responsibility</u>: Evaluate fit, conduct due diligence, and convert those introductions into closed deals or closed capital.<br><br>We own the TOF inputs (qualified introductions). You own MOF/BOF conversion (relationship building, deal execution, capital closing).<br><br>Does that structure make sense?",
               "milestone_structure": "Each track gets its own milestone: (1) X qualified LP introductions by Day 45, (2) Y qualified deal introductions by Day 45. Both must hit for the engagement to continue. This ensures both constraints are addressed, not just one.",
-              "risk_mitigation": "Frame as: 'Worst-case, you get qualified LP conversations AND deal opportunities — both of which you can evaluate and convert on your timeline. Best-case, both tracks accelerate your deal velocity and capital access simultaneously.'",
-              "advisor_notes": [
-                "Never scope only one side if they've stated both constraints — this violates audit integrity",
-                "Keep ownership clean: TOF (introductions) = your responsibility | MOF/BOF (conversion) = their responsibility",
-                "Use their exact numbers: '$8–$15M equity gaps' becomes '$[X]M equity gaps' in the script",
-                "Frame dual-track as strategic advantage, not complexity — 'both constraints addressed simultaneously'",
-                "If they push back on dual-track, diagnose which constraint is more urgent and scope that first, but acknowledge both exist"
-              ]
+              "risk_mitigation": "Frame as: 'Worst-case, you get qualified LP conversations AND deal opportunities — both of which you can evaluate and convert on your timeline. Best-case, both tracks accelerate your deal velocity and capital access simultaneously.'"
             },
             {
               "id": "why_now_timeline",
               "title": "Why Now — Creating Timeline Without Pressure",
               "when_to_use": "When prospect is engaged but hasn't committed to timeline, or asks 'How long does this take?'",
-              "script": "Here's what we know: demand generation in <u>[your market]</u> is a <b>three-to-six month problem</b>. Not because it's hard to solve, but because it requires diligence, infrastructure calibration, and messaging precision.<br><br>The question isn't 'should we do this'—it's '<u>how fast do we want to move</u> and <u>how much runway do we need</u>.'<br><br>So let me ask: if everything aligns, what's the timeline you're looking at to have a new channel producing qualified conversations?",
-              "advisor_notes": [
-                "Sets expectation without sounding slow",
-                "Frames timeline as normal (not defensive)",
-                "Shifts focus to their readiness, not your delivery speed",
-                "[Pause] after 'three-to-six month problem' - let that reality sink in",
-                "This creates urgency without pressure - they set the timeline"
-              ]
+              "script": "Here's what we know: demand generation in <u>[your market]</u> is a <b>three-to-six month problem</b>. Not because it's hard to solve, but because it requires diligence, infrastructure calibration, and messaging precision.<br><br>The question isn't 'should we do this'—it's '<u>how fast do we want to move</u> and <u>how much runway do we need</u>.'<br><br>So let me ask: if everything aligns, what's the timeline you're looking at to have a new channel producing qualified conversations?"
             }
           ]
+        },
+        "compressed_integration": {
+          "title": "Compressed Integration (30 seconds)",
+          "when_to_use": "Use when calls are objection-heavy or time-constrained",
+          "script": "Let me make sure I have this right: You're running about <b>[PIPELINE]</b> qualified opportunities per month. Those take <b>[CYCLE]</b> to close, converting at <b>[Y]%</b>. Your top performer handles <b>[REP_CAPACITY]</b> meetings/month, average deal size is <b>[ACV]</b>.<br><br>Here's the opportunity: If we increased qualified flow by <b>[X]</b> opportunities over <b>[CYCLE]</b>, converting at <b>[Y]%</b>, that's <b>[Z]</b> new clients at <b>[ACV]</b> each — <b>[REVENUE]</b> in new revenue.<br><br>The constraint isn't your ability to close — it's volume and consistency of qualified opportunities. What we do is install a parallel demand channel that feeds your existing process. Structure: 90-day engagement, 45-day milestone, second payment only unlocks when we deliver. Does that structure make sense?",
         },
       },
       {
@@ -653,14 +488,12 @@ let salesData = {
             {
               "id": "opening_engagement_model",
               "title": "1. Explain Engagement Model",
-              "when_to_use": "Start here — explain what happens next",
               "script": "At this point, what we'll do is take all of the data you've given us and build out an <b>internal engagement model</b> — that's where we <b>reverse-engineer the numbers</b> and map out what a <u>90-day structure</u> could realistically result in.<br><br>From there, we'll wrap that model into a <b>formal scope of work</b> that lays out:<br><br>The <b>thesis-driven approach</b> tailored to your market<br>The <b>milestone structure and success metrics</b><br>The <u>built-in risk-mitigation language that protects you</u><br><br>Once that's ready, we'll send it over for review and then reconvene to walk through it together."
             },
             {
               "id": "scheduling_call_two",
               "title": "2. Schedule Call Two",
-              "when_to_use": "After explaining the engagement model — transition to scheduling",
-              "script": "(Pause, then lightly transition to the push for call 2)<br><br>In terms of scheduling that review — does <b>[suggest specific day/time within 3–5 business days]</b> work on your end?<br><br>(Pause, work with them to get it booked — this can happen in 1,000's of ways so be as helpful as possible and make it effortless for them to book call 2 right now)",
+              "script": "In terms of scheduling that review — does <b>[suggest specific day/time within 3–5 business days]</b> work on your end?",
               "paths": [
                 {
                   "id": "they_hesitate",
@@ -685,12 +518,7 @@ let salesData = {
             {
               "id": "soft_commitment_question",
               "title": "3. Ask Approval Process Question",
-              "when_to_use": "Before ending the call — ask about their internal approval process",
               "script": "Perfect — before I let you go, we always like to make sure the scope we put together aligns with what actually matters most on your side.<br><br>Everyone has different biases when it comes to greenlighting something like this.<br><br>Just so we're catering it toward what's most important to you — <b>what do you think typically pushes something like this across the line internally?</b><br><br>(Pay attention to this feedback — it's gold)<br><br>Really good insight, thank you.<br><br>This question helps you understand their internal decision-making process and ensures the scope addresses their specific approval criteria.",
-              "advisor_notes": [
-                "This feedback is gold for tailoring the scope",
-                "Pay close attention to what they say — it reveals their internal decision-making process"
-              ]
             },
             {
               "id": "micro_step_primary",
@@ -719,30 +547,8 @@ let salesData = {
                 "The goal is to leave the call with Call Two booked and confirmed, plus clarity on what drives their internal approval process, plus ONE written micro-step commitment that maintains momentum between calls"
               ]
             },
-            {
-              "id": "micro_step_alternative_3",
-              "title": "Micro-Step: If Need Benchmark",
-              "when_to_use": "Use when you need their current conversion metrics to build a defensible model",
-              "script": "Can you send me your current conversion metrics or pipeline data before our review? That'll help me build a defensible model that maps to your actual performance.",
-              "advisor_notes": [
-                "The goal is to leave the call with Call Two booked and confirmed, plus clarity on what drives their internal approval process, plus ONE written micro-step commitment that maintains momentum between calls"
-              ]
-            }
           ]
         },
-        "advisor_notes": [
-          "At this point, you should have: Completed the due diligence process and identified a repeatable conversion path; Explained how we install demand into that process; Answered their questions and stabilized the frame",
-          "Before you move to next steps, make sure you've closed all open loops — objections, clarifications, pricing curiosities — using the frameworks inside: Advisory Incubator™ | Discovery Objection Handling OS; Advisory Incubator™ | Revenue Advisory Sales Script: Pricing On Call One; Advisory Incubator™ | Mastering the Referrals vs New Channel Objection",
-          "Don't get stuck in explaining or debating. Once questions are resolved, you immediately move toward scheduling Call Two. That's non-negotiable. Every discovery must end with a defined next step on the calendar",
-          "Your tone should stay professional and composed, not excited",
-          "This is not a 'closing moment'; it's simply the next step in the due diligence process",
-          "You are always assuming that Call Two is part of the same diligence workflow",
-          "Suggest a specific day/time within 3–5 business days — don't ask theirs, state your process",
-          "Force question resolution BEFORE scheduling — prevents unresolved objections from festering",
-          "Make scheduling effortless — be as helpful as possible and work with them to get it booked",
-          "The Soft Process Commitment Question is critical — ask what typically pushes something like this across the line internally. This feedback is gold for tailoring the scope",
-          "Set a clear Micro Step North Star: Send scope within 24–48 hours and request first-wave feedback (concerns, optimism, anything missing) before the review call. This allows you to adjust ahead of the meeting and ensures the scope addresses their needs"
-        ]
       },
       {
         "id": "universal_objection_handle",

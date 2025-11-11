@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useContent } from '../../context/ContentContext'
 import { useSalesData } from '../../context/SalesDataContext'
+import { setRepeatableProcessStatus } from '../../utils/sequenceSelections'
 import InfoBox from './InfoBox'
 import ScriptBlock from './ScriptBlock'
 import LinkifiedText from './LinkifiedText'
@@ -8,11 +9,69 @@ import QuestionGroup from './QuestionGroup'
 import ForkPaths from './ForkPaths'
 import CollapsibleSection from './CollapsibleSection'
 
+// Helper function to get CARPET completeness and missing variables
+function getCARPETState() {
+  try {
+    const stored = localStorage.getItem('carpet_metrics')
+    const metrics = stored ? JSON.parse(stored) : {}
+    
+    const required = {
+      'cycle_days': { label: 'C (Cycle)', section: 'discovery_middle_funnel' },
+      'acv': { label: 'A (ACV)', section: 'discovery_bottom_funnel' },
+      'rep_capacity': { label: 'R (Rep)', section: 'discovery_middle_funnel' },
+      'pipeline': { label: 'P (Pipeline)', section: 'discovery_top_funnel' }
+    }
+    
+    const missing = []
+    const completed = []
+    
+    Object.entries(required).forEach(([key, info]) => {
+      if (!metrics[key] || metrics[key] === '') {
+        missing.push({ key, ...info })
+      } else {
+        completed.push({ key, ...info })
+      }
+    })
+    
+    const completeness = {
+      percentage: Math.round((completed.length / Object.keys(required).length) * 100),
+      missing,
+      completed
+    }
+    
+    return { metrics, completeness }
+  } catch (e) {
+    return { metrics: {}, completeness: { percentage: 0, missing: [], completed: [] } }
+  }
+}
+
 function SequentialContent({ item, itemId }) {
   const { loadContent, loadHandler } = useContent()
   const { salesData } = useSalesData()
   const [selectedEconomyPath, setSelectedEconomyPath] = useState(null)
   const [openPaths, setOpenPaths] = useState({})
+  const [carpetState, setCarpetState] = useState(() => getCARPETState())
+
+  // Listen for CARPET metrics updates
+  useEffect(() => {
+    const updateCarpetState = () => {
+      setCarpetState(getCARPETState())
+    }
+    
+    // Initial check
+    updateCarpetState()
+    
+    // Listen for CARPET updates
+    window.addEventListener('carpetMetricsUpdated', updateCarpetState)
+    
+    // Also check periodically in case localStorage is updated directly
+    const interval = setInterval(updateCarpetState, 1000)
+    
+    return () => {
+      window.removeEventListener('carpetMetricsUpdated', updateCarpetState)
+      clearInterval(interval)
+    }
+  }, [])
 
   // Calculate starting question number for this section
   const getStartingQuestionNumber = () => {
@@ -56,6 +115,33 @@ function SequentialContent({ item, itemId }) {
         {item.purpose && <p className="content-purpose">{item.purpose}</p>}
       </div>
       <div className="content-body">
+        {/* Compressed Integration - At Top, Always Visible */}
+        {item.id === 'integration_explanation' && item.compressed_integration && (
+          <InfoBox 
+            title={item.compressed_integration.title || "Compressed Integration (30 seconds)"} 
+            variant="advisor-note" 
+            style={{ 
+              margin: '0 0 2rem 0', 
+              border: '2px solid var(--accent-green)',
+              background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%)'
+            }}
+          >
+            <ScriptBlock script={item.compressed_integration.script} />
+            {item.compressed_integration.advisor_notes && item.compressed_integration.advisor_notes.length > 0 && (
+              <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--border-color)' }}>
+                <strong style={{ color: 'var(--primary-color)' }}>💡 Notes:</strong>
+                <ul className="bullet-list" style={{ marginTop: '0.5rem' }}>
+                  {item.compressed_integration.advisor_notes.map((note, idx) => (
+                    <li key={idx}>
+                      <LinkifiedText text={note} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </InfoBox>
+        )}
+
         {item.assessment_question && (
           <InfoBox title="Assessment Question" variant="advisor-note" style={{ margin: '2rem 0' }}>
             <ScriptBlock script={item.assessment_question} />
@@ -90,6 +176,12 @@ function SequentialContent({ item, itemId }) {
                           const newOpenPaths = {}
                           newOpenPaths[pathId] = true
                           setOpenPaths(newOpenPaths)
+                          
+                          // Track repeatable process selection globally
+                          if (itemId === 'two_paths_emerge' && path.id) {
+                            const hasRepeatable = path.id === 'has_repeatable_process'
+                            setRepeatableProcessStatus(hasRepeatable)
+                          }
                         }}
                       >
                         <div className="two-paths-button-title">
@@ -107,8 +199,23 @@ function SequentialContent({ item, itemId }) {
                   
                   return (
                     <div key={`content-${pathId}`} className="two-paths-content" style={{ marginTop: '2rem' }}>
-                      {/* Handle sections if they exist */}
-                      {path.sections && path.sections.length > 0 ? (
+                      {/* Handle script at path level (top level) */}
+                      {path.script ? (
+                        <>
+                          <ScriptBlock script={path.script} />
+                          {path.advisor_notes && path.advisor_notes.length > 0 && (
+                            <InfoBox title="💡 How to Deliver" variant="advisor-note" style={{ marginTop: '1.5rem' }}>
+                              <ul className="bullet-list">
+                                {path.advisor_notes.map((note, noteIdx) => (
+                                  <li key={noteIdx}>
+                                    <LinkifiedText text={note} />
+                                  </li>
+                                ))}
+                              </ul>
+                            </InfoBox>
+                          )}
+                        </>
+                      ) : path.sections && path.sections.length > 0 ? (
                         <>
                           {path.sections.map((section, sectionIdx) => (
                             <CollapsibleSection
@@ -395,11 +502,77 @@ function SequentialContent({ item, itemId }) {
             {item.context_variations.variations.map((variation, idx) => {
               // Special handling for CRE dual-track - make it stand out
               const isCRE = variation.id === 'cre_dual_track'
+              const isMicroStep = variation.id && variation.id.startsWith('micro_step')
               const variationTitle = isCRE 
                 ? 'When They Need Both Deals AND Capital'
                 : variation.id === 'why_now_timeline'
                 ? 'When They Ask About Timeline'
                 : variation.title
+
+              // Special rendering for micro-step - collapsible, script only
+              if (isMicroStep) {
+                // For "Micro-Step: If Data Incomplete", only show if CARPET variables are missing
+                if (variation.id === 'micro_step_alternative_1') {
+                  const hasMissingCARPET = carpetState.completeness.missing.length > 0
+                  if (!hasMissingCARPET) {
+                    return null // Don't render if all CARPET variables are complete
+                  }
+                  
+                  // Generate dynamic script based on missing variables
+                  const missingVars = carpetState.completeness.missing
+                  const requests = []
+                  
+                  missingVars.forEach(({ key, label }) => {
+                    switch (key) {
+                      case 'cycle_days':
+                        requests.push("your typical sales cycle length (in days)")
+                        break
+                      case 'acv':
+                        requests.push("your average contract value (ACV)")
+                        break
+                      case 'rep_capacity':
+                        requests.push("how many meetings your top rep typically handles per month")
+                        break
+                      case 'pipeline':
+                        requests.push("your current qualified opportunity volume per month")
+                        break
+                    }
+                  })
+                  
+                  let dynamicScript = "Before our next call, can you confirm "
+                  if (requests.length === 1) {
+                    dynamicScript += requests[0] + "? That'll help us tighten the 45-day milestone math."
+                  } else if (requests.length === 2) {
+                    dynamicScript += requests[0] + " and " + requests[1] + "? That'll help us tighten the 45-day milestone math."
+                  } else {
+                    dynamicScript += requests.slice(0, -1).join(", ") + ", and " + requests[requests.length - 1] + "? That'll help us tighten the 45-day milestone math."
+                  }
+                  
+                  return (
+                    <CollapsibleSection
+                      key={variation.id || idx}
+                      title={variationTitle}
+                      defaultCollapsed={true}
+                      variant="default"
+                    >
+                      <ScriptBlock script={dynamicScript} />
+                    </CollapsibleSection>
+                  )
+                }
+                
+                return (
+                  <CollapsibleSection
+                    key={variation.id || idx}
+                    title={variationTitle}
+                    defaultCollapsed={true}
+                    variant="default"
+                  >
+                    {variation.script && (
+                      <ScriptBlock script={variation.script} />
+                    )}
+                  </CollapsibleSection>
+                )
+              }
 
               return (
                 <CollapsibleSection
@@ -516,6 +689,12 @@ function SequentialContent({ item, itemId }) {
                                     newOpenPaths[pathId] = true
                                   }
                                   setOpenPaths(newOpenPaths)
+                                  
+                                  // Track repeatable process selection if this is in two_paths_emerge context
+                                  if (itemId === 'two_paths_emerge' && path.id) {
+                                    const hasRepeatable = path.id === 'has_repeatable_process'
+                                    setRepeatableProcessStatus(hasRepeatable)
+                                  }
                                 }}
                                 style={{ marginBottom: '0.5rem' }}
                               >
@@ -945,7 +1124,7 @@ function SequentialContent({ item, itemId }) {
             'when_to_deploy', 'when_NOT_to_deploy', 'where_to_go_next', 'question_groups', 'paths',
             'tic', 'tac', 'toe_optional', 'handling_quality_objections', 'quick_reference_card', 'capitalization_framing',
             'assessment_question', 'transition', 'main_script', 'context_variations', 'additional_resources',
-            'related_objection_handlers'
+            'related_objection_handlers', 'compressed_integration'
           ])
 
           const unrenderedProps = Object.keys(item).filter(key => 

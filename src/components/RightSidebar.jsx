@@ -578,6 +578,27 @@ function RightSidebar({ isOpen, onClose }) {
       .filter(category => category.handlers.length > 0)
   }, [handlerCategories, searchQuery])
 
+  const toggleCategory = (categoryTitle) => {
+    setCollapsedCategories(prev => {
+      const isCurrentlyCollapsed = prev[categoryTitle] !== false
+      const newState = {
+        ...prev,
+        [categoryTitle]: !prev[categoryTitle]
+      }
+      
+      // If opening a category with only one handler, navigate to it
+      if (isCurrentlyCollapsed) {
+        // Use filteredCategories to check the actual displayed handlers
+        const category = filteredCategories.find(cat => cat.title === categoryTitle)
+        if (category && category.handlers.length === 1) {
+          handleHandlerClick(category.handlers[0].id)
+        }
+      }
+      
+      return newState
+    })
+  }
+
   if (loading) {
     return (
       <nav className={`sidebar-right ${isOpen ? 'active' : ''}`}>
@@ -589,11 +610,11 @@ function RightSidebar({ isOpen, onClose }) {
     )
   }
 
-  const toggleCategory = (categoryTitle) => {
-    setCollapsedCategories(prev => ({
-      ...prev,
-      [categoryTitle]: !prev[categoryTitle]
-    }))
+  const handleHandlerClick = (handlerId) => {
+    loadHandler(handlerId)
+    if (window.innerWidth <= 768) {
+      onClose()
+    }
   }
 
   const toggleSection = (sectionKey) => {
@@ -601,13 +622,6 @@ function RightSidebar({ isOpen, onClose }) {
       ...prev,
       [sectionKey]: !prev[sectionKey]
     }))
-  }
-
-  const handleHandlerClick = (handlerId) => {
-    loadHandler(handlerId)
-    if (window.innerWidth <= 768) {
-      onClose()
-    }
   }
 
   const handleContentClick = (itemId) => {

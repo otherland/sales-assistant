@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback, use
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useSalesData } from './SalesDataContext'
 import { trackPageView, addPageTime, isCallOnePage } from '../utils/pageAnalytics'
+import { setReferralStatus } from '../utils/sequenceSelections'
 
 const ContentContext = createContext()
 
@@ -16,6 +17,33 @@ export function ContentProvider({ children }) {
   const previousPageIdRef = useRef(null)
   const pausedTimeRef = useRef(0) // Track accumulated time when paused
   const isPausedRef = useRef(false) // Track if timer is currently paused
+
+  // Navigation history tracking
+  const addToNavigationHistory = useCallback((type, id, title) => {
+    try {
+      const history = JSON.parse(localStorage.getItem('navigationHistory') || '[]')
+      const entry = { type, id, title, timestamp: Date.now() }
+      // Don't add duplicate consecutive entries
+      if (history.length === 0 || history[history.length - 1].id !== id || history[history.length - 1].type !== type) {
+        history.push(entry)
+        // Keep only last 20 entries
+        if (history.length > 20) {
+          history.shift()
+        }
+        localStorage.setItem('navigationHistory', JSON.stringify(history))
+      }
+    } catch (e) {
+      console.error('Error saving navigation history:', e)
+    }
+  }, [])
+
+  const getNavigationHistory = useCallback(() => {
+    try {
+      return JSON.parse(localStorage.getItem('navigationHistory') || '[]')
+    } catch (e) {
+      return []
+    }
+  }, [])
 
   // Update URL based on content type and ID
   const updateURL = useCallback((type, id) => {
@@ -56,8 +84,16 @@ export function ContentProvider({ children }) {
         trackPageView(itemId)
       }
 
+      // Track referral status when discovery_referral_based is accessed
+      if (itemId === 'discovery_referral_based') {
+        setReferralStatus(true)
+      }
+
       // Store last sequential content for breadcrumb trail
       localStorage.setItem('lastSequentialContent', itemId)
+
+      // Add to navigation history
+      addToNavigationHistory('content', itemId, item.title)
 
       // Track recently viewed
       if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
@@ -80,6 +116,9 @@ export function ContentProvider({ children }) {
         obj => obj.id === itemId
       )
       if (objection) {
+        // Add to navigation history
+        addToNavigationHistory('handler', itemId, objection.title || itemId)
+
         // Load as handler since objections use HandlerContent via ObjectionContent
         if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
           window.addToRecentlyViewed('handler', itemId, objection.title || itemId)
@@ -115,6 +154,9 @@ export function ContentProvider({ children }) {
     if (salesData?.objection_handlers?.handlers) {
       const handlerData = salesData.objection_handlers.handlers[handlerId]
       if (handlerData) {
+        // Add to navigation history
+        addToNavigationHistory('handler', handlerId, handlerData.title || handlerId)
+
         // Track recently viewed
         if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
           window.addToRecentlyViewed('handler', handlerId, handlerData.title || handlerId)
@@ -200,6 +242,9 @@ export function ContentProvider({ children }) {
       console.warn(`Objection ${objectionNum} not found`)
       return
     }
+
+    // Add to navigation history
+    addToNavigationHistory('objection', objectionNum.toString(), `Objection #${objectionNum}: ${objection.objection || 'Untitled'}`)
 
     // Track recently viewed
     if (typeof window !== 'undefined' && window.addToRecentlyViewed) {
@@ -395,7 +440,8 @@ export function ContentProvider({ children }) {
     loadObjection,
     showWelcomeScreen,
     updateURL,
-    handleRoute
+    handleRoute,
+    getNavigationHistory
   }
 
   return <ContentContext.Provider value={value}>{children}</ContentContext.Provider>

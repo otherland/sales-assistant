@@ -132,11 +132,14 @@ function LeftSidebar({ isOpen, onClose }) {
     )
   }
 
-  const togglePhase = (phaseKey) => {
-    setCollapsedPhases(prev => ({
-      ...prev,
-      [phaseKey]: !prev[phaseKey]
-    }))
+  // Group items by phase
+  const phaseGroups = {}
+  if (salesData?.sequential_flow?.call_one) {
+    salesData.sequential_flow.call_one.forEach(item => {
+      const phase = item.phase
+      if (!phaseGroups[phase]) phaseGroups[phase] = []
+      phaseGroups[phase].push(item)
+    })
   }
 
   const handleNavClick = (itemId) => {
@@ -153,13 +156,37 @@ function LeftSidebar({ isOpen, onClose }) {
     }
   }
 
-  // Group items by phase
-  const phaseGroups = {}
-  if (salesData?.sequential_flow?.call_one) {
-    salesData.sequential_flow.call_one.forEach(item => {
-      const phase = item.phase
-      if (!phaseGroups[phase]) phaseGroups[phase] = []
-      phaseGroups[phase].push(item)
+  const togglePhase = (phaseKey) => {
+    setCollapsedPhases(prev => {
+      const isCurrentlyCollapsed = prev[phaseKey]
+      const newState = {
+        ...prev,
+        [phaseKey]: !prev[phaseKey]
+      }
+      
+      // If opening a group with only one entry, navigate to it
+      if (isCurrentlyCollapsed) {
+        let itemsToCheck = []
+        
+        if (phaseKey === 'reference') {
+          itemsToCheck = referenceLibrariesList
+        } else {
+          // Extract phase number from phaseKey (e.g., 'phase1' -> 1)
+          const phaseNum = parseInt(phaseKey.replace('phase', ''), 10)
+          itemsToCheck = phaseGroups[phaseNum] || []
+        }
+        
+        // If only one entry, navigate to it
+        if (itemsToCheck.length === 1) {
+          if (phaseKey === 'reference') {
+            handleReferenceClick(itemsToCheck[0].id)
+          } else {
+            handleNavClick(itemsToCheck[0].id)
+          }
+        }
+      }
+      
+      return newState
     })
   }
 

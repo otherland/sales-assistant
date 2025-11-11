@@ -36,29 +36,43 @@ function ScriptBlock({ script, style = {} }) {
       const metrics = JSON.parse(localStorage.getItem(CARPET_STORAGE_KEY) || '{}')
       const roiInputs = JSON.parse(localStorage.getItem(ROI_STORAGE_KEY) || '{}')
       
-      // Calculate ROI if we have the inputs
-      const qualified = parseFloat(roiInputs.qualifiedOpportunities) || 0
-      const closeRate = parseFloat(roiInputs.closeRate) || 0
-      const acv = parseFloat(metrics.acv) || 0
+      // Auto-calculate [X] = 1.5 × REP_CAPACITY
+      const repCapacity = parseFloat(metrics.rep_capacity) || 0
+      const autoX = repCapacity > 0 ? Math.round(repCapacity * 1.5) : null
       
-      let roi = null
-      if (qualified && closeRate && acv) {
-        const newClients = Math.round((qualified * closeRate) / 100)
-        const revenue = newClients * acv
-        roi = { newClients, revenue, acv }
-      }
+      // Use ROI input for [X] if provided, otherwise use auto-calculated value
+      const manualX = roiInputs.qualifiedOpportunities !== '' && roiInputs.qualifiedOpportunities != null 
+        ? parseFloat(roiInputs.qualifiedOpportunities) 
+        : null
+      const x = manualX != null && !isNaN(manualX) ? manualX : autoX
+      
+      // [Y]% - Use ROI input if available
+      const closeRate = roiInputs.closeRate !== '' && roiInputs.closeRate != null 
+        ? parseFloat(roiInputs.closeRate) 
+        : null
+      
+      // Auto-calculate [Z] = [X] × [Y]% / 100 if we have both
+      const z = (x != null && closeRate != null && !isNaN(closeRate)) 
+        ? Math.round((x * closeRate) / 100) 
+        : null
+      
+      // Auto-calculate [REVENUE] = [Z] × ACV if we have both
+      const acv = parseFloat(metrics.acv) || 0
+      const revenue = (z != null && acv > 0) 
+        ? z * acv 
+        : null
       
       const placeholderMap = {
-        '[X]': roiInputs.qualifiedOpportunities || '[X]',
-        '[Y]': roiInputs.closeRate ? `${roiInputs.closeRate}` : '[Y]',
-        '[Y]%': roiInputs.closeRate ? `${roiInputs.closeRate}%` : '[Y]%',
-        '[Z]': roi ? roi.newClients : '[Z]',
-        '[$]': metrics.acv ? `$${parseInt(metrics.acv).toLocaleString()}` : '[$]',
-        '[ACV]': metrics.acv ? `$${parseInt(metrics.acv).toLocaleString()}` : '[ACV]',
-        '[REVENUE]': roi ? `$${parseInt(roi.revenue).toLocaleString()}` : '[REVENUE]',
+        '[X]': x != null ? x.toString() : '[X]',
+        '[Y]': closeRate != null && !isNaN(closeRate) ? closeRate.toString() : '[Y]',
+        '[Y]%': closeRate != null && !isNaN(closeRate) ? `${closeRate}%` : '[Y]%',
+        '[Z]': z != null ? z.toString() : '[Z]',
+        '[$]': acv > 0 ? `$${parseInt(acv).toLocaleString()}` : '[$]',
+        '[ACV]': acv > 0 ? `$${parseInt(acv).toLocaleString()}` : '[ACV]',
+        '[REVENUE]': revenue != null ? `$${parseInt(revenue).toLocaleString()}` : '[REVENUE]',
         '[CYCLE]': metrics.cycle_days ? `${metrics.cycle_days} days` : '[CYCLE]',
-        '[REP_CAPACITY]': metrics.rep_capacity ? `${metrics.rep_capacity} meetings/month` : '[REP_CAPACITY]',
-        '[PIPELINE]': metrics.pipeline ? `${metrics.pipeline} opportunities/month` : '[PIPELINE]',
+        '[REP_CAPACITY]': metrics.rep_capacity ? metrics.rep_capacity.toString() : '[REP_CAPACITY]',
+        '[PIPELINE]': metrics.pipeline ? metrics.pipeline.toString() : '[PIPELINE]',
         '[ENVIRONMENT]': metrics.environment || '[ENVIRONMENT]',
         '[TIMELINE]': metrics.timeline || '[TIMELINE]'
       }

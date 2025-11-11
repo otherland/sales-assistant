@@ -665,8 +665,43 @@ function HandlerContent({ handlerData, handlerId }) {
           })
         })()}
 
-        <div className="return-to-track">
-          <button onClick={returnToTrack} className="return-btn">
+        <div style={{ marginTop: '2rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <button 
+            onClick={() => loadContent('integration_explanation')} 
+            className="return-btn"
+            style={{
+              padding: '0.75rem 1.25rem',
+              background: 'var(--primary-color)',
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: '6px',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'opacity 0.2s'
+            }}
+            onMouseOver={(e) => e.target.style.opacity = '0.9'}
+            onMouseOut={(e) => e.target.style.opacity = '1'}
+          >
+            🔗 Return to Integration Explanation
+          </button>
+          <button 
+            onClick={returnToTrack} 
+            className="return-btn"
+            style={{
+              padding: '0.75rem 1.25rem',
+              background: 'rgba(255, 255, 255, 0.1)',
+              color: '#ffffff',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              borderRadius: '6px',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'opacity 0.2s'
+            }}
+            onMouseOver={(e) => e.target.style.opacity = '0.9'}
+            onMouseOut={(e) => e.target.style.opacity = '1'}
+          >
             ↩️ Return to Main Track
           </button>
         </div>

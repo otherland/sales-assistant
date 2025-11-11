@@ -173,6 +173,41 @@ function SettingsPopup({ isOpen, onClose, layoutReversed, onLayoutReversedChange
     }
   }
 
+  const handleResetAllProgress = () => {
+    if (window.confirm('Are you sure you want to reset ALL progress? This will clear:\n\n• All question checkmarks\n• CARPET calculator data\n• ROI calculations\n• Call notes\n• Page analytics & time tracking\n• Navigation history\n\nThis cannot be undone.')) {
+      // Reset questions
+      resetAllQuestions()
+      
+      // Reset analytics
+      resetAllAnalytics()
+      window.dispatchEvent(new CustomEvent('analyticsReset'))
+      
+      // Reset CARPET metrics
+      localStorage.removeItem('carpet_metrics')
+      
+      // Reset ROI calculation
+      localStorage.removeItem('roi_calculation')
+      
+      // Reset CARPET notes
+      localStorage.removeItem('carpet_notes')
+      
+      // Reset navigation history
+      localStorage.removeItem('navigationHistory')
+      
+      // Reset last sequential content
+      localStorage.removeItem('lastSequentialContent')
+      
+      // Trigger refresh for CARPET calculator
+      window.dispatchEvent(new CustomEvent('carpetMetricsUpdated'))
+      
+      // Show confirmation
+      alert('All progress has been reset. The page will refresh to reflect the changes.')
+      
+      // Reload the page to refresh all components
+      window.location.reload()
+    }
+  }
+
   if (!isOpen) return null
 
   return (
@@ -338,24 +373,11 @@ function SettingsPopup({ isOpen, onClose, layoutReversed, onLayoutReversedChange
           </div>
 
           <div className="control-group control-group-reset">
-            <label className="control-label">Question Progress</label>
             <button 
               className="control-btn reset-btn" 
-              id="reset-questions" 
-              title="Reset All Question Checkmarks"
-              onClick={handleResetQuestions}
-            >
-              Reset
-            </button>
-          </div>
-
-          <div className="control-group control-group-reset">
-            <label className="control-label">Page Analytics</label>
-            <button 
-              className="control-btn reset-btn" 
-              id="reset-analytics" 
-              title="Reset All Page Analytics (Time Tracking & Progress)"
-              onClick={handleResetAnalytics}
+              id="reset-all-progress" 
+              title="Reset All Progress: Questions, CARPET Calculator, ROI, Notes, Analytics, Navigation History"
+              onClick={handleResetAllProgress}
             >
               Reset All Progress
             </button>

@@ -1,90 +1,285 @@
 import React, { useState } from 'react'
+import { useContent } from '../context/ContentContext'
+import { getSequenceSelections } from '../utils/sequenceSelections'
+
+// Helper function to get CARPET completeness and missing variables
+function getCARPETState() {
+  try {
+    const stored = localStorage.getItem('carpet_metrics')
+    const metrics = stored ? JSON.parse(stored) : {}
+    
+    const required = {
+      'cycle_days': { label: 'C (Cycle)', section: 'discovery_middle_funnel' },
+      'acv': { label: 'A (ACV)', section: 'discovery_bottom_funnel' },
+      'rep_capacity': { label: 'R (Rep)', section: 'discovery_middle_funnel' },
+      'pipeline': { label: 'P (Pipeline)', section: 'discovery_top_funnel' }
+    }
+    
+    const missing = []
+    const completed = []
+    
+    Object.entries(required).forEach(([key, info]) => {
+      if (!metrics[key] || metrics[key] === '') {
+        missing.push({ key, ...info })
+      } else {
+        completed.push({ key, ...info })
+      }
+    })
+    
+    const completeness = {
+      percentage: Math.round((completed.length / Object.keys(required).length) * 100),
+      missing,
+      completed
+    }
+    
+    return { metrics, completeness }
+  } catch (e) {
+    return { metrics: {}, completeness: { percentage: 0, missing: [], completed: [] } }
+  }
+}
+
+// Helper function to get ROI state
+function getROIState() {
+  try {
+    const stored = localStorage.getItem('roi_calculation')
+    const roiInputs = stored ? JSON.parse(stored) : {}
+    
+    const hasQualified = roiInputs.qualifiedOpportunities && roiInputs.qualifiedOpportunities !== ''
+    const hasCloseRate = roiInputs.closeRate && roiInputs.closeRate !== ''
+    
+    return {
+      hasQualified,
+      hasCloseRate,
+      isComplete: hasQualified && hasCloseRate
+    }
+  } catch (e) {
+    return { hasQualified: false, hasCloseRate: false, isComplete: false }
+  }
+}
+
+// Replace placeholders in script with actual CARPET/ROI values
+function replacePlaceholders(scriptText) {
+  const carpetState = getCARPETState()
+  const roiState = getROIState()
+  const metrics = carpetState.metrics
+  
+  // Calculate ROI if we have the inputs
+  let roi = null
+  try {
+    const roiStored = localStorage.getItem('roi_calculation')
+    const roiInputs = roiStored ? JSON.parse(roiStored) : {}
+    const qualified = parseFloat(roiInputs.qualifiedOpportunities) || 0
+    const closeRate = parseFloat(roiInputs.closeRate) || 0
+    const acv = parseFloat(metrics.acv) || 0
+    
+    if (qualified && closeRate && acv) {
+      const newClients = Math.round((qualified * closeRate) / 100)
+      const revenue = newClients * acv
+      roi = { newClients, revenue, acv, qualifiedOpportunities: qualified, closeRate }
+    }
+  } catch (e) {
+    // ROI calculation failed, continue without it
+  }
+  
+  // Replace placeholders - only replace if value exists, otherwise remove placeholder
+  let result = scriptText
+  
+  // ROI placeholders - use actual values or remove
+  const xValue = roi?.qualifiedOpportunities || metrics.pipeline
+  result = result.replace(/\[X\]/g, xValue ? String(xValue) : '')
+  
+  if (roi?.closeRate) {
+    result = result.replace(/\[Y\]%/g, `${roi.closeRate}%`)
+    result = result.replace(/\[Y\]/g, String(roi.closeRate))
+  } else {
+    result = result.replace(/\[Y\]%/g, '')
+    result = result.replace(/\[Y\]/g, '')
+  }
+  
+  result = result.replace(/\[Z\]/g, roi?.newClients ? String(roi.newClients) : '')
+  result = result.replace(/\[REVENUE\]/g, roi?.revenue ? `$${parseInt(roi.revenue).toLocaleString()}` : '')
+  
+  // CARPET placeholders - use actual values or remove
+  result = result.replace(/\[ACV\]/g, metrics.acv ? `$${parseInt(metrics.acv).toLocaleString()}` : '')
+  result = result.replace(/\[\$\]/g, metrics.acv ? `$${parseInt(metrics.acv).toLocaleString()}` : '')
+  result = result.replace(/\[CYCLE\]/g, metrics.cycle_days ? `${metrics.cycle_days} days` : '')
+  result = result.replace(/\[REP_CAPACITY\]/g, metrics.rep_capacity ? `${metrics.rep_capacity} meetings/month` : '')
+  result = result.replace(/\[PIPELINE\]/g, metrics.pipeline ? `${metrics.pipeline} opportunities/month` : '')
+  result = result.replace(/\[ENVIRONMENT\]/g, metrics.environment || '')
+  result = result.replace(/\[TIMELINE\]/g, metrics.timeline || '')
+  
+  // Clean up awkward spacing left by removed placeholders (but preserve line breaks)
+  result = result.replace(/  +/g, ' ') // Multiple spaces to single space
+  result = result.replace(/\s+\./g, '.') // Space before period
+  result = result.replace(/\s+,/g, ',') // Space before comma
+  result = result.replace(/\s+:/g, ':') // Space before colon
+  result = result.replace(/\s+—/g, '—') // Space before em dash
+  result = result.replace(/—\s+/g, '—') // Space after em dash
+  result = result.replace(/\n\s+\n\s+/g, '\n\n') // Multiple blank lines
+  
+  return result.trim()
+}
+
+// Get recommended re-entry points based on state
+function getReEntryPoints() {
+  const carpetState = getCARPETState()
+  const roiState = getROIState()
+  const sequenceSelections = getSequenceSelections()
+  
+  const recommendations = []
+  
+  // If CARPET is incomplete, suggest where to go
+  if (carpetState.completeness.percentage < 100) {
+    const missing = carpetState.completeness.missing
+    
+    // Prioritize by funnel position
+    if (missing.some(m => m.key === 'pipeline')) {
+      recommendations.push({
+        id: 'discovery_top_funnel',
+        label: 'Top of Funnel — Get Pipeline (P)',
+        reason: 'Missing Pipeline volume data'
+      })
+    }
+    
+    if (missing.some(m => m.key === 'cycle_days' || m.key === 'rep_capacity')) {
+      recommendations.push({
+        id: 'discovery_middle_funnel',
+        label: 'Middle of Funnel — Get Cycle (C) & Rep Capacity (R)',
+        reason: 'Missing Cycle or Rep capacity data'
+      })
+    }
+    
+    if (missing.some(m => m.key === 'acv')) {
+      recommendations.push({
+        id: 'discovery_bottom_funnel',
+        label: 'Bottom of Funnel — Get ACV (A)',
+        reason: 'Missing Average Contract Value'
+      })
+    }
+  } else if (!roiState.isComplete) {
+    // CARPET complete but ROI not calculated
+    recommendations.push({
+      id: 'integration_explanation',
+      label: 'Integration & ROI Calculation',
+      reason: 'CARPET complete — ready to calculate ROI and present thesis'
+    })
+  } else {
+    // Both complete, suggest moving forward
+    recommendations.push({
+      id: 'integration_explanation',
+      label: 'Integration Explanation — Present Thesis',
+      reason: 'All data captured — ready to present value proposition'
+    })
+  }
+  
+  // Always include discovery intro as fallback
+  if (recommendations.length === 0) {
+    recommendations.push({
+      id: 'discovery_intro',
+      label: 'Discovery Introduction',
+      reason: 'Start or restart discovery flow'
+    })
+  }
+  
+  return recommendations
+}
 
 const PROTOCOLS = [
   {
     id: 'A',
-    title: 'Prospect Goes Silent After Your Question',
-    steps: [
-      'Count to 3 in your head (don\'t panic)',
-      'Rephrase the question in simpler form'
-    ],
-    script: 'Sorry, let me ask that differently — [simpler version]',
-    example: {
-      original: 'What\'s your current working definition of what makes someone a qualified opportunity for your team in terms of budget alignment, decision-making authority, and timeline?',
-      simpler: 'What makes someone a qualified opportunity in your world?'
-    },
-    guidance: 'Simplicity is strength, not weakness. Break complex questions into single, focused ones.'
+    title: 'You\'re Stuck or Lost',
+    script: 'Let me make sure I captured that correctly — did I get that right?\n\n(While they confirm, check your CARPET tracker for missing variables, then ask the next question based on what\'s missing.)',
+    getReEntryPoints: () => {
+      const carpetState = getCARPETState()
+      const points = getReEntryPoints()
+      
+      if (carpetState.completeness.missing.length > 0) {
+        const missingVars = carpetState.completeness.missing.map(m => m.label).join(', ')
+        return points.map(p => ({
+          ...p,
+          reason: `${p.reason} — Missing: ${missingVars}`
+        }))
+      }
+      
+      if (carpetState.completeness.percentage < 25) {
+        return [
+          {
+            id: 'discovery_intro',
+            label: 'Restart Discovery Flow',
+            reason: 'Early in discovery — restart from beginning to rebuild context'
+          },
+          ...points
+        ]
+      }
+      
+      return points
+    }
   },
   {
     id: 'B',
-    title: 'You Freeze and Don\'t Know What to Ask Next',
-    steps: [
-      'Buy time by summarizing',
-      'While they confirm, scan your CARPET tracker to see what you\'re missing'
-    ],
-    script: 'Let me make sure I captured that — [summarize their answer]. Did I get that right?',
-    example: {
-      text: 'Let me make sure I\'ve got this right — you mentioned that deals typically take 2-4 weeks from first call to close, and most stall after the proposal goes out. Did I capture that correctly?',
-      note: '(This buys you 10 seconds to think of next question)'
-    },
-    guidance: 'This buys you 10 seconds to scan for next question. Check your CARPET tracker for missing variables.'
+    title: 'They\'re Giving Too Much Information',
+    script: 'That\'s really helpful context—I appreciate you walking me through all of that. Just to narrow the focus so I can make sure I\'m capturing the right information: which of those is producing the most predictable results right now?',
+    getReEntryPoints: () => {
+      const carpetState = getCARPETState()
+      const points = getReEntryPoints()
+      
+      if (carpetState.completeness.missing.some(m => m.key === 'pipeline')) {
+        return [
+          {
+            id: 'discovery_top_funnel',
+            label: 'Top of Funnel — Focus on Pipeline',
+            reason: 'Redirect to capture Pipeline (P) variable from strongest channel'
+          },
+          ...points.filter(p => p.id !== 'discovery_top_funnel')
+        ]
+      }
+      
+      return points
+    }
   },
   {
     id: 'C',
-    title: 'You\'re Genuinely Lost in the Flow',
-    steps: [
-      'Loop back to something from 2 questions ago',
-      'Ask a clarifying question about that earlier topic'
-    ],
-    script: 'Before we move on, help me understand [EARLIER TOPIC] a bit more — [CLARIFYING QUESTION]',
-    example: {
-      text: 'Before we move on, help me understand your team structure a bit more — you mentioned Jenna handles most of the initial calls. Does she also handle the technical evaluations, or does someone else take over at that stage?',
-      note: '(This gets you back on track without admitting confusion)'
-    },
-    guidance: 'This reestablishes position without admitting confusion. Loop back to a previous topic to regain footing.'
-  },
-  {
-    id: 'D',
-    title: 'They\'re Giving You Too Much Information',
-    steps: [
-      'Acknowledge what they said',
-      'Narrow the focus immediately'
-    ],
-    script: 'That\'s helpful context. Just to narrow the focus — [SPECIFIC THING YOU NEED]',
-    example: {
-      text: '(They ramble about 5 different channels)\n"That\'s helpful context. Just to narrow the focus — which of those channels is producing the most predictable conversions right now?"',
-      note: ''
-    },
-    guidance: 'Redirect to strongest channel or clearest data point. Don\'t let them overwhelm you with information.'
-  },
-  {
-    id: 'E',
-    title: 'You Asked Too Many Questions at Once',
-    steps: [
-      'Acknowledge it immediately',
-      'Narrow to just one question'
-    ],
-    script: 'Sorry, that was three questions in one. Let me focus — [ASK JUST ONE]',
-    example: {
-      text: 'Sorry, that was three questions in one. Let me focus — who typically takes that first call when interest comes in?',
-      note: ''
-    },
-    guidance: 'Self-correction shows professionalism. Immediately narrow to one question.'
-  },
-  {
-    id: 'F',
-    title: 'Conversation Isn\'t Moving Forward / Prospect Won\'t Engage',
-    steps: [
-      'Acknowledge the impasse directly',
-      'Offer to defer with materials for their review',
-      'Give them control over next steps'
-    ],
-    script: 'Let me be direct with you. It sounds like no amount of conversation today will move this forward. I completely understand that. Here\'s what makes more sense: I\'ll send you our case studies, client contacts where possible, and a draft proposal. You do your diligence on your timeline. If it checks out and you want to reconnect, I\'m happy to. If not, no hard feelings. Does that sound more reasonable?',
-    example: {
-      text: 'Let me be direct with you. It sounds like no amount of conversation today will move this forward. I completely understand that. Here\'s what makes more sense: I\'ll send you our case studies, client contacts where possible, and a draft proposal. You do your diligence on your timeline. If it checks out and you want to reconnect, I\'m happy to. If not, no hard feelings. Does that sound more reasonable?',
-      note: '(Use when prospect is resistant, guarded, or conversation has stalled. Respects their position while leaving door open.)'
-    },
-    guidance: 'Sometimes the best move is to step back and let them verify credibility on their own timeline. This respects their position while maintaining professionalism and leaving the door open for future engagement.'
+    title: 'Conversation Isn\'t Moving Forward',
+    script: 'Let me be direct with you—it sounds like we\'re not making progress right now, and I completely understand that.\n\n(If you have CARPET data and ROI): "We\'ve covered a lot of ground today, and I have enough to build out a scope. I\'ll send you a draft proposal with the ROI math we discussed—[X] opportunities at [Y]% close rate equals [Z] clients and [REVENUE] in revenue. Plus case studies and client contacts. You review it on your timeline, and if it makes sense, we reconnect. If not, no hard feelings. Does that work?"\n\n(If you don\'t have enough data): "I realize we haven\'t gotten through the full discovery yet. I\'ll send you our case studies, client contacts, and a framework document that explains our approach. You do your diligence on your timeline. If it checks out and you want to reconnect to finish the discovery, I\'m happy to. If not, no hard feelings. Does that sound more reasonable?"',
+    getReEntryPoints: () => {
+      const carpetState = getCARPETState()
+      const roiState = getROIState()
+      
+      if (carpetState.completeness.percentage >= 75 && roiState.isComplete) {
+        return [
+          {
+            id: 'integration_explanation',
+            label: 'Integration & ROI Presentation',
+            reason: 'You have enough data—present the ROI and value proposition'
+          },
+          {
+            id: 'transition_call_two',
+            label: 'Close & Schedule Call Two',
+            reason: 'Ready to close—secure next step'
+          }
+        ]
+      }
+      
+      if (carpetState.completeness.percentage >= 50) {
+        return [
+          {
+            id: 'discovery_bottom_funnel',
+            label: 'Complete Discovery — Bottom of Funnel',
+            reason: 'You\'re close—finish capturing remaining CARPET variables'
+          },
+          ...getReEntryPoints()
+        ]
+      }
+      
+      return [
+        {
+          id: 'discovery_intro',
+          label: 'Restart Discovery',
+          reason: 'Not enough data yet—restart discovery to build proper foundation'
+        },
+        ...getReEntryPoints()
+      ]
+    }
   },
   {
     id: 'G',
@@ -106,9 +301,19 @@ const PROTOCOLS = [
 function EmergencyScripts({ expanded, isMobile, onAction }) {
   const [isOpen, setIsOpen] = useState(false)
   const [expandedProtocol, setExpandedProtocol] = useState(null)
+  const { loadContent } = useContent()
 
   const toggleProtocol = (protocolId) => {
     setExpandedProtocol(expandedProtocol === protocolId ? null : protocolId)
+  }
+
+  const handleReEntryClick = (e, contentId) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (loadContent && contentId) {
+      loadContent(contentId)
+      setIsOpen(false) // Close modal after navigation
+    }
   }
 
   return (
@@ -145,19 +350,8 @@ function EmergencyScripts({ expanded, isMobile, onAction }) {
 
             <div className="emergency-scripts-content">
               {PROTOCOLS.map((protocol) => {
-                // Extract clean verbatim script
-                let verbatimScript = protocol.script;
-                
-                if (protocol.example?.text) {
-                  // For Protocol D, extract the quoted part after the context
-                  if (protocol.id === 'D') {
-                    const match = protocol.example.text.match(/"([^"]+)"/);
-                    verbatimScript = match ? match[1] : protocol.script;
-                  } else {
-                    // Use example.text if it's a complete example
-                    verbatimScript = protocol.example.text;
-                  }
-                }
+                // Get re-entry points if function exists
+                const reEntryPoints = protocol.getReEntryPoints ? protocol.getReEntryPoints() : []
                 
                 return (
                   <div 
@@ -178,13 +372,89 @@ function EmergencyScripts({ expanded, isMobile, onAction }) {
 
                     {expandedProtocol === protocol.id && (
                       <div className="protocol-content">
-                        <div className="protocol-script-box">
-                          <div className="script-text">
-                            {verbatimScript.split('\n').map((line, i) => (
-                              <div key={i}>{line || <br />}</div>
+                        {/* Script Only */}
+                        <div className="protocol-script-box" style={{
+                          padding: '1rem',
+                          background: 'var(--bg-secondary, #f8fafc)',
+                          borderRadius: '6px',
+                          border: '1px solid var(--border-color, #e2e8f0)'
+                        }}>
+                          <div className="script-text" style={{
+                            fontSize: '0.95rem',
+                            lineHeight: '1.8',
+                            color: 'var(--text-primary, #0f172a)',
+                            whiteSpace: 'pre-wrap'
+                          }}>
+                            {replacePlaceholders(protocol.script || '').split('\n').map((line, i) => (
+                              <div key={i} style={{ marginBottom: line ? '0.5rem' : '0.25rem' }}>
+                                {line || <br />}
+                              </div>
                             ))}
                           </div>
                         </div>
+
+                        {/* Re-entry Points */}
+                        {reEntryPoints.length > 0 && protocol.id !== 'G' && (
+                          <div style={{
+                            marginTop: '1rem',
+                            padding: '0.75rem',
+                            background: 'rgba(34, 197, 94, 0.08)',
+                            borderRadius: '4px',
+                            border: '1px solid rgba(34, 197, 94, 0.3)'
+                          }}>
+                            <div style={{ 
+                              fontSize: '0.75rem', 
+                              fontWeight: 600, 
+                              color: 'var(--accent-green, #22c55e)',
+                              marginBottom: '0.75rem',
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.5px'
+                            }}>
+                              🎯 Recommended Re-entry Points:
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                              {reEntryPoints.map((point, idx) => (
+                                <button
+                                  key={idx}
+                                  onClick={(e) => handleReEntryClick(e, point.id)}
+                                  style={{
+                                    padding: '0.6rem 0.75rem',
+                                    background: 'rgba(34, 197, 94, 0.1)',
+                                    border: '1px solid rgba(34, 197, 94, 0.4)',
+                                    borderRadius: '4px',
+                                    color: 'var(--text-primary, #0f172a)',
+                                    fontSize: '0.85rem',
+                                    textAlign: 'left',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.2s',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '0.25rem'
+                                  }}
+                                  onMouseEnter={(e) => {
+                                    e.target.style.background = 'rgba(34, 197, 94, 0.2)'
+                                    e.target.style.borderColor = 'rgba(34, 197, 94, 0.6)'
+                                  }}
+                                  onMouseLeave={(e) => {
+                                    e.target.style.background = 'rgba(34, 197, 94, 0.1)'
+                                    e.target.style.borderColor = 'rgba(34, 197, 94, 0.4)'
+                                  }}
+                                >
+                                  <div style={{ fontWeight: 600, color: 'var(--accent-green, #22c55e)' }}>
+                                    {point.label}
+                                  </div>
+                                  <div style={{ 
+                                    fontSize: '0.75rem', 
+                                    color: 'var(--text-secondary, #475569)',
+                                    fontStyle: 'italic'
+                                  }}>
+                                    {point.reason}
+                                  </div>
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
