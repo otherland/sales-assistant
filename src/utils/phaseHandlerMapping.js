@@ -22,7 +22,7 @@ export const PHASE_HANDLER_MAPPING = {
   ],
 
   [PHASES.DISCOVERY_TOF]: [
-    'do_you_have_connections', // "We grow through referrals" / "Do you have connections?"
+    'referrals_objection', // "We grow through referrals" / "Do you have connections?"
     'we_only_do_referrals', // "We grow through referrals"
     'were_doing_fine_without_help', // "We're doing fine without help"
     'budget_constraints', // "We don't have budget"

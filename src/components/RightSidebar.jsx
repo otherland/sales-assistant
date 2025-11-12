@@ -193,7 +193,7 @@ const HANDLER_EMOJIS = {
   'messaging_approach': '💬',
   
   // Referrals & Network
-  'do_you_have_connections': '🔗',
+  'referrals_objection': '🔗',
   'we_only_do_referrals': '🤝',
   'referral_purist': '✨',
   'warm_intro_obsession': '🔥',
@@ -781,7 +781,12 @@ function RightSidebar({ isOpen, onClose }) {
                 <div className="step-desc">Framework for any objection</div>
               </div>
             </div>
-            <div className="interrupt-step" onClick={() => handleContentClick('referrals_objection')}>
+            <div className="interrupt-step" onClick={() => {
+              loadHandler('referrals_objection')
+              if (window.innerWidth <= 768) {
+                onClose()
+              }
+            }}>
               <div className="step-number">3</div>
               <div className="step-content">
                 <div className="step-title">Referrals Objection</div>

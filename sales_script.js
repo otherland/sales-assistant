@@ -14,7 +14,7 @@ let salesData = {
         "phase": 1,
         "purpose": "Establish yourself as a peer conducting due diligence, not a vendor trying to win business",
         "advisor_mindset": "Deliver this like an advisor leading a professional diligence session, not a salesperson opening a discovery call. Slow down, stay calm, and let silence do the work.",
-        "script": "Hey [FirstName], great to meet you. I've got <b>30 minutes</b> blocked for this, and I want to use it well.<br><br>Here's how I work: <b>I don't pitch on first calls</b>. What I do is audit how you're currently generating demand, and see if there's a clear fit before we talk next steps.<br><br>So I'm going to ask you some specific questions. Not to interrogate—just to understand one thing: <u>where's your leverage? Where's the constraint?</u><br><br>And once I see that, I can tell you how we'd approach it.<br><br>I'll just say upfront—we specialize in <u>sophisticated, brand-sensitive markets</u> where data is scarce and demand generation has to <b>protect reputation</b>. That context shapes how I'm listening today.<br><br><br><br>I can start with our overall thesis.<br><br>So we aim to work in sophisticated markets and we're industry agnostic.<br><br>In these verticals with careful buyers, the data is harder to acquire, there's a lot of room for improvement and our thesis is to fill in those specialized gaps.<br><br>So we'll go into these markets where established companies want new, qualified conversations at scale but haven't been able to fully figure out a modern channel for revenue generation - or at least want it done better.<br><br>We've seen time and time again that there's pent up, unmet demand on the other side of a properly designed solution.",
+        "script": "Hey [FirstName], great to meet you. I've got <b>30 minutes</b> blocked for this, and I want to use it well.<br><br>Here's how I work: <b>I don't pitch on first calls</b>. What I do is audit how you're currently generating demand, and see if there's a clear fit before we talk next steps.<br><br>So I'm going to ask you some specific questions. Not to interrogate—just to understand one thing: <u>where's your leverage? Where's the constraint?</u><br><br>And once I see that, I can tell you how we'd approach it.<br><br>I'll just say upfront—we specialize in <u>sophisticated, brand-sensitive markets</u> where data is scarce and demand generation has to <b>protect reputation</b>. That context shapes how I'm listening today.",
       },
       {
         "id": "discovery_intro",
@@ -22,7 +22,7 @@ let salesData = {
         "category": "sequential",
         "phase": 2,
         "purpose": "Set up the comprehensive due diligence flow",
-        "script": "<i>Great</i>. So here's what I'm thinking. Let’s start at the top - how you’re currently generating interest and where that demand is coming from — specifically, the channels where it starts, how you determine what's qualified, and how it converts to revenue.<br><br>That's how we'll understand whether there's <u>leverage we can create</u> with new approaches.<br><br>So, starting at the top of the funnel...",
+        "script": "<i>Great</i>. So here's what I'm thinking. I'm going to map how demand actually works in your business—specifically, the channels where it starts, how you determine what's qualified, and how it converts to revenue. This is my diagnostic. It's how I understand whether there's <u>leverage we can create</u> with new approaches.<br><br>Let me start at the top of the funnel. How are you currently generating interest in the market?",
         "advisor_guidance": "Ask 1 question at a time and then be quiet - silence is a powerful tool, use it as often as possible. Don't overthink the order — what matters most is getting reps in.",
       },
       {
@@ -170,21 +170,12 @@ let salesData = {
           {
             "id": "no_repeatable_process",
             "condition": "They say they don't have a formal process, or it's inconsistent/ad-hoc",
-            "script": "<i>That makes sense</i> — a lot of businesses grow through referrals and relationships, which means each deal can feel unique.<br><br>Here's what I want to do: let's <b>reconstruct your process from your last successful conversion</b>.<br><br>Can you name <b>one client you actually converted through your network</b> — whether that was a referral, introduction, or relationship-based opportunity?<br><br>(Wait for them to name a client)<br><br>Perfect. Now walk me through that win <b>step-by-step</b>: how did it come in? What moved it forward? What sealed it?<br><br>(Trace the entire path: first contact → initial conversation → what was exchanged → follow-up cadence → what closed it)<br><br>(After they've walked through it)<br><br><i>Got it</i>. So here's what we'll do: <b>we'll replicate that same path for every introduction we generate</b>. All you need to do is run the same play that converted this client.<br><br>That single sequence becomes the <b>standardized playbook</b> we feed qualified opportunities into. We're turning your past success into a repeatable system.",
+            "script": "<i>That makes sense</i> — a lot of businesses grow through referrals and relationships, which means each deal can feel unique.<br><br>Here's what I want to do: let's <b>reconstruct your process from your last successful conversion</b>.<br><br>Can you name <b>one client you actually converted through your network</b> — whether that was a referral, introduction, or relationship-based opportunity?<br><br><span class=\"script-pause\">(Wait for them to name a client)</span><br><br>Perfect. Now let's walk through that win <b>step-by-step</b>. I'm going to ask you specific questions to map the exact sequence:<br><br><b>1.</b> Who took that first call or initial conversation?<br><br><span class=\"script-pause\">(Wait for answer)</span><br><br><b>2.</b> What questions were asked on that call?<br><br><span class=\"script-pause\">(Wait for answer)</span><br><br><b>3.</b> What information or assets were exchanged next — deck, proposal, case study, engagement letter?<br><br><span class=\"script-pause\">(Wait for answer)</span><br><br><b>4.</b> How was follow-up handled? How often?<br><br><span class=\"script-pause\">(Wait for answer)</span><br><br><b>5.</b> How long did it take to move from first touch to signed agreement?<br><br><span class=\"script-pause\">(Wait for answer)</span><br><br><b>6.</b> What specifically sealed it — was it the relationship, the fit, timing, or something else?<br><br><span class=\"script-pause\">(Wait for answer)</span><br><br><i>Got it</i>. So here's what we'll do: <b>we'll replicate that exact same sequence for every introduction we generate</b>. All you need to do is run the same play that converted this client.<br><br>That single sequence becomes the <b>standardized playbook</b> we feed qualified opportunities into. We're turning your past success into a repeatable system.",
             "advisor_notes": [
               "This converts confusion into clarity — you've turned their past luck into a standardized playbook",
-              "Ask granular questions: Who took the first call? What questions were asked? What assets were sent? How was follow-up handled? How long did it take?",
+              "Follow the scripted questions in order — don't skip or add questions outside this sequence",
               "The goal: extract the functional reality of their business, even if it's not formally documented",
               "After reconstruction, confirm: 'So this is the process we'll replicate for every introduction we generate'"
-            ],
-            "reconstruction_questions": [
-              "Who took that first call or initial conversation?",
-              "What questions were asked on that call?",
-              "What information or assets were exchanged next — deck, proposal, case study, engagement letter?",
-              "How was follow-up handled?",
-              "How often?",
-              "How long did it take to move from first touch to signed agreement?",
-              "What specifically sealed it — was it the relationship, the fit, timing, or something else?"
             ]
           }
         ],
@@ -572,90 +563,6 @@ let salesData = {
           "when_to_use": "Use when prospects are genuinely curious about 'how' but you sense they're sophisticated and will filter out vendor-speak. Best for regulated industries or brand-sensitive buyers. 2-3 minute investment shows mechanism through story, not explanation.",
           "script": "Let me show you how this works in practice.<br><br>(Pause, shift into story mode)<br><br>One of our clients operates in one of the <b>most conservative, brand-sensitive industries</b> imaginable. Every piece of communication has to protect decades of institutional credibility. One wrong move and they lose the room forever. That's exactly the kind of market our <b>thesis is built for</b>.<br><br>They engaged us to open up new qualified relationships with <b>highly specialized decision-makers</b> — profiles that are notoriously difficult to reach and even harder to engage without damaging brand integrity.<br><br>We started with <b>diligence</b>. Our analysts spent weeks sitting with their team, extracting <b>30+ years of institutional knowledge</b> — how these buyers think, what language earns trust, what outcomes matter, and what lines you never cross. That diligence process is what allows us to define <u>quality opportunities</u> rather than chasing volume.<br><br>In their market, <b>brand risk is everything</b>. One message that feels too aggressive or generic can undo years of goodwill. So our first rule was simple: generate interest, never cheapen the name. Tone, timing, and targeting had to match exactly how this market behaves.<br><br>Our analysts also mapped where these buyers actually spend time professionally. We found that the vast majority were digitally present in predictable channels, but <u>no one had approached them the right way</u>. That's a pattern we see constantly in sophisticated markets — the demand exists, it's just unmet.<br><br>So we deployed our <b>private infrastructure</b> — not generic tools, but a system built specifically for precision targeting and brand protection. The messaging ran through multiple quality checks for tone, compliance, and credibility. Everything was designed to sound like a <b>peer in their world</b>, not a vendor cold-calling.<br><br>Within <b>45 days</b>, <b>23 qualified executive-level meetings</b> with exactly the profiles they needed. By <b>day 90</b>, <b>4 new mandates worth over $2M in fees</b>. All while protecting their brand at every step.<br><br>(Pause, tie back to them)<br><br>So the 'how' isn't about channels or tactics — it's about the <b>thesis</b>. Specialized markets, hard-to-acquire data, strict brand standards. We run a <b>diligence process</b> that extracts your knowledge, build <b>enterprise-grade messaging</b> that protects your integrity, and deploy it through <b>private infrastructure</b> built for the exact buyers you need to reach.<br><br>Now, until we've built out <i>your</i> engagement model, I can't answer 'how' in a tactical way. Right now we're in due diligence, and our job is to collect the information we need to plug into that model. Once we do, we'll see exactly what benchmark makes sense and how we mitigate your risk.<br><br>What I'd like to understand is: how are you currently generating demand today, and what does that process look like from first touch through to conversion?"
         }
-      },
-      {
-        "id": "referrals_objection",
-        "title": "Referrals & Connections Objection",
-        "category": "interrupt",
-        "trigger": "When they ask 'Do you have connections?' or 'We grow through referrals'",
-        "purpose": "Validate, reframe, and qualify — never correct or defend",
-        "context": "This is the most common objection in Revenue Advisory. It usually signals confusion about what you do, fear of cold traffic, or both. Your job: validate first, then spin it as good news, and always end with a question.",
-        "golden_rule": "Never make the prospect feel wrong. Validate → Spin (or stay neutral) → Ask a question. All bad news is good news.",
-        "core_principle": "We don't tap a Rolodex. We don't sell introductions. We build and warm new channels using messaging and outreach infrastructure.",
-        "primary_reframe": "That's great—referrals are predictable. Here's what we've learned: when companies are mainly referral-based, they've actually <b>built moats in one channel</b> but haven't developed <u>systematic demand generation in others</u>. So the untapped demand is massive. That's exactly where our <b>thesis creates the most upside</b>—we're not disrupting what's working, we're opening a new channel in markets where the demand already exists but hasn't been approached the right way.<br><br>How consistent have those referrals been month-to-month?",
-        "question_groups": [
-          {
-            "emoji": "🔍",
-            "title": "Diagnostic Questions — Test the Referral Model",
-            "questions": [
-              "How consistent are those referrals month to month?",
-              "Has the business actually scaled meaningfully on referrals alone?",
-              "What happens during months when referrals slow down?",
-              "What's the ceiling you see with a referral-only model?"
-            ]
-          },
-          {
-            "emoji": "🧠",
-            "title": "What They're Really Saying (Psychology)",
-            "questions": [
-              "I don't want to waste time with people who aren't serious",
-              "I don't want my brand hurt by bad outreach",
-              "I don't want to pay for something that won't convert",
-              "Referrals = trust. Cold = risk. That's the belief system you're reframing."
-            ]
-          },
-          {
-            "emoji": "✅",
-            "title": "Green Flags — Signs of a Qualified Client",
-            "questions": [
-              "Open to a new channel if it's de-risked and milestone-based",
-              "Shows evidence of a sales process that can absorb new pipeline",
-              "Responds to your reframe with curiosity instead of resistance",
-              "Agrees that referrals are inconsistent or limited"
-            ]
-          },
-          {
-            "emoji": "🚩",
-            "title": "Red Flags — Signs to Disqualify",
-            "questions": [
-              "Obsessed with warm introductions, unwilling to explore new channels",
-              "Outright allergy to cold traffic no matter how you frame it",
-              "No conversion infrastructure — no intake, no sales team, no follow-up",
-              "These prospects will fail to convert your work and blame you"
-            ]
-          }
-        ],
-        "validation_spins": [
-          "That's actually really nice to hear — referral-based clients often see the best results when adding a new channel.",
-          "Exactly — that's the outcome we want. The process we use is designed to feel like those referrals, just at scale.",
-          "Makes sense. What we've found is that referral-heavy companies have untapped demand they haven't accessed yet.",
-          "Great, that proves you're open-minded and willing to test what works."
-        ],
-        "polite_disqualification": "Totally understood. If referrals are the only channel you want to lean on right now, then it probably doesn't make sense to move forward. What we do is build and warm a new channel so you're not capped by referrals — and if that's not a priority yet, we're not the right fit.",
-        "pivot_examples": [
-          {
-            "text": "Before we go deeper, help me understand your current referral process — how do those typically come in, and what happens next?",
-            "link_to": "discovery_top_funnel",
-            "link_text": "Top of Funnel — Demand Generation"
-          },
-          {
-            "text": "When those referrals do come in, what does your conversion process look like?",
-            "link_to": "discovery_middle_funnel",
-            "link_text": "Middle of Funnel — Sales Process & Conversion"
-          }
-        ],
-        "advisor_notes": [
-          "This objection almost always means they think you're selling introductions — clarify immediately",
-          "Never anchor your new channel to referral conversion benchmarks",
-          "A 'no' from a referral-obsessed prospect is as valuable as a 'yes' from the right one",
-          "Deliver validation calmly, spin it positive, then ask a diagnostic question",
-          "If they stay firm on referrals after reframing, politely disqualify and protect your time"
-        ],
-        "story_mode": {
-          "title": "Story Mode: The Referral Ceiling Story",
-          "when_to_use": "Use when prospect is engaged, rapport is high, and they're genuinely skeptical about non-referral channels (not dismissive). Reserve for sophisticated buyers who appreciate narrative. 2-3 minute investment.",
-          "script": "<i>I'll be honest with you</i> — we don't tap a Rolodex, and that's intentional. Let me tell you why.<br><br>(Pause, shift into story mode)<br><br>One of our clients came to us after <b>exhausting their referral network</b>. They'd built a <b>$15M business</b> entirely through warm introductions — impressive, right? But they'd hit a ceiling. Every partner they knew had already been tapped, and growth had flatlined.<br><br>They were <i>skeptical about 'cold outreach'</i> — worried about brand risk, worried about tire-kickers, worried about wasting time on conversations that wouldn't convert.<br><br>So we built a system that <b>feels like referrals but operates at scale</b>.<br><br>We extracted their institutional knowledge — how they speak, what outcomes matter to their buyers, the integrity they protect, the language their world uses. Then we designed messaging that sounded like it came from a <u>peer in their world</u>, not a vendor trying to sell something.<br><br>We deployed that through our <b>private infrastructure</b> — controlled, compliant, brand-safe. No spray-and-pray, no generic templates, no shortcuts that damage reputation.<br><br>Within <b>60 days</b>, we'd generated <b>18 qualified meetings</b> with exactly the profiles they needed — decision-makers who fit their A/B/C criteria, genuinely interested, financially able.<br><br>By <b>day 90</b>, they'd closed <b>3 new clients worth $800K in fees</b>. And here's what they told us: <i>'These conversations felt warmer than half our actual referrals.'</i><br><br>(Pause, bring it back to them)<br><br>That's the difference. We don't <u>replace</u> your referral channel — we <b>engineer a new channel that performs like referrals but operates predictably</b>. You're not choosing between referrals and cold outreach. You're adding a systematic channel that creates the same quality conversations, just without the inconsistency.<br><br>Now, to see if that makes sense for your business: how consistent have those referrals been month to month?"
-        }
       }
     ]
   },
@@ -665,6 +572,47 @@ let salesData = {
     "purpose": "Pull off the main track, handle objections, return to your mile marker",
 
     "handlers": {
+      // Referrals & Connections (1 handler)
+
+      "referrals_objection": {
+        "title": "Referrals & Connections Objection",
+        "category": "Quality",
+        "trigger": "When they ask 'Do you have connections?' or 'We grow through referrals'",
+        "purpose": "Validate, reframe, and qualify — never correct or defend",
+        "main_script": {
+          "title": "📝 What to Say",
+          "script": "<i>That's actually really nice to hear</i> — referral-based clients often see the best results when adding a new channel.<br><br>Here's what we've learned: when companies are mainly referral-based, they've actually <b>built moats in one channel</b> but haven't developed <u>systematic demand generation in others</u>. So the untapped demand is massive. That's exactly where our <b>thesis creates the most upside</b>—we're not disrupting what's working, we're opening a new channel in markets where the demand already exists but hasn't been approached the right way.<br><br>How consistent have those referrals been month-to-month?",
+          "advisor_notes": [
+            "Never make the prospect feel wrong. Validate → Reframe → Ask question.",
+            "We don't tap a Rolodex. We build and warm new channels using messaging and outreach infrastructure.",
+            "If they stay firm on referrals after reframing, use the disqualification script below."
+          ]
+        },
+        "question_groups": [
+          {
+            "emoji": "🔍",
+            "title": "Follow-Up Questions",
+            "questions": [
+              "What happens during months when referrals slow down?",
+              "What's the ceiling you see with a referral-only model?"
+            ]
+          }
+        ],
+        "polite_disqualification": "Totally understood. If referrals are the only channel you want to lean on right now, then it probably doesn't make sense to move forward. What we do is build and warm a new channel so you're not capped by referrals — and if that's not a priority yet, we're not the right fit.",
+        "pivot_examples": [
+          {
+            "text": "Before we go deeper, help me understand your current referral process — how do those typically come in, and what happens next?",
+            "link_to": "discovery_top_funnel",
+            "link_text": "Top of Funnel — Demand Generation"
+          }
+        ],
+        "story_mode": {
+          "title": "Story Mode: The Referral Ceiling Story",
+          "when_to_use": "Use when prospect is engaged, rapport is high, and they're genuinely skeptical about non-referral channels (not dismissive). Reserve for sophisticated buyers who appreciate narrative. 2-3 minute investment.",
+          "script": "<i>I'll be honest with you</i> — we don't tap a Rolodex, and that's intentional. Let me tell you why.<br><br>(Pause, shift into story mode)<br><br>One of our clients came to us after <b>exhausting their referral network</b>. They'd built a <b>$15M business</b> entirely through warm introductions — impressive, right? But they'd hit a ceiling. Every partner they knew had already been tapped, and growth had flatlined.<br><br>They were <i>skeptical about 'cold outreach'</i> — worried about brand risk, worried about tire-kickers, worried about wasting time on conversations that wouldn't convert.<br><br>So we built a system that <b>feels like referrals but operates at scale</b>.<br><br>We extracted their institutional knowledge — how they speak, what outcomes matter to their buyers, the integrity they protect, the language their world uses. Then we designed messaging that sounded like it came from a <u>peer in their world</u>, not a vendor trying to sell something.<br><br>We deployed that through our <b>private infrastructure</b> — controlled, compliant, brand-safe. No spray-and-pray, no generic templates, no shortcuts that damage reputation.<br><br>Within <b>60 days</b>, we'd generated <b>18 qualified meetings</b> with exactly the profiles they needed — decision-makers who fit their A/B/C criteria, genuinely interested, financially able.<br><br>By <b>day 90</b>, they'd closed <b>3 new clients worth $800K in fees</b>. And here's what they told us: <i>'These conversations felt warmer than half our actual referrals.'</i><br><br>(Pause, bring it back to them)<br><br>That's the difference. We don't <u>replace</u> your referral channel — we <b>engineer a new channel that performs like referrals but operates predictably</b>. You're not choosing between referrals and cold outreach. You're adding a systematic channel that creates the same quality conversations, just without the inconsistency.<br><br>Now, to see if that makes sense for your business: how consistent have those referrals been month to month?"
+        }
+      },
+
       // Money & Budget (9 handlers)
 
       "pricing_objection": {

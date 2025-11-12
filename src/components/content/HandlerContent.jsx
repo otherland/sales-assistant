@@ -4,6 +4,7 @@ import InfoBox from './InfoBox'
 import ScriptBlock from './ScriptBlock'
 import LinkifiedText from './LinkifiedText'
 import CollapsibleSection from './CollapsibleSection'
+import QuestionGroup from './QuestionGroup'
 
 function HandlerContent({ handlerData, handlerId }) {
   const { loadContent } = useContent()
@@ -36,6 +37,23 @@ function HandlerContent({ handlerData, handlerId }) {
         {handlerData.quick_response && (
           <InfoBox title="⚡ Quick Response">
             <LinkifiedText text={handlerData.quick_response} />
+          </InfoBox>
+        )}
+
+        {handlerData.quick_reference && (
+          <InfoBox title={handlerData.quick_reference.title || "⚡ Quick Reference"} variant="highlight" style={{ marginBottom: '2rem' }}>
+            {handlerData.quick_reference.steps && handlerData.quick_reference.steps.length > 0 && (
+              <div>
+                {handlerData.quick_reference.steps.map((step, idx) => (
+                  <div key={idx} style={{ marginBottom: idx < handlerData.quick_reference.steps.length - 1 ? '1.5rem' : '0' }}>
+                    <h4 style={{ color: 'var(--primary-color)', fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+                      {step.step}
+                    </h4>
+                    {step.script && <ScriptBlock script={step.script} />}
+                  </div>
+                ))}
+              </div>
+            )}
           </InfoBox>
         )}
 
@@ -315,6 +333,20 @@ function HandlerContent({ handlerData, handlerId }) {
         )}
 
         {/* Pricing Objection Handler - Pivot Examples */}
+        {handlerData.question_groups && handlerData.question_groups.length > 0 && (
+          <div style={{ margin: '2rem 0' }}>
+            {handlerData.question_groups.map((group, groupIndex) => (
+              <QuestionGroup
+                key={`handler-qg-${groupIndex}`}
+                group={group}
+                sectionId={handlerId}
+                groupIndex={groupIndex}
+                startingQuestionNumber={1}
+              />
+            ))}
+          </div>
+        )}
+
         {handlerData.pivot_examples && handlerData.pivot_examples.length > 0 && (
           <InfoBox title="Pivot Examples" variant="advisor-note" style={{ margin: '1.5rem 0' }}>
             {handlerData.pivot_examples.map((pivot, idx) => (
@@ -508,7 +540,7 @@ function HandlerContent({ handlerData, handlerId }) {
             'why_they_do_it', 'handle_steps', 'recognize_the_projection', 'accountability_boundaries',
             'script', 'main_script', 'how_to_handle', 'capitalization_framing', 'advisor_notes', 'key_lesson', 
             'where_to_go_next', 'pivot_examples', 'where_it_shows_up', 'purpose', 'universal_opening', 'adaptive_branches',
-            'universal_response', 'path_selection'
+            'universal_response', 'path_selection', 'question_groups'
           ])
 
           const unrenderedProps = Object.keys(handlerData).filter(key => {

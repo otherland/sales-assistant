@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useContent } from '../../context/ContentContext'
 import { useSalesData } from '../../context/SalesDataContext'
-import { setRepeatableProcessStatus } from '../../utils/sequenceSelections'
+import { setRepeatableProcessStatus, getSequenceSelections } from '../../utils/sequenceSelections'
 import InfoBox from './InfoBox'
 import ScriptBlock from './ScriptBlock'
 import LinkifiedText from './LinkifiedText'
@@ -51,6 +51,22 @@ function SequentialContent({ item, itemId }) {
   const [selectedEconomyPath, setSelectedEconomyPath] = useState(null)
   const [openPaths, setOpenPaths] = useState({})
   const [carpetState, setCarpetState] = useState(() => getCARPETState())
+
+  // Auto-select path for integration_explanation based on two_paths_emerge outcome
+  useEffect(() => {
+    if (item?.id === 'integration_explanation' && item.paths) {
+      const selections = getSequenceSelections()
+      if (selections.hasRepeatableProcess !== null) {
+        const correctPathId = selections.hasRepeatableProcess ? 'with_process' : 'without_process'
+        const correctPath = item.paths.find(p => p.id === correctPathId)
+        if (correctPath) {
+          const pathId = correctPath.id || `path-${item.paths.indexOf(correctPath)}`
+          setOpenPaths({ [pathId]: true })
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [item?.id])
 
   // Listen for CARPET metrics updates
   useEffect(() => {
@@ -344,12 +360,6 @@ function SequentialContent({ item, itemId }) {
                 <li key={idx}>"{spin}"</li>
               ))}
             </ul>
-          </InfoBox>
-        )}
-
-        {item.polite_disqualification && (
-          <InfoBox title="Polite Disqualification Script" variant="warning">
-            <ScriptBlock script={item.polite_disqualification} />
           </InfoBox>
         )}
 
@@ -825,6 +835,45 @@ function SequentialContent({ item, itemId }) {
           </InfoBox>
         )}
 
+        {item.pivot_examples && item.pivot_examples.length > 0 && (
+          <InfoBox title="Pivot Examples" variant="advisor-note" style={{ margin: '1.5rem 0' }}>
+            {item.pivot_examples.map((pivot, idx) => (
+              <div key={idx} style={{ marginBottom: idx < item.pivot_examples.length - 1 ? '1rem' : '0' }}>
+                <ScriptBlock script={pivot.text} />
+                {pivot.link_text && pivot.link_to && (
+                  <p style={{ marginTop: '0.5rem', fontStyle: 'italic', color: 'var(--text-secondary)' }}>
+                    → <a 
+                      href="#" 
+                      data-action="loadContent" 
+                      data-id={pivot.link_to} 
+                      className="content-link"
+                      style={{ color: 'var(--primary-color)', textDecoration: 'underline', cursor: 'pointer' }}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        loadContent(pivot.link_to)
+                      }}
+                    >
+                      {pivot.link_text}
+                    </a>
+                  </p>
+                )}
+                {pivot.link_text && !pivot.link_to && (
+                  <p style={{ marginTop: '0.5rem', fontStyle: 'italic', color: 'var(--text-secondary)' }}>
+                    → {pivot.link_text}
+                  </p>
+                )}
+              </div>
+            ))}
+          </InfoBox>
+        )}
+
+{/* 
+        {item.polite_disqualification && (
+          <InfoBox title="Polite Disqualification Script" variant="warning">
+            <ScriptBlock script={item.polite_disqualification} />
+          </InfoBox>
+        )} */}
+
         {item.carpet_integration && item.carpet_integration.length > 0 && (
           <InfoBox title="CARPET Integration" variant="advisor-note">
             <ul className="bullet-list">
@@ -900,6 +949,21 @@ function SequentialContent({ item, itemId }) {
             </>
           )
         })()}
+
+        {item.structure_overview && (
+          <InfoBox title={item.structure_overview.title} variant="advisor-note" style={{ margin: '2rem 0' }}>
+            <ul className="bullet-list" style={{ marginBottom: '1rem' }}>
+              {item.structure_overview.sections && item.structure_overview.sections.map((section, idx) => (
+                <li key={idx}><LinkifiedText text={section} /></li>
+              ))}
+            </ul>
+            {item.structure_overview.note && (
+              <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)', marginTop: '1rem' }}>
+                {item.structure_overview.note}
+              </p>
+            )}
+          </InfoBox>
+        )}
 
         {item.paths && !item.assessment_question ? (
           // Economy paths structure - use ForkPaths component
@@ -1124,7 +1188,7 @@ function SequentialContent({ item, itemId }) {
             'when_to_deploy', 'when_NOT_to_deploy', 'where_to_go_next', 'question_groups', 'paths',
             'tic', 'tac', 'toe_optional', 'handling_quality_objections', 'quick_reference_card', 'capitalization_framing',
             'assessment_question', 'transition', 'main_script', 'context_variations', 'additional_resources',
-            'related_objection_handlers', 'compressed_integration'
+            'related_objection_handlers', 'compressed_integration', 'structure_overview'
           ])
 
           const unrenderedProps = Object.keys(item).filter(key => 
